@@ -1,0 +1,35 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="screen-title-section cust-h1-inline">
+            <h1 class="screen-title" style="padding-left: 15px;">Archive Users</h1>
+            <button mat-raised-button (click)="back()" class="cust-button-form">
+                <img src="{{backIcon}}" alt="" height="20px">
+                {{'All-back' |
+                translate}}</button>
+        </div>
+    </div>
+</div>
+
+<div class="wrapper-cust-admin">
+    <div class="main-search-bar">
+        <div>
+            <div style="flex-wrap: wrap; display: flex;">
+                <div class="list-square-div" *ngFor="let teamArray_ of teamArray">
+                    <div class="card-cust-project">
+                        <app-team-archive-card [UserData]="teamArray_"> </app-team-archive-card>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="emptyStateDiv" *ngIf="isEmpty">
+            <div class="vertical-center">
+                <img src="{{teamIcon}}" class="image-cust-card" alt="" />
+
+                <p class="h5">{{'team_not_archieved' | translate}}</p>
+            </div>
+
+        </div>
+    </div>
+</div>

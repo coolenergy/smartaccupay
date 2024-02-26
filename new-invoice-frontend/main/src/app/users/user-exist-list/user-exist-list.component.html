@@ -1,0 +1,45 @@
+<div class="addContainer">
+  <app-model-header [title]="title" (dialogClose)="dialogRef.close()"></app-model-header>
+  <div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <div class="">
+        <div class="header">
+        </div>
+        <div class="body table-responsive">
+          <table class="table m-4">
+            <thead>
+              <tr>
+                <th>{{'COMMON.IMPORT.STATUS' |
+                  translate}}</th>
+                <th>{{'COMMON.IMPORT.NAME' |
+                  translate}}</th>
+                <th>{{'USERS.ADD_EDIT.EMAIL' | translate}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let data of exitData" [ngClass]="data.valid ? 'data-sucess' : 'data-error'">
+                <td [ngClass]="data.valid ? 'data-sucess' : 'data-error'">{{data.message}}</td>
+                <td [ngClass]="data.valid ? 'data-sucess' : 'data-error'">{{data.data.userfirstname}}</td>
+                <td [ngClass]="data.valid ? 'data-sucess' : 'data-error'">{{data.data.useremail}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<mat-dialog-actions align="center" *ngIf="button_show">
+  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2 align-div">
+    <div class="example-button-row">
+      <button mat-raised-button (click)="dialogRef.close()" color="warn" class="width-set-1 btn-width"
+        tabindex="-1">{{'COMMON.ACTIONS.CANCEL' |
+        translate}}</button>
+    </div>
+    <div class="example-button-row">
+      <button mat-raised-button color="primary" class="width-set-1 btn-width" tabindex="-1"
+        (click)="import()">{{'SETTINGS.SETTINGS_OTHER_OPTION.OTHER_SETTINGS_MODULE.OK_TO_IMPORT' |
+        translate}}</button>
+    </div>
+  </div>
+</mat-dialog-actions>

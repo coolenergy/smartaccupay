@@ -1,0 +1,201 @@
+<section class="content">
+    <div class="content-block">
+        <div class="m-4"></div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="materialTableHeader">
+                        <div class="left">
+                            <ul class="header-buttons-left ms-0">
+                                <li class="tbl-title">
+                                    <h2 *ngIf="isDelete === 0">User</h2>
+                                    <h2 *ngIf="isDelete === 1">Archived User</h2>
+                                </li>
+                                <li class="tbl-search-box">
+                                    <label for="search-input"><i class="material-icons search-icon">search</i></label>
+                                    <input [(ngModel)]="username_search"
+                                        placeholder="{{'COMMON.TOOL_TIP.SEARCH' | translate}}" type="text" #filter
+                                        class="browser-default search-field" aria-label="Search box">
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="right">
+                            <ul class="tbl-export-btn">
+                                <li *ngIf="isDelete === 0" class="users-dropdown">
+                                    <mat-form-field class="cust-padding-top" appearance="outline">
+                                        <mat-label>{{'Status' | translate }}</mat-label>
+                                        <mat-select (change)="changeStatus($event)" [(ngModel)]="username_status">
+                                            <mat-option value="All">{{'All' | translate}}</mat-option>
+                                            <mat-option value="1">{{'Active' | translate}}</mat-option>
+                                            <mat-option value="2">{{'Inactive' | translate}}</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </li>
+                                <li class="tbl-header-btn" *ngIf="isDelete === 0">
+                                    <div class="m-l-10" matTooltip="{{'COMMON.TOOL_TIP.REFRESH' |
+                                    translate}}">
+                                        <button mat-mini-fab color="primary" (click)="refresh()">
+                                            <mat-icon class="col-white">refresh</mat-icon>
+                                        </button>
+                                    </div>
+                                </li>
+                                <li class="tbl-header-btn" *ngIf="isDelete === 0 && role_permission.users.Add">
+                                    <div class="m-l-10" matTooltip="{{'COMMON.TOOL_TIP.IMPORT_TEMPLATE' |
+                                    translate}}">
+                                        <button mat-mini-fab color="primary" (click)="downloadImport()">
+                                            <mat-icon class="col-white">file_download</mat-icon>
+                                        </button>
+                                    </div>
+                                </li>
+                                <li class="tbl-header-btn" *ngIf="isDelete === 0 && role_permission.users.Add">
+                                    <div class="m-l-10" matTooltip="{{'COMMON.TOOL_TIP.IMPORT' |
+                                    translate}}">
+                                        <input id="file-upload" class="mr-2" type="file" style="display: none"
+                                            (change)="onFileChange($event)" #OpenFilebox />
+                                        <button mat-mini-fab color="primary" (click)="importFileAction()">
+                                            <mat-icon class="col-white">file_upload</mat-icon>
+                                        </button>
+                                    </div>
+                                </li>
+                                <!-- <li class="tbl-header-btn" *ngIf="isDelete === 0 ">
+                                    <div class="m-l-10" matTooltip="{{'COMMON.TOOL_TIP.REPORT' |
+                                    translate}}" (click)="userReport()">
+                                        <button mat-mini-fab color="primary">
+                                            <mat-icon class="col-white">insert_drive_file</mat-icon>
+                                        </button>
+                                    </div>
+                                </li> -->
+                                <li class="tbl-header-btn" *ngIf="isDelete === 0">
+                                    <div class="m-l-10" matTooltip="{{'COMMON.TOOL_TIP.HISTORY' |
+                                    translate}}">
+                                        <button mat-mini-fab color="primary" (click)="openHistory()">
+                                            <mat-icon class="col-white">history</mat-icon>
+                                        </button>
+                                    </div>
+                                </li>
+                                <li class="tbl-header-btn" *ngIf="isDelete === 0">
+                                    <div class="m-l-10" matTooltip="{{'COMMON.TOOL_TIP.GRID_TO_LIST' |
+                                    translate}}">
+                                        <button mat-mini-fab color="primary" (click)="gotoUser()">
+                                            <mat-icon class="col-white">view_list </mat-icon>
+                                        </button>
+                                    </div>
+                                </li>
+                                <li class="tbl-header-btn" *ngIf="isDelete === 0 && role_permission.users.Delete">
+                                    <div class="m-l-10" matTooltip="{{'COMMON.TOOL_TIP.ARCHIVE' |
+                                    translate}}">
+                                        <button mat-mini-fab color="warn" (click)="gotoArchiveUnarchive()">
+                                            <mat-icon class="col-white">archive</mat-icon>
+                                        </button>
+                                    </div>
+                                </li>
+                                <li class="tbl-header-btn" *ngIf="isDelete === 1">
+                                    <div class="m-l-10" matTooltip="{{'COMMON.TOOL_TIP.BACK' |
+                                    translate}}">
+                                        <button mat-mini-fab color="warn" (click)="gotoArchiveUnarchive()">
+                                            <mat-icon class="col-white">close </mat-icon>
+                                        </button>
+                                    </div>
+                                </li>
+                                <li class="tbl-header-btn" *ngIf="isDelete === 0 && role_permission.users.Add">
+                                    <div class="m-l-10" matTooltip="{{'COMMON.TOOL_TIP.ADD' |
+                                    translate}}">
+                                        <button mat-mini-fab color="primary" (click)="addNewUser()">
+                                            <mat-icon class="col-white">add</mat-icon>
+                                        </button>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="body overflow-auto">
+                        <div class="row">
+                            <div class="test col-xs-12 col-sm-6 col-md-4 col-xl-2"
+                                *ngFor="let user of userList | empListFilter : username_search| empListFilterStatus : username_status">
+                                <div class="card hover-card border-bg" (click)="editUser(user)">
+                                    <div class="m-b-20">
+                                        <div class="contact-grid card-h">
+                                            <div class="profile-header">
+                                                <div class="col-12 m-1 d-flex">
+                                                    <div class="col-4">
+                                                        <img src={{user.userpicture}} class="user-img1 img-bg"
+                                                            width="80px" height="80px" alt="">
+                                                    </div>
+                                                    <div class="mt-4 m-1 col-8">
+                                                        <div *ngIf="isDelete === 0"
+                                                            class="name-cente font-white txt-alg">
+                                                            <div>
+                                                                <span class="badge font-white">
+                                                                    {{user.role_name}}</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="m-1 font-white font-s txt-alg">
+                                                            <b> {{user.userfullname}}</b>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="m-1 text-a">
+                                                <div class="d-flex font-s">
+                                                    <i class="material-icons my-auto font-s font-white">email</i>
+                                                    <span class="font-sp font-white"> {{user.useremail}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="m-1 text-a" *ngIf="user.userphone !== 0">
+                                                <div class="d-flex font-s font-white">
+                                                    <i class="material-icons my-auto font-s">phone</i>
+                                                    <span class="font-sp"> {{user.userphone}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="m-1 text-a" *ngIf="user.userstartdate !== 0">
+                                                <div class="d-flex font-s font-white">
+                                                    <i class="material-icons my-auto font-s">insert_invitation</i>
+                                                    <span class="font-sp">
+                                                        {{ convertDate(user.userstartdate) | dateString }}
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 m-1 d-flex">
+                                                <div class="col-6 font-white">
+                                                    <b> Manager</b>
+                                                    <P class="truncate-text"> {{user.manager_name}}</P>
+                                                </div>
+                                                <div class="col-6 font-white">
+                                                    <b> Supervisor</b>
+                                                    <P class="truncate-text"> {{user.supervisor_name}}</P>
+                                                </div>
+                                            </div>
+                                            <div class="chip" [ngClass]="user.userstatus === 1 ? 'active' :'inactive'">
+                                                {{user.userstatus === 1 ? active_word :inactive_word }}
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="cardLoading" class="tbl-spinner">
+                        <app-loading></app-loading>
+                    </div>
+                    <div *ngIf="username_status === '2' && inactiveUserList?.length === 0">
+                        <div>
+                            <h5 class="font-white text-center">
+                                {{'USERS.VIEW.ACTIVE_STATUS_MASSAGE' | translate}}
+                            </h5>
+                        </div>
+                    </div>
+                    <div *ngIf="username_status === '1' && activeUserList?.length === 0">
+                        <div>
+                            <h5 class="font-white text-center">
+                                {{'USERS.VIEW.INACTIVE_STATUS_MASSAGE' | translate}}
+                            </h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

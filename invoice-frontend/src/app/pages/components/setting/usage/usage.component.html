@@ -1,0 +1,37 @@
+<div class="wrapper-cust-admin">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <form [formGroup]="usageinfo">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <mat-form-field appearance="outline" class="main-one-input-field">
+                                    <mat-label>{{'USAGE_NUMBER_INVOICE' | translate}}</mat-label>
+                                    <input matInput formControlName="amount_of_supervisor"
+                                        class="input-capitalized-textfield"
+                                        placeholder="{{'USAGE_NUMBER_INVOICE' | translate}}" readonly>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <mat-form-field appearance="outline" class="main-one-input-field">
+                                    <mat-label>{{'Settings-Usage-Storage-Size' | translate}}</mat-label>
+                                    <input matInput formControlName="wasabi_storage_size"
+                                        class="input-capitalized-textfield" placeholder="Storage size" readonly>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="cust-width ">
+                            <div class="table-responsive cust-padding cust-padding-tmp mt-5" *ngIf="showTable">
+                                <table datatable [dtOptions]="dtOptions" id="dtOptions_vendor" class="row-border hover">
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

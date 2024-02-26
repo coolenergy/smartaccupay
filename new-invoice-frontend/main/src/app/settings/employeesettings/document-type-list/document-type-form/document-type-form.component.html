@@ -1,0 +1,36 @@
+<div class="addContainer">
+     <app-model-header [title]="title" (dialogClose)="dialogRef.close()"></app-model-header>
+     <div mat-dialog-content>
+          <form class="register-form m-4" [formGroup]="DocumentInfo">
+               <div class="row">
+                    <div class=" col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                         <mat-form-field appearance="outline" class="example-full-width">
+                              <mat-label>{{'SETTINGS.SETTINGS_OTHER_OPTION.EMPLOYEE_MODULE.DOCUMENT_TYPE' | translate}}
+                              </mat-label>
+                              <input matInput
+                                   placeholder="{{'SETTINGS.SETTINGS_OTHER_OPTION.EMPLOYEE_MODULE.DOCUMENT_TYPE' |  translate}}"
+                                   formControlName="document_type_name" required>
+                         </mat-form-field>
+                    </div>
+               </div>
+               <div class="row pb-3">
+                    <div class=" col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                         <mat-slide-toggle formControlName="is_expiration" color="primary">
+                              {{'SETTINGS.SETTINGS_OTHER_OPTION.EMPLOYEE_MODULE.EXPIRATION_DATE' | translate}}
+                         </mat-slide-toggle>
+                    </div>
+               </div>
+               <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2 align-div">
+                         <div class="example-button-row">
+                              <button mat-raised-button color="primary" class="width-set-2"
+                                   [disabled]="!DocumentInfo.valid" (click)="submit()">{{'COMMON.ACTIONS.SAVE' |
+                                   translate}}</button>
+                              <button mat-raised-button color="warn" class="width-set-1" tabindex="-1"
+                                   (click)="dialogRef.close()">{{'COMMON.ACTIONS.CANCEL' | translate}}</button>
+                         </div>
+                    </div>
+               </div>
+          </form>
+     </div>
+</div>

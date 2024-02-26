@@ -1,0 +1,33 @@
+<h1 mat-dialog-title></h1>
+<div mat-dialog-content>
+    <table datatable [dtOptions]="dtOptions" class="row-border hover">
+        <thead>
+            <tr>
+                <th>{{'Employee-form-Status' | translate}}</th>
+                <th>{{'Settings_Costcode_Division' | translate}}</th>
+                <th>{{'Settings_Costcode' | translate}}</th>
+                <th>{{'Settings_Costcode_Description' | translate}}</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let vendordata of data.data" [ngClass]="{'backgroun-cust': vendordata.status == false}">
+                <td>{{vendordata.message}}</td>
+                <td>{{vendordata.division}}</td>
+                <td>{{vendordata.cost_code}}</td>
+                <td>{{vendordata.description}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div mat-dialog-actions>
+    <div class="row justify-content-center w-100">
+        <div *ngIf="success_buttons" class="row justify-content-center w-100">
+            <button mat-raised-button color="primary" (click)="saveData()">{{'Ok_to_import' | translate }}</button>
+            <button mat-raised-button mat-dialog-close>{{'All-Cancel' | translate }}</button>
+        </div>
+        <div *ngIf="failed_buttons" class="row justify-content-center w-100">
+            <button mat-raised-button (click)="cancelImport()">{{'Cancel_Import' | translate }}</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,67 @@
+.container-cust {
+    width: 50%;
+    padding: 1rem;
+    text-align: center;
+    border: dotted 2px black;
+    position: relative;
+    margin: 0 auto;
+    border-radius: 5px;
+
+    input {
+        opacity: 0;
+        position: absolute;
+        z-index: 2;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+    }
+
+    label {
+        color: blue;
+        height: 25px;
+        border-radius: 21.5px;
+        text-align: center;
+        padding: 3px !important;
+    }
+
+    h3 {
+        font-size: 14px;
+        font-weight: 500;
+        color: #38424c;
+        margin-bottom: 0px;
+    }
+}
+
+.document-list .single-document {
+    border: dashed 1px #979797;
+    margin-bottom: 10px;
+}
+
+.document-list .single-document .file-icon {
+    height: 50px;
+    width: 50px;
+}
+
+.document-list .single-document .info {
+    width: 88%;
+}
+
+.document-list .single-document .info .name {
+    font-size: 14px;
+    font-weight: 500;
+    color: #353f4a;
+    margin: 0;
+    // background-color: cyan;
+    word-wrap: break-word;
+}
+
+.document-list .single-document .file-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: scale-down;
+}
+
+.document-list .single-document .delete {
+    cursor: pointer;
+}

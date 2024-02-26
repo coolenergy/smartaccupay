@@ -1,0 +1,25 @@
+<div class="main-cust-setting-div">
+    <div class="decorate-div">
+        <mat-slide-toggle class="mr-2" color="primary" [(ngModel)]="Document_View"
+            (ngModelChange)="modelChangeSwitch($event,'Document_View')">
+        </mat-slide-toggle>{{'Document_View_Text' | translate}}&nbsp;
+        <mat-form-field appearance="outline" class="ml-2">
+            <input maxlength="2" (keypress)="numberOnly($event)" class="input" matInput
+                placeholder="{{'' | translate }}" [(ngModel)]="Document_View_time_value"
+                (keyup.enter)="modelChangeLocationText($event.target.value,'Document_View')" />
+        </mat-form-field>
+    </div>
+    <div class="decorate-div">
+        <mat-slide-toggle class="mr-2" color="primary" [(ngModel)]="Archive_Orphan_Document"
+            (ngModelChange)="modelChangeSwitch($event,'Archive_Orphan_Document')">
+        </mat-slide-toggle>
+        {{'Archive_Orphan_Document_Text' | translate}}&nbsp;
+        <mat-form-field appearance="outline" class="ml-2">
+            <input maxlength="2" (keypress)="numberOnly($event)" class="input" matInput
+                placeholder="{{'' | translate }}" [(ngModel)]="Archive_Orphan_Document_time_value"
+                (keyup.enter)="modelChangeLocationText($event.target.value,'Archive_Orphan_Document')" />
+        </mat-form-field>
+        &nbsp;{{'days_all' | translate}}
+        <!-- Archive_Orphan_Document -->
+    </div>
+</div>

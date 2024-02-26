@@ -1,0 +1,105 @@
+// .............................history................ //
+
+.activity {
+    display: flex;
+    font-size: 14px;
+    margin-bottom: 20px;
+    position: relative;
+    border-bottom: 1px solid #dadada;
+}
+
+.avatar {
+    img {
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        margin-right: 15px;
+        border: 1px solid #023e8a;
+    }
+}
+
+.sign-button {
+    margin-left: 15px;
+}
+
+.main-one-input-field {
+    width: 100%;
+}
+
+::ng-deep .darkMode {
+    .preview {
+        border: 1px solid #dadada !important;
+        background-color: transparent !important;
+    }
+
+    .avatar {
+        img {
+            border: 1px solid #dadada !important;
+        }
+    }
+}
+
+.dataTable {
+    width: unset !important;
+}
+
+.userimg {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: 1px solid black;
+}
+
+th {
+    background-color: rgb(196, 196, 196);
+    height: 100%;
+    width: 50%;
+}
+
+td {
+    background-color: rgb(236, 236, 236);
+    height: 100%;
+    width: 50%;
+}
+
+.display-inline-cust {
+    justify-self: flex-end;
+    height: 40px;
+}
+
+.cust-width {
+    width: 100%;
+}
+
+.cust-padding {
+    padding-bottom: 50px;
+}
+
+.modal-body {
+    min-height: 75%;
+}
+
+/* Solid border */
+hr.solid {
+    bottom: 1px solid #bbb;
+}
+
+.screen-title {
+    margin-top: auto;
+    margin-bottom: auto
+}
+
+.hbox {
+    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.5), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+}
+
+.table-responsive {
+    overflow-x: unset !important;
+    margin-bottom: 50px !important;
+}
+
+.chip {
+    .mat-raised-button {
+        padding: unset !important;
+    }
+}

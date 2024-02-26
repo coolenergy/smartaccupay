@@ -1,0 +1,46 @@
+<div class="card mb-3 mr-4">
+    <div class="card-body">
+        <div class="data">
+            <div (click)="editInvoice(invoice)">
+                <b>Invoice # </b> <span>{{invoice.invoice}}</span>
+                <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 379.1919 379.1978"
+                style="width: 20px;float: right;"
+                [style.display]="invoice.hasOwnProperty('isInvoicefromQBO') ? 'block':'none'"
+                >
+                <g>
+                    <g>
+                    <path
+                        d="M0,189.5991C0,84.8848,84.8936,0,189.59869,0,294.313,0,379.1919,84.8848,379.1919,189.5991c0,104.7081-84.87891,189.5987-189.59321,189.5987C84.8936,379.1978,0,294.3072,0,189.5991Z"
+                        [ngClass]="'icon_green'"
+                    />
+                    <path
+                        d="M252.8169,115.8745H242.28179v27.3843H252.8169a46.3474,46.3474,0,1,1,0,92.6948H227.50829V92.7031a27.39433,27.39433,0,0,0-27.3911-27.3901V263.3286H252.8169a73.72705,73.72705,0,1,0,0-147.4541ZM52.645,189.5933a73.7257,73.7257,0,0,0,73.7359,73.7246h10.53219v-27.376H126.3809a46.3486,46.3486,0,1,1,0-92.6972h25.31249V286.4986a27.37664,27.37664,0,0,0,27.3877,27.3808V115.8633H126.3809a73.7303,73.7303,0,0,0-73.7359,73.73Z"
+                        style="fill: #fff"
+                    />
+                    </g> 
+                </g>
+                </svg>
+                <i [style.display]="invoice.hasOwnProperty('isInvoicefromQBO') && 'none'" class = "fas fa-database" style="float:right;color:green" ></i>
+                <br />
+                <b>P.O # </b> <span>{{invoice.p_o}}</span>
+                <br />
+                <div class="row"><b class="text-margin">Vendor </b>
+                    <div class="text-overflow">{{invoice.vendor_name }}
+                    </div>
+                </div>
+                <b>Packing Slip </b> <span>{{invoice.packing_slip}}</span>
+                <br />
+                <b>Receiving Slip </b> <span>{{invoice.receiving_slip}}</span>
+                <br />
+                <b>{{'Files_Attached' | translate}} </b> <span>{{invoice.attach_files}}</span>
+                <br />
+                <b
+                    [ngClass]="invoice.status == 'Pending'? 'pendingcss' : 'Approvedcss' && invoice.status == 'Approved'? 'Approvedcss' : 'Rejectcss'&& invoice.status == 'Rejected'? 'Rejectcss' : 'Rejectcss'">
+                    <span>{{invoice.status}}</span></b>
+            </div>
+
+        </div>
+    </div>
+</div>

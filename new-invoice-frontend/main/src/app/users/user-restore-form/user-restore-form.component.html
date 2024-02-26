@@ -1,0 +1,72 @@
+<div class="addContainer">
+     <app-model-header [title]="title" (dialogClose)="dialogRef.close()"></app-model-header>
+     <!-- <div class="modalHeader">
+          <div class="row model-header">
+               <div class="col-1">
+                    <img src="{{ invoice_logo }}" height="57px" width="45px" />
+               </div>
+               <div class="col-10">
+                    <div class="editRowModal">
+                         <div class="modalHeader m-auto text-center clearfix">
+                              <div class="modal-about">
+                                   <div class="fw-bold p-t-5 p-l-10 font-17">
+                                        Restore User
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+               </div>
+               <div class="col-1 text-right">
+                    <button mat-mini-fab (click)="dialogRef.close()" color="warn" aria-label="Close dialog">
+                         <mat-icon class="col-white">close </mat-icon>
+                    </button>
+               </div>
+          </div>
+     </div> -->
+     <div mat-dialog-content>
+          <form class="register-form m-4" [formGroup]="userRoleInfo" (ngSubmit)="submit">
+               <div class="row">
+                    <div class=" col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                         <mat-form-field class="example-full-width" appearance="outline">
+                              <mat-label>{{'Role' | translate}}</mat-label>
+                              <mat-select formControlName="userroleId" #roleSelect>
+                                   <mat-select-filter [placeholder]="'Role'" [displayMember]="'role_name'"
+                                        [array]="variablesRoleList" (filteredReturn)="roleList =$event"
+                                        *ngIf="roleSelect.focused">
+                                   </mat-select-filter>
+                                   <mat-option *ngFor="let item of roleList" [value]="item.role_id">
+                                        {{item.role_name}}
+                                   </mat-option>
+                              </mat-select>
+                         </mat-form-field>
+                    </div>
+               </div>
+               <div class="row">
+                    <div class=" col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                         <mat-form-field class="example-full-width" appearance="outline">
+                              <mat-label>{{'Status' | translate}}</mat-label>
+                              <mat-select formControlName="userstatus" required>
+                                   <mat-option [value]="1">
+                                        Active
+                                   </mat-option>
+                                   <mat-option [value]="2">
+                                        Inactive
+                                   </mat-option>
+                              </mat-select>
+                         </mat-form-field>
+                    </div>
+               </div>
+               <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2 align-div">
+                         <div class="example-button-row">
+                              <button mat-raised-button color="primary" class="width-set-2"
+                                   [disabled]="!userRoleInfo.valid" [mat-dialog-close]="1"
+                                   (click)="restoreUser(data)">Save</button>
+                              <button mat-raised-button color="warn" class="width-set-1" (click)="dialogRef.close()"
+                                   tabindex="-1">Cancel</button>
+                         </div>
+                    </div>
+               </div>
+          </form>
+     </div>
+</div>

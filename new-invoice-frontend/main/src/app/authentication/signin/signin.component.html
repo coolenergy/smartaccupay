@@ -1,0 +1,127 @@
+<div class="auth-container" *ngIf="showForm">
+  <div class="row auth-main" style="background-image: url(assets/images/full_bg.jpg);">
+
+    <div class="col-sm-4 auth-form-section">
+      <div class="form-section">
+        <div class="auth-wrapper">
+
+          <div *ngIf="showLogin">
+            <h2 class="welcome-msg cust-center"> Welcome to Smart<b>Accu</b>Pay</h2>
+            <!--<div class="cust-center mb-2" *ngIf="showLogin"> 
+            <mat-chip [removable]="removable" (removed)="removeCompanyCode()">
+              {{companyCode}}
+              <mat-icon matChipRemove *ngIf=" removable">cancel</mat-icon>
+            </mat-chip> 
+          </div> -->
+
+            <form class="validate-form" [formGroup]="authForm">
+              <!-- <div class="row" *ngIf="!showLogin">
+              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>Company Code</mat-label>
+                  <span class="m-1" matPrefix>R-</span>
+                  <input matInput mask="000000" type="text" formControlName="companycode" />
+
+                </mat-form-field>
+              </div>
+            </div> -->
+              <!-- <div style="text-align:center" *ngIf="!showLogin">
+              <button mat-raised-button color="primary" class="auth-form-btn" (click)="showLoginForm()"
+                type="submit">Continue</button>
+            </div> -->
+              <div class="row" *ngIf="showLogin">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input matInput formControlName="useremail" />
+
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row" *ngIf="showLogin">
+                <div class="col-xl-12col-lg-12 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+                    <a class="show-pwd-icon" href="#" onClick="return false;" matSuffix (click)="hide = !hide"
+                      [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                      <mat-icon matSuffix>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </a>
+
+                  </mat-form-field>
+                </div>
+              </div>
+              <!-- <div class="d-flex justify-content-between align-items-center mb-5" *ngIf="showLogin">
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="checkbox" value=""> <a class="welcome-msg">I agree to the</a>
+                  <a style="color:blue" (click)="langurl()"> terms & conditions</a>
+                  <span class="form-check-sign">
+                    <span class="check"></span>
+                  </span>
+                </label>
+              </div>
+
+            </div> -->
+              <div *ngIf="showLogin">
+                <mat-checkbox labelPosition="after" color="primary" #saveUserNameCheckBox
+                  (change)="onSaveUsernameChanged($event.checked)" [checked]="checked" formControlName="terms"
+                  class="auth-page__group-title">I agree to the
+                  <span><a (click)="langurl()" class="term-condition" target="_blank">terms & conditions</a></span>
+                </mat-checkbox>
+              </div>
+              <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+              <div class="container-auth-form-btn" *ngIf="showLogin">
+                <div style="text-align:center">
+                  <button mat-raised-button color="primary" (click)="userLogin()" class="auth-form-btn"
+                    type="submit">Login</button>
+                </div>
+              </div>
+            </form>
+            <div class="row cust-center mt-2">
+              <button class="form-actions__forget " mat-button *ngIf="showLogin"><span><a class="login-link"
+                    (click)="goResetPasswordForm()" target="_blank">Forgot Password?</a></span></button>
+            </div>
+            <div class="row cust-center mt-2">
+              <button class="form-actions__forget " mat-button *ngIf="showLogin"><span><a class="login-link"
+                    (click)="goSendOtpForm()" target="_blank">Or use Email Password (OTP) </a></span></button>
+            </div>
+          </div>
+          <div *ngIf="!showLogin">
+            <h2 class="welcome-msg cust-center"> Select Company </h2>
+            <div class="cust-center mb-2">
+              <mat-chip [removable]=" removable" (removed)="removeUseremail()">
+                {{useremail}}
+                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+              </mat-chip>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-12 mt-3">
+              <div class="card">
+                <div class="card-body">
+                  <div class="media-list position-relative">
+                    <div class="table-responsive" id="project-team-scroll">
+                      <table class="table table-hover table-xl mb-0">
+                        <tbody>
+                          <tr *ngFor="let company of companyList" (click)="selectCompany(company)">
+                            <td class="text-truncate d-flex companydata">
+                              <img class="rounded-circle" src="{{company.companylogo}}" alt="" title="">
+                              <div class="my-auto">{{company.companyname}}</div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-8 px-0 d-none d-sm-block">
+      <div class="left-img">
+      </div>
+    </div>
+  </div>
+</div>

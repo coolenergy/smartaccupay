@@ -1,0 +1,180 @@
+<div class="row">
+    <div class="col-2">
+        <img class="crl mr-2" height="50px" width="50px" src="./assets/logo/invoice_logo.png" />
+    </div>
+    <div class="col-8 dialog-head-center">
+        <h1 class="screen-title">{{'address_book_title' | translate}}</h1>
+    </div>
+    <div class="col-2 dialog-head-right">
+        <button class="import-export-btn-datatable cust-margin-div" matTooltip="{{ 'All-exit' | translate }}"
+            mat-dialog-close>
+            <img src="{{exitIcon}}" alt="" class="far fa-paper-plane" height="20px">
+        </button>
+    </div>
+</div>
+
+<!-- <div class="display-inline-cust " style="float: right;">
+    <button class="import-export-btn-datatable cust-margin-div" mat-dialog-close>
+        <img src="{{exitIcon}}" alt="" class="far fa-paper-plane" height="20px">
+    </button>
+</div>
+<div class="modal-header cust-report-header-footer-div">
+    <h2 class="modal-title" id="modal-basic-title" class="cust-report-label-header-text">
+        {{'address_book_title' | translate}}</h2>
+
+</div> -->
+<div class="wrapper-cust-admin">
+
+    <div class="container">
+        <!-- <div class="row d-flex justify-content-end pb-2">
+            <button mat-stroked-button color="primary" (click)="downloadImportTemplate();" matTooltip=""
+                aria-label="Left Align">
+                {{'Employee-Import-Template' | translate}}
+            </button>
+
+            <input id="file-upload" type="file" style="display: none;" (click)="OpenFilebox.value = null"
+                (change)="onFileChange($event)" #OpenFilebox />
+            <button class="import-export-btn-datatable button_workersEditClass cust-margin-div" aria-label="Left Align"
+                matTooltip="" (click)="importFileAction();">
+                <img src="{{importIcon}}" alt="" height="20px">
+            </button>
+        </div> -->
+        <div>
+            <mat-tab-group mat-align-tabs="center">
+                <mat-tab label="{{'addressbook_user_tab' | translate}}">
+                    <div class="cust-padding pt-2">
+                        <!-- <div class="example-container mat-elevation-z8 demo-table"> -->
+                        <table datatable [dtOptions]="dtOptions" class="row-border hover" *ngIf="showTable">
+                            <thead>
+                                <tr>
+                                    <th>{{'addressbook_users_first_name'| translate}}</th>
+                                    <th>{{'addressbook_users_middle_name' | translate}}</th>
+                                    <th>{{'addressbook_users_last_name' | translate}}</th>
+                                    <th>{{'addressbook_users_Email' | translate}}</th>
+                                    <th>{{'addressbook_users_Phone' | translate}}</th>
+                                    <th>{{'addressbook_users_Status' | translate}}</th>
+                                    <th>{{"All-Action" | translate }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let userdata of userList">
+                                    <td>{{userdata.username}}</td>
+                                    <td>{{userdata.usermiddlename}}</td>
+                                    <td>{{userdata.userlastname}}</td>
+                                    <td>{{userdata.useremail}}</td>
+                                    <td>{{userdata.userphone | mask: '(000) 000-0000'}}</td>
+                                    <td>
+                                        <div *ngIf="userdata.userstatus == 1">
+                                            {{'Team-EmployeeList-Status-Active' | translate}}
+                                        </div>
+                                        <div *ngIf="userdata.userstatus == 2">{{'Team-EmployeeList-Status-In-Active' |
+                                            translate}}</div>
+                                    </td>
+                                    <td width="1%">
+                                        <!-- <div class="dropdown">
+                                            <i class="fas fa-ellipsis-v cust-fontsize-tmp float-right-cust"
+                                                aria-hidden="true"></i>
+                                            <div class="dropdown-content-cust cust-drop-width">
+                                                <a class="button_shiftEditClass" target="_blank"
+                                                    href="mailto:{{userdata.useremail}}"><img src="{{emailIcon}}" alt=""
+                                                        class="" height="15px"></a>
+                                                <a class="button_shiftDeleteClass" target="_blank"
+                                                    href="tel:{{userdata.userphone}}"><img src="{{callIcon}}" alt=""
+                                                        class="" height="20px"></a>
+                                            </div>
+                                        </div> -->
+                                        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Menu">
+                                            <mat-icon style="font-size: 25px;">more_vert</mat-icon>
+                                        </button>
+                                        <mat-menu #menu="matMenu" class="mat-menu-panel myMenu">
+                                            <a class="button_shiftEditClass" target="_blank"
+                                                href="mailto:{{userdata.useremail}}" mat-menu-item><img
+                                                    src="{{emailIcon}}" alt="" class="" width="20px"></a>
+                                            <a class="button_shiftDeleteClass" target="_blank"
+                                                href="tel:{{userdata.userphone}}" mat-menu-item><img src="{{callIcon}}"
+                                                    alt="" class="" width="20px"></a>
+                                        </mat-menu>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+
+                        <!-- </div> -->
+
+                    </div>
+
+                </mat-tab>
+                <mat-tab label="{{'addressbook_Vendor_tab' | translate}}">
+                    <div class="cust-padding pt-2">
+                        <!-- <div class="example-container mat-elevation-z8 demo-table"> -->
+                        <table datatable [dtOptions]="dtOptionsvendor" class="row-border hover" *ngIf="showTableTwo">
+                            <thead>
+                                <tr>
+                                    <th>{{'addressbook_Vendor_Name' | translate}}</th>
+                                    <!-- <th>{{'addressbook_Vendor_Contact_Person' | translate}}</th> -->
+                                    <th>{{'addressbook_Vendor_Contact_Phone' | translate}}</th>
+                                    <th>{{'addressbook_Vendor_Email' | translate}}</th>
+                                    <th>{{'addressbook_Vendor_Status' | translate}}</th>
+                                    <th>{{"All-Action" | translate }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let vendordata of vendorList">
+                                    <td>{{vendordata.vendor_name}}</td>
+                                    <!-- <td>{{vendordata.contact_person_name}}</td> -->
+                                    <td>{{vendordata.phone | mask: '(000) 000-0000'}}</td>
+                                    <td>{{vendordata.email}}</td>
+                                    <td>
+                                        <div *ngIf="vendordata.status == 1">
+                                            {{'Team-EmployeeList-Status-Active' | translate}}
+                                        </div>
+                                        <div *ngIf="vendordata.status == 2">
+                                            {{'Team-EmployeeList-Status-In-Active' |
+                                            translate}}
+                                        </div>
+                                    </td>
+                                    <td width="1%">
+                                        <!-- <div class="dropdown">
+                                            <i class="fas fa-ellipsis-v cust-fontsize-tmp float-right-cust"
+                                                aria-hidden="true"></i>
+                                            <div class="dropdown-content-cust cust-drop-width">
+                                                <a class="button_shiftEditClass" target="_blank"
+                                                    href="mailto:{{vendordata.email}}"><img src="{{emailIcon}}" alt=""
+                                                        class="" height="15px"></a>
+                                                <a class="button_shiftDeleteClass" target="_blank"
+                                                    href="tel:{{vendordata.phone}}"><img src="{{callIcon}}" alt=""
+                                                        class="" height="20px"></a>
+                                            </div>
+                                        </div> -->
+                                        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Menu">
+                                            <mat-icon style="font-size: 25px;">more_vert</mat-icon>
+                                        </button>
+                                        <mat-menu #menu="matMenu" class="mat-menu-panel myMenu">
+                                            <a class="button_shiftEditClass" target="_blank"
+                                                href="mailto:{{vendordata.email}}" mat-menu-item><img
+                                                    src="{{emailIcon}}" alt="" class="" width="20px"></a>
+                                            <a class="button_shiftDeleteClass" target="_blank"
+                                                href="tel:{{vendordata.phone}}" mat-menu-item><img src="{{callIcon}}"
+                                                    alt="" class="" width="20px"></a>
+                                        </mat-menu>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+
+                        <!-- </div> -->
+
+                    </div>
+                </mat-tab>
+
+            </mat-tab-group>
+        </div>
+    </div>
+</div>
+<!-- <div class="modal-footer cust-report-header-footer-div">
+    <button mat-raised-button mat-dialog-close>
+        <img src="{{exitIcon}}" alt="" height="15px">
+        {{'All-exit' | translate }}</button>
+</div> -->

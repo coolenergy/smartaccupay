@@ -1,0 +1,74 @@
+<h2 mat-dialog-title>{{tmp_name | translate}}</h2>
+<form class="form" [formGroup]="othersetting" (ngSubmit)="saveData()">
+    <div class="container">
+        <div class="row" *ngIf="data.SettingType == 'ScheduleOfValueItem'">
+            <div class="col-sm-12">
+                <mat-form-field appearance="outline" class="shift-input">
+                    <mat-label>{{'CSIDivisionWorkPerformed' | translate }}</mat-label>
+                    <mat-select formControlName="csi_division_id" required
+                        placeholder="{{'CSIDivisionWorkPerformed' | translate}}">
+                        <mat-option *ngFor="let csiDivision of csiDivisonList" [value]="csiDivision._id">
+                            {{csiDivision.name | titlecase}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row" *ngIf="data.SettingType == 'CompnayCodes'">
+            <div class="col-sm-12">
+                <mat-form-field appearance="outline" class="shift-input ">
+                    <mat-label>{{'category_code' | translate }}</mat-label>
+                    <input matInput placeholder="{{'category_code' | translate }}" formControlName="category_code"
+                        required>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <mat-form-field appearance="outline" class="shift-input main-one-input-field">
+                    <mat-label>{{tmp_name | translate }}</mat-label>
+                    <input matInput placeholder="{{tmp_name | translate }}" formControlName="name" required>
+                </mat-form-field>
+            </div>
+
+            <div class="col-lg-12" *ngIf="data.SettingType == 'MinorityCodes'">
+                <mat-form-field appearance="outline" class="shift-input main-one-input-field">
+                    <mat-label>{{'Minority_Code_Description' | translate}}</mat-label>
+                    <input matInput placeholder="{{'Minority_Code_Description' | translate}}" formControlName="minoritydescription"
+                        required>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row" *ngIf="data.SettingType == 'DocumentTypes' ||  data.SettingType == 'ContractType'">
+            <mat-slide-toggle formControlName="is_expiration" color="primary">{{'Settings-Other-Expiration-Date'|
+                translate}}</mat-slide-toggle>
+        </div>
+        <!--  -->
+        <div class="row" *ngIf="data.SettingType == 'CompnayCodes'">
+            <div class="col-sm-12">
+                
+                <mat-form-field appearance="outline" class="shift-input">
+                    <mat-label>{{"sub_category_code" | translate }}</mat-label>
+                    <input matInput placeholder="{{'sub_category_code' | translate }}"
+                        formControlName="sub_category_code" required>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row" *ngIf="data.SettingType == 'CompnayCodes'">
+            <div class="col-sm-12">
+                <mat-form-field appearance="outline" class="shift-input">
+                    <mat-label>{{"sub_category_code_name" | translate }}</mat-label>
+                    <input matInput placeholder="{{'sub_category_code_name' | translate }}"
+                        formControlName="sub_category_code_name" required>
+                </mat-form-field>
+            </div>
+        </div>
+        <!--  -->
+    </div>
+    <mat-dialog-actions align="center">
+        <button mat-raised-button mat-dialog-close><img src="{{backIcon}}" alt="" class="pr-1"
+                height="15px">{{'All-exit' | translate }}</button>
+        <button mat-raised-button type="submit" color="primary"><img src="{{saveIcon}}" alt="" class="pr-1"
+                height="15px">{{'All-save' | translate }}</button>
+    </mat-dialog-actions>
+</form>

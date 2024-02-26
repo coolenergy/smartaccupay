@@ -1,0 +1,668 @@
+<section class="content">
+     <div class="content-block">
+          <div class="m-4"></div>
+          <div class="row clearfix">
+               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card">
+                         <div class="materialTableHeader">
+                              <div class="left">
+                                   <ul class="header-buttons-left ms-0">
+                                        <li class="tbl-title">
+                                             <h2>
+                                                  <strong
+                                                       *ngIf="id === null">{{'USERS.VIEW.ADD_USER' | translate}}</strong>
+                                                  <strong *ngIf="id !== null">{{'USERS.VIEW.EDIT_USER' | translate}}
+                                                       {{userfullName}}</strong>
+                                             </h2>
+                                        </li>
+                                   </ul>
+                              </div>
+                              <div class="right">
+                                   <ul class="tbl-export-btn">
+                                        <li class="tbl-header-btn" *ngIf="id">
+                                             <div class="m-l-10" *ngIf="is_delete === 0"
+                                                  matTooltip="{{'COMMON.TOOL_TIP.ARCHIVE' | translate}}">
+                                                  <button mat-mini-fab color="warn" (click)="deleteuser()">
+                                                       <mat-icon class="col-white">archive</mat-icon>
+                                                  </button>
+                                             </div>
+                                        </li>
+                                        <li class="tbl-header-btn" *ngIf="id">
+                                             <div class="m-l-10" *ngIf="is_delete === 1"
+                                                  matTooltip="{{'COMMON.ACTIONS.RESTORE' | translate}}">
+                                                  <button mat-mini-fab color="warn" (click)="deleteuser()">
+                                                       <mat-icon class="col-white">archive</mat-icon>
+                                                  </button>
+                                             </div>
+                                        </li>
+                                        <li class="tbl-header-btn">
+                                             <div class="m-l-10 " matTooltip="{{'COMMON.TOOL_TIP.BACK' | translate}}">
+                                                  <button mat-mini-fab color="warn" (click)="back()">
+                                                       <mat-icon class="col-white">close</mat-icon>
+                                                  </button>
+                                             </div>
+                                        </li>
+
+                                   </ul>
+                              </div>
+                         </div>
+                    </div>
+                    <div class="body">
+                         <mat-horizontal-stepper #stepper [selectedIndex]="step_index"
+                              (selectionChange)="selectionChange($event)">
+                              <mat-step state="person" [completed]="false" [stepControl]="HFormGroup1!">
+                                   <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                        <div class="card">
+                                             <div class="header">
+                                                  <h2>{{'USERS.TABS.PERSONAL_INFORMATION' | translate}}</h2>
+                                             </div>
+                                             <div class="body" *ngIf="role_permission.users.personalInformation.View">
+                                                  <form [formGroup]="userpersonalinfo!">
+                                                       <div class="main-cust-emp-from">
+                                                            <div class="main-cust-emp-profile">
+                                                                 <div class="form-group">
+                                                                      <div class="form-group">
+                                                                           <div
+                                                                                class="custom-file fileInputProfileWrap">
+                                                                                <input type="file"
+                                                                                     class="fileInputProfile"
+                                                                                     #OpenFilebox
+                                                                                     (change)="fileChangeEvent($event)">
+                                                                                <div class="circular--landscape"
+                                                                                     (click)="openfilebox()">
+                                                                                     <ng-container
+                                                                                          *ngIf="isImageSaved; else elseTemplate">
+                                                                                          <img [src]="cardImageBase64"
+                                                                                               alt="" />
+                                                                                     </ng-container>
+                                                                                     <ng-template #elseTemplate>
+                                                                                          <img *ngIf="userpersonalinfo.get('usergender')?.value !== 'Female'"
+                                                                                               src="{{defalut_image}}"
+                                                                                               class="circular--landscape img"
+                                                                                               alt="">
+                                                                                          <img *ngIf="userpersonalinfo.get('usergender')?.value === 'Female'"
+                                                                                               src="{{defalut_female_image}}"
+                                                                                               class="circular--landscape img"
+                                                                                               alt="">
+                                                                                     </ng-template>
+                                                                                </div>
+                                                                           </div>
+
+                                                                      </div>
+                                                                 </div>
+                                                            </div>
+                                                            <div class="padding-left-cust main-cust-emp-inputpersonal">
+                                                                 <div class="row mt-3">
+                                                                      <div
+                                                                           class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-2">
+                                                                           <mat-form-field class="example-full-width"
+                                                                                appearance="outline">
+                                                                                <mat-label>{{'USERS.ADD_EDIT.FIRST_NAME' | translate}}</mat-label>
+                                                                                <input matInput
+                                                                                     formControlName="username"
+                                                                                     capitalOnly required>
+                                                                           </mat-form-field>
+                                                                      </div>
+                                                                      <div
+                                                                           class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-2">
+                                                                           <mat-form-field class="example-full-width"
+                                                                                appearance="outline">
+                                                                                <mat-label>{{'USERS.ADD_EDIT.M_NAME' | translate}}</mat-label>
+                                                                                <input matInput
+                                                                                     formControlName="usermiddlename"
+                                                                                     capitalOnly>
+                                                                           </mat-form-field>
+                                                                      </div>
+                                                                      <div
+                                                                           class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-2">
+                                                                           <mat-form-field class="example-full-width"
+                                                                                appearance="outline">
+                                                                                <mat-label>{{'USERS.ADD_EDIT.L_NAME' | translate}}</mat-label>
+                                                                                <input matInput
+                                                                                     class="input-capitalized-textfield"
+                                                                                     formControlName="userlastname"
+                                                                                     required>
+                                                                           </mat-form-field>
+                                                                      </div>
+                                                                 </div>
+                                                                 <div class="row">
+                                                                      <div
+                                                                           class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                                                                           <mat-form-field class="example-full-width"
+                                                                                appearance="outline">
+                                                                                <mat-label>{{'USERS.ADD_EDIT.EMAIL' | translate}}</mat-label>
+                                                                                <input matInput
+                                                                                     formControlName="useremail"
+                                                                                     required>
+                                                                           </mat-form-field>
+                                                                      </div>
+                                                                      <div
+                                                                           class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                                                                           <mat-form-field class="example-full-width"
+                                                                                appearance="outline">
+                                                                                <span matSuffix *ngIf="id !== null">
+                                                                                     <!--  [ngClass]="true ? 'user-menu__button-custom-small_dark': 'user-menu__button-custom-small'" -->
+                                                                                     <button
+                                                                                          class="user-menu__button-custom-small"
+                                                                                          (click)="sendUserPassword()">
+                                                                                          <i
+                                                                                               class="fas fa-paper-plane"></i>
+                                                                                     </button>
+                                                                                </span>
+                                                                                <mat-label>{{'USERS.ADD_EDIT.TEMPORARY_PASSWORD' | translate}}</mat-label>
+                                                                                <input matInput
+                                                                                     formControlName="password"
+                                                                                     [required]="id === null">
+                                                                           </mat-form-field>
+                                                                      </div>
+                                                                 </div>
+                                                                 <div class="row">
+                                                                      <div
+                                                                           class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                                                                           <mat-form-field class="example-full-width"
+                                                                                appearance="outline">
+                                                                                <mat-label>{{'USERS.ADD_EDIT.SSN' | translate}}</mat-label>
+                                                                                <input matInput
+                                                                                     formControlName="userssn"
+                                                                                     mask="000 00 0000" maxlength="11">
+                                                                           </mat-form-field>
+                                                                      </div>
+                                                                      <div
+                                                                           class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                                                                           <mat-form-field class="example-full-width"
+                                                                                appearance="outline">
+                                                                                <mat-label>{{'USERS.ADD_EDIT.EMP_NUMBER' | translate}}</mat-label>
+                                                                                <input matInput
+                                                                                     formControlName="user_no"
+                                                                                     onkeypress="return String.fromCharCode(event.charCode).match(/[^0-9]/g) === null">
+                                                                           </mat-form-field>
+                                                                      </div>
+                                                                 </div>
+                                                                 <div class="row">
+                                                                      <div
+                                                                           class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                                                                           <mat-form-field class="example-full-width"
+                                                                                appearance="outline">
+                                                                                <mat-label>{{'USERS.ADD_EDIT.USER_ROLE' | translate}}</mat-label>
+                                                                                <mat-select formControlName="userroleId"
+                                                                                     class="dark-cust-color" required>
+                                                                                     <mat-option
+                                                                                          *ngFor="let db_role of db_roles"
+                                                                                          [value]="db_role.role_id">
+                                                                                          {{db_role.role_name}}
+                                                                                     </mat-option>
+                                                                                </mat-select>
+                                                                           </mat-form-field>
+                                                                      </div>
+                                                                      <div
+                                                                           class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                                                                           <mat-form-field class="example-full-width"
+                                                                                appearance="outline">
+                                                                                <mat-label>{{'USERS.ADD_EDIT.GENDER' | translate}}</mat-label>
+                                                                                <mat-select formControlName="usergender"
+                                                                                     class="dark-cust-color" required>
+
+                                                                                     <mat-option
+                                                                                          *ngFor="let gender of gender_array"
+                                                                                          [value]="gender.value">
+                                                                                          {{gender.tmp_lanaguage | translate}}
+                                                                                     </mat-option>
+                                                                                </mat-select>
+                                                                           </mat-form-field>
+                                                                      </div>
+                                                                 </div>
+                                                                 <div class="row">
+                                                                      <div
+                                                                           class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                                                                           <mat-form-field appearance="outline"
+                                                                                class="example-full-width">
+                                                                                <mat-label>{{'USERS.ADD_EDIT.DATE_OF_BIRTH' | translate}}</mat-label>
+                                                                                <input matInput [max]="maxDate"
+                                                                                     [matDatepicker]="picker"
+                                                                                     formControlName="userdob">
+                                                                                <mat-datepicker-toggle matSuffix
+                                                                                     [for]="picker"></mat-datepicker-toggle>
+                                                                                <mat-datepicker
+                                                                                     #picker></mat-datepicker>
+                                                                           </mat-form-field>
+                                                                      </div>
+                                                                      <div
+                                                                           class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                                                                           <mat-form-field class="example-full-width"
+                                                                                appearance="outline">
+                                                                                <mat-label>{{'USERS.ADD_EDIT.STATUS' | translate}}</mat-label>
+                                                                                <mat-select formControlName="userstatus"
+                                                                                     class="dark-cust-color" required>
+                                                                                     <mat-option
+                                                                                          *ngFor="let status of statuss"
+                                                                                          [value]="status.value">
+                                                                                          {{status.tmp_lanaguage | translate }}
+                                                                                     </mat-option>
+                                                                                </mat-select>
+                                                                           </mat-form-field>
+                                                                      </div>
+                                                                 </div>
+                                                            </div>
+                                                       </div>
+                                                  </form>
+                                                  <div class="row">
+                                                       <div class=" col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2 ">
+                                                            <button class="btn-space back-clr" mat-raised-button
+                                                                 (click)="back()">{{'COMMON.ACTIONS.BACK'| translate}}</button>
+                                                            <button class="btn-space" matStepperNext type="button"
+                                                                 mat-raised-button
+                                                                 color="warn">{{'COMMON.ACTIONS.NEXT'| translate}}</button>
+                                                            <button
+                                                                 *ngIf="role_permission.users.personalInformation.Edit && id !== null"
+                                                                 mat-raised-button color="primary"
+                                                                 (click)="savePersonalInfo()">{{'COMMON.ACTIONS.SAVE'| translate}}</button>
+                                                       </div>
+                                                  </div>
+                                             </div>
+                                             <div *ngIf="!role_permission.users.personalInformation.View"
+                                                  class="d-flex align-items-center justify-content-center">
+                                                  <h1 class="font-28 font-white">
+                                                       {{'COMMON.ACTIONS.Access_denied_all' | translate}}
+                                                  </h1>
+                                             </div>
+                                        </div>
+                                   </div>
+                              </mat-step>
+                              <mat-step state="contact" [completed]="false" [stepControl]="HFormGroup2!">
+
+                                   <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                        <div class="card">
+                                             <div class="header">
+                                                  <h2>{{'USERS.TABS.CONTACT_INFORMATION' | translate}}</h2>
+
+                                             </div>
+                                             <div class="body" *ngIf="role_permission.users.contactInformation.View">
+                                                  <form class="register-form m-4" [formGroup]="usercontactinfo!"
+                                                       (ngSubmit)="onRegister()">
+
+                                                       <div class="row">
+                                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                                                                 <mat-form-field class="example-full-width"
+                                                                      appearance="outline">
+                                                                      <mat-label>{{'USERS.ADD_EDIT.USER_PHONE' | translate}}</mat-label>
+                                                                      <input matInput mask="(000) 000-0000"
+                                                                           maxlength="14"
+                                                                           onkeypress="return String.fromCharCode(event.charCode).match(/[^0-9]/g) === null"
+                                                                           formControlName="userphone">
+                                                                 </mat-form-field>
+                                                            </div>
+                                                       </div>
+                                                       <div class="row">
+                                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                                                                 <mat-form-field class="example-full-width"
+                                                                      appearance="outline">
+                                                                      <mat-label>{{'USERS.ADD_EDIT.S_EMAIL' | translate}}</mat-label>
+                                                                      <input matInput
+                                                                           formControlName="usersecondary_email">
+                                                                 </mat-form-field>
+                                                            </div>
+                                                       </div>
+                                                       <div class="row">
+                                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                                                                 <mat-form-field class="example-full-width"
+                                                                      appearance="outline">
+                                                                      <mat-label>{{'USERS.ADD_EDIT.STREET1' | translate}}</mat-label>
+                                                                      <input matInput formControlName="userstreet1">
+                                                                 </mat-form-field>
+                                                            </div>
+                                                       </div>
+                                                       <div class="row">
+                                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                                                                 <mat-form-field class="example-full-width"
+                                                                      appearance="outline">
+                                                                      <mat-label>{{'USERS.ADD_EDIT.STREET2' | translate}}</mat-label>
+                                                                      <input matInput formControlName="userstreet2">
+                                                                 </mat-form-field>
+                                                            </div>
+                                                       </div>
+
+
+                                                       <div class="row">
+                                                            <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 mb-2">
+                                                                 <mat-form-field class="example-full-width"
+                                                                      appearance="outline">
+                                                                      <mat-label>{{'USERS.ADD_EDIT.USER_CITY' | translate}}</mat-label>
+                                                                      <input matInput formControlName="usercity">
+                                                                 </mat-form-field>
+                                                            </div>
+                                                            <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 mb-2">
+                                                                 <mat-form-field class="example-full-width"
+                                                                      appearance="outline">
+                                                                      <mat-label>{{'USERS.ADD_EDIT.USER_STATE' | translate}}</mat-label>
+                                                                      <input matInput formControlName="user_state">
+                                                                 </mat-form-field>
+                                                            </div>
+                                                            <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 mb-2">
+                                                                 <mat-form-field class="example-full-width"
+                                                                      appearance="outline">
+                                                                      <mat-label>{{'USERS.ADD_EDIT.USER_ZIPCODE' | translate}}</mat-label>
+                                                                      <input matInput formControlName="userzipcode"
+                                                                           maxlength="5"
+                                                                           onkeypress="return String.fromCharCode(event.charCode).match(/[^0-9]/g) === null">
+                                                                 </mat-form-field>
+                                                            </div>
+                                                            <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 mb-2">
+                                                                 <mat-form-field class="example-full-width"
+                                                                      appearance="outline">
+                                                                      <mat-label>{{'USERS.ADD_EDIT.USER_COUNTRY' | translate}}</mat-label>
+                                                                      <input matInput formControlName="usercountry">
+                                                                 </mat-form-field>
+                                                            </div>
+                                                       </div>
+                                                       <div class="row">
+                                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                                                                 <button matStepperPrevious class="btn-space back-clr"
+                                                                      mat-raised-button>{{'COMMON.ACTIONS.BACK'| translate}}</button>
+                                                                 <button class="btn-space" matStepperNext type="button"
+                                                                      mat-raised-button
+                                                                      color="warn">{{'COMMON.ACTIONS.NEXT'| translate}}</button>
+                                                                 <button
+                                                                      *ngIf="role_permission.users.contactInformation.Edit && id !== null"
+                                                                      mat-raised-button color="primary"
+                                                                      (click)="saveContactInfo()">{{'COMMON.ACTIONS.SAVE'| translate}}</button>
+                                                            </div>
+                                                       </div>
+                                                  </form>
+                                             </div>
+                                             <div *ngIf="!role_permission.users.contactInformation.View"
+                                                  class="d-flex align-items-center justify-content-center">
+                                                  <h1 class="font-28 font-white">
+                                                       {{'COMMON.ACTIONS.Access_denied_all' | translate}}
+                                                  </h1>
+                                             </div>
+                                        </div>
+                                   </div>
+
+                              </mat-step>
+                              <mat-step state="employee" [completed]="false" [stepControl]="HFormGroup3!">
+                                   <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                        <div class="card">
+                                             <div class="header">
+                                                  <h2>{{'USERS.TABS.EMPLOYEE_INFORMATION' | translate}}</h2>
+
+                                             </div>
+                                             <div class="body" *ngIf="role_permission.users.employeeInformation.View">
+                                                  <form class="useremployeeinfo-form m-4"
+                                                       [formGroup]="useremployeeinfo!">
+                                                       <div class="row">
+                                                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                                                                 <mat-form-field class="example-full-width"
+                                                                      appearance="outline">
+                                                                      <mat-label>{{'USERS.ADD_EDIT.EMPLOYEE_SALARY' | translate}}</mat-label>
+                                                                      <span class="dollar-align" matPrefix>$</span>
+                                                                      <input matInput
+                                                                           placeholder="{{'Employee-form-Salary-Hourly-Rate' | translate }}"
+                                                                           class="input-capitalized-textfield"
+                                                                           formControlName="usersalary" type="text"
+                                                                           onkeypress="return String.fromCharCode(event.charCode).match(/[^0-9]/g) === null"
+                                                                           (input)="amountChange($event)" numbersOnly
+                                                                           required>
+                                                                 </mat-form-field>
+                                                            </div>
+                                                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                                                                 <mat-form-field class="example-full-width"
+                                                                      appearance="outline">
+                                                                      <mat-label>{{'USERS.ADD_EDIT.START_DATE' | translate}}</mat-label>
+                                                                      <input matInput formControlName="userstartdate"
+                                                                           [matDatepicker]="picker_startDate">
+                                                                      <mat-datepicker-toggle matSuffix
+                                                                           [for]="picker_startDate"></mat-datepicker-toggle>
+                                                                      <mat-datepicker
+                                                                           #picker_startDate></mat-datepicker>
+                                                                 </mat-form-field>
+                                                            </div>
+                                                       </div>
+
+                                                       <div class="row">
+                                                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                                                                 <mat-form-field class="example-full-width"
+                                                                      appearance="outline">
+                                                                      <mat-label>{{'USERS.ADD_EDIT.MANAGER' | translate}}</mat-label>
+                                                                      <mat-select formControlName="usermanager_id"
+                                                                           #db_manager_usersSelect
+                                                                           class="dark-cust-color">
+                                                                           <mat-select-filter [placeholder]="'Filter'"
+                                                                                [displayMember]="'userfullname'"
+                                                                                *ngIf="db_manager_usersSelect.focused"
+                                                                                [array]="variablesdb_manager_users"
+                                                                                (filteredReturn)="db_manager_users =$event">
+                                                                           </mat-select-filter>
+                                                                           <mat-option
+                                                                                *ngFor="let manager_user of db_manager_users"
+                                                                                [value]="manager_user._id">
+                                                                                <span><img class="img-b"
+                                                                                          [src]="manager_user.userpicture"
+                                                                                          height="35px" width="35px"
+                                                                                          alt="">
+                                                                                </span> {{manager_user.userfullname}}
+                                                                           </mat-option>
+                                                                      </mat-select>
+
+
+                                                                 </mat-form-field>
+                                                            </div>
+                                                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                                                                 <mat-form-field class="example-full-width"
+                                                                      appearance="outline">
+                                                                      <mat-label>{{'USERS.ADD_EDIT.SUPERVISOR' | translate}}</mat-label>
+                                                                      <mat-select formControlName="usersupervisor_id"
+                                                                           #db_supervisor_usersSelect
+                                                                           class="dark-cust-color">
+                                                                           <mat-select-filter [placeholder]="'Filter'"
+                                                                                [displayMember]="'userfullname'"
+                                                                                *ngIf="db_supervisor_usersSelect.focused"
+                                                                                [array]="variablesdb_supervisor_users"
+                                                                                (filteredReturn)="db_supervisor_users =$event">
+                                                                           </mat-select-filter>
+                                                                           <mat-option
+                                                                                *ngFor="let supervisor_user of db_supervisor_users"
+                                                                                [value]="supervisor_user._id">
+                                                                                <span><img class="img-b"
+                                                                                          [src]="supervisor_user.userpicture"
+                                                                                          height="35px" width="35px"
+                                                                                          alt="">
+                                                                                </span> {{supervisor_user.userfullname}}
+                                                                           </mat-option>
+                                                                      </mat-select>
+                                                                 </mat-form-field>
+                                                            </div>
+                                                       </div>
+                                                       <div class="row">
+                                                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                                                                 <mat-form-field class="example-full-width"
+                                                                      appearance="outline">
+                                                                      <mat-label>{{'USERS.ADD_EDIT.LANGUAGE_SPOKEN' | translate}}</mat-label>
+                                                                      <mat-select formControlName="user_languages"
+                                                                           #languageListSelect
+                                                                           (selectionChange)="language_change($event)"
+                                                                           required multiple>
+                                                                           <mat-select-filter [placeholder]="'Filter'"
+                                                                                [displayMember]="'name'"
+                                                                                *ngIf="languageListSelect.focused"
+                                                                                [array]="variableslanguageList"
+                                                                                (filteredReturn)="languageList =$event">
+                                                                           </mat-select-filter>
+                                                                           <mat-option *ngFor="let item of languageList"
+                                                                                [value]="item._id">
+                                                                                {{item.name}}
+                                                                           </mat-option>
+                                                                      </mat-select>
+                                                                 </mat-form-field>
+                                                            </div>
+
+                                                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                                                                 <mat-form-field class="example-full-width"
+                                                                      appearance="outline">
+                                                                      <mat-label>{{'USERS.ADD_EDIT.DEPARTMENT' | translate}}</mat-label>
+                                                                      <mat-select formControlName="userdepartment_id"
+                                                                           class="dark-cust-color"
+                                                                           #db_DepartmaentsSelect required>
+                                                                           <mat-select-filter [placeholder]="'Filter'"
+                                                                                [displayMember]="'department_name'"
+                                                                                *ngIf="db_DepartmaentsSelect.focused"
+                                                                                [array]="variablesdb_Departmaents"
+                                                                                (filteredReturn)="db_Departmaents =$event">
+                                                                           </mat-select-filter>
+                                                                           <mat-option
+                                                                                *ngFor="let db_Departmaent of db_Departmaents"
+                                                                                [value]="db_Departmaent._id">
+                                                                                {{db_Departmaent.department_name}}
+                                                                           </mat-option>
+                                                                      </mat-select>
+
+                                                                 </mat-form-field>
+                                                            </div>
+                                                       </div>
+                                                       <div class="row">
+                                                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                                                                 <mat-form-field class="example-full-width"
+                                                                      appearance="outline">
+                                                                      <mat-label>{{'USERS.ADD_EDIT.JOB_TITLE' | translate}}</mat-label>
+                                                                      <mat-select formControlName="userjob_title_id"
+                                                                           class="dark-cust-color" #db_jobtitleSelect
+                                                                           required>
+                                                                           <mat-select-filter [placeholder]="'Filter'"
+                                                                                [displayMember]="'job_title_name'"
+                                                                                *ngIf="db_jobtitleSelect.focused"
+                                                                                [array]="variablesdb_jobtitle"
+                                                                                (filteredReturn)="db_jobtitle =$event">
+                                                                           </mat-select-filter>
+                                                                           <mat-option
+                                                                                *ngFor="let db_job_title of db_jobtitle"
+                                                                                [value]="db_job_title._id">
+                                                                                {{db_job_title.job_title_name}}
+                                                                           </mat-option>
+                                                                      </mat-select>
+                                                                 </mat-form-field>
+                                                            </div>
+                                                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                                                                 <mat-form-field class="example-full-width"
+                                                                      appearance="outline">
+                                                                      <mat-label>{{'USERS.ADD_EDIT.JOB_TYPE' | translate}}</mat-label>
+                                                                      <mat-select formControlName="userjob_type_id"
+                                                                           class="dark-cust-color" #db_jobtypeSelect
+                                                                           required>
+                                                                           <mat-select-filter [placeholder]="'Filter'"
+                                                                                [displayMember]="'job_type_name'"
+                                                                                *ngIf="db_jobtypeSelect.focused"
+                                                                                [array]="variablesdb_jobtype"
+                                                                                (filteredReturn)="db_jobtype =$event">
+                                                                           </mat-select-filter>
+                                                                           <mat-option
+                                                                                *ngFor="let db_job_type of db_jobtype"
+                                                                                [value]="db_job_type._id">
+                                                                                {{db_job_type.job_type_name}}
+                                                                           </mat-option>
+                                                                      </mat-select>
+                                                                 </mat-form-field>
+                                                            </div>
+                                                       </div>
+                                                       <div class="row">
+
+                                                       </div>
+                                                       <div class="row">
+                                                            <div class=" col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2 ">
+                                                                 <button class="btn-space back-clr" mat-raised-button
+                                                                      matStepperPrevious>{{'COMMON.ACTIONS.BACK'| translate}}</button>
+                                                                 <button class="btn-space " type="button" matStepperNext
+                                                                      mat-raised-button color="warn"
+                                                                      *ngIf="id !== null">{{'COMMON.ACTIONS.NEXT'| translate}}</button>
+                                                                 <button
+                                                                      *ngIf="id === null && role_permission.users.employeeInformation.Edit"
+                                                                      class="btn-space" mat-raised-button
+                                                                      (click)="savedata()"
+                                                                      color="primary">{{'COMMON.ACTIONS.SAVE'| translate}}</button>
+                                                                 <button
+                                                                      *ngIf="id !== null && role_permission.users.employeeInformation.Edit"
+                                                                      mat-raised-button color="primary"
+                                                                      (click)="saveEmployeeInfo()">{{'COMMON.ACTIONS.SAVE'| translate}}</button>
+                                                            </div>
+                                                       </div>
+                                                  </form>
+                                             </div>
+                                             <div *ngIf="!role_permission.users.employeeInformation.View"
+                                                  class="d-flex align-items-center justify-content-center">
+                                                  <h1 class="font-28 font-white">
+                                                       {{'COMMON.ACTIONS.Access_denied_all' | translate}}
+                                                  </h1>
+                                             </div>
+                                        </div>
+                                   </div>
+
+                              </mat-step>
+                              <mat-step state="emergency_contact" [completed]="false" [stepControl]="HFormGroup4!"
+                                   *ngIf="id !== null">
+                                   <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                        <div class="card">
+                                             <div class="header">
+                                                  <h2>{{'USERS.TABS.EMERGENCY_CONTACT' | translate}}</h2>
+                                             </div>
+                                             <div class="body" *ngIf="role_permission.users.emergencyContact.View">
+                                                  <app-user-emergency-contact></app-user-emergency-contact>
+                                             </div>
+                                             <div *ngIf="!role_permission.users.emergencyContact.View"
+                                                  class="d-flex align-items-center justify-content-center">
+                                                  <h1 class="font-28 font-white">
+                                                       {{'COMMON.ACTIONS.Access_denied_all' | translate}}
+                                                  </h1>
+                                             </div>
+                                        </div>
+                                   </div>
+
+
+                              </mat-step>
+                              <mat-step state="document" [completed]="false" [stepControl]="HFormGroup5!"
+                                   *ngIf="id !== null">
+                                   <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                        <div class="card">
+                                             <div class="header">
+                                                  <h2>{{'USERS.TABS.DOCUMENT' | translate}}</h2>
+                                             </div>
+                                             <div class="body" *ngIf="role_permission.users.employeeDocument.View">
+                                                  <app-user-document></app-user-document>
+                                             </div>
+                                             <div *ngIf="!role_permission.users.employeeDocument.View"
+                                                  class="d-flex align-items-center justify-content-center">
+                                                  <h1 class="font-28 font-white">
+                                                       {{'COMMON.ACTIONS.Access_denied_all' | translate}}
+                                                  </h1>
+                                             </div>
+                                        </div>
+                                   </div>
+                              </mat-step>
+                              <ng-template matStepperIcon="edit" let-index="index">
+                                   <mat-icon *ngIf="index === 0" class="Icon-h">account_box</mat-icon>
+                                   <mat-icon *ngIf="index === 1" class="Icon-h">call</mat-icon>
+                                   <mat-icon *ngIf="index === 2" class="Icon-h">supervisor_account</mat-icon>
+                                   <mat-icon *ngIf="index === 3" class="Icon-h">phone_in_talk</mat-icon>
+                                   <mat-icon *ngIf="index === 4" class="Icon-h">insert_drive_file</mat-icon>
+
+                              </ng-template>
+                              <ng-template matStepperIcon="person">
+                                   <mat-icon class="Icon-h">account_box</mat-icon>
+                              </ng-template>
+                              <ng-template matStepperIcon="contact">
+                                   <mat-icon class="Icon-h">call</mat-icon>
+                              </ng-template>
+                              <ng-template matStepperIcon="employee">
+                                   <mat-icon class="Icon-h">supervisor_account</mat-icon>
+                              </ng-template>
+                              <ng-template matStepperIcon="emergency_contact">
+                                   <mat-icon class="Icon-h">phone_in_talk</mat-icon>
+                              </ng-template>
+                              <ng-template matStepperIcon="document">
+                                   <mat-icon class="Icon-h">insert_drive_file</mat-icon>
+                              </ng-template>
+                         </mat-horizontal-stepper>
+                    </div>
+               </div>
+          </div>
+
+     </div>
+
+</section>

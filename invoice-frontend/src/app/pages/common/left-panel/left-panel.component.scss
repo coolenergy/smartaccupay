@@ -1,0 +1,878 @@
+.flux-left-panel[nav-layout="vertical"] {
+  position: absolute;
+  min-height: 100%;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  padding-top: 50px;
+  z-index: 1000;
+  font-size: 13px;
+  font-weight: 300;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+
+  ul.menu-list {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+  }
+
+  ul.menu-list>li.menu-item {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    display: block;
+    position: relative;
+  }
+
+  ul.menu-list>li.menu-item.active:after {
+    content: "";
+    background: transparent none repeat scroll 0 0;
+    border-bottom: 15px solid transparent;
+    border-right: 10px solid #ecf0f8;
+    border-top: 15px solid transparent;
+    display: block;
+    float: right;
+    height: 0;
+    position: absolute;
+    right: 0;
+    top: 7px;
+    width: 0;
+  }
+
+  ul.menu-list>li.menu-item>a {
+    display: block;
+    font-size: 13px;
+    text-decoration: none;
+    position: relative;
+    text-align: left;
+    padding: 6px 10px;
+    border-bottom: 1px solid;
+
+    .flux-mtext {
+      opacity: 1;
+      visibility: visible;
+      position: absolute;
+      top: 10px;
+      white-space: nowrap;
+      -webkit-transition: all 0.2s linear;
+      -moz-transition: all 0.2s linear;
+      -o-transition: all 0.2s linear;
+      transition: all 0.2s linear;
+    }
+
+    .flux-micon {
+      font-size: 16px;
+      border-radius: 3px;
+      margin-right: 5px;
+      width: 30px;
+      height: 30px;
+      display: inline-table;
+      text-align: center;
+      position: relative;
+      padding-top: 6px;
+      vertical-align: middle;
+      z-index: 1;
+    }
+
+    .flux-badge {
+      position: absolute;
+      right: 10px;
+      display: inline-block;
+      opacity: 1;
+      visibility: visible;
+      padding: 5px 5px;
+      font-size: 75%;
+      font-weight: 600;
+      line-height: 1;
+      text-align: center;
+      white-space: nowrap;
+      vertical-align: baseline;
+      border-radius: 4px;
+      top: 12px;
+      -webkit-transition: opacity 0.2s linear;
+      -moz-transition: opacity 0.2s linear;
+      -o-transition: opacity 0.2s linear;
+      transition: opacity 0.2s linear;
+    }
+
+    .bg-success {
+      background-color: #28a745;
+      color: #FFF;
+    }
+
+    .bg-danger {
+      background-color: #dc3545;
+      color: #FFF;
+    }
+
+    .bg-warning {
+      background-color: #ffc107;
+      color: #000;
+    }
+
+  }
+
+  li.menu-item.hasMenu {
+    cursor: pointer;
+    position: relative;
+
+    ul {
+      display: none;
+      margin: 0px;
+      padding: 10px 0px 10px 0px;
+
+      li {
+        margin: 0px;
+        padding: 0px;
+        list-style: none;
+        display: block;
+
+        a {
+          border: 0px;
+          text-decoration: none;
+          padding: 2px 10px;
+          display: block;
+
+          .flux-micon {
+            font-size: 16px;
+            width: 30px;
+            display: inline-table;
+
+          }
+        }
+
+        a:hover {
+          .flux-micon i {
+            // border-radius: 100%;
+          }
+        }
+      }
+
+      li.active a {
+        .flux-micon i {
+          // border-radius: 100%;
+        }
+      }
+    }
+  }
+
+  li.menu-item.hasMenu a .flux-mcaret {
+    opacity: 1;
+    visibility: visible;
+    border: solid;
+    border-width: 0 1px 1px 0;
+    padding: 4px;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    -webkit-transition: all 0.1s linear;
+    -moz-transition: all 0.1s linear;
+    -o-transition: all 0.1s linear;
+    transition: all 0.1s linear;
+  }
+
+  li.menu-item.hasMenu.open {
+    ul {
+      display: block;
+    }
+
+    a .flux-mcaret {
+      transform: rotate(45deg);
+      -webkit-transform: rotate(45deg);
+      -webkit-transition: all 0.3s;
+      transition: all 0.3s;
+    }
+  }
+}
+
+::-webkit-scrollbar {
+  width: 7px !important;
+}
+
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 0px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 0px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #c1c1c1;
+}
+
+.cust-font-size {
+  font-size: 15px !important;
+}
+
+.flux-brand {
+  display: flex;
+  justify-content: center;
+}
+
+.logo-background {
+  background-color: #023E8A;
+}
+
+.flux-brand-logo {
+  width: 230px;
+  height: 60px;
+  margin-bottom: 20px;
+  display: inline-block;
+  vertical-align: middle;
+  align-items: center;
+  text-align: center;
+  z-index: 1;
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+  position: fixed;
+  bottom: 0;
+}
+
+.flux-brand-logo img {
+  object-fit: contain;
+  height: 50px;
+}
+
+.margin-top-cust {
+  margin-bottom: 50px;
+}
+
+.bottom-image-cust {
+  width: 95%;
+  height: 95%;
+  object-fit: contain;
+}
+
+// #################### Expended Asidebar Navigation Section ######################################
+.flux-left-panel[nav-layout="vertical"][navbar-type="expanded"] {
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 230px;
+  left: 0px;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+
+  li.menu-item.hasMenu ul li a {
+    padding-left: 26px;
+  }
+
+}
+
+
+
+// #################### collapsed Asidebar Navigation Section ######################################
+.flux-left-panel[nav-layout="vertical"][navbar-type="collapsed"] {
+  width: 50px;
+
+  ul.menu-list>li.menu-item>a .flux-mtext {
+    opacity: 0;
+    visibility: hidden;
+    left: 55px;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+  }
+
+  ul.menu-list>li.menu-item>a .flux-badge {
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: all 0.1s linear;
+    -moz-transition: all 0.1s linear;
+    -o-transition: all 0.1s linear;
+    transition: all 0.1s linear;
+  }
+
+  ul.menu-list>li.menu-item:hover {
+    width: 230px;
+  }
+
+  ul.menu-list>li.menu-item:hover>a .flux-mtext {
+    opacity: 1;
+    visibility: visible;
+    white-space: nowrap;
+    -webkit-transition: visibility 0.1s linear;
+    -moz-transition: visibility 0.1s linear;
+    -o-transition: visibility 0.1s linear;
+    transition: visibility 0.1s linear;
+  }
+
+  ul.menu-list>li.menu-item:hover>a .flux-badge {
+    opacity: 1;
+    visibility: visible;
+    -webkit-transition: all 0.1s linear;
+    -moz-transition: all 0.1s linear;
+    -o-transition: all 0.1s linear;
+    transition: all 0.1s linear;
+  }
+
+  ul.menu-list>li.menu-item.active:hover:after {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  ul.menu-list>li.menu-item.hasMenu>a .flux-mcaret {
+    opacity: 1;
+    visibility: visible;
+    -webkit-transition: opacity 0.1s linear;
+    -moz-transition: opacity 0.1s linear;
+    -o-transition: opacity 0.1s linear;
+    transition: opacity 0.1s linear;
+  }
+
+  ul.menu-list>li.menu-item.hasMenu>a:hover .flux-mcaret {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+  }
+
+  ul.menu-list li.menu-item.hasMenu:hover ul,
+  ul.menu-list li.menu-item.hasMenu.open:hover ul {
+    display: block;
+    position: absolute;
+    left: 50px;
+    width: 180px;
+    z-index: 1;
+  }
+
+  ul.menu-list li.menu-item.hasMenu.open ul {
+    display: none
+  }
+
+  .flux-brand-logo {
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: all 0.2s linear;
+    -moz-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+    white-space: nowrap;
+  }
+}
+
+// #################### offcanvas Asidebar Navigation Section ######################################
+.flux-left-panel[nav-layout="vertical"][navbar-type="offcanvas"] {
+  width: 50px;
+  left: -230px;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+// #################### Asidebar ColorTheme Style ######################################
+
+@mixin navbarColorTheme($theme-name, $nav-bg, $menuItem-color, $menuItem-border-color, $micon-bg, $menuItem-bg-onHover,
+  $menuItem-color-onHover, $subMenu-bg, $sunMenuItem-link-color, $sunMenuItem-link-onHover, $sub-micon-bg-onhover,
+  $sub-micon-color-onhover, $mcaret-bg, $mcaret-bg-onHover, $menuItem-bg-onActive, $menuItem-color-onActive, $subMenuItem-link-color-onActive,
+  $sub-micon-bg-onActive, $sub-micon-color-onActive, $mcaret-bg-onActive) {
+
+  .flux-left-panel[navbar-theme=#{$theme-name}] {
+    .flux-brand-logo {
+      background-color: $nav-bg;
+    }
+
+    background: $nav-bg;
+    color: $menuItem-color;
+
+    // ul.menu-list>li.menu-item:hover{
+    //   //  background: $menuItem-bg-onActive;
+    //   //  color: $menuItem-color-onHover;
+    // }
+    ul.menu-list>li.menu-item>a {
+      color: $menuItem-color;
+      border-color: $menuItem-border-color;
+
+      .flux-micon {
+        // background: $micon-bg;
+      }
+
+    }
+
+    ul.menu-list>li.menu-item>a:hover {
+      background: $menuItem-bg-onActive;
+      color: $menuItem-color-onHover;
+    }
+
+    li.menu-item.hasMenu {
+
+      ul {
+        background: $subMenu-bg;
+
+        li {
+
+          a {
+            color: $sunMenuItem-link-color;
+          }
+
+          a:hover {
+            color: $sunMenuItem-link-onHover;
+
+            .flux-micon i {
+              // background: $sub-micon-bg-onhover;
+              color: $sub-micon-color-onhover;
+            }
+          }
+        }
+      }
+    }
+
+    li.menu-item.hasMenu a .flux-mcaret {
+      border-color: $mcaret-bg
+    }
+
+    li.menu-item.hasMenu a:hover .flux-mcaret {
+      border-color: $mcaret-bg-onHover
+    }
+
+    ul.menu-list>li.menu-item.active>a {
+      background: $menuItem-bg-onActive !important;
+      color: $menuItem-color-onActive;
+    }
+
+    li.menu-item.hasMenu {
+      ul {
+        li.active a {
+          color: $subMenuItem-link-color-onActive;
+
+          .flux-micon i {
+            // background: $sub-micon-bg-onActive;
+            color: $sub-micon-color-onActive;
+          }
+        }
+      }
+    }
+
+    li.menu-item.hasMenu.active a .flux-mcaret {
+      border-color: $mcaret-bg-onActive;
+    }
+  }
+}
+
+//15 for active menu , 16 for text color , 
+@include navbarColorTheme(theme1, #023E8A, #fff, #5c9acf, #023E8A, #f2f6f9, black, #f9f6f6, #666669,
+  black, black, black, #678098, #5c9acf, #b8daf3, black, #5c9acf, #5c9acf, #5c9acf, #5c9acf);
+
+@include navbarColorTheme(theme2, #30343d, #b4bcc8, #485468, #30343d, #2b3544, black, #2a3444, #b4bcc8,
+  black, black, black, #b4bcc8, #FFFFFF, #c1c1c1, black, #FFFFFF, #FFFFFF, #FFFFFF, #FFFFFF);
+
+@include navbarColorTheme(theme3, #3f5485, #d8e3fc, #4a5f90, #2f4475, #2f4475, #FFFFFF, #2f4475, #90a2cc,
+  #FFFFFF, #FFFFFF, #FFFFFF, #d8e3fc, #FFFFFF, #2f4475, #FFFFFF, #FFFFFF, #FFFFFF, #FFFFFF, #FFFFFF);
+
+@include navbarColorTheme(theme4, #3c75b5, #b9d4f2, #4f82bc, #2b64a4, #2b64a4, #FFFFFF, #2b64a4, #b9d4f2,
+  #FFFFFF, #FFFFFF, #FFFFFF, #b9d4f2, #FFFFFF, #2b64a4, #FFFFFF, #FFFFFF, #FFFFFF, #FFFFFF, #FFFFFF);
+
+@include navbarColorTheme(theme5, #583a63, #ccbad2, #5d4865, #4b3154, #4b3154, #FFFFFF, #4b3154, #a492aa,
+  #FFFFFF, #FFFFFF, #FFFFFF, #ccbad2, #FFFFFF, #4b3154, #FFFFFF, #FFFFFF, #FFFFFF, #FFFFFF, #FFFFFF);
+
+@include navbarColorTheme(theme6, #ededed, #787878, #e4e5e5, #e1e1e1, #e1e1e1, #000000, #e1e1e1, #787878,
+  #000000, #787878, #787878, #787878, #000000, #e1e1e1, #000000, #000000, #787878, #787878, #000000);
+
+@include navbarColorTheme(theme7, #0aa699, #FFFFFF, #1ab0a3, #0b9c8f, #0b9c8f, #FFFFFF, #0b9c8f, #10e3d0,
+  #FFFFFF, #FFFFFF, #FFFFFF, #FFFFFF, #FFFFFF, #0b9c8f, #FFFFFF, #FFFFFF, #FFFFFF, #FFFFFF, #FFFFFF);
+
+
+
+.flux-left-panel[nav-layout="horizontal"][device-type="desktop"],
+.flux-left-panel[nav-layout="horizontal"][device-type="tablet"] {
+  position: relative;
+  height: 40px !important;
+  z-index: 1024;
+  font-size: 13px;
+  font-weight: 300;
+  padding: 0px;
+  margin: 0px;
+
+  ul.menu-list {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+  }
+
+  ul.menu-list>li.menu-item {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    display: block;
+    position: relative;
+    float: left;
+  }
+
+  ul.menu-list>li.menu-item>a {
+    display: block;
+    font-size: 13px;
+    text-decoration: none;
+    position: relative;
+    text-align: center;
+    padding: 0px 10px;
+    line-height: 39px;
+
+
+    .flux-mtext {
+      opacity: 1;
+      visibility: visible;
+      white-space: nowrap;
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .flux-micon {
+      font-size: 16px;
+      border-radius: 3px;
+      margin-right: 5px;
+      text-align: center;
+      position: relative;
+      display: inline-block;
+      vertical-align: middle;
+      background: transparent !important;
+    }
+
+    .flux-badge {
+      display: none;
+    }
+
+  }
+
+  li.menu-item.hasMenu {
+    cursor: pointer;
+    position: relative;
+
+    ul {
+      display: none;
+      margin: 0px;
+      padding: 10px 0px 10px 0px;
+
+      li {
+        margin: 0px;
+        padding: 0px;
+        list-style: none;
+        display: block;
+
+        a {
+          border: 0px;
+          text-decoration: none;
+          padding: 4px 10px;
+          display: block;
+
+          .flux-micon {
+            font-size: 10px;
+            padding-right: 10px;
+            width: auto;
+            height: auto;
+          }
+        }
+
+        a:hover {
+
+          .flux-micon i {
+            border-radius: 100%;
+          }
+        }
+      }
+
+      li.active a {
+
+        .flux-micon i {
+          border-radius: 100%;
+        }
+      }
+    }
+  }
+
+  li.menu-item.hasMenu a .flux-mcaret {
+    opacity: 1;
+    visibility: visible;
+    border: solid;
+    border-width: 0 1px 1px 0;
+    padding: 3px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 5px;
+    position: relative;
+    top: -2px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+  }
+
+  li.menu-item.hasMenu.open {
+    ul {
+      display: block;
+      position: absolute;
+      width: 200px;
+    }
+
+    a .flux-mcaret {
+      top: 2px;
+      transform: rotate(-135deg);
+      -webkit-transform: rotate(-135deg);
+      -moz-transform: rotate(-135deg);
+      -o-transform: rotate(-135deg);
+      -webkit-transition: all 0.5s;
+      transition: all 0.5s;
+    }
+  }
+
+}
+
+.flux-left-panel[nav-layout="horizontal"][device-type="desktop"],
+.flux-left-panel[nav-layout="horizontal"][device-type="tablet"] {
+  ul.menu-list>li.menu-item:nth-last-child(-n+5) {
+    display: none;
+  }
+}
+
+.flux-left-panel[nav-layout="horizontal"][device-type="tablet"] {
+  height: 54px !important;
+
+  ul.menu-list>li.menu-item>a {
+    display: block;
+    text-align: center;
+    line-height: initial;
+    padding-top: 4px;
+    padding-bottom: 4px;
+
+    .flux-mtext {
+      opacity: 1;
+      visibility: visible;
+      white-space: nowrap;
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .flux-micon {
+      display: block;
+    }
+
+  }
+}
+
+.flux-left-panel.hideNav[nav-layout="horizontal"][device-type="mobile"] {
+  margin-left: -230px;
+}
+
+.flux-left-panel[nav-layout="horizontal"][device-type="mobile"] {
+  width: 230px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: absolute;
+  min-height: 100%;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  // padding-top: 50px;
+
+  z-index: 1026;
+  font-size: 13px;
+  font-weight: 300;
+  -webkit-transition: width 0.3s cubic-bezier(1.000, -0.30, 0.405, 1.425);
+  -moz-transition: width 0.3s cubic-bezier(1.000, -0.30, 0.405, 1.425);
+  -o-transition: width 0.3s cubic-bezier(1.000, -0.30, 0.405, 1.425);
+  transition: width 0.3s cubic-bezier(1.000, -0.30, 0.405, 1.425);
+
+  ul.menu-list {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+  }
+
+  ul.menu-list>li.menu-item {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    display: block;
+    position: relative;
+  }
+
+  ul.menu-list>li.menu-item.active:after {
+    content: "";
+    background: transparent none repeat scroll 0 0;
+    border-bottom: 15px solid transparent;
+    border-top: 15px solid transparent;
+    display: block;
+    float: right;
+    height: 0;
+    position: absolute;
+    right: 0;
+    top: 7px;
+    width: 0;
+  }
+
+  ul.menu-list>li.menu-item>a {
+    display: block;
+    font-size: 13px;
+    text-decoration: none;
+    position: relative;
+    text-align: left;
+    padding: 6px 10px;
+    border-bottom: 0px;
+
+    .flux-mtext {
+      opacity: 1;
+      visibility: visible;
+      position: absolute;
+      top: 10px;
+      white-space: nowrap;
+      -webkit-transition: all 0.3s linear;
+      -moz-transition: all 0.3s linear;
+      -o-transition: all 0.3s linear;
+      transition: all 0.3s linear;
+    }
+
+    .flux-micon {
+      font-size: 16px;
+      border-radius: 3px;
+      margin-right: 5px;
+      width: 30px;
+      height: 30px;
+      display: inline-table;
+      text-align: center;
+      position: relative;
+      padding-top: 6px;
+      vertical-align: middle;
+      z-index: 1;
+    }
+
+    .flux-badge {
+      position: absolute;
+      right: 10px;
+      display: inline-block;
+      opacity: 1;
+      visibility: visible;
+      padding: 5px 5px;
+      font-size: 75%;
+      font-weight: 600;
+      line-height: 1;
+      text-align: center;
+      white-space: nowrap;
+      vertical-align: baseline;
+      border-radius: 4px;
+      top: 12px;
+      -webkit-transition: opacity 0.5s linear;
+      -moz-transition: opacity 0.5s linear;
+      -o-transition: opacity 0.5s linear;
+      transition: opacity 0.5s linear;
+    }
+
+    .bg-success {
+      background-color: #28a745;
+      color: #FFF;
+    }
+
+    .bg-danger {
+      background-color: #dc3545;
+      color: #FFF;
+    }
+
+    .bg-warning {
+      background-color: #ffc107;
+      color: #000;
+    }
+
+  }
+
+  li.menu-item.hasMenu {
+    cursor: pointer;
+    position: relative;
+
+    ul {
+      display: none;
+      margin: 0px;
+      padding: 10px 0px 10px 0px;
+
+      li {
+        margin: 0px;
+        padding: 0px;
+        list-style: none;
+        display: block;
+
+        a {
+          border: 0px;
+          text-decoration: none;
+          padding: 4px 10px;
+          display: block;
+
+          .flux-micon {
+            font-size: 10px;
+            padding-right: 10px;
+            width: auto;
+            height: auto;
+          }
+        }
+
+        // a:hover {
+        //   .flux-micon i {
+        //     border-radius: 100%;
+        //   }
+        // }
+      }
+
+      // li.active a {
+      //   .flux-micon i {
+      //     border-radius: 100%;
+      //   }
+      // }
+    }
+  }
+
+  li.menu-item.hasMenu a .flux-mcaret {
+    opacity: 1;
+    visibility: visible;
+    border: solid;
+    border-width: 0 1px 1px 0;
+    padding: 4px;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+  }
+
+  li.menu-item.hasMenu.open {
+    ul {
+      display: block;
+    }
+
+    a .flux-mcaret {
+      transform: rotate(45deg);
+      -webkit-transform: rotate(45deg);
+      -webkit-transition: all 0.5s;
+      transition: all 0.5s;
+    }
+  }
+
+}
+
+::-webkit-scrollbar {
+  display: none;
+}

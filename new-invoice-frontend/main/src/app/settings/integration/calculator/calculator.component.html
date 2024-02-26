@@ -1,0 +1,18 @@
+<section class="content">
+    <div class="content-block">
+        <div class="m-4"></div>
+        <h1>Accounts Payable Savings Calculator</h1>
+        <div> <label for="apEmployee">Number of AP Employees:</label> <input type="number" id="apEmployee"
+                [(ngModel)]="apEmployeeCount" /> </div>
+        <div> <label for="apEmployeeSalary">Average AP Employee Salary per Hour:</label> <input type="number"
+                id="apEmployeeSalary" [(ngModel)]="apEmployeeSalary" /> </div>
+        <div> <label for="amountInvoices">Amount of Invoices:</label> <input type="number" id="amountInvoices"
+                [(ngModel)]="amountInvoices" /> </div>
+        <div> <label for="amountDocuments">Amount of Supporting Documents:</label> <input type="number"
+                id="amountDocuments" [(ngModel)]="amountDocuments" /> </div>
+        <div> <button (click)="calculateSavings()">Calculate Savings</button> </div>
+        <div *ngIf="savings">
+            <p>Total Savings: {{ savings }}</p>
+        </div>
+    </div>
+</section>

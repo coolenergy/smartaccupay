@@ -1,0 +1,120 @@
+﻿::ng-deep .mat-row,
+::ng-deep.mat-footer-row {
+  min-height: unset;
+}
+
+/* ::ng-deep .mdc-data-table__header-cell {
+  margin-top: 17px !important;
+} */
+
+::ng-deep .max-h {
+  min-height: 40px !important;
+}
+
+::ng-deep .mat-mdc-table .mdc-data-table__row {
+  min-height: 35px !important;
+  height: 35px !important;
+}
+
+::ng-deep .mat-mdc-table .mdc-data-table__header-row {
+  min-height: 35px !important;
+  height: 35px !important;
+}
+
+::ng-deep .mat-header-row {
+  min-height: 0px !important;
+}
+
+::ng-deep .mdc-data-table__cell {
+  font-size: var(--mdc-typography-body2-font-size, 12px);
+}
+
+::ng-deep .mdc-data-table__cell,
+.mdc-data-table__header-cell {
+  border: 1px solid #f8f8f8 !important;
+}
+
+::ng-deep .table {
+  padding: unset !important;
+}
+
+.tbl-col-width-per-selected {
+  min-width: 50px !important;
+  max-width: 50px !important;
+}
+
+.tbl-col-width-per-attachment {
+  min-width: 50px !important;
+  max-width: 4% !important;
+}
+
+
+.tbl-col-width-per-quickbooks {
+  min-width: 50px !important;
+  max-width: 50px !important;
+  justify-content: center;
+  padding: unset !important;
+}
+
+.tbl-col-width-per-action {
+  min-width: 100px !important;
+  max-width: 7% !important;
+}
+
+.tbl-col-width-per-mid {
+  min-width: 120px !important;
+  max-width: 9% !important;
+}
+
+.tbl-col-width-per-max {
+  min-width: 180px !important;
+  max-width: 10% !important;
+}
+
+.tbl-col-width-per-xmax {
+  min-width: 200px !important;
+  max-width: 12% !important;
+}
+
+.tbl-col-width-per-15-per {
+  min-width: 240px !important;
+  max-width: 15% !important;
+}
+
+.tbl-col-width-per-25-per {
+  min-width: 300px !important;
+  max-width: 25% !important;
+}
+
+.tbl-col-width-per-image {
+  min-width: 65px !important;
+  max-width: 65px !important;
+}
+
+.table-img {
+  img {
+    height: 25px;
+    width: 25px;
+  }
+}
+
+@media only screen and (max-width:50px) and (min-width: 610px) {
+  ::ng-deep .mat-row1 {
+    display: unset !important;
+  }
+
+  .tbl-col-width-per-selected {
+    min-width: unset !important;
+    max-width: unset !important;
+  }
+
+  .tbl-col-width-per-action {
+    min-width: unset !important;
+    max-width: unset !important;
+  }
+
+  .tbl-col-width-per-max {
+    min-width: unset !important;
+    max-width: unset !important;
+  }
+}

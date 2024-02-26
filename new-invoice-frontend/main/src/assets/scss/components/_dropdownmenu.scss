@@ -1,0 +1,309 @@
+﻿/*
+ *  Document   : _dropdownmenu.scss
+ *  Author     : RedStar Template
+ *  Description: This scss file for dropdown menu style classes
+ */
+.dropdown-menu {
+  @include border-radius(0);
+  margin-top: -35px !important;
+  margin-left: -15px;
+  -webkit-box-shadow: 0 5px 15px 2px rgba(64, 70, 74, 0.2) !important;
+  box-shadow: 0 5px 15px 2px rgba(64, 70, 74, 0.2) !important;
+  border-radius: 0px;
+  border: none;
+  padding: 0px;
+
+  .divider {
+    margin: 5px 0;
+  }
+
+  .header {
+    font-size: 13px;
+    font-weight: bold;
+    width: 100%;
+    border-bottom: 1px solid #eee;
+    text-align: center;
+    padding: 4px 0 6px 0;
+  }
+
+  .footer {
+    a {
+      text-align: center;
+      border-top: 1px solid #eee;
+      padding: 10px 0 5px 0;
+      font-size: 13px;
+      margin-bottom: -5px;
+      color: #ff5e00;
+      font-weight: 500;
+
+      &:hover {
+        background-color: transparent;
+      }
+    }
+  }
+
+  > li {
+    > a {
+      padding: 7px 18px;
+      color: #666;
+      @include transition(all 0.5s);
+      font-size: 14px;
+      line-height: 25px;
+      display: block;
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.075);
+      }
+
+      i.material-icons {
+        float: left;
+        margin-right: 7px;
+        margin-top: 2px;
+        font-size: 20px;
+      }
+    }
+  }
+}
+
+.dropdown-content li > a,
+.dropdown-content li > span {
+  font-size: 13px;
+  color: #636262;
+}
+
+.dropdown-animated {
+  -webkit-animation-duration: 0.3s !important;
+  -moz-animation-duration: 0.3s !important;
+  -o-animation-duration: 0.3s !important;
+  animation-duration: 0.3s !important;
+}
+
+.dropdown-menu.pull-right.show {
+  position: absolute !important;
+  left: auto !important;
+  right: 0 !important;
+  top: 50px !important;
+  transform: none !important;
+}
+.nfc-menu {
+  transform-origin: left top;
+  width: 325px;
+  max-width: 100vw !important;
+  right: 10px;
+  left: auto;
+  position: absolute !important;
+  top: 0;
+  padding: 0;
+  border-radius: 5px;
+  .nfc-dropdown {
+    .menu {
+      padding-left: 0;
+      button {
+        padding: 11px 11px;
+        text-decoration: none;
+        @include transition(0.5s);
+        float: left;
+        width: 100%;
+        height: 65px;
+        // border-bottom: 1px solid #eee;
+        margin-bottom: 2px;
+
+        &:hover {
+          background-color: #eef4fd;
+        }
+        .mdc-list-item__primary-text {
+          width: 100%;
+        }
+      }
+
+      &.tasks {
+        h4 {
+          color: #333;
+          font-size: 13px;
+          margin: 0 0 8px 0;
+
+          small {
+            float: right;
+            margin-top: 6px;
+          }
+        }
+
+        .progress {
+          height: 7px;
+          margin-bottom: 7px;
+        }
+      }
+
+      .icon-circle {
+        width: 36px;
+        height: 36px;
+        @include border-radius(50%);
+        color: #fff;
+        text-align: center;
+        display: inline-block;
+        float: left;
+
+        i {
+          font-size: 18px;
+          line-height: 36px !important;
+        }
+      }
+
+      .msg-user {
+        width: 44px;
+        height: 44px;
+        @include border-radius(50%);
+        color: #fff;
+        text-align: center;
+        display: inline-block;
+        vertical-align: top;
+        float: left;
+
+        img {
+          float: left;
+        }
+      }
+
+      li {
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+
+      .menu-info {
+        display: inline-block;
+        position: relative;
+        top: 3px;
+        left: 10px;
+        float: left;
+        width: calc(100% - 75px);
+
+        h4,
+        .menu-title {
+          margin: 0;
+          font-size: 14px;
+          color: #121212;
+          float: left;
+          width: 100%;
+          line-height: 1;
+        }
+
+        p,
+        .menu-desc {
+          margin: 0;
+          font-size: 11px;
+          color: rgba(0, 0, 0, 0.54);
+          float: left;
+          width: 100%;
+          line-height: 20px;
+
+          .material-icons {
+            font-size: 13px;
+            color: rgba(0, 0, 0, 0.54);
+            position: relative;
+            top: 3px;
+            float: left;
+            margin-right: 3px;
+            height: 20px;
+          }
+        }
+      }
+      .nfc-close {
+        display: flex;
+        height: 40px;
+        line-height: 40px;
+        .feather {
+          color: #747474;
+          height: 12px !important;
+          width: 12px !important;
+        }
+      }
+      .nfc-type-icon {
+        height: 40px;
+        width: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &.nfc-green {
+          filter: invert(77%) sepia(4%) saturate(5247%) hue-rotate(85deg)
+            brightness(88%) contrast(95%);
+        }
+        &.nfc-blue {
+          filter: invert(67%) sepia(95%) saturate(5173%) hue-rotate(214deg)
+            brightness(101%) contrast(101%);
+        }
+        &.nfc-orange {
+          filter: invert(69%) sepia(81%) saturate(523%) hue-rotate(353deg)
+            brightness(101%) contrast(102%);
+        }
+        &.nfc-purple {
+          filter: invert(19%) sepia(98%) saturate(7474%) hue-rotate(284deg)
+            brightness(105%) contrast(117%);
+        }
+        &.nfc-red {
+          filter: invert(24%) sepia(94%) saturate(7102%) hue-rotate(356deg)
+            brightness(103%) contrast(100%);
+        }
+      }
+      .msg-unread {
+        background-color: #f5f9ff;
+        border-bottom: 1px solid #eee;
+      }
+      .msg-read {
+        border-bottom: 1px solid #eee;
+      }
+    }
+  }
+  .mat-menu-content {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+  }
+  .nfc-header {
+    padding: 20px;
+    background-color: #7366ff;
+    border-radius: 5px 5px 0px 0px;
+    display: flex;
+    h5 {
+      color: #fff;
+    }
+  }
+
+  .nfc-mark-as-read {
+    display: block;
+    text-align: right;
+    color: #ffffff;
+    float: right;
+    width: 100%;
+    font-size: 12px !important;
+  }
+  .nfc-footer {
+    line-height: 50px;
+    cursor: pointer;
+    text-align: center;
+    border-top: 1px solid rgba(0, 0, 0, 0.15);
+
+    .nfc-read-all {
+      color: rgb(106 106 106);
+    }
+  }
+  .mat-mdc-menu-content {
+    padding: 0px;
+  }
+}
+.profile-menu {
+  width: 200px;
+  max-width: 200px !important;
+  right: 10px;
+
+  .user-menu-icons .feather {
+    height: 18px !important;
+    width: 18px !important;
+    vertical-align: middle;
+  }
+  .mat-mdc-menu-content {
+    padding: 0px;
+  }
+}
+.lang-item-menu .mat-mdc-menu-content {
+  padding: 0px;
+}

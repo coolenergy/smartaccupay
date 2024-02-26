@@ -1,0 +1,57 @@
+<div class="addContainer">
+    <app-model-header [title]="title" (dialogClose)="dialogRef.close()"></app-model-header>
+    <div mat-dialog-content>
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+            <div class="card-body">
+                <ng-scrollbar style="height: 335px" visibility="hover" *ngIf="showCompanyList">
+                    <div class="d-flex align-items-center justify-content-center">
+                        <app-loading *ngIf="isLoading"></app-loading>
+                    </div>
+                    <ul class="list-unstyled user-progress list-unstyled-border list-unstyled-noborder">
+                        <li class="lecture-list" *ngFor="let company of companyList"
+                            [ngClass]="companyCode === company.companycode ? 'active-company' : ''"
+                            (click)="selectCompany(company)">
+                            <img alt="" class="msr-3 rounded-circle" height="40" width="40"
+                                src="{{company.companylogo}}">
+                            <div class="set-flex">
+                                <div class="media-title font-16 font-bold">{{company.companyname}}</div>
+                                <div class="text-job text-muted mb-0">{{company.companycode}}</div>
+                            </div>
+                        </li>
+                    </ul>
+                </ng-scrollbar>
+                <div *ngIf="!showCompanyList">
+                    <div class="cust-center mb-2 text-center">
+                        <mat-chip [removable]="removable" (removed)="removeCompany()">
+                            {{selectedCompany.companyname}} - {{selectedCompany.companycode}}
+                            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                        </mat-chip>
+                    </div>
+                    <div class="custom-form">
+                        <form class="validate-form mt-3" [formGroup]="form">
+                            <div class="row">
+                                <div class="col-xl-12col-lg-12 col-md-12 col-sm-12 mb-2">
+                                    <mat-form-field class="example-full-width" appearance="outline">
+                                        <mat-label>Password</mat-label>
+                                        <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+                                        <a class="show-pwd-icon" href="#" onClick="return false;" matSuffix
+                                            (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                                            [attr.aria-pressed]="hide">
+                                            <mat-icon matSuffix>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                        </a>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="container-auth-form-btn">
+                                <div style="text-align:center; ">
+                                    <button mat-raised-button color="primary" (click)="userLogin()"
+                                        class="auth-form-btn" type="submit">Login</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

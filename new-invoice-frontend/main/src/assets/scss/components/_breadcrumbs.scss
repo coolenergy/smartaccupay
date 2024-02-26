@@ -1,0 +1,141 @@
+﻿/*
+ *  Document   : _breadscrumbs.scss
+ *  Author     : RedStar Template
+ *  Description: This scss file for breadscrumbs style classes
+ */
+
+.breadcrumb {
+  background-color: transparent;
+  font-size: 15px;
+  align-items: center;
+  margin: 3rem 0 3rem;
+  padding: 0px;
+  color: #555;
+
+  // &:before {
+  //   content: "";
+  //   margin: 0;
+  // }
+
+  li {
+    display: inline-block;
+    a {
+      color: #444;
+      text-decoration: none;
+
+      .fa-home {
+        font-size: 17px;
+        position: relative;
+        top: 0;
+        float: left;
+        padding-left: 10px;
+        color: #5798f7;
+      }
+    }
+
+    .material-icons {
+      font-size: 18px;
+      position: relative;
+      top: 4px;
+      float: none;
+    }
+    &.active {
+      color: #444444;
+    }
+  }
+
+  > li + li:before {
+    // content: "/" !important;
+    // color: #444444;
+    // padding-left: 5px;
+  }
+  .page-title {
+    // border-right: 1px solid #c5c5c5;
+    // padding-right: 10px;
+    font-size: 18px;
+    font-weight: 500;
+    color: #444444;
+    margin-bottom: 0px;
+    &:after {
+      content: "\f105";
+      font-family: "Font Awesome 5 Free";
+      font-size: 18px;
+      font-weight: 900;
+      padding: 0px 5px;
+    }
+    i {
+      padding: 0px 5px;
+      &:before {
+        color: #717883;
+        font-size: 20px;
+      }
+    }
+  }
+  .breadcrumb-item + .breadcrumb-item {
+    padding-left: 5px;
+    &:before {
+      content: "\f105";
+      font-family: "Font Awesome 5 Free";
+      font-size: 14px;
+      display: block;
+      font-weight: 900;
+      padding-right: 0.5rem;
+    }
+  }
+}
+
+@each $key, $val in $colors {
+  .breadcrumb-col-#{$key} {
+    li {
+      a {
+        color: $val !important;
+        font-weight: bold;
+      }
+    }
+  }
+
+  .breadcrumb-bg-#{$key} {
+    background-color: $val !important;
+
+    li {
+      a {
+        color: #fff;
+        font-weight: bold;
+
+        .material-icons {
+          padding-bottom: 8px;
+        }
+      }
+
+      color: #fff !important;
+    }
+
+    li + li:before {
+      color: #fff;
+    }
+  }
+}
+.breadcrumb-style {
+  border-radius: 30px;
+  /*background: #ffffff;
+    padding-left: 20px !important;*/
+}
+.breadcrumb-chart {
+  display: inline-block;
+  .chart-info p {
+    font-size: 13px;
+  }
+}
+.breadcrumb-icon {
+  vertical-align: top;
+  height: 18px !important;
+  width: 18px !important;
+  margin: 0px 3px;
+  .feather {
+    width: 18px;
+    height: 18px;
+    color: #2c323f;
+    position: relative;
+    float: left;
+  }
+}

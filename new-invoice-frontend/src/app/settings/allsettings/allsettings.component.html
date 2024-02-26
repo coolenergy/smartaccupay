@@ -1,0 +1,240 @@
+<section class="content">
+    <div class="content-block">
+        <!-- <div class="m-4"></div> -->
+        <!-- Your content goes here  -->
+        <div class="row  clearfix mt-5">
+            <div class="col-lg-4 col-md-12">
+                <div class="card company-card">
+                    <div class="m-b-20">
+                        <div class="contact-grid font-white">
+                            <div class="editButton" (click)="editPress()">
+                                <i class="fas fa-pen pull-left card-icon col-white font-16 mt-2"></i>
+                            </div>
+                            <div class="profile-header bg-indigo">
+                                <p class="user-name">{{companyData.companyname}}</p>
+                                <p class="name-center">{{companyData.companycode}}</p>
+                            </div>
+                            <img src="{{companyData.companylogo}}" width="112px" height="112px"
+                                class="user-img img-color" alt="">
+                            <p class="mt-3">
+                                <span *ngIf="loadData">
+                                    {{companyData.companyaddress}}, {{companyData.companyaddresscity}},
+                                    {{companyData.companyaddressstate}}, {{companyData.companyaddresszip}}
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12">
+                <div class="card">
+                    <div class="p-4 font-white">
+                        <h4><strong>{{'SETTINGS.VIEW.CONTACT_INFORMATION' | translate}}</strong></h4>
+                        <strong>{{'SETTINGS.VIEW.EMAIL_ADDRESS' | translate}}</strong>
+                        <br>
+                        <p class="text-muted">{{companyData.companyemail}}&nbsp;</p>
+                        <strong>{{'SETTINGS.VIEW.PHONE' | translate}}</strong>
+                        <br>
+                        <p class="text-muted">{{companyData.companyphone}}&nbsp;</p>
+                        <strong>{{'SETTINGS.VIEW.PHONE2' | translate}}</strong>
+                        <br>
+                        <p class="text-muted">{{companyData.companyphone2}}&nbsp;</p>
+                        <strong>{{'SETTINGS.VIEW.WEBSITE' | translate}}</strong>
+                        <br>
+                        <p class="text-muted">{{companyData.companywebsite}}&nbsp;</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12">
+                <div class="card font-white">
+                    <div class="p-4">
+                        <h4><strong>{{'SETTINGS.VIEW.COMPANY_INFORMATION' | translate}}</strong></h4>
+                        <strong>{{'SETTINGS.VIEW.TYPE_OF_COMPANY' | translate}}</strong>
+                        <br>
+                        <p class="text-muted">{{companyTypeName}}&nbsp;</p>
+                        <strong>{{'SETTINGS.VIEW.NIGP_CODE' | translate}}</strong>
+                        <br>
+                        <p class="text-muted">{{NigpCode}}&nbsp;</p>
+                        <strong>{{'SETTINGS.VIEW.COMPANY_SIZE' | translate}}</strong>
+                        <br>
+                        <p class="text-muted">{{companySizeName}}&nbsp;</p>
+                        <strong>{{'SETTINGS.VIEW.COMPANY_ACTIVE_SINCE' | translate}}</strong>
+                        <br>
+                        <p class="text-muted">{{companyData.companyactivesince}}&nbsp;</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 " *ngFor="let setting of settingsList">
+                    <div class="card top-sell p-2" (click)="setting.click.apply(this)">
+                        <div class="d-flex">
+                            <i [ngClass]="setting.icon"></i>
+                            <div class="product-title my-auto">
+                                {{setting.title}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="row">
+                <div class="col-lg-4 ">
+                    <div class="info-box7 order-info-box7" (click)="openMailboxListing()">
+                        <ul class="list-unstyled list-unstyled-noborder">
+                            <li class="sales-group-list top-sell">
+                                <i class="fas fa-inbox bg-red sell-icon"></i>
+                                <div class="set-flex">
+                                    <div class="product-title">
+                                        {{'SETTINGS.SETTINGS_OTHER_OPTION.MAIL_BOXES' | translate}}
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="info-box7 order-info-box7" (click)="openEmployeeSettings()">
+                        <ul class="list-unstyled list-unstyled-noborder">
+                            <li class="sales-group-list top-sell">
+                                <i class="fas fa-user bg-pink sell-icon"></i>
+                                <div class="set-flex">
+                                    <div class="product-title">
+                                        {{'SETTINGS.SETTINGS_OTHER_OPTION.EMPLOYEE' | translate}}
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="info-box7 order-info-box7" (click)="openRolesSettings()">
+                        <ul class="list-unstyled list-unstyled-noborder">
+                            <li class="sales-group-list top-sell">
+                                <i class="fas fa-sliders-h bg-purple sell-icon"></i>
+                                <div class="set-flex">
+                                    <div class="product-title">{{'SETTINGS.SETTINGS_OTHER_OPTION.ROLE' | translate}}
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="info-box7 order-info-box7" (click)="openAlertsSettings()">
+                        <ul class="list-unstyled list-unstyled-noborder">
+                            <li class="sales-group-list top-sell">
+                                <i class="fas fa-bell bg-indigo sell-icon"></i>
+                                <div class="set-flex">
+                                    <div class="product-title">
+                                        {{'SETTINGS.SETTINGS_OTHER_OPTION.ALERTS' | translate}}
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="info-box7 order-info-box7" (click)="openSMTPSettings()">
+                        <ul class="list-unstyled list-unstyled-noborder">
+                            <li class="sales-group-list top-sell">
+                                <i class="fas fa-envelope bg-blue sell-icon"></i>
+                                <div class="set-flex">
+                                    <div class="product-title">{{'SETTINGS.SETTINGS_OTHER_OPTION.SMTP' | translate}}
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="info-box7 order-info-box7" (click)="openIntegrations()">
+                        <ul class="list-unstyled list-unstyled-noborder">
+                            <li class="sales-group-list top-sell">
+                                <i class="fas fa-puzzle-piece bg-cyan sell-icon"></i>
+                                <div class="set-flex">
+                                    <div class="product-title">
+                                        {{'SETTINGS.SETTINGS_OTHER_OPTION.INTEGRATION' | translate}}
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="info-box7 order-info-box7" (click)="openUsage()">
+                        <ul class="list-unstyled list-unstyled-noborder">
+                            <li class="sales-group-list top-sell">
+                                <i class="fas fa-database bg-teal sell-icon"></i>
+                                <div class="set-flex">
+                                    <div class="product-title">
+                                        {{'SETTINGS.SETTINGS_OTHER_OPTION.USAGE' | translate}}
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="info-box7 order-info-box7" (click)="openOtherSettings()">
+                        <ul class="list-unstyled list-unstyled-noborder">
+                            <li class="sales-group-list top-sell">
+                                <i class="fas fa-cog bg-green sell-icon"></i>
+                                <div class="set-flex">
+                                    <div class="product-title">
+                                        {{'SETTINGS.SETTINGS_OTHER_OPTION.OTHER_SETTINGS' | translate}}
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="info-box7 order-info-box7" (click)="openSecurity()">
+                        <ul class="list-unstyled list-unstyled-noborder">
+                            <li class="sales-group-list top-sell">
+                                <i class="fas fa-lock bg-yellow sell-icon"></i>
+                                <div class="set-flex">
+                                    <div class="product-title">
+                                        {{'SETTINGS.SETTINGS_OTHER_OPTION.SECURITY' | translate}}
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="info-box7 order-info-box7" (click)="openCostcode()">
+                        <ul class="list-unstyled list-unstyled-noborder">
+                            <li class="sales-group-list top-sell">
+                                <i class="fas fa-dollar-sign bg-orange sell-icon"></i>
+                                <div class="set-flex">
+                                    <div class="product-title">
+                                        {{'SETTINGS.SETTINGS_OTHER_OPTION.COST_CODE' | translate}}
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                  <div class="col-lg-4">
+                    <div class="info-box7 order-info-box7" (click)="openDocumentView()">
+                        <ul class="list-unstyled list-unstyled-noborder">
+                            <li class="sales-group-list top-sell">
+                                <i class="fas fa-file-invoice bg-brown sell-icon"></i>
+                                <div class="set-flex">
+                                    <div class="product-title">{{'SETTINGS.SETTINGS_OTHER_OPTION.DOCUMENT_VIEW' | translate}}</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>  
+
+            </div> -->
+        </div>
+    </div>
+</section>

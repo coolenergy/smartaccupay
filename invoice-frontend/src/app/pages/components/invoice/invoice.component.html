@@ -1,0 +1,130 @@
+<div class="wrapper-cust-admin" fxLayout style="height: 95%">
+    <div class="d-flex justify-content-between">
+        <h1 class="screen-title">
+            {{ "Rovuk_Invoice_Roles_Invoice" | translate | titlecase }}
+        </h1>
+        <div class="row mr-2 action-button">
+            <button *ngIf="role_permission.invoice.Add" m mat-raised-button color="primary"
+                (click)="checkProcessProgress()" class="sign-button ml-2"><img src="{{add_my_self_icon}}" alt=""
+                    height="20px">
+                Check Process Progress
+            </button>
+            <button *ngIf="role_permission.invoice.Add" m mat-raised-button color="primary"
+                (click)="importProcessData()" class="sign-button ml-2"><img src="{{add_my_self_icon}}" alt=""
+                    height="20px">
+                Import Data
+            </button>
+            <button *ngIf="role_permission.invoice.Add" mat-raised-button color="primary" (click)="openAddDialog()"
+                class="sign-button ml-2"><img src="{{add_my_self_icon}}" alt="" height="20px">
+                {{'Invoice-Document-Add-Button' | translate }}
+            </button>
+
+            <button *ngIf="isManagement&&role_permission.invoice.Add" mat-raised-button color="primary"
+                class="sign-button ml-2" (click)="importManagementPO();"><img src="{{add_my_self_icon}}" alt=""
+                    height="20px">
+                {{'Import_Management_PO' | translate }}
+            </button>
+        </div>
+    </div>
+    <div class="display-inline-cust">
+        <div class="main-search-bar">
+            <div class="row d-flex justify-content-between m-3 py-3">
+                <div class="mt-2">
+
+                </div>
+                <div>
+                    <button class="import-export-btn-datatable button_workersEditClass cust-margin-div"
+                        (click)="invoiceReportDialog()" matTooltip="{{ 'TOOLTIP_REPORT' | translate }}"
+                        aria-label="Left Align">
+                        <img src="{{reportIcon}}" alt="" height="20px">
+                    </button>
+                    <button mat-stroked-button class="sign-button mr-1" (click)="gridTolist();">
+                        <img src="{{gridIcon}}" alt="" class="pr-1" height="15px" width="20px" *ngIf="!gridtolist" />
+                        <img src="{{listIcon}}" alt="" class="pr-1" height="15px" width="20px" *ngIf="gridtolist" />
+                        {{btn_grid_list_text}}
+                    </button>
+                    <mat-form-field *ngIf="gridtolist" class="mr-1" appearance="outline">
+                        <mat-label>Due Date</mat-label>
+
+                        <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
+                            <input matStartDate formControlName="start_date"
+                                placeholder="{{'Company-Material-Report-StartDate' | translate}}" disabled
+                                #dateRangeStart>
+                            <input matEndDate formControlName="end_date"
+                                placeholder="{{'Company-Material-Report-EndDate' | translate}}" disabled #dateRangeEnd
+                                (dateChange)="dateRangeChange(dateRangeStart, dateRangeEnd)">
+                        </mat-date-range-input>
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-date-range-picker #picker disabled="false"></mat-date-range-picker>
+                    </mat-form-field>
+                    <mat-form-field class="mr-1" *ngIf="gridtolist" appearance="outline">
+                        <mat-label>Status</mat-label>
+                        <mat-select multiple (change)="changeStatus($event)" [(ngModel)]="invoice_status">
+                            <mat-option value="All">{{'Team-EmployeeList-Status-All' | translate}}</mat-option>
+                            <mat-option value="Approved">{{'status_Approved' | translate}}</mat-option>
+                            <mat-option value="Rejected">{{'Reject_Invoice' | translate}}</mat-option>
+                            <mat-option value="Pending">{{'status_Pending' | translate}}</mat-option>
+                            <mat-option value="Late">Late</mat-option>
+                            <mat-option value="Paid">Paid</mat-option>
+                            <mat-option value="UnPaid">UnPaid</mat-option>
+                            <mat-option value="Overdue">Overdue</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field class="" *ngIf="gridtolist" appearance="outline">
+                        <mat-label>Search</mat-label>
+                        <input [(ngModel)]="invoice_search" matInput placeholder="Search" />
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="pt-3" style="float: right;">
+    </div>
+    <div *ngIf="gridtolist">
+        <div class="row ml-3 ">
+            <div class="mb-3 mr-4"
+                *ngFor="let invoice of allInvoices | invoiceListFilter : invoice_search | invoiceListFilterStatus : invoice_status | checkDateRange : dateRange">
+                <app-invoice-card [invoice]="invoice" (invoiceUpdateCard)="invoiceUpdateCard()"></app-invoice-card>
+            </div>
+        </div>
+    </div>
+    <div class=" cust-padding-tmp">
+        <div *ngIf="!gridtolist" class="margin-cust-top table-responsive cust-padding-tmp">
+            <div>
+                <table *ngIf="showInvoiceTable" datatable [dtOptions]="dtOptions" class="row-border hover  ">
+                    <thead>
+                        <tr>
+                            <th>{{"invoice_no" | translate}}</th>
+                            <th>{{"po_no" | translate}}</th>
+                            <th>{{"Vendor_Name" | translate}}</th>
+                            <th>{{"packing_slip_no" | translate}}</th>
+                            <th>{{"Receiving_Slip" | translate}}</th>
+                            <th>{{"Files_Attached" | translate}}</th>
+                            <th>{{"Uploaded_By" | translate}}</th>
+                            <th>{{"Uploaded_At" | translate}}</th>
+                            <th>{{"Employee-form-Status" | translate}}</th>
+                            <!-- <th width="1%" data-orderable="false">{{"All-Action" | translate }}</th> -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let invoice of allInvoices" (click)="editInvoice(invoice);">
+                            <td>{{ invoice.invoice }}</td>
+                            <td>{{ invoice.p_o }}</td>
+                            <td>{{ invoice.vendor.vendor_name }}</td>
+                            <td>{{ invoice.packing_slip }}</td>
+                            <td>{{ invoice.receiving_slip }}</td>
+                            <td>{{ invoice.attach_files }}</td>
+                            <td>{{ invoice.created_by.userfullname }}</td>
+                            <td>{{ invoice.created_at * 1000 | date: 'MM/dd/yyyy hh:mm a' }}</td>
+                            <td
+                                [ngClass]="invoice.status == 'Pending'? 'pendingcss' : 'Approvedcss' && invoice.status == 'Approved'? 'Approvedcss' : 'Rejectcss'&& invoice.status == 'Rejected'? 'Rejectcss' : 'Rejectcss'">
+                                {{ invoice.status }}
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

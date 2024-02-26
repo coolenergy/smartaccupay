@@ -1,0 +1,54 @@
+<div class="flux-left-panel"
+  [ngClass]="{hideNav: toggleStatus && navLayout === 'horizontal' && deviceType === 'mobile'}"
+  [attr.nav-layout]="navLayout" [ngStyle]="{'height.px': asidebarHeight}"
+  [attr.navbar-type]="toggleStatus ? defaultNavbar : toggleNavbar " [attr.effect-type]="navbarEffect"
+  [attr.navbar-theme]="navbarColorTheme" [attr.active-Nav-theme]="activeNavColorTheme" [attr.device-type]="deviceType">
+  <div class="flux-wrapper">
+    <nav class="flux-navbar">
+      <ul class="menu-list">
+        <li *ngFor="let ml of menuList;  let i = index;" routerLinkActive="active" class="menu-item"
+          [ngClass]="{ active : checkMenuActive(ml) , active: isActive(ml.name) ,'hasMenu':ml.subMenu  }"
+          appMenudropdown>
+          <a *ngIf="!(ml.subMenu)" [routerLink]="ml.url" (click)="onItemSelect(ml.name);">
+            <span *ngIf="ml.icon.length == 0" class="flux-micon cust-font-size"><img src="{{ml.image}}" alt=""
+                height="20px"></span>
+            <span *ngIf="ml.icon.length != 0" class="flux-micon cust-font-size"><i class="{{ml.icon}}"></i>
+            </span>
+            <span class="flux-mtext">{{ml.name}}</span>
+            <span *ngIf="(ml.badge)" class="flux-badge {{ml.badgeBg}}">{{ml.badge}}</span>
+          </a>
+          <a *ngIf="ml.subMenu" href="javascript:;">
+            <span *ngIf="ml.icon.length == 0" class="flux-micon cust-font-size"><img src="{{ml.image}}" alt=""
+                height="20px"></span>
+            <span *ngIf="ml.icon.length != 0" class="flux-micon cust-font-size"><i class="{{ml.icon}}"></i>
+            </span>
+            <span class="flux-mtext">{{ml.name}}</span>
+            <span *ngIf="(ml.badge)" class="flux-badge {{ml.badgeBg}}">{{ml.badge}}</span>
+            <span class="flux-mcaret"></span>
+          </a>
+          <ul *ngIf="ml.subMenu">
+
+            <li *ngFor="let child of ml.subMenu" routerLinkActive="active" (click)="onSubItemSelect(ml.name);">
+              <a [routerLink]="child.url">
+                <span *ngIf="child.icon.length == 0" class="flux-micon cust-font-size"><img src="{{child.image}}" alt=""
+                    height="20px"></span>
+                <span *ngIf="child.icon.length != 0" class="flux-micon cust-font-size"><i class="{{child.icon}}"></i>
+                </span>
+                <span class="flux-mtext">{{child.name}}</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <div class="margin-top-cust"></div>
+        </li>
+        <!-- <li>
+          <div class="flux-brand-logo " (click)="moveToSettings()">
+            <img *ngIf="company_logo" src="{{company_logo}}" alt="" class="bottom-image-cust">
+            <h4 style="color: white;">{{company_code}}</h4>
+          </div>
+        </li> -->
+      </ul>
+    </nav>
+  </div>
+</div>

@@ -1,0 +1,59 @@
+@import 'src/app/styles/variables';
+
+.main-cust-setting-div {
+    width: 100%;
+
+    @media (max-width: $normal) {}
+
+    @media (max-width: $small) {
+        flex-wrap: wrap;
+    }
+
+    @media (max-width: $medium) {
+        flex-wrap: wrap;
+    }
+}
+
+.certificate-type-card {
+    width: 30%;
+}
+
+.document-type-container {
+    width: 90%;
+    margin-left: 10%;
+}
+
+.decorate-div {
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin: auto;
+}
+
+.decorate-last-div {
+    border: 1px solid black;
+    margin: auto;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    display: flex;
+
+}
+
+.editing {
+    margin: 0;
+    position: absolute;
+    padding-left: 10px;
+}
+
+.main-one-input-field {
+
+    width: 100%;
+}
+
+.cust-padding {
+    padding-bottom: 50px;
+}

@@ -1,0 +1,22 @@
+/*
+ *  Document   : _imagegallery.scss
+ *  Author     : RedStar Template
+ *  Description: This scss file for image gallery style classes
+ */
+.group-1,
+.group-2 {
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  display: table;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.group-1 img,
+.group-2 img {
+  cursor: pointer;
+  width: 300px;
+  height: 300px;
+  padding: 10px;
+  border-radius: 10px;
+}

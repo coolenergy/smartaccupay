@@ -1,0 +1,328 @@
+<section class="content">
+  <div class="content-block">
+    <div class="m-4"></div>
+
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+          <div class="materialTableHeader">
+            <div class="left">
+              <ul class="header-buttons-left ms-0">
+                <li class="tbl-title">
+                  <h2>Dashboard</h2>
+                </li>
+              </ul>
+            </div>
+            <div class="right"> </div>
+          </div>
+          <div class="body overflow-auto">
+            <div class="row clearfix">
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="card profile-header">
+                  <div class="body">
+                    <h6 class="card-title"><b>In-Progress</b></h6>
+                    <div class="row ">
+                      <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mt-2">
+                        <div class="dashboard-count pending-invoice-bg" (click)="viewInvoice('Pending')">
+                          <div class="icon pending-invoice-icon-bg">
+                            <img src='assets/images/icons/pending_invoice.svg' alt="" height="25" width="25" />
+                          </div>
+                          <div class="details">
+                            <div class="count">{{countData.pending_invoices}}</div>
+                            <div class="description">Pending Invoice</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mt-2">
+                        <div class="dashboard-count pending-document-bg" (click)="viewUnknwon()">
+                          <div class="icon pending-document-icon-bg">
+                            <img src='assets/images/icons/pending.svg' alt="" height="25" width="25" />
+                          </div>
+                          <div class="details">
+                            <div class="count">0</div>
+                            <div class="description">Unknown Document</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="card profile-header">
+                  <div class="body">
+                    <h6 class="card-title"><b>Waiting For Approval</b></h6>
+                    <div class="row">
+                      <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mt-2">
+                        <div class="dashboard-count sent-for-approval-bg" (click)="viewInvoice('Approved')">
+                          <div class="icon sent-for-approval-icon-bg">
+                            <img src='assets/images/icons/approval.svg' alt="" height="25" width="25" />
+                          </div>
+                          <div class="details">
+                            <div class="count">{{countData.approved_invoices}}</div>
+                            <div class="description">Sent For Approval</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mt-2">
+                        <div class="dashboard-count rejected-invoice-bg" (click)="viewInvoice('Rejected')">
+                          <div class="icon rejected-invoice-icon-bg">
+                            <img src='assets/images/icons/reject.svg' alt="" height="25" width="25" />
+                          </div>
+                          <div class="details">
+                            <div class="count">{{countData.rejected_invoices}}</div>
+                            <div class="description">Rejected Invoice</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="card profile-header">
+                  <div class="body">
+                    <h6 class="card-title"><b>Need Attention</b></h6>
+                    <div class="row">
+                      <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mt-2">
+                        <div class="dashboard-count close-to-due-date-bg" (click)="viewInvoice('Overdue')">
+                          <div class="icon close-to-due-date-icon-bg">
+                            <img src='assets/images/icons/due_date.svg' alt="" height="25" width="25" />
+                          </div>
+                          <div class="details">
+                            <div class="count">{{countData.overdue}}</div>
+                            <div class="description">Close To Due Date</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mt-2">
+                        <div class="dashboard-count on-hold-bg" (click)="viewInvoice('On_Hold')">
+                          <div class="icon on-hold-icon-bg">
+                            <img src='assets/images/icons/hold.svg' alt="" height="25" width="25" />
+                          </div>
+                          <div class="details">
+                            <div class="count">{{countData.on_hold}}</div>
+                            <div class="description">On Hold</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="card profile-header">
+                  <div class="body">
+                    <h6 class="card-title"><b>Duplicate Document</b></h6>
+                    <div class="row">
+                      <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mt-2">
+                        <div class="dashboard-count duplicate-bg" (click)="viewInvoice('Duplicate')">
+                          <div class="icon duplicate-icon-bg">
+                            <img src='assets/images/icons/duplicate.svg' alt="" height="25" width="25" />
+                          </div>
+                          <div class="details">
+                            <div class="count">{{countData.duplicates}}</div>
+                            <div class="description">Duplicates</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="header d-flex justify-content-between">
+                <h2>Monthly Invoice</h2>
+                <div class="right ">
+                  <ul class="tbl-export-btn d-flex">
+                    <li class="tbl-header-btn">
+                      <div class="m-l-10" matTooltip="{{'COMMON.TOOL_TIP.VIEW' |
+                      translate}}">
+                        <button mat-mini-fab color="primary" (click)="viewMonthlyInvoiceChart()">
+                          <img src='assets/images/icons/view.svg' alt="" height="17" width="17" />
+                        </button>
+                      </div>
+                    </li>
+                    <li class="tbl-header-btn">
+                      <div class="m-l-10" matTooltip="{{'COMMON.TOOL_TIP.DOWNLOAD' |
+                      translate}}">
+                        <button mat-mini-fab color="primary" (click)="downloadMonthlyInvoiceChart()">
+                          <img src='assets/images/icons/download.svg' alt="" height="17" width="17" />
+                        </button>
+                      </div>
+                    </li>
+                    <li class="tbl-header-btn">
+                      <div class="m-l-10" matTooltip="{{'COMMON.TOOL_TIP.PRINT' |
+                      translate}}">
+                        <button mat-mini-fab color="primary" (click)="printMonthlyInvoiceChart()">
+                          <img src='assets/images/icons/print.svg' alt="" height="17" width="17" />
+                        </button>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="body">
+                <div style="text-align:center" *ngIf="showInvoiceChart">
+                  <apx-chart [series]="invoiceChartOptions.series!" [chart]="invoiceChartOptions.chart!"
+                    [tooltip]="invoiceChartOptions.tooltip!" [xaxis]="invoiceChartOptions.xaxis!"
+                    [yaxis]="invoiceChartOptions.yaxis!" [title]="invoiceChartOptions.title!"
+                    [stroke]="invoiceChartOptions.stroke!" [legend]="invoiceChartOptions.legend!"></apx-chart>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
+                <div class="card">
+                  <div class="header d-flex justify-content-between">
+                    <h2>Monthly History</h2>
+                    <div class="right">
+                      <ul class="tbl-export-btn d-flex">
+                        <li class="tbl-header-btn">
+                          <div class="m-l-10" matTooltip="{{'COMMON.TOOL_TIP.VIEW' |
+                      translate}}">
+                            <button mat-mini-fab color="primary" (click)="viewHistoryChart()">
+                              <img src='assets/images/icons/view.svg' alt="" height="17" width="17" />
+                            </button>
+                          </div>
+                        </li>
+                        <li class="tbl-header-btn">
+                          <div class="m-l-10" matTooltip="{{'COMMON.TOOL_TIP.DOWNLOAD' |
+                      translate}}">
+                            <button mat-mini-fab color="primary" (click)="downloadHistoryChart()">
+                              <img src='assets/images/icons/download.svg' alt="" height="17" width="17" />
+                            </button>
+                          </div>
+                        </li>
+                        <li class="tbl-header-btn">
+                          <div class="m-l-10" matTooltip="{{'COMMON.TOOL_TIP.PRINT' |
+                      translate}}">
+                            <button mat-mini-fab color="primary" (click)="printHistoryChart()">
+                              <img src='assets/images/icons/print.svg' alt="" height="17" width="17" />
+                            </button>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="body">
+                    <div style="text-align:center" *ngIf="showHistoryChart">
+                      <apx-chart [series]="historyChartOptions.series!" [chart]="historyChartOptions.chart!"
+                        [title]="historyChartOptions.title!" [dataLabels]="historyChartOptions.dataLabels!"
+                        [xaxis]="historyChartOptions.xaxis!" [yaxis]="historyChartOptions.yaxis!"></apx-chart>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+                <div class="card job-cost">
+                  <div class="header">
+                    <h2>Job Cost</h2>
+                  </div>
+                  <div class="card-body">
+                    <div class="media-list position-relative">
+                      <div class="table-responsive" id="project-team-scroll">
+                        <table class="table table-bordered table-hover table-xl mb-0 job-cost-table">
+                          <thead>
+                            <tr>
+                              <th>Job Name</th>
+                              <th>Cost</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let jobCost of jobCostList">
+                              <td>{{jobCost.client_name}}</td>
+                              <td class="amount">$ {{numberWithCommas(jobCost.total)}}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row clearfix">
+              <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                <div class="card document">
+                  <div class="header">
+                    <h2>Pending</h2>
+                  </div>
+                  <div class="body"
+                    [ngClass]="pendingInvoices.length === 0 ? 'd-flex align-items-center justify-content-center' : ''">
+                    <div *ngFor="let invoice of pendingInvoices">
+                      <ng-container [ngTemplateOutlet]="invoiceCardTemplate"
+                        [ngTemplateOutletContext]="{invoice:invoice}">
+                      </ng-container>
+                    </div>
+                    <div class="font-16" *ngIf="pendingInvoices.length === 0">No Pending Invoice</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                <div class="card document">
+                  <div class="header">
+                    <h2>Rejected</h2>
+                  </div>
+                  <div class="body"
+                    [ngClass]="rejectedInvoices.length === 0 ? 'd-flex align-items-center justify-content-center' : ''">
+                    <div *ngFor="let invoice of rejectedInvoices">
+                      <ng-container [ngTemplateOutlet]="invoiceCardTemplate"
+                        [ngTemplateOutletContext]="{invoice:invoice}">
+                      </ng-container>
+                    </div>
+                    <div class="font-16" *ngIf="rejectedInvoices.length === 0">No Rejected Invoice</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                <div class="card document">
+                  <div class="header">
+                    <h2>Processed</h2>
+                  </div>
+                  <div class="body"
+                    [ngClass]="processedInvoices.length === 0 ? 'd-flex align-items-center justify-content-center' : ''">
+                    <div *ngFor="let invoice of processedInvoices">
+                      <ng-container [ngTemplateOutlet]="invoiceCardTemplate"
+                        [ngTemplateOutletContext]="{invoice:invoice}">
+                      </ng-container>
+                    </div>
+                    <div class="font-16" *ngIf="processedInvoices.length === 0">No Processed Invoice</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
+</section>
+
+<ng-template #invoiceCardTemplate let-invoice='invoice'>
+  <div class="doc-file-type mb-2" (click)="invoiceDetail(invoice)">
+    <div class="list-unstyled">
+      <div class="m-1">
+        <div class="d-flex justify-content-between">
+          <h5 class="font-16">{{invoice.vendor_data.vendor_name}}</h5>
+          <h5 class="font-16">#{{invoice.invoice_no}}</h5>
+        </div>
+        <div class="d-flex justify-content-between">
+          <div>
+            <h5 class="font-14"><span><b>Invoice Date </b></span>
+              <span>{{(invoice.invoice_date_epoch * 1000 | date: 'MM/dd/yyyy')}}</span>
+            </h5>
+            <h5 class="font-14 last-updated"><span><b>Last updated </b></span>
+              <span>{{(invoice.updated_at * 1000 | date: 'MM/dd/yyyy')}}</span>
+            </h5>
+          </div>
+          <h5 class="font-20 my-auto amount">${{invoice.invoice_total_amount}}</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

@@ -1,0 +1,18 @@
+<!-- <button mat-button matTooltip="{{'COMMON.TOOL_TIP.CHANGE_LANGUAGE' | translate}}" class=" nav-notification-icons"
+    [matMenuTriggerFor]="languages"> <i class="material-icons-outlined icon-color">
+        language
+    </i>
+</button> -->
+
+<mat-menu #languages="matMenu" xPosition="before">
+    <div *ngFor="let language of languages_new, let i = index"
+        class="language-wrapper {{ language.value == selectlanguage ? 'background-active' : ''}}">
+        <div class="language-wrapper__icon-wrapper">
+            <button class="language-wrapper__icon" [ngClass]="colors[i]" (click)="changeLanguage(language.value)"
+                mat-mini-fab>{{language.value}}</button>
+        </div>
+        <div class="language-content" (click)="changeLanguage(language.value)">
+            <span class="language-content__user">{{language.name}}</span>
+        </div>
+    </div>
+</mat-menu>

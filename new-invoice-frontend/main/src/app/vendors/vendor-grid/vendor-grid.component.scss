@@ -1,0 +1,162 @@
+.status {
+     font-size: 25px;
+     line-height: 5px;
+     font-weight: 400;
+     padding: 17px;
+     color: #fff;
+     text-align: center;
+     z-index: 0;
+     position: relative;
+     background: #023eba58;
+
+     &.inactive {
+          background: red;
+     }
+
+     &.active {
+          background: green;
+     }
+
+}
+
+.vendor-dropdowns {
+     ::ng-deep .mdc-text-field--outlined {
+          // c
+     }
+
+     ::ng-deep .mat-mdc-form-field .mat-mdc-floating-label.mdc-floating-label {
+          line-height: normal;
+          pointer-events: all;
+          padding-bottom: 16px;
+     }
+
+
+
+     ::ng-deep .mat-mdc-text-field-wrapper {
+
+          margin-top: 24px !important;
+          height: 40px !important;
+     }
+
+     ::ng-deep .example-full-width {
+          height: 30px !important;
+          margin-top: -14px !important;
+     }
+
+     // ::ng-deep.mat-mdc-text-field-wrapper {
+     //     margin-top: 14px;
+     // }
+
+     ::ng-deep .mat-mdc-select-arrow svg {
+          top: -36%;
+     }
+
+     ::ng-deep .mat-mdc-text-field-wrapper.mdc-text-field--outlined .mat-mdc-form-field-infix {
+          padding-top: 8px;
+     }
+}
+
+
+@media only screen and (max-width: 1600px) and (min-width: 1200px) {
+     .test {
+          width: 25%;
+     }
+}
+
+.card {
+     box-shadow: unset !important;
+}
+
+.hover-card:hover {
+     background-color: #2541c0;
+     color: #fff;
+
+     .font-white {
+          color: #fff
+     }
+}
+
+body {
+     background: #141f31;
+}
+
+h1 {
+     font-size: 32px;
+     margin-top: 30px;
+     margin-bottom: 40px;
+     text-align: center;
+     font-weight: bold;
+     color: #ffffff;
+}
+
+.container {
+     padding-top: 60px;
+}
+
+.Action {
+     position: absolute;
+     top: 225px;
+     height: 35px;
+     border-radius: 10px;
+     margin: auto;
+     text-align: center;
+     border-radius: 0px 0px 10px 10px
+}
+
+.inactive {
+     background: rgb(255, 227, 227);
+}
+
+.active {
+     background: rgb(220, 255, 209);
+}
+
+.font-s {
+     font-size: 14px;
+}
+
+.texr-a {
+     text-align: initial
+}
+
+.font-sp {
+     margin-left: 5px;
+}
+
+.chip {
+     position: absolute;
+     bottom: 5px;
+     font-size: 15px;
+     width: 90%;
+     border-radius: 18px;
+     margin-left: 17px;
+     margin-top: 5px;
+     margin-bottom: 4px;
+     color: #000;
+}
+
+.truncate-text {
+     text-overflow: ellipsis;
+     overflow: hidden;
+     white-space: nowrap;
+}
+
+.card-border {
+     border: 2px solid rgb(182, 182, 182);
+}
+
+.card-h {
+     height: 310px
+}
+
+.img-bg {
+     background-color: white;
+}
+
+.txt-alg {
+     text-align: initial;
+}
+
+.massge-status {
+     text-align: center;
+}

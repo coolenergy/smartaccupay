@@ -1,0 +1,504 @@
+<section class="content">
+    <div class="content-block">
+        <div class="m-4"></div>
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="materialTableHeader">
+                        <div class="left">
+                            <ul class="header-buttons-left ms-0">
+                                <li class="tbl-title">
+                                    <h2>{{'SETTINGS.SETTINGS_OTHER_OPTION.ROLE' |  translate}}</h2>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="right">
+                            <ul class="tbl-export-btn">
+                                <li class="tbl-header-btn">
+                                    <div class="m-l-10" matTooltip="{{'COMMON.TOOL_TIP.BACK' |
+                                    translate}}">
+                                        <button mat-mini-fab color="warn" (click)="back()">
+                                            <mat-icon class="col-white">close </mat-icon>
+                                        </button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="body ">
+                        <mat-tab-group mat-align-tabs="center">
+                            <mat-tab *ngFor="let role of allRoles; let index = index" [label]="role.role_name">
+                                <div class="row cust-margin-top" *ngIf="role.hasOwnProperty('role_permission')">
+                                    <div class="col" *ngIf="role.role_permission.hasOwnProperty('dashboard')">
+                                        <div class="cust-header-text">
+                                            {{'SETTINGS.SETTINGS_OTHER_OPTION.ROLE_MODULE.DASHBORD' |  translate}}
+                                        </div>
+                                        <mat-checkbox class="example-margin"
+                                            [(ngModel)]="role.role_permission.dashboard.View"
+                                            color="primary">{{'SETTINGS.SETTINGS_OTHER_OPTION.ROLE_MODULE.VIEW' |  translate}}</mat-checkbox>
+                                        <br />
+                                        <mat-checkbox class="example-margin"
+                                            [(ngModel)]="role.role_permission.permission_action.View"
+                                            color="primary">{{'SETTINGS.SETTINGS_OTHER_OPTION.ROLE_MODULE.PERMISSION' |  translate}}
+                                            <i style="color: gainsboro;"
+                                                matTooltip="{{'SETTINGS.SETTINGS_OTHER_OPTION.ROLE_MODULE.PERMISSION_TOOLTIP' |  translate}}"
+                                                class="fas fa-info-circle cust-fontsize-tmp"></i></mat-checkbox>
+                                    </div>
+                                    <div class="col" *ngIf="role.role_permission.hasOwnProperty('todayActivity')">
+                                        <div class="cust-header-text">
+                                            {{'SETTINGS.SETTINGS_OTHER_OPTION.ROLE_MODULE.TODAYS_ACTiVITY' |  translate}}
+                                        </div>
+                                        <mat-checkbox class="example-margin"
+                                            [(ngModel)]="role.role_permission.todayActivity.View"
+                                            color="primary">{{'SETTINGS.SETTINGS_OTHER_OPTION.ROLE_MODULE.VIEW' |  translate}}</mat-checkbox>
+                                    </div>
+                                    <!-- VENDORS -->
+                                    <div class="col" *ngIf="role.role_permission.hasOwnProperty('vendor')">
+
+                                        <div class="cust-div-inner">
+                                            <div class="cust-header-text">
+                                                {{'SETTINGS.SETTINGS_OTHER_OPTION.ROLE_MODULE.VENDORS' |  translate}}
+                                            </div>
+                                            <div class="cust-div-inner">
+                                                <div>
+                                                    <mat-checkbox class="example-margin"
+                                                        (change)="changeAllProject($event,index,'vendor')"
+                                                        [(ngModel)]="role.role_permission.vendor.All" color="primary">
+                                                        {{'SETTINGS.SETTINGS_OTHER_OPTION.ROLE_MODULE.All' |  translate}}</mat-checkbox>
+                                                </div>
+                                                <div class="cust-div-inner">
+                                                    <div>
+                                                        <mat-checkbox class="example-margin"
+                                                            (change)="oneAllSettingChange($event,index,'vendor')"
+                                                            [(ngModel)]="role.role_permission.vendor.Add"
+                                                            color="primary">
+                                                            {{'SETTINGS.SETTINGS_OTHER_OPTION.ROLE_MODULE.ADD_ROLE' |  translate}}</mat-checkbox>
+                                                    </div>
+                                                    <div>
+                                                        <mat-checkbox class="example-margin"
+                                                            (change)="oneAllSettingChange($event,index,'vendor')"
+                                                            [(ngModel)]="role.role_permission.vendor.View"
+                                                            color="primary">
+                                                            {{'SETTINGS.SETTINGS_OTHER_OPTION.ROLE_MODULE.VIEW' |  translate}}
+                                                        </mat-checkbox>
+                                                    </div>
+                                                    <div>
+                                                        <mat-checkbox class="example-margin"
+                                                            (change)="oneAllSettingChange($event,index,'vendor')"
+                                                            [(ngModel)]="role.role_permission.vendor.Edit"
+                                                            color="primary">
+                                                            {{'SETTINGS.SETTINGS_OTHER_OPTION.ROLE_MODULE.LISTING_EDIT' |  translate}}
+                                                        </mat-checkbox>
+                                                    </div>
+                                                    <div>
+                                                        <mat-checkbox class="example-margin"
+                                                            (change)="oneAllSettingChange($event,index,'vendor')"
+                                                            [(ngModel)]="role.role_permission.vendor.Delete"
+                                                            color="primary">
+                                                            {{'SETTINGS.SETTINGS_OTHER_OPTION.ROLE_MODULE.ARCHIVED' |  translate}}
+                                                        </mat-checkbox>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- client -->
+                                    <div class="col" *ngIf="role.role_permission.hasOwnProperty('clientJob')">
+
+                                        <div class="cust-div-inner">
+                                            <div class="cust-header-text">
+                                                {{'SETTINGS.SETTINGS_OTHER_OPTION.ROLE_MODULE.Client_Job' |  translate}}
+                                            </div>
+                                            <div class="cust-div-inner">
+                                                <div>
+                                                    <mat-checkbox class="example-margin"
+                                                        (change)="changeAllProject($event,index,'clientJob')"
+                                                        [(ngModel)]="role.role_permission.clientJob.All"
+                                                        color="primary">
+                                                        {{'SETTINGS.SETTINGS_OTHER_OPTION.ROLE_MODULE.All' |  translate}}</mat-checkbox>
+                                                </div>
+                                                <div class="cust-div-inner">
+                                                    <div>
+                                                        <mat-checkbox class="example-margin"
+                                                            (change)="oneAllSettingChange($event,index,'clientJob')"
+                                                            [(ngModel)]="role.role_permission.clientJob.Add"
+                                                            color="primary">
+                                                            {{'SETTINGS.SETTINGS_OTHER_OPTION.ROLE_MODULE.ADD_ROLE' |  translate}}</mat-checkbox>
+                                                    </div>
+                                                    <div>
+                                                        <mat-checkbox class="example-margin"
+                                                            (change)="oneAllSettingChange($event,index,'clientJob')"
+                                                            [(ngModel)]="role.role_permission.clientJob.View"
+                                                            color="primary">
+                                                            {{'SETTINGS.SETTINGS_OTHER_OPTION.ROLE_MODULE.VIEW' |  translate}}
+                                                        </mat-checkbox>
+                                                    </div>
+                                                    <div>
+                                                        <mat-checkbox class="example-margin"
+                                                            (change)="oneAllSettingChange($event,index,'clientJob')"
+                                                            [(ngModel)]="role.role_permission.clientJob.Edit"
+                                                            color="primary">
+                                                            {{'SETTINGS.SETTINGS_OTHER_OPTION.ROLE_MODULE.LISTING_EDIT' |  translate}}
+                                                        </mat-checkbox>
+                                                    </div>
+                                                    <div>
+                                                        <mat-checkbox class="example-margin"
+                                                            (change)="oneAllSettingChange($event,index,'clientJob')"
+                                                            [(ngModel)]="role.role_permission.clientJob.Delete"
+                                                            color="primary">
+                                                            {{'SETTINGS.SETTINGS_OTHER_OPTION.ROLE_MODULE.ARCHIVED' |  translate}}
+                                                        </mat-checkbox>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- INVOICES -->
+                                    <div class="col" *ngIf="role.role_permission.hasOwnProperty('invoice')">
+                                        <div class="cust-div-inner">
+                                            <div class="cust-header-text">
+                                                {{'SETTINGS.SETTINGS_OTHER_OPTION.ROLE_MODULE.INVOICE' |  translate}}
+                                            </div>
+                                            <div class="cust-div-inner">
+                                                <div>
+                                                    <mat-checkbox class="example-margin"
+                                                        (change)="changeAllProject($event,index,'invoice')"
+                                                        [(ngModel)]="role.role_permission.invoice.All" color="primary">
+                                                        {{'SETTINGS.SETTINGS_OTHER_OPTION.ROLE_MODULE.All' |  translate}}</mat-checkbox>
+                                                </div>
+
+                                                <div class="cust-div-inner">
+                                                    <div>
+                                                        <mat-checkbox class="example-margin"
+                                                            (change)="oneAllSettingChange($event,index,'invoice')"
+                                                            [(ngModel)]="role.role_permission.invoice.Add"
+                                                            color="primary">
+                                                            {{'SETTINGS.SETTINGS_OTHER_OPTION.ROLE_MODULE.ADD_ROLE' |  translate}}</mat-checkbox>
+                                                    </div>
+                                                    <div>
+                                                        <mat-checkbox class="example-margin"
+                                                            (change)="oneAllSettingChange($event,index,'invoice')"
+                                                            [(ngModel)]="role.role_permission.invoice.View"
+                                                            color="primary">
+                                                            {{'SETTINGS.SETTINGS_OTHER_OPTION.ROLE_MODULE.VIEW' |  translate}}
+                                                        </mat-checkbox>
+                                                    </div>
+                                                    <div>
+                                                        <mat-checkbox class="example-margin"
+                                                            (change)="oneAllSettingChange($event,index,'invoice')"
+                                                            [(ngModel)]="role.role_permission.invoice.Edit"
+                                                            color="primary">
+                                                            {{'SETTINGS.SETTINGS_OTHER_OPTION.ROLE_MODULE.LISTING_EDIT' |  translate}}
+                                                        </mat-checkbox>
+                                                    </div>
+                                                    <div>
+                                                        <mat-checkbox class="example-margin"
+                                                            (change)="oneAllSettingChange($event,index,'invoice')"
+                                                            [(ngModel)]="role.role_permission.invoice.Delete"
+                                                            color="primary">
+                                                            {{'SETTINGS.SETTINGS_OTHER_OPTION.ROLE_MODULE.ARCHIVED' |  translate}}
+                                                        </mat-checkbox>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- DOCUMENTS -->
+                                    <div class="col" *ngIf="role.role_permission.hasOwnProperty('documents')">
+                                        <div class="cust-div-inner">
+                                            <div class="cust-header-text">
+                                                {{'SETTINGS.SETTINGS_OTHER_OPTION.ROLE_MODULE.DOCUMENTS' |  translate}}
+                                            </div>
+                                            <!-- <div class="cust-div-inner"> -->
+                                            <!-- <div>
+                                                    <mat-checkbox class="example-margin"
+                                                        (change)="oneAllSettingChange($event,index,'documents')"
+                                                        [(ngModel)]="role.role_permission.documents.Add"
+                                                        color="primary">
+                                                        {{'SETTINGS.SETTINGS_OTHER_OPTION.ROLE_MODULE.ADD_ROLE' |  translate}}</mat-checkbox>
+                                                </div> -->
+                                            <div>
+                                                <mat-checkbox class="example-margin"
+                                                    (change)="oneAllSettingChange($event,index,'documents')"
+                                                    [(ngModel)]="role.role_permission.documents.View" color="primary">
+                                                    {{'SETTINGS.SETTINGS_OTHER_OPTION.ROLE_MODULE.VIEW' |  translate}}
+                                                </mat-checkbox>
+                                            </div>
+                                            <!-- <div>
+                                                    <mat-checkbox class="example-margin"
+                                                        (change)="oneAllSettingChange($event,index,'documents')"
+                                                        [(ngModel)]="role.role_permission.documents.Edit"
+                                                        color="primary">
+                                                        {{'SETTINGS.SETTINGS_OTHER_OPTION.ROLE_MODULE.LISTING_EDIT' |  translate}}
+                                                    </mat-checkbox>
+                                                </div>
+                                                <div>
+                                                    <mat-checkbox class="example-margin"
+                                                        (change)="oneAllSettingChange($event,index,'documents')"
+                                                        [(ngModel)]="role.role_permission.documents.Delete"
+                                                        color="primary">
+                                                        {{'SETTINGS.SETTINGS_OTHER_OPTION.ROLE_MODULE.ARCHIVED' |  translate}}
+                                                    </mat-checkbox>
+                                                </div>
+                                            </div> -->
+                                        </div>
+                                    </div>
+                                    <!-- REPOETS -->
+                                    <div class="col" *ngIf="role.role_permission.hasOwnProperty('reports')">
+
+                                        <div class="cust-div-inner">
+                                            <div class="cust-header-text">
+                                                {{'SETTINGS.SETTINGS_OTHER_OPTION.ROLE_MODULE.REPORT' |  translate}}
+                                            </div>
+                                            <!-- <div class="cust-div-inner">
+                                                <div>
+                                                    <mat-checkbox class="example-margin"
+                                                        (change)="oneAllSettingChange($event,index,'reports')"
+                                                        [(ngModel)]="role.role_permission.reports.Add" color="primary">
+                                                        {{'SETTINGS.SETTINGS_OTHER_OPTION.ROLE_MODULE.ADD_ROLE' |  translate}}</mat-checkbox>
+                                                </div> -->
+
+                                            <div>
+                                                <mat-checkbox class="example-margin"
+                                                    (change)="oneAllSettingChange($event,index,'reports')"
+                                                    [(ngModel)]="role.role_permission.reports.View" color="primary">
+                                                    {{'SETTINGS.SETTINGS_OTHER_OPTION.ROLE_MODULE.VIEW' |  translate}}
+                                                </mat-checkbox>
+                                            </div>
+                                            <!-- <div>
+                                                    <mat-checkbox class="example-margin"
+                                                        (change)="oneAllSettingChange($event,index,'reports')"
+                                                        [(ngModel)]="role.role_permission.reports.Edit" color="primary">
+                                                        {{'SETTINGS.SETTINGS_OTHER_OPTION.ROLE_MODULE.LISTING_EDIT' |  translate}}
+                                                    </mat-checkbox>
+                                                </div> -->
+                                            <!-- <div>
+                                                    <mat-checkbox class="example-margin"
+                                                        (change)="oneAllSettingChange($event,index,'reports')"
+                                                        [(ngModel)]="role.role_permission.reports.Delete"
+                                                        color="primary">
+                                                        {{'SETTINGS.SETTINGS_OTHER_OPTION.ROLE_MODULE.ARCHIVED' |  translate}}
+                                                    </mat-checkbox>
+                                                </div> -->
+                                            <!-- </div> -->
+                                        </div>
+                                    </div>
+                                    <!-- USERS -->
+                                    <div class="col" *ngIf="role.role_permission.hasOwnProperty('users')">
+                                        <div class="cust-div-inner">
+                                            <div class="cust-header-text">
+                                                {{'SETTINGS.SETTINGS_OTHER_OPTION.ROLE_MODULE.USERS' |  translate}}
+                                            </div>
+                                            <div class="cust-div-inner">
+                                                <div>
+                                                    <mat-checkbox class="example-margin"
+                                                        (change)="changeAllProject($event,index,'users')"
+                                                        [(ngModel)]="role.role_permission.users.All" color="primary">
+                                                        {{'SETTINGS.SETTINGS_OTHER_OPTION.ROLE_MODULE.All' |  translate}}</mat-checkbox>
+                                                </div>
+                                                <div class="cust-div-inner">
+                                                    <div>
+                                                        <mat-checkbox class="example-margin"
+                                                            (change)="oneAllSettingChange($event,index,'users')"
+                                                            [(ngModel)]="role.role_permission.users.Add"
+                                                            color="primary">
+                                                            {{'SETTINGS.SETTINGS_OTHER_OPTION.ROLE_MODULE.ADD_ROLE' |  translate}}</mat-checkbox>
+                                                    </div>
+                                                    <div>
+                                                        <mat-checkbox class="example-margin"
+                                                            (change)="oneAllSettingChange($event,index,'users')"
+                                                            [(ngModel)]="role.role_permission.users.View"
+                                                            color="primary">
+                                                            {{'SETTINGS.SETTINGS_OTHER_OPTION.ROLE_MODULE.VIEW' |  translate}}
+                                                        </mat-checkbox>
+                                                    </div>
+                                                    <div>
+                                                        <mat-checkbox class="example-margin"
+                                                            (change)="oneAllSettingChange($event,index,'users')"
+                                                            [(ngModel)]="role.role_permission.users.Edit"
+                                                            color="primary">
+                                                            {{'SETTINGS.SETTINGS_OTHER_OPTION.ROLE_MODULE.LISTING_EDIT' |  translate}}
+                                                        </mat-checkbox>
+                                                    </div>
+                                                    <div>
+                                                        <mat-checkbox class="example-margin"
+                                                            (change)="oneAllSettingChange($event,index,'users')"
+                                                            [(ngModel)]="role.role_permission.users.Delete"
+                                                            color="primary">
+                                                            {{'SETTINGS.SETTINGS_OTHER_OPTION.ROLE_MODULE.ARCHIVED' |  translate}}
+                                                        </mat-checkbox>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- [disabled] = "role.role_name == 'Admin'" -->
+                                            <div class="cust-div-inner">
+                                                <!-- personalInformation -->
+                                                <div class="col"
+                                                    *ngIf="role.role_permission.users.hasOwnProperty('personalInformation')">
+                                                    <div class="cust-header-text">
+                                                        {{'SETTINGS.SETTINGS_OTHER_OPTION.ROLE_MODULE.EMPLOYEE_PERSONAL' |  translate}}
+                                                    </div>
+                                                    <div class="cust-div-inner">
+                                                        <div>
+                                                            <mat-checkbox class="example-margin"
+                                                                [(ngModel)]="role.role_permission.users.personalInformation.View"
+                                                                color="primary">
+                                                                {{'SETTINGS.SETTINGS_OTHER_OPTION.ROLE_MODULE.VIEW' |  translate}}
+                                                            </mat-checkbox>
+                                                        </div>
+                                                        <div>
+                                                            <mat-checkbox class="example-margin"
+                                                                [(ngModel)]="role.role_permission.users.personalInformation.Edit"
+                                                                color="primary">
+                                                                {{'SETTINGS.SETTINGS_OTHER_OPTION.ROLE_MODULE.LISTING_EDIT' |  translate}}
+                                                            </mat-checkbox>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <!-- contactInformation -->
+                                                <div class="col"
+                                                    *ngIf="role.role_permission.users.hasOwnProperty('contactInformation')">
+                                                    <div class="cust-header-text">
+                                                        {{'SETTINGS.SETTINGS_OTHER_OPTION.ROLE_MODULE.CONTACT_HEADING' |  translate}}
+                                                    </div>
+                                                    <div class="cust-div-inner">
+                                                        <div>
+                                                            <mat-checkbox class="example-margin"
+                                                                [(ngModel)]="role.role_permission.users.contactInformation.View"
+                                                                color="primary">
+                                                                {{'SETTINGS.SETTINGS_OTHER_OPTION.ROLE_MODULE.VIEW' |  translate}}
+                                                            </mat-checkbox>
+                                                        </div>
+                                                        <div>
+                                                            <mat-checkbox class="example-margin"
+                                                                [(ngModel)]="role.role_permission.users.contactInformation.Edit"
+                                                                color="primary">
+                                                                {{'SETTINGS.SETTINGS_OTHER_OPTION.ROLE_MODULE.LISTING_EDIT' |  translate}}
+                                                            </mat-checkbox>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- employeeInformation -->
+                                                <div class="col"
+                                                    *ngIf="role.role_permission.users.hasOwnProperty('employeeInformation')">
+                                                    <div class="cust-header-text">
+                                                        {{'SETTINGS.SETTINGS_OTHER_OPTION.ROLE_MODULE.EMPLOYEE_INFORMATION' |  translate}}
+                                                    </div>
+                                                    <div class="cust-div-inner">
+                                                        <div>
+                                                            <mat-checkbox class="example-margin"
+                                                                [(ngModel)]="role.role_permission.users.employeeInformation.View"
+                                                                color="primary">
+                                                                {{'SETTINGS.SETTINGS_OTHER_OPTION.ROLE_MODULE.VIEW' |  translate}}
+                                                            </mat-checkbox>
+                                                        </div>
+                                                        <div>
+                                                            <mat-checkbox class="example-margin"
+                                                                [(ngModel)]="role.role_permission.users.employeeInformation.Edit"
+                                                                color="primary">
+                                                                {{'SETTINGS.SETTINGS_OTHER_OPTION.ROLE_MODULE.LISTING_EDIT' |  translate}}
+                                                            </mat-checkbox>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- emergencyContact -->
+                                                <div class="col"
+                                                    *ngIf="role.role_permission.users.hasOwnProperty('emergencyContact')">
+                                                    <div class="cust-header-text">
+                                                        {{'SETTINGS.SETTINGS_OTHER_OPTION.ROLE_MODULE.EMERGENCY_CONTACT' |  translate}}
+                                                    </div>
+                                                    <div class="cust-div-inner">
+                                                        <div>
+                                                            <mat-checkbox class="example-margin"
+                                                                [(ngModel)]="role.role_permission.users.emergencyContact.View"
+                                                                color="primary">
+                                                                {{'SETTINGS.SETTINGS_OTHER_OPTION.ROLE_MODULE.VIEW' |  translate}}
+                                                            </mat-checkbox>
+                                                        </div>
+                                                        <div>
+                                                            <mat-checkbox class="example-margin"
+                                                                [(ngModel)]="role.role_permission.users.emergencyContact.Edit"
+                                                                color="primary">
+                                                                {{'SETTINGS.SETTINGS_OTHER_OPTION.ROLE_MODULE.LISTING_EDIT' |  translate}}
+                                                            </mat-checkbox>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- employeeDocument -->
+                                                <div class="col"
+                                                    *ngIf="role.role_permission.users.hasOwnProperty('employeeDocument')">
+                                                    <div class="cust-header-text">
+                                                        {{'SETTINGS.SETTINGS_OTHER_OPTION.ROLE_MODULE.EMPLOYEE_DOCUMENT' |  translate}}
+                                                    </div>
+                                                    <div class="cust-div-inner">
+                                                        <div>
+                                                            <mat-checkbox class="example-margin"
+                                                                [(ngModel)]="role.role_permission.users.employeeDocument.View"
+                                                                color="primary">
+                                                                {{'SETTINGS.SETTINGS_OTHER_OPTION.ROLE_MODULE.VIEW' |  translate}}
+                                                            </mat-checkbox>
+                                                        </div>
+                                                        <div>
+                                                            <mat-checkbox class="example-margin"
+                                                                [(ngModel)]="role.role_permission.users.employeeDocument.Edit"
+                                                                color="primary">
+                                                                {{'SETTINGS.SETTINGS_OTHER_OPTION.ROLE_MODULE.LISTING_EDIT' |  translate}}
+                                                            </mat-checkbox>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <!-- SETTINGS -->
+                                    <div class="col" *ngIf="role.role_permission.hasOwnProperty('settings')">
+                                        <div class="cust-div-inner">
+                                            <div class="cust-header-text">
+                                                {{'SETTINGS.SETTINGS_OTHER_OPTION.ROLE_MODULE.SETTING' |  translate}}
+                                            </div>
+                                            <!-- <div class="cust-div-inner">
+                                                <div>
+                                                    <mat-checkbox class="example-margin"
+                                                        (change)="oneAllSettingChange($event,index,'settings')"
+                                                        [(ngModel)]="role.role_permission.settings.All" color="primary">
+                                                        {{'SETTINGS.SETTINGS_OTHER_OPTION.ROLE_MODULE.All' |  translate}}</mat-checkbox>
+                                                </div> -->
+                                            <div class="cust-div-inner">
+                                                <div>
+                                                    <mat-checkbox class="example-margin"
+                                                        (change)="oneAllSettingChange($event,index,'settings')"
+                                                        [(ngModel)]="role.role_permission.settings.View"
+                                                        color="primary">
+                                                        {{'SETTINGS.SETTINGS_OTHER_OPTION.ROLE_MODULE.VIEW' |  translate}}
+                                                    </mat-checkbox>
+                                                </div>
+                                                <!-- <div>
+                                                        <mat-checkbox class="example-margin"
+                                                            (change)="oneAllSettingChange($event,index,'settings')"
+                                                            [(ngModel)]="role.role_permission.settings.Edit"
+                                                            color="primary">
+                                                            {{'SETTINGS.SETTINGS_OTHER_OPTION.ROLE_MODULE.LISTING_EDIT' |  translate}}
+                                                        </mat-checkbox>
+                                                    </div> -->
+                                                <!-- </div> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="cust-center-justify">
+                                    <button mat-raised-button (click)="saveData(role)" color="warn">
+                                        {{'COMMON.ACTIONS.SAVE' |
+                                        translate}}</button>
+                                </div>
+
+                            </mat-tab>
+                        </mat-tab-group>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,28 @@
+lib-cov
+*.seed
+*.log
+*.csv
+*.dat
+*.out
+*.pid
+*.gz
+*.swp
+
+pids
+logs
+results
+
+npm-debug.log
+node_modules
+
+# Orig files from merges
+*.orig
+
+# ENV Variables
+.env
+
+# WebStorm IDE
+.idea
+
+# Code Coverage Reports
+coverage

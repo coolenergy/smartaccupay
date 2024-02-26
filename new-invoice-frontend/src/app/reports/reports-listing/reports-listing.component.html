@@ -1,0 +1,186 @@
+<section class="content">
+     <div class="content-block">
+          <div class="m-4"></div>
+          <div class="row">
+               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card">
+                         <div class="materialTableHeader">
+                              <div class="left">
+                                   <ul class="header-buttons-left ms-0">
+                                        <li class="tbl-title">
+                                             <h2>{{reportType}}</h2>
+                                        </li>
+                                        <li class="tbl-search-box">
+                                             <label for="search-input"><i
+                                                       class="material-icons search-icon">search</i></label>
+                                             <input placeholder="{{'COMMON.TOOL_TIP.SEARCH' |  translate}}" type="text"
+                                                  class="browser-default search-field" aria-label="Search box"
+                                                  (input)="onSearchChange($event)">
+                                        </li>
+                                   </ul>
+                              </div>
+                              <div class="right">
+                                   <ul class="tbl-export-btn">
+                                        <li class="tbl-header-btn dateRange">
+                                             <mat-form-field class="example-full-width" appearance="outline">
+                                                  <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
+                                                       <input matStartDate formControlName="start_date"
+                                                            placeholder="Start Date" [disabled]="true" #dateRangeStart>
+                                                       <input matEndDate formControlName="end_date"
+                                                            placeholder="End Date" [disabled]="true" #dateRangeEnd
+                                                            (dateChange)="dateRangeChange(dateRangeStart, dateRangeEnd)">
+                                                  </mat-date-range-input>
+                                                  <mat-datepicker-toggle matSuffix [for]="picker">
+                                                  </mat-datepicker-toggle>
+                                                  <mat-date-range-picker #picker disabled="false">
+                                                  </mat-date-range-picker>
+                                             </mat-form-field>
+                                        </li>
+                                        <li class="tbl-header-btn">
+                                             <div class="export-button m-l-10"
+                                                  matTooltip="{{'COMMON.TOOL_TIP.XLSX' | translate}}">
+                                                  <img src="assets/images/icons/xlsx.png" alt=""
+                                                       (click)="exportExcel()" />
+                                             </div>
+                                        </li>
+                                        <li class="tbl-header-btn">
+                                             <div class="m-l-10" matTooltip="{{'COMMON.TOOL_TIP.BACK' | translate}}">
+                                                  <button mat-mini-fab color="warn" (click)="back()">
+                                                       <mat-icon class="col-white">close </mat-icon>
+                                                  </button>
+                                             </div>
+                                        </li>
+
+                                   </ul>
+                              </div>
+                         </div>
+                         <div class="body overflow-auto">
+                              <div class="table-responsive">
+                                   <table mat-table #table [dataSource]="dataSource" matSort
+                                        (matSortChange)="sortData($event)" class="mat-cell">
+                                        <ng-container matColumnDef="invoice_date_epoch">
+                                             <mat-header-cell *matHeaderCellDef mat-sort-header
+                                                  class="tbl-col-width-per-max">Invoice Date
+                                             </mat-header-cell>
+                                             <mat-cell *matCellDef="let row" (click)="editInvoice(row)"
+                                                  class="tbl-col-width-per-max"
+                                                  (contextmenu)="onContextMenu($event, row)">
+                                                  <span class="mobile-label">Invoice
+                                                       Date:</span>{{row.invoice_date_epoch === 0 ? '' :
+                                                  (row.invoice_date_epoch * 1000) | date: 'MM/dd/yyyy'}}
+                                             </mat-cell>
+                                        </ng-container>
+                                        <ng-container matColumnDef="due_date_epoch">
+                                             <mat-header-cell *matHeaderCellDef mat-sort-header
+                                                  class="tbl-col-width-per-max">Due
+                                                  Date
+                                             </mat-header-cell>
+                                             <mat-cell *matCellDef="let row" (click)="editInvoice(row)"
+                                                  class="tbl-col-width-per-max"
+                                                  (contextmenu)="onContextMenu($event, row)">
+                                                  <span class="mobile-label">Due
+                                                       Date:</span>{{row.due_date_epoch === 0 ? '' : (row.due_date_epoch
+                                                  * 1000) | date: 'MM/dd/yyyy'}}
+                                             </mat-cell>
+                                        </ng-container>
+                                        <ng-container matColumnDef="vendor_name">
+                                             <mat-header-cell *matHeaderCellDef mat-sort-header
+                                                  class="tbl-col-width-per-15-per">Vendor</mat-header-cell>
+                                             <mat-cell *matCellDef="let row" (click)="editInvoice(row)"
+                                                  class="tbl-col-width-per-15-per"
+                                                  [matTooltip]="getVendorNameTooltip(row)"
+                                                  (contextmenu)="onContextMenu($event, row)">
+                                                  <span class="truncate-text"> <span class="mobile-label">Vendor:</span>
+                                                       {{row.vendor_name}}</span>
+                                             </mat-cell>
+                                        </ng-container>
+                                        <ng-container matColumnDef="invoice_no">
+                                             <mat-header-cell *matHeaderCellDef mat-sort-header
+                                                  class="tbl-col-width-per-max">Invoice Number</mat-header-cell>
+                                             <mat-cell *matCellDef="let row" (click)="editInvoice(row)"
+                                                  class="tbl-col-width-per-max"
+                                                  (contextmenu)="onContextMenu($event, row)">
+                                                  <span class="mobile-label">Invoice Number:</span>
+                                                  {{row.invoice_no}}
+                                             </mat-cell>
+                                        </ng-container>
+                                        <ng-container matColumnDef="invoice_total_amount">
+                                             <mat-header-cell *matHeaderCellDef mat-sort-header
+                                                  class="tbl-col-width-per-xmax">Total Amount</mat-header-cell>
+                                             <mat-cell *matCellDef="let row" (click)="editInvoice(row)"
+                                                  class="tbl-col-width-per-xmax"
+                                                  (contextmenu)="onContextMenu($event, row)">
+                                                  <span class="mobile-label">Total Amount:</span>
+                                                  $ {{numberWithCommas(row.invoice_total_amount)}}
+                                             </mat-cell>
+                                        </ng-container>
+                                        <ng-container matColumnDef="sub_total">
+                                             <mat-header-cell *matHeaderCellDef mat-sort-header
+                                                  class="tbl-col-width-per-xmax">Sub
+                                                  Total</mat-header-cell>
+                                             <mat-cell *matCellDef="let row" (click)="editInvoice(row)"
+                                                  class="tbl-col-width-per-xmax"
+                                                  (contextmenu)="onContextMenu($event, row)">
+                                                  <span class="mobile-label">Sub Total:</span>
+                                                  $ {{numberWithCommas(row.sub_total)}}
+                                             </mat-cell>
+                                        </ng-container>
+                                        <ng-container matColumnDef="userfullname">
+                                             <mat-header-cell *matHeaderCellDef mat-sort-header
+                                                  class="tbl-col-width-per-15-per">Approver</mat-header-cell>
+                                             <mat-cell *matCellDef="let row" (click)="editInvoice(row)"
+                                                  class="tbl-col-width-per-15-per"
+                                                  [matTooltip]="getApproverTooltip(row)"
+                                                  (contextmenu)="onContextMenu($event, row)">
+                                                  <span class="truncate-text"> <span
+                                                            class="mobile-label">Approver:</span></span>
+                                                  {{row.userfullname}}
+                                             </mat-cell>
+                                        </ng-container>
+                                        <ng-container matColumnDef="status">
+                                             <mat-header-cell *matHeaderCellDef mat-sort-header
+                                                  class="tbl-col-width-per-action">Status</mat-header-cell>
+                                             <mat-cell *matCellDef="let row" (click)="editInvoice(row)"
+                                                  class="tbl-col-width-per-action"
+                                                  (contextmenu)="onContextMenu($event, row)">
+                                                  <span class="mobile-label">Status:</span> {{row.status}}
+                                             </mat-cell>
+                                        </ng-container>
+                                        <ng-container matColumnDef="actions">
+                                             <mat-header-cell class="pr-0" *matHeaderCellDef
+                                                  [ngClass]="'tbl-col-width-per-action'">Actions</mat-header-cell>
+                                             <mat-cell *matCellDef="let row; let i=index;"
+                                                  class="pr-0 tbl-col-width-per-action">
+                                                  <button mat-icon-button color="accent"
+                                                       (click)="$event.stopPropagation()" (click)="editInvoice(row)"
+                                                       *ngIf="isDelete === 0" class="tbl-action-btn">
+                                                       <app-feather-icons [icon]="'edit'" [class]="'tbl-fav-edit'">
+                                                       </app-feather-icons>
+                                                  </button>
+                                             </mat-cell>
+                                        </ng-container>
+                                        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                                        <mat-row *matRowDef="let row; columns: displayedColumns;"
+                                             [style.cursor]="'pointer'" matRipple>
+                                        </mat-row>
+                                   </table>
+                              </div>
+                              <!-- Loading spinner -->
+                              <div *ngIf="reportService?.isReportTblLoading" class="tbl-spinner">
+                                   <mat-progress-spinner color="primary" [diameter]="40" mode="indeterminate">
+                                   </mat-progress-spinner>
+                              </div>
+                              <div *ngIf="!reportService?.isReportTblLoading" class="no-results"
+                                   [style.display]="invoiceList.length === 0 ? '' : 'none'">
+                                   {{'COMMON.LISTING.EMPTY' | translate}}
+                              </div>
+                              <mat-paginator #paginator [length]="pager!.total" [pageIndex]="tableRequest.pageIndex"
+                                   [pageSize]="tableRequest.pageSize" [pageSizeOptions]="[5, 10, 25, 100]"
+                                   (page)="changePage($event)">
+                              </mat-paginator>
+                         </div>
+                    </div>
+               </div>
+          </div>
+     </div>
+</section>

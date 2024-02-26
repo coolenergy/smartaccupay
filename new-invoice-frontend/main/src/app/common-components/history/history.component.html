@@ -1,0 +1,51 @@
+<li class="lecture-list">
+    <div class="d-flex">
+        <img *ngIf="history.is_system === undefined" alt="" class="msr-3 rounded-circle" height="40" width="40"
+            src="{{history.history_created_by.userpicture}}">
+        <img *ngIf="history.is_system" alt="" class="msr-3 rounded-circle" height="30" width="25"
+            src="assets/images/rovukinvoice.png">
+        <div class="set-flex my-auto">
+            <div *ngIf="history.is_system === undefined" class="media-title font-16">
+                <b>{{history.history_created_by.userfullname}}</b> {{history.action}} Invoice number
+                <b>{{title}}</b> at <b>{{history.history_created_at * 1000 | date: 'MM/dd/yyyy hh:mm a' }}</b> from
+                <b>{{history.taken_device}}</b>.
+            </div>
+            <div *ngIf="history.is_system"><b>System</b> {{history.action}} Invoice Number
+                <b>{{title}}</b> at <b>{{history.history_created_at * 1000 | date: 'MM/dd/yyyy hh:mm a' }}</b> from
+                <b>{{history.taken_device}}</b>.
+            </div>
+        </div>
+    </div>
+    <div class="mt-2 history-data" *ngIf="history.data.length > 0">
+        <div class="body table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>{{'COMMON.HISTORY.KEY' | translate}}</th>
+                        <th>{{'COMMON.HISTORY.VALUE' | translate}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let data of history.data">
+                        <td>{{data.key}}</td>
+                        <td>{{data.value}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div *ngIf="history.data.length == 0 && history.is_system">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Message</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{history.message}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</li>

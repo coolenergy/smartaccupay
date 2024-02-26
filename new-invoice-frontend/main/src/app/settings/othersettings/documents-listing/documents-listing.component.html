@@ -1,0 +1,72 @@
+<div class="content-block">
+    <div class="row other">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="materialTableHeader">
+                <div class="left">
+                    <ul class="header-buttons-left ms-0">
+                        <li class="tbl-search-box">
+                            <label for="search-input"><i class="material-icons search-icon">search</i></label>
+                            <input placeholder="{{'COMMON.TOOL_TIP.SEARCH' | translate}}" type="text" #filter
+                                class="browser-default search-field" aria-label="Search box">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="body overflow-auto">
+                <div class="table-responsive">
+                    <table mat-table #table [dataSource]="dataSource" matSort class="mat-cell">
+                        <ng-container matColumnDef="name">
+                            <mat-header-cell *matHeaderCellDef
+                                mat-sort-header>{{'SETTINGS.SETTINGS_OTHER_OPTION.OTHER_SETTINGS_MODULE.DOCUMENT' |
+                                translate}}</mat-header-cell>
+                            <mat-cell *matCellDef="let row" (click)="edit(row)"
+                                (contextmenu)="onContextMenu($event, row)">
+                                <span class="mobile-label">name:</span> {{row.name}}
+                            </mat-cell>
+                        </ng-container>
+                        <!-- actions -->
+
+                        <ng-container matColumnDef="actions">
+                            <mat-header-cell class="psl-3" [ngClass]="'tbl-col-width-per-action'"
+                                *matHeaderCellDef>{{'VENDOR.TABLE.ACTIONS' |
+                                translate}}</mat-header-cell>
+                            <mat-cell *matCellDef="let row; let i=index;" class="pr-0 tbl-col-width-per-action">
+                                <button matTooltip="{{'COMMON.ACTIONS.EDIT' |
+                                                translate}}" mat-icon-button color="accent"
+                                    (click)="$event.stopPropagation()" (click)="edit(row)" *ngIf="isDelete === 0"
+                                    class="col-blue">
+                                    <app-feather-icons [icon]="'edit'" [class]="'tbl-fav-edit'">
+                                    </app-feather-icons>
+                                </button>
+                                <button mat-icon-button matTooltip="{{'COMMON.ACTIONS.DELETE' |
+                                                translate}}" color="accent" (click)="$event.stopPropagation()"
+                                    (click)="deleteDocumentType(row)" class="col-red">
+                                    <mat-icon>delete</mat-icon>
+                                </button>
+                                <!-- <button mat-icon-button matTooltip="{{'COMMON.ACTIONS.RESTORE' |
+                                                translate}}" color="accent" (click)="$event.stopPropagation()"
+                                        (click)="deleteVendor(row, 0)" *ngIf="isDelete === 1" class="col-red">
+                                        <mat-icon>archive</mat-icon>
+                                    </button> -->
+                            </mat-cell>
+                        </ng-container>
+                        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                        <mat-row *matRowDef="let row; columns: displayedColumns;" [style.cursor]="'pointer'" matRipple>
+                        </mat-row>
+                    </table>
+                </div>
+                <!-- Loading spinner -->
+                <div *ngIf="documentsService?.isDocumentTblLoading" class="tbl-spinner">
+                    <app-loading></app-loading>
+                </div>
+                <div *ngIf="!documentsService?.isDocumentTblLoading" class="no-results"
+                    [style.display]="dataSource.renderedData.length === 0 ? '' : 'none'">
+                    {{'COMMON.LISTING.EMPTY' | translate}}
+                </div>
+                <mat-paginator #paginator [length]="dataSource.filteredData.length" [pageIndex]="0" [pageSize]="10"
+                    [pageSizeOptions]="[5, 10, 25, 100]">
+                </mat-paginator>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+@import 'src/app/styles/variables';
+
+.main-cust-setting-div {
+    width: 100%;
+
+    @media (max-width: $normal) {}
+
+    @media (max-width: $small) {
+        flex-wrap: wrap;
+    }
+
+    @media (max-width: $medium) {
+        flex-wrap: wrap;
+    }
+}
+
+.decorate-div {
+    margin: auto;
+    padding: 15px;
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+}
+
+.custom-small-field {
+    width: 150px;
+    height: 30px;
+    border: 1px solid black;
+}

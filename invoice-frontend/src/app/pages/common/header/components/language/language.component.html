@@ -1,0 +1,16 @@
+<button class="email-button" mat-mini-fab [matMenuTriggerFor]="languages">
+    <img src="{{languageIcon}}" alt="" height="20px">
+</button>
+<mat-menu #languages="matMenu" xPosition="before">
+    <div *ngFor="let language of languages_new, let i = index"
+        class="mail-wrapper {{ language.value == selectlanguage ? 'background-active' : ''}}">
+        <div class="mail-wrapper__icon-wrapper">
+            <button class="mail-wrapper__icon" [ngClass]="colors[i]" (click)="changeLanguage(language.value)"
+                mat-mini-fab>{{language.value}}</button>
+        </div>
+        <div class="mail-content" (click)="changeLanguage(language.value)">
+            <span class="mail-content__user">{{language.name}}</span>
+        </div>
+        <mat-divider></mat-divider>
+    </div>
+</mat-menu>

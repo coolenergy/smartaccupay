@@ -1,0 +1,53 @@
+<div class="addContainer">
+     <div class="mr-set">
+          <div class="row">
+               <div class="col-2">
+                    <img src="{{ invoice_logo }}" height="57px" width="45px" />
+               </div>
+               <div class="col-8 align-div">
+                    <div class="editRowModal">
+                         <div class="modalHeader clearfix">
+
+                              <div class="modal-about">
+                                   <div class="fw-bold p-t-5 p-l-10 font-17">
+                                        {{'SETTINGS.SETTINGS_OTHER_OPTION.OTHER_SETTINGS_MODULE.TAX_RATE' | translate}}
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+               </div>
+               <div class="col-2">
+                    <button mat-mini-fab (click)="dialogRef.close()" color="warn" aria-label="Close dialog">
+                         <mat-icon class="col-white">close </mat-icon>
+                    </button>
+               </div>
+          </div>
+     </div>
+     <div mat-dialog-content>
+          <form class="register-form m-4" [formGroup]="textrateInfo">
+               <div class="row">
+                    <div class=" col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                         <mat-form-field appearance="outline" class="example-full-width">
+                              <mat-label>{{'SETTINGS.SETTINGS_OTHER_OPTION.OTHER_SETTINGS_MODULE.TAX_RATE' | translate}}
+                              </mat-label>
+                              <input matInput
+                                   placeholder="{{'SETTINGS.SETTINGS_OTHER_OPTION.OTHER_SETTINGS_MODULE.TAX_RATE' | translate}}"
+                                   formControlName="name" required>
+                         </mat-form-field>
+                    </div>
+               </div>
+
+               <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2 align-div">
+                         <div class="example-button-row">
+                              <button mat-raised-button color="primary" class="width-set-2"
+                                   [disabled]="!textrateInfo.valid" (click)="submit()">{{'COMMON.ACTIONS.SAVE' |
+                                   translate}}</button>
+                              <button mat-raised-button color="warn" class="width-set-1" (click)="dialogRef.close()"
+                                   tabindex="-1">{{'COMMON.ACTIONS.CANCEL' | translate}}</button>
+                         </div>
+                    </div>
+               </div>
+          </form>
+     </div>
+</div>

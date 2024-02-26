@@ -1,0 +1,32 @@
+<div class="addContainer">
+     <app-model-header [title]="title" (dialogClose)="dialogRef.close()"></app-model-header>
+     <div mat-dialog-content>
+          <form class="register-form m-4" [formGroup]="jobtitleInfo">
+
+               <div class="row">
+                    <div class=" col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                         <mat-form-field appearance="outline" class="example-full-width">
+                              <mat-label>{{'SETTINGS.SETTINGS_OTHER_OPTION.EMPLOYEE_MODULE.JOBTITLE' |
+                                   translate}}</mat-label>
+                              <input matInput
+                                   placeholder="{{'SETTINGS.SETTINGS_OTHER_OPTION.EMPLOYEE_MODULE.JOBTITLE' |  translate}}"
+                                   formControlName="job_title_name" required>
+                         </mat-form-field>
+                    </div>
+               </div>
+
+               <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2 align-div">
+                         <div class="example-button-row">
+                              <button mat-raised-button color="primary" class="width-set-2"
+                                   [disabled]="!jobtitleInfo.valid" (click)="submit()">{{'COMMON.ACTIONS.SAVE' |
+                                   translate}}</button>
+                              <button mat-raised-button color="warn" class="width-set-1"
+                                   tabindex="-1">{{'COMMON.ACTIONS.CANCEL' |
+                                   translate}}</button>
+                         </div>
+                    </div>
+               </div>
+          </form>
+     </div>
+</div>

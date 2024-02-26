@@ -1,0 +1,149 @@
+<section class="content">
+    <div class="content-block form-new">
+        <div class="m-4"></div>
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="materialTableHeader">
+                        <div class="left">
+                            <ul class="header-buttons-left ms-0">
+                                <li class="tbl-title">
+                                    <h2 *ngIf="id.length === 0">{{'CLIENT.ADD_EDIT.ADD_TITLE' | translate}}</h2>
+                                    <h2 *ngIf="id.length > 0">{{'CLIENT.ADD_EDIT.EDIT_TITLE' | translate}}</h2>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="right">
+                            <ul class="tbl-export-btn">
+                                <li class="tbl-header-btn" *ngIf="id">
+                                    <div class="m-l-10" *ngIf="is_delete === 0 && !isHideArchiveActionQBD"
+                                        matTooltip="{{'COMMON.TOOL_TIP.ARCHIVE' | translate}}">
+                                        <button mat-mini-fab color="warn" (click)="deleteClient()">
+                                            <mat-icon class="col-white">archive</mat-icon>
+                                        </button>
+                                    </div>
+                                </li>
+                                <li class="tbl-header-btn" *ngIf="id">
+                                    <div class="m-l-10" *ngIf="is_delete === 1 && !isHideArchiveActionQBD"
+                                        matTooltip="{{'COMMON.ACTIONS.RESTORE' | translate}}">
+                                        <button mat-mini-fab color="warn" (click)="deleteClient()">
+                                            <mat-icon class="col-white">archive</mat-icon>
+                                        </button>
+                                    </div>
+                                </li>
+                                <li class="tbl-header-btn">
+                                    <div class="m-l-10" matTooltip="{{'COMMON.TOOL_TIP.BACK' | translate}}">
+                                        <button mat-mini-fab color="warn" (click)="confirmExit()">
+                                            <mat-icon class="col-white">close</mat-icon>
+                                        </button>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div [ngClass]="{'disableDiv': isHideEditActionQBD}">
+                        <form class="register-form m-4" [formGroup]="clientForm">
+                            <div class="row">
+                                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2" style="font-size: 12px;">
+                                    <mat-form-field class="example-full-width" appearance="outline">
+                                        <mat-label>{{'CLIENT.TABLE.CLIENT_NAME' | translate}}</mat-label>
+                                        <input matInput formControlName="client_name"
+                                            style="text-transform:capitalize !important;" required>
+
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                                    <mat-form-field class="example-full-width" appearance="outline">
+                                        <mat-label>{{'CLIENT.TABLE.JOB_CONTACT_EMAIL' | translate}}</mat-label>
+                                        <input matInput required formControlName="client_email" />
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+
+                                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                                    <mat-form-field class="example-full-width" appearance="outline">
+                                        <mat-label>{{'CLIENT.TABLE.CLIENT_NUMBER' | translate}}</mat-label>
+                                        <input matInput formControlName="client_number">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                                    <mat-form-field class="example-full-width" appearance="outline">
+                                        <mat-label>{{'CLIENT.ADD_EDIT.COST_GL' | translate}}</mat-label>
+                                        <mat-select formControlName="client_cost_cost_id" #costCodeSelect
+                                            style="font-size: 12px;">
+                                            <mat-select-filter [placeholder]="'Filter'" [displayMember]="'value'"
+                                                [array]="variablecostcodeList" (filteredReturn)="costcodeList =$event"
+                                                *ngIf="costCodeSelect.focused">
+                                            </mat-select-filter>
+                                            <mat-option *ngFor="let costcode of costcodeList" [value]="costcode._id">
+                                                {{costcode.cost_code}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                                    <mat-form-field class="example-full-width" appearance="outline">
+                                        <mat-label>{{'CLIENT.TABLE.APPROVER' | translate}}</mat-label>
+                                        <mat-select formControlName="approver_id" style="font-size: 12px;" #userSelect>
+                                            <mat-select-filter [placeholder]="'Filter'" [displayMember]="'userfullname'"
+                                                [array]="variableapproverList" (filteredReturn)="approverList =$event"
+                                                *ngIf="userSelect.focused">
+                                            </mat-select-filter>
+                                            <mat-option *ngFor="let approve of approverList" [value]="approve._id">
+                                                <span><img class="img-b" [src]="approve.userpicture" height="35px"
+                                                        width="35px" alt="">
+                                                </span> {{approve.userfullname}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                                    <mat-form-field class="example-full-width" appearance="outline">
+                                        <mat-label>{{'VENDOR.ADD_EDIT.STATUS' | translate}}</mat-label>
+                                        <mat-select formControlName="client_status" class="active-inactive-tx">
+                                            <mat-option class="active-inactive-tx" [value]="1">
+                                                Active
+                                            </mat-option>
+                                            <mat-option class="active-inactive-tx" [value]="2">
+                                                Inactive
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row form-old">
+
+                                <div class="col-xl-12 col-lg-6 col-md-12 col-sm-12 mb-2">
+                                    <mat-form-field class="example-full-width" appearance="outline"
+                                        style="height: auto !important;">
+                                        <mat-label style="height: auto !important;">{{'CLIENT.ADD_EDIT.NOTES' |
+                                            translate}}</mat-label>
+                                        <textarea matInput style="height: auto !important;"
+                                            formControlName="client_notes"></textarea>
+                                    </mat-form-field>
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                                    <button *ngIf="role_permission.clientJob.Edit && !isHideEditActionQBD"
+                                        class="btn-space" mat-raised-button color="primary"
+                                        [disabled]="!clientForm.valid" (click)="saveClient()">{{'COMMON.ACTIONS.SAVE'|
+                                        translate}}</button>
+                                    <button *ngIf="!isHideEditActionQBD" type="button" mat-raised-button color="warn"
+                                        (click)="confirmExit()">{{'COMMON.ACTIONS.CANCEL'| translate}}</button>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,41 @@
+<button class="email-button " mat-mini-fab [matMenuTriggerFor]="shortcuts">
+    <img src="{{shortcutIcon}}" alt="" height="20px">
+</button>
+<mat-menu #shortcuts="matMenu" xPosition="before">
+    <div class="sign-button-wrapper" style="width: 275px">
+        <button class="sign-button" mat-flat-button (click)="openmenuadd()">{{'Add_shortcuts' | translate}}</button>
+    </div>
+
+    <!-- Loop start-->
+    <div *ngFor="let selectedlist of selectedList" class="sign-button-wrapper">
+        <button mat-flat-button class="sign-button cust-button-menu" [style.backgroundColor]='selectedlist.color'
+            (click)="openpage(selectedlist)">
+            <img src="{{selectedlist.image}}" alt="" height="15px"> &nbsp;&nbsp; {{selectedlist.language_tmp |
+            translate}}
+        </button>
+    </div>
+
+
+
+    <mat-divider></mat-divider>
+    <div class="header-other-app" *ngIf="otherAppObject.length != 0">OTHER APP</div>
+    <div class="row cust-other-app-main" *ngIf="otherAppObject.length != 0">
+
+        <div class="col-6  justify-content-center  cust-col-aling" *ngFor="let otherapp of otherAppObject">
+            <a href="{{otherapp.login_url}}?email={{useremail}}&compnaycode={{companycode}}" target="_blank">
+                <div class="align-self-center">
+                    <img class="cust-image-tools" src="{{otherapp.logo_url}}" />
+                    <div class="cust-tool-color">{{otherapp.value}}</div>
+                </div>
+            </a>
+        </div>
+
+        <!-- <div class="col justify-content-center cust-col-aling">
+            <div class="align-self-center">
+                <img  class="cust-image-tools" src="./assets/logo/smalltools.png" />
+                <div class="cust-tool-color">ROVUK SMALLTOOLS</div>
+            </div>
+        </div> -->
+    </div>
+
+</mat-menu>

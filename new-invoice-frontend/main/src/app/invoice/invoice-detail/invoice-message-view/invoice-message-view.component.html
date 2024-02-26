@@ -1,0 +1,195 @@
+<section class="content">
+    <div class="content-block">
+        <div class="m-4"></div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="materialTableHeader">
+                    <div class="left">
+                        <ul class="header-buttons-left ms-0">
+                            <li class="tbl-title">
+                                <h2>Message</h2>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="right">
+                        <ul class="tbl-export-btn">
+                            <li class="tbl-header-btn">
+                                <div class="m-l-10" matTooltip="{{'COMMON.TOOL_TIP.INVOICELINK' | translate}}">
+                                    <button mat-mini-fab color="primary" (click)="viewInvoice()">
+                                        <mat-icon class="col-white">insert_link</mat-icon>
+                                    </button>
+                                </div>
+                            </li>
+                            <li class="tbl-header-btn">
+                                <div class="m-l-10" matTooltip="{{'COMMON.TOOL_TIP.BACK' | translate}}">
+                                    <button mat-mini-fab color="warn" (click)="back()">
+                                        <mat-icon class="col-white">close</mat-icon>
+                                    </button>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="chat">
+                    <div class="text-center" *ngIf="isLoading">
+                        <app-loading></app-loading>
+                    </div>
+                    <div *ngIf="!isLoading">
+                        <div class="row clearfix mt-2">
+                            <div
+                                [ngClass]="showPDF ? 'col-lg-6 col-md-6 col-sm-12 col-xs-12' : 'col-lg-12 col-md-12 col-sm-12 col-xs-12'">
+                                <div class="card font-white">
+                                    <div *ngIf="!showPDF" class="show-pdf-button"
+                                        matTooltip="{{'COMMON.TOOL_TIP.SHOW' | translate}}">
+                                        <button mat-mini-fab color="primary" (click)="collabPDF()">
+                                            <mat-icon class="col-white">chevron_left</mat-icon>
+                                        </button>
+                                    </div>
+                                    <div class="chat-header clearfix">
+                                        <div class="chat-about">
+                                            <div class="chat-with">Invoice Number:
+                                                <span class="chat-with-data">{{messageData.invoice.invoice_no}}</span>
+                                            </div>
+                                            <div class="chat-with">Invoice Amount:
+                                                <span class="chat-with-data">$
+                                                    {{numberWithCommas(messageData.invoice.invoice_total_amount)}}</span>
+                                            </div>
+                                            <div class="chat-with">Due Date:
+                                                <span class="chat-with-data"> {{ (messageData.invoice.due_date_epoch *
+                                                    1000) | date: 'MM/dd/yyyy'}}</span>
+                                            </div>
+                                            <div class="chat-with">Vendor:
+                                                <span
+                                                    class="chat-with-data">{{messageData.invoice.vendor_data.vendor_name}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <ng-scrollbar style="height: 500px" visibility="hover">
+                                        <div class="chat-history" id="chat-conversation">
+                                            <ul id="messageListDiv">
+                                                <li *ngFor="let message of messageList"
+                                                    [ngClass]="myId === message.sender_id ? 'clearfix' : ''">
+                                                    <ng-container *ngIf="myId === message.sender_id"
+                                                        [ngTemplateOutlet]="myMessageTemplate"
+                                                        [ngTemplateOutletContext]="{message:message}">
+                                                    </ng-container>
+                                                    <ng-container *ngIf="myId !== message.sender_id"
+                                                        [ngTemplateOutlet]="yourMessageTemplate"
+                                                        [ngTemplateOutletContext]="{message:message}">
+                                                    </ng-container>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </ng-scrollbar>
+                                    <div class="chat-message clearfix">
+                                        <div class="form-group">
+                                            <form [formGroup]="form">
+                                                <mat-form-field class="example-full-width font-white-placeholder"
+                                                    appearance="outline">
+                                                    <input matInput formControlName="message"
+                                                        placeholder="Enter message here.."
+                                                        [mentionConfig]="{items:userList, labelKey:'userfullname'}"
+                                                        [mentionListTemplate]="mentionListTemplate"
+                                                        (itemSelected)="onMentionSelected($event)">
+                                                    <button mat-icon-button matPrefix (click)="handleAttachment()">
+                                                        <i class="material-icons">attach_file</i>
+                                                    </button>
+                                                    <button mat-icon-button matPrefix (click)="toggled = !toggled"
+                                                        [(emojiPickerIf)]="toggled"
+                                                        [emojiPickerDirection]="emojiPickerDirection"
+                                                        (emojiPickerSelect)="handleSelection($event)">
+                                                        <i class="material-icons">insert_emoticon</i>
+                                                    </button>
+                                                    <button mat-icon-button matSuffix (click)="sendMessage()">
+                                                        <mat-icon>send</mat-icon>
+                                                    </button>
+                                                </mat-form-field>
+                                                <input class="hidden" type="file" id="upload-file" name="upload-file"
+                                                    (change)="addAttachment($event)">
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div [ngClass]="showPDF ? 'col-lg-6 col-md-6 col-sm-12 col-xs-12' : ''">
+                                <div class="card pdf-h" *ngIf="showPDF">
+                                    <div class="hide-pdf-button" matTooltip="{{'COMMON.TOOL_TIP.HIDE' | translate}}">
+                                        <button mat-mini-fab color="primary" (click)="collabPDF()">
+                                            <mat-icon class="col-white">chevron_right</mat-icon>
+                                        </button>
+                                    </div>
+                                    <div class="pdf-btn">
+                                        <button class="m-2" mat-mini-fab
+                                            matTooltip="{{'COMMON.TOOL_TIP.DOWNLOAD' | translate}}" (click)="download()"
+                                            color="primary">
+                                            <mat-icon class="col-white">download</mat-icon>
+                                        </button>
+                                        <button mat-mini-fab (click)="print()"
+                                            matTooltip="{{'COMMON.TOOL_TIP.PRINT' | translate}}" color="primary">
+                                            <mat-icon class="col-white">print</mat-icon>
+                                        </button>
+
+                                    </div>
+                                    <div id="outerContainer">
+                                        <div class="pdf-container">
+                                            <app-custompdfviewer [pdf_url]="pdf_url"></app-custompdfviewer>
+                                            <!-- <pdf-viewer [src]="pdf_url" [rotation]="0" [original-size]="false"
+                                                [show-all]="true" [fit-to-page]="false" [zoom]="1"
+                                                [zoom-scale]="'page-width'" [stick-to-page]="false" [render-text]="true"
+                                                [external-link-target]="'blank'" [autoresize]="true"
+                                                [show-borders]="false" style="width: 100%; height: 700px;"></pdf-viewer> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<ng-template #myMessageTemplate let-message='message'>
+    <div class="message-data text-end">
+        <span class="message-data-time">{{(message.created_at * 1000) | date: 'MM/dd/yyyy hh:mm a'}}
+        </span>
+        &nbsp; &nbsp;
+        <span class="message-data-name">{{message.sender.userfullname}}</span>
+        <span class="user-picture my-picture"><img [src]="message.sender.userpicture" /></span>
+    </div>
+    <div class="d-flex justify-content-end">
+        <div class="m-r-10 delete-message col-red my-auto" matTooltip="{{'COMMON.TOOL_TIP.DELETE' | translate}}"
+            (click)="deleteMessage(message)">
+            <mat-icon>close</mat-icon>
+        </div>
+        <div class="message other-message p-1" [ngClass]="message.is_attachment ? 'attachment-message' : ''"
+            (click)="viewAttachment(message)">
+            {{message.message}}
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #yourMessageTemplate let-message='message'>
+    <div class="message-data">
+        <span class="user-picture your-picture"><img [src]="message.sender.userpicture" /></span>
+        <span class="message-data-name">{{message.sender.userfullname}}</span>
+        <span class="message-data-time">{{(message.created_at * 1000) | date: 'MM/dd/yyyy hh:mm a'}}</span>
+    </div>
+    <div class="d-flex">
+        <div class="message my-message p-1" [ngClass]="message.is_attachment ? 'attachment-message' : ''"
+            (click)="viewAttachment(message)">
+            {{message.message}}
+        </div>
+        <!-- <div class="m-l-10 delete-message col-red my-auto" matTooltip="{{'COMMON.TOOL_TIP.DELETE' | translate}}"
+            (click)="deleteMessage(message)">
+            <mat-icon>close</mat-icon>
+        </div> -->
+    </div>
+</ng-template>
+
+<ng-template #mentionListTemplate let-item="item">
+    <span><img class="img-b" [src]="item.userpicture" height="35px" width="35px" alt="">
+    </span>
+    <span>{{item.userfullname}}</span>
+</ng-template>

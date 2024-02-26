@@ -1,0 +1,49 @@
+.flux-container {
+  height: 100%;
+  position: relative;
+  margin: 0 auto;
+  padding: 0px;
+  background: #ecf0f8;
+  font-size: 13px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.flux-wrapper {
+  width: 100%;
+  position: relative;
+  height: 100%;
+
+}
+
+.flux-container[theme-layout="wide"] {
+  width: 100%;
+}
+
+.flux-container[theme-layout="box"][device-type="desktop"] {
+  width: 1200px;
+}
+
+.flux-container[theme-layout="box"][device-type="tablet"] {
+  width: 100%;
+}
+
+.flux-container[theme-layout="box"][device-type="mobile"] {
+  width: 100%;
+}
+
+
+.overlay-box {
+  // position: absolute;
+  background-color: rgba(0, 0, 0, 0.3);
+  width: 100%;
+  bottom: 0;
+  top: 0;
+  z-index: 1023;
+
+  -webkit-transition: width 0.5s linear;
+  -moz-transition: width 0.5s linear;
+  -o-transition: width 0.5s linear;
+  transition: width 0.5s linear;
+
+}

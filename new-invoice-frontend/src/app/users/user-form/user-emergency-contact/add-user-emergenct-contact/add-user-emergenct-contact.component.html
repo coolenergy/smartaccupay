@@ -1,0 +1,146 @@
+<section class="content">
+    <div class="content-block">
+        <div class="m-4"></div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="materialTableHeader">
+                        <div class="left">
+                            <ul class="header-buttons-left ms-0">
+                                <li class="tbl-title">
+                                    <h2>
+                                        <strong *ngIf="id === null">{{'EMERGENCY_CONTACT.ADD' | translate}}</strong>
+                                        <strong *ngIf="id !== null">{{'EMERGENCY_CONTACT.EDIT' | translate}}</strong>
+                                    </h2>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="right">
+                            <ul class="tbl-export-btn">
+                                <li class="tbl-header-btn">
+                                    <div class="m-l-10" matTooltip="{{'COMMON.TOOL_TIP.BACK' | translate}}">
+                                        <button mat-mini-fab color="warn" (click)="confirmExit()">
+                                            <mat-icon class="col-white">close</mat-icon>
+                                        </button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="body">
+                        <form [formGroup]="form!">
+                            <div class="main-cust-emp-from">
+                                <div class="padding-left-cust main-cust-emp-inputpersonal">
+                                    <div class="row mt-3">
+                                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                                            <mat-form-field class="example-full-width" appearance="outline">
+                                                <mat-label>{{'EMERGENCY_CONTACT.FORM.NAME' | translate}}</mat-label>
+                                                <input matInput formControlName="emergency_contact_name" required>
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                                            <mat-form-field class="example-full-width" appearance="outline">
+                                                <mat-label>{{'EMERGENCY_CONTACT.FORM.RELATION' | translate}}</mat-label>
+                                                <mat-select formControlName="emergency_contact_relation"
+                                                    #relationshipSelect class="dark-cust-color">
+                                                    <mat-select-filter [placeholder]="'Filter'"
+                                                        [displayMember]="'relationship_name'"
+                                                        *ngIf="relationshipSelect.focused"
+                                                        [array]="variablesRelationshipList"
+                                                        (filteredReturn)="relationshipList =$event">
+                                                    </mat-select-filter>
+                                                    <mat-option *ngFor="let relationship of relationshipList"
+                                                        [value]="relationship._id">
+                                                        {{relationship.relationship_name}}
+                                                    </mat-option>
+                                                </mat-select>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                                            <mat-form-field class="example-full-width" appearance="outline">
+                                                <mat-label>{{'EMERGENCY_CONTACT.FORM.PHONE' | translate}}</mat-label>
+                                                <input matInput formControlName="emergency_contact_phone" required
+                                                    mask="(000) 000-0000" maxlength="14"
+                                                    onkeypress="return String.fromCharCode(event.charCode).match(/[^0-9]/g) === null">
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                                            <mat-form-field class="example-full-width" appearance="outline">
+                                                <mat-label>{{'EMERGENCY_CONTACT.FORM.EMAIL' | translate}}</mat-label>
+                                                <input matInput formControlName="emergency_contact_email" required>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <div class="row form-old">
+                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                                            <mat-form-field class="example-full-width" appearance="outline">
+                                                <mat-label>{{'EMERGENCY_CONTACT.FORM.ADDRESS' | translate}}</mat-label>
+                                                <textarea matInput
+                                                    formControlName="emergency_contact_fulladdress"></textarea>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                                            <mat-form-field class="example-full-width" appearance="outline">
+                                                <mat-label>{{'EMERGENCY_CONTACT.FORM.STREET1' | translate}}</mat-label>
+                                                <input matInput formControlName="emergency_contact_street1">
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                                            <mat-form-field class="example-full-width" appearance="outline">
+                                                <mat-label>{{'EMERGENCY_CONTACT.FORM.STREET2' | translate}}</mat-label>
+                                                <input matInput formControlName="emergency_contact_street2">
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                                            <mat-form-field class="example-full-width" appearance="outline">
+                                                <mat-label>{{'EMERGENCY_CONTACT.FORM.CITY' | translate}}</mat-label>
+                                                <input matInput formControlName="emergency_contact_city">
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                                            <mat-form-field class="example-full-width" appearance="outline">
+                                                <mat-label>{{'EMERGENCY_CONTACT.FORM.STATE' | translate}}</mat-label>
+                                                <input matInput formControlName="emergency_contact_state">
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                                            <mat-form-field class="example-full-width" appearance="outline">
+                                                <mat-label>{{'EMERGENCY_CONTACT.FORM.ZIPCODE' | translate}}</mat-label>
+                                                <input matInput formControlName="emergency_contact_zipcode">
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                                            <mat-form-field class="example-full-width" appearance="outline">
+                                                <mat-label>{{'EMERGENCY_CONTACT.FORM.COUNTRY' | translate}}</mat-label>
+                                                <input matInput formControlName="emergency_contact_country">
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                                            <button *ngIf="role_permission.users.emergencyContact.Edit"
+                                                class="btn-space" mat-raised-button color="primary"
+                                                [disabled]="!form.valid"
+                                                (click)="saveEmergencyContact()">{{'COMMON.ACTIONS.SAVE'|
+                                                translate}}</button>
+                                            <button type="button" mat-raised-button color="warn"
+                                                (click)="confirmExit()">{{'COMMON.ACTIONS.CANCEL'| translate}}</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,23 @@
+<div class="modalHeader">
+    <div class="row model-header">
+        <div class="col-1">
+            <img src="{{ invoice_logo }}" height="57px" width="45px" />
+        </div>
+        <div class="col-10">
+            <div class="editRowModal">
+                <div class="modalHeader m-auto text-center clearfix">
+                    <div class="modal-about">
+                        <div class="fw-bold p-t-5 p-l-10 font-17">
+                            {{title}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-1 text-right">
+            <button mat-mini-fab (click)="dialogClose.emit()" color="warn" aria-label="Close dialog">
+                <mat-icon class="col-white">close </mat-icon>
+            </button>
+        </div>
+    </div>
+</div>

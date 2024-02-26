@@ -1,0 +1,31 @@
+<div class="addContainer">
+    <app-model-header [title]="title" (dialogClose)="dialogRef.close()"></app-model-header>
+    <div mat-dialog-content>
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+            <div class="card-body">
+                <div>
+                    <div class="custom-form">
+                        <form class="validate-form mt-3" [formGroup]="form">
+                            <div class="row textarea-max form-old">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                                    <mat-form-field class="example-full-width" appearance="outline">
+                                        <mat-label>Reject Reason</mat-label>
+                                        <textarea matInput appTextareaAutoresizeproject
+                                            class="input-capitalized-textArea" placeholder="Type reason here"
+                                            formControlName="reject_reason"></textarea>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="container-auth-form-btn">
+                                <div style="text-align:center; ">
+                                    <button mat-raised-button color="primary" (click)="saveReason()"
+                                        class="auth-form-btn" type="submit">Save Reason</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

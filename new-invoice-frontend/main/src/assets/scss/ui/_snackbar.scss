@@ -1,0 +1,49 @@
+.mat-mdc-snack-bar-container.snackbar-success .mdc-snackbar__surface {
+  background-color: rgba(24, 206, 15, 0.8);
+  color: #ffffff;
+  text-align: left !important;
+  position: relative;
+  padding-left: 45px !important;
+}
+
+.mat-mdc-snack-bar-container.snackbar-info .mdc-snackbar__surface {
+  background-color: rgba(44, 168, 255, 0.8);
+  color: #ffffff;
+}
+
+.mat-mdc-snack-bar-container.snackbar-warning .mdc-snackbar__surface {
+  background-color: rgba(255, 230, 0, 0.8);
+  color: #ffffff;
+}
+
+.mat-mdc-snack-bar-container.snackbar-danger .mdc-snackbar__surface {
+  background-color: rgba(255, 0, 0, 0.8);
+  color: #ffffff;
+  text-align: left !important;
+  position: relative;
+  padding-left: 45px !important;
+}
+
+.mat-mdc-snack-bar-container.snackbar-danger::after{
+    content: '';
+    position: absolute;
+    left: 10px;
+    width: 35px;
+    height: 35px;
+    background-image: url('../../../assets/images/rovukinvoice.png');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;  
+}
+
+.mat-mdc-snack-bar-container.snackbar-success::after{
+    content: '';
+    position: absolute;
+    left: 10px;
+    width: 35px;
+    height: 35px;
+    background-image: url('../../../assets/images/rovukinvoice.png');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;  
+}

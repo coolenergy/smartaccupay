@@ -1,0 +1,97 @@
+<div class="wrapper-cust-admin" fxLayout style="height: 95%">
+    <div class="d-flex justify-content-between">
+        <h1 class="screen-title">
+            {{ "Help" | translate | titlecase }}
+        </h1>
+
+
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                <mat-card class="helppage-card">
+                    <mat-card-title class="helppage-card__header">
+                        <h5 class="helppage-card__title">{{'HelpPage-Contact-Support-Title' | translate}}</h5>
+                    </mat-card-title>
+                    <mat-card-content class="helppage-card__content">
+                        <form [formGroup]="contact_support_form">
+                            <div>
+                                <mat-form-field appearance="outline" class="contact-cust-width">
+                                    <mat-label>{{'HelpPage-Contact-Support-Form-email' | translate }}</mat-label>
+                                    <input matInput placeholder="{{'HelpPage-Contact-Support-Form-email' | translate }}"
+                                        type="email" formControlName="help_email">
+                                </mat-form-field>
+                            </div>
+                            <div>
+                                <mat-form-field appearance="outline" class="contact-cust-width">
+                                    <mat-label>{{'HelpPage-Contact-Support-Form-contactno' | translate }}</mat-label>
+                                    <input matInput
+                                        placeholder="{{'HelpPage-Contact-Support-Form-contactno' | translate }}"
+                                        formControlName="help_phone">
+                                </mat-form-field>
+                            </div>
+                            <div>
+                                <mat-form-field appearance="outline" class="contact-cust-width">
+                                    <mat-label>{{'HelpPage-Contact-Support-Form-Subject' | translate }}</mat-label>
+                                    <input matInput class="input-capitalized-textfield"
+                                        placeholder="{{'HelpPage-Contact-Support-Form-Subject' | translate }}"
+                                        formControlName="help_subject">
+                                </mat-form-field>
+                            </div>
+                            <div>
+                                <mat-form-field appearance="outline" class="contact-cust-width">
+                                    <mat-label>{{'HelpPage-Contact-Support-Form-Message' | translate }}</mat-label>
+                                    <textarea matInput appTextareaAutoresizeproject class="input-capitalized-textArea"
+                                        placeholder="{{'HelpPage-Contact-Support-Form-Message' | translate }}"
+                                        formControlName="help_message"></textarea>
+                                </mat-form-field>
+                            </div>
+                            <div>
+                                <button class="contact-cust-width" mat-raised-button color="primary"
+                                    (click)="sendButtonAction()">{{'HelpPage-Contact-Support-Form-Send-Button' |
+                                    translate
+                                    }}</button>
+                            </div>
+                        </form>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+
+            <div class="col-sm ">
+                <mat-card class="helppage-card">
+                    <mat-card-title class="helppage-card__header">
+                        <h5 class="helppage-card__title">{{'HelpPage-Contact-Support-FAQ' | translate}}</h5>
+                    </mat-card-title>
+                    <mat-card-content class="helppage-card__content">
+                        <cdk-accordion class="faq-accordion">
+                            <cdk-accordion-item *ngFor="let item of items; let index = index;"
+                                #accordionItem="cdkAccordionItem" class="faq-accordion-item" role="button" tabindex="0"
+                                [attr.id]="'accordion-header-' + index" [attr.aria-expanded]="accordionItem.expanded"
+                                [attr.aria-controls]="'accordion-body-' + index">
+                                <div class="faq-accordion-item-header" (click)="accordionItem.toggle()"
+                                    [ngClass]=" accordionItem.expanded ? 'faq-accordion-item-header-active' : ''">
+                                    {{ item.question }}
+                                    <span class="faq-accordion-item-description">
+                                        {{ accordionItem.expanded ? '&#8963;' : '&#10148;' }}
+                                    </span>
+                                </div>
+                                <div class="faq-accordion-item-body" role="region"
+                                    [style.display]="accordionItem.expanded ? '' : 'none'"
+                                    [attr.id]="'accordion-body-' + index"
+                                    [attr.aria-labelledby]="'accordion-header-' + index" [innerHtml]="item.answer">
+                                </div>
+                            </cdk-accordion-item>
+                        </cdk-accordion>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>

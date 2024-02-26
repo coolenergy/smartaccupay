@@ -1,0 +1,24 @@
+.lecture-list {
+    display: block !important;
+}
+
+// .history-data {
+//     background-color: white;
+// }
+
+.table {
+
+    tr th,
+    td {
+        width: 50%;
+    }
+}
+
+.table-bordered tbody tr td,
+.table-bordered tbody tr th {
+    border-left: none !important;
+}
+
+.dark .media-title {
+    color: white !important;
+}

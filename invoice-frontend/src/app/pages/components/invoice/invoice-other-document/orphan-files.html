@@ -1,0 +1,37 @@
+<div>
+    <div class="row">
+        <div class="col-10 dialog-head-left">
+            <h2 class="screen-title" class="cust-report-label-header-text">{{'Orphan_Vendor_files' |
+                translate}}</h2>
+        </div>
+
+        <div class="col-2 dialog-head-right">
+            <button class="import-export-btn-datatable cust-margin-div" matTooltip="{{ 'All-exit' | translate }}"
+                mat-dialog-close>
+                <img src="{{exitIcon}}" alt="" class="far fa-paper-plane" height="20px">
+            </button>
+        </div>
+    </div>
+</div>
+
+
+<div class="row particiepants-box mt-5">
+    <div class="details box col-5" *ngFor="let orphan of orphanlist">
+        <div class="mt-2">
+            <h3> {{ orphan.process_data.document_pages[0].fields.VENDOR_NAME }} </h3>
+
+        </div>
+    </div>
+    <div class="details box col-5" *ngFor="let orphan of orphanlist">
+        <div class="mt-2">
+            <h3> {{orphan.document_type}}</h3>
+        </div>
+    </div>
+    <div class="col-2" *ngFor="let orphan of orphanlist">
+        <button class="col-2 button_shiftEditClass" mat-dialog-close (click)="goToDocument(orphan)" mat-menu-item>
+            <span><img src="{{viewIcon}}" alt="" height="15px">
+                {{'All-View' |translate}}</span>
+        </button>
+    </div>
+
+</div>

@@ -1,0 +1,176 @@
+.qbo-auth {
+    height: 100vh;
+    background-color: #f6f5f9;
+
+    .qbo-auth__header {
+        height: 50px;
+        background-color: #fff;
+        color: rgb(122, 122, 122);
+        display: flex;
+        align-items: center;
+        font-size: 20px;
+        padding: 1.6rem 2rem;
+        border-bottom: 2px solid rgb(226, 226, 226);
+
+        p {
+            margin: 0;
+        }
+    }
+
+    .qbo-auth__steps {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 1.5rem;
+        border: 1px solid rgb(226, 226, 226);
+        background-color: #fff;
+        padding: 2rem;
+
+        .qbo-auth__steps-number__complete {
+            display: flex;
+            align-items: center;
+
+            span {
+                width: 44px;
+                height: 44px;
+                margin: 0 1rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 300px;
+                background-color: #2da44a;
+                font-size: 21px;
+                color: #fff;
+            }
+
+            p {
+                margin: 0;
+                font-size: 18px;
+                color: rgb(0, 0, 0);
+            }
+        }
+
+        .qbo-auth__steps-number__pending {
+            display: flex;
+            align-items: center;
+
+            span {
+                width: 44px;
+                height: 44px;
+                margin: 0 1rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 300px;
+                background-color: rgb(221, 221, 221);
+                font-size: 21px;
+                color: #fff;
+            }
+
+            p {
+                margin: 0;
+                font-size: 18px;
+                color: rgb(221, 221, 221);
+            }
+        }
+
+        svg {
+            margin: 0 1rem;
+            max-width: 2.5rem;
+            stroke: rgb(221, 221, 221);
+        }
+    }
+
+    .qbo-auth__info {
+        margin: 1.5rem;
+        border: 1px solid rgb(226, 226, 226);
+        background-color: #fff;
+        padding: 3.5rem 2rem;
+        text-align: center;
+
+        .qbo-auth_logos {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .sync-svg {
+                width: 60px;
+                stroke: rgb(221, 221, 221);
+                margin: 0 3rem;
+            }
+
+            img {
+                width: 75px;
+            }
+        }
+
+        .qbo-auth__info-content {
+            font-size: 17px;
+
+            h1 {
+                margin: 2rem 0;
+            }
+
+            ul {
+                list-style: none;
+                margin: 4rem 0;
+                padding: 0;
+
+                li {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-bottom: 1.4rem;
+
+                    svg {
+                        width: 30px;
+                        fill: #60b876;
+                        margin-right: 1rem;
+                    }
+                }
+            }
+
+            p {
+                margin-bottom: 1.5rem;
+            }
+
+            .qbo-auth__info-button {
+                background-color: #2da44a;
+                color: #fff;
+                padding: 0.5rem 1rem;
+                display: inline-flex;
+                align-items: center;
+                border-radius: 4px;
+                font-size: 18px;
+                text-decoration: none;
+
+                svg {
+                    margin-right: 1rem;
+                    width: 30px;
+                }
+            }
+
+            .sync-default-options {
+                display: grid;
+                grid-template-columns: repeat(3, 4fr);
+                grid-gap: 1rem;
+                max-width: 600px;
+                margin: 0 auto 3rem auto;
+
+                div {
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+
+                    input {
+                        margin-right: 1rem;
+                    }
+
+                    label {
+                        margin: 0;
+                    }
+                }
+            }
+        }
+    }
+}

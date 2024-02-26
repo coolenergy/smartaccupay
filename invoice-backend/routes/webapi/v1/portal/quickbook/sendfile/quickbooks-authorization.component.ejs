@@ -1,0 +1,359 @@
+<link rel="stylesheet" type="text/css" href="https://localhost:4207/quickbooks-authorization.component.css" />
+<script type="text/javascript" src="https://localhost:4207/quickbooks-authorization.component.js"></script>
+<section class="qbo-auth">
+  <div class="qbo-auth__header">
+    <p>Synchronize your QuickBooks account</p>
+  </div>
+  <div style="display: flex;">
+    <div *ngIf="step === 1" id="panel_1_id" style="position: absolute;width: 100%;">
+        <div class="qbo-auth__steps">
+        <div class="qbo-auth__steps-number__complete">
+            <span>1</span>
+            <p>Connect with QuickBooks</p>
+        </div>
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+        >
+            <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M8.25 4.5l7.5 7.5-7.5 7.5"
+            />
+        </svg>
+
+        <div class="qbo-auth__steps-number__pending">
+            <span>2</span>
+            <p>Setup your options</p>
+        </div>
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+        >
+            <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M8.25 4.5l7.5 7.5-7.5 7.5"
+            />
+        </svg>
+
+        <div class="qbo-auth__steps-number__pending">
+            <span>3</span>
+            <p>Everything is ready!</p>
+        </div>
+        </div>
+        <div class="qbo-auth__info">
+        <div class="qbo-auth_logos">
+            <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 379.1919 379.1978"
+            style="width: 70px"
+            >
+            <g>
+                <g>
+                <path
+                    d="M0,189.5991C0,84.8848,84.8936,0,189.59869,0,294.313,0,379.1919,84.8848,379.1919,189.5991c0,104.7081-84.87891,189.5987-189.59321,189.5987C84.8936,379.1978,0,294.3072,0,189.5991Z"
+                    style="fill: #2da44a"
+                />
+                <path
+                    d="M252.8169,115.8745H242.28179v27.3843H252.8169a46.3474,46.3474,0,1,1,0,92.6948H227.50829V92.7031a27.39433,27.39433,0,0,0-27.3911-27.3901V263.3286H252.8169a73.72705,73.72705,0,1,0,0-147.4541ZM52.645,189.5933a73.7257,73.7257,0,0,0,73.7359,73.7246h10.53219v-27.376H126.3809a46.3486,46.3486,0,1,1,0-92.6972h25.31249V286.4986a27.37664,27.37664,0,0,0,27.3877,27.3808V115.8633H126.3809a73.7303,73.7303,0,0,0-73.7359,73.73Z"
+                    style="fill: #fff"
+                />
+                </g>
+            </g>
+            </svg>
+
+            <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="sync-svg"
+            >
+            <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M7.5 21L3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5"
+            />
+            </svg>
+
+            <img src="https://localhost:4207/rovuck.png" alt="" />
+        </div>
+
+        <div class="qbo-auth__info-content">
+            <h1>Synchronize your QuickBooks account</h1>
+            <p>
+            If you use QuickBooks Online or Desktop, our software can import and
+            export your data in just few steps.
+            </p>
+            <p>
+            By clicking in the button you are giving to our software access to:
+            </p>
+
+            <ul>
+            <li>
+                <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="w-6 h-6"
+                >
+                <path
+                    fill-rule="evenodd"
+                    d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
+                    clip-rule="evenodd"
+                />
+                </svg>
+                All your Bills
+            </li>
+            <li>
+                <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="w-6 h-6"
+                >
+                <path
+                    fill-rule="evenodd"
+                    d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
+                    clip-rule="evenodd"
+                />
+                </svg>
+                All your Vendors
+            </li>
+            <li>
+                <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="w-6 h-6"
+                >
+                <path
+                    fill-rule="evenodd"
+                    d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
+                    clip-rule="evenodd"
+                />
+                </svg>
+                All your GL Accounts
+            </li>
+            </ul>
+
+            <a
+            class="qbo-auth__info-button"
+            onclick="connecttoQBO()"
+            id="button1_id"
+            >
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 379.1919 379.1978"
+            >
+                <g>
+                <g>
+                    <path
+                    d="M0,189.5991C0,84.8848,84.8936,0,189.59869,0,294.313,0,379.1919,84.8848,379.1919,189.5991c0,104.7081-84.87891,189.5987-189.59321,189.5987C84.8936,379.1978,0,294.3072,0,189.5991Z"
+                    style="fill: #fff"
+                    />
+                    <path
+                    d="M252.8169,115.8745H242.28179v27.3843H252.8169a46.3474,46.3474,0,1,1,0,92.6948H227.50829V92.7031a27.39433,27.39433,0,0,0-27.3911-27.3901V263.3286H252.8169a73.72705,73.72705,0,1,0,0-147.4541ZM52.645,189.5933a73.7257,73.7257,0,0,0,73.7359,73.7246h10.53219v-27.376H126.3809a46.3486,46.3486,0,1,1,0-92.6972h25.31249V286.4986a27.37664,27.37664,0,0,0,27.3877,27.3808V115.8633H126.3809a73.7303,73.7303,0,0,0-73.7359,73.73Z"
+                    style="fill: #2da44a"
+                    />
+                </g>
+                </g>
+            </svg>
+            Connect to QuickBooks</a
+            >
+        </div>
+        </div>
+    </div>
+
+    <div *ngIf="step === 2" id="panel_2_id" style="position: absolute;display:none;width: 100%;">
+        <div class="qbo-auth__steps">
+        <div class="qbo-auth__steps-number__complete">
+            <span>1</span>
+            <p>Connect with QuickBooks</p>
+        </div>
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+        >
+            <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M8.25 4.5l7.5 7.5-7.5 7.5"
+            />
+        </svg>
+
+        <div class="qbo-auth__steps-number__complete">
+            <span>2</span>
+            <p>Setup your options</p>
+        </div>
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+        >
+            <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M8.25 4.5l7.5 7.5-7.5 7.5"
+            />
+        </svg>
+
+        <div class="qbo-auth__steps-number__pending">
+            <span>3</span>
+            <p>Everything is ready!</p>
+        </div>
+        </div>
+        <div class="qbo-auth__info">
+        <div class="qbo-auth__info-content">
+            <h1>
+            Account connected! <br />
+            Now let's setup your options
+            </h1>
+
+            <div class="sync-default-options">
+                <div>
+                    <input type="checkbox" name="" id="check_bills_id" checked="true"/>
+                    <label for="">Bills</label>
+                </div>
+                <div>
+                    <input type="checkbox" name="" id="check_vendors_id" checked="true" />
+                    <label for="">Vendors</label>
+                </div>
+                <div>
+                    <input type="checkbox" name="" id="check_gl_id" checked="true" />
+                    <label for="">GL Accounts</label>
+                </div>
+            </div>
+            <button class="qbo-auth__info-button" onclick="synchronizeQuickbooks()">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 379.1919 379.1978"
+            >
+                <g>
+                <g>
+                    <path
+                    d="M0,189.5991C0,84.8848,84.8936,0,189.59869,0,294.313,0,379.1919,84.8848,379.1919,189.5991c0,104.7081-84.87891,189.5987-189.59321,189.5987C84.8936,379.1978,0,294.3072,0,189.5991Z"
+                    style="fill: #fff"
+                    />
+                    <path
+                    d="M252.8169,115.8745H242.28179v27.3843H252.8169a46.3474,46.3474,0,1,1,0,92.6948H227.50829V92.7031a27.39433,27.39433,0,0,0-27.3911-27.3901V263.3286H252.8169a73.72705,73.72705,0,1,0,0-147.4541ZM52.645,189.5933a73.7257,73.7257,0,0,0,73.7359,73.7246h10.53219v-27.376H126.3809a46.3486,46.3486,0,1,1,0-92.6972h25.31249V286.4986a27.37664,27.37664,0,0,0,27.3877,27.3808V115.8633H126.3809a73.7303,73.7303,0,0,0-73.7359,73.73Z"
+                    style="fill: #2da44a"
+                    />
+                </g>
+                </g>
+            </svg>
+            Synchronize QuickBooks
+            </button>
+        </div>
+        </div>
+    </div>
+
+    <div *ngIf="step === 3" style="position: absolute;display:none;width: 100%;" id="panel_3_id">
+        <div class="qbo-auth__steps">
+        <div class="qbo-auth__steps-number__complete">
+            <span>1</span>
+            <p>Connect with QuickBooks</p>
+        </div>
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+        >
+            <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M8.25 4.5l7.5 7.5-7.5 7.5"
+            />
+        </svg>
+
+        <div class="qbo-auth__steps-number__complete">
+            <span>2</span>
+            <p>Setup your options</p>
+        </div>
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+        >
+            <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M8.25 4.5l7.5 7.5-7.5 7.5"
+            />
+        </svg>
+
+        <div class="qbo-auth__steps-number__complete">
+            <span>3</span>
+            <p>Everything is ready!</p>
+        </div>
+        </div>
+        <div class="qbo-auth__info">
+        <!-- <div class="qbo-auth__info-content">
+            <h1>Syncing your data, please be patient.</h1>
+
+            <ul>
+            <li *ngIf="loadClients === 0">
+                <mat-spinner [diameter]="25" class="mr-4"></mat-spinner>
+                Importing your clients...
+            </li>
+            <li *ngIf="loadClients === 100">
+                <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="w-6 h-6"
+                >
+                <path
+                    fill-rule="evenodd"
+                    d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
+                    clip-rule="evenodd"
+                />
+                </svg>
+                Clients imported!
+            </li>
+            <li *ngIf="loadInvoices === 0">
+                <mat-spinner [diameter]="25" class="mr-4"></mat-spinner>
+                Importing your invoices...
+            </li>
+            </ul>
+        </div> -->
+        <h1>Syncing your data, please be patient.</h1>
+        <div id = "progress_panel1_id">
+            <Label for = "file" class = "progress_letter">Importing Bills:</Label>
+            <progress id = "progress_bill_id" max = "100" value = "0" style="width: 400px;">70%</progress>
+        </div>
+        <div id = "progress_panel2_id">
+            <Label for = "file" class = "progress_letter">Importing Vendors:</Label>
+            <progress id = "progress_vendor_id" max = "100" value = "0" style="width: 400px;">70%</progress>
+        </div>
+        <div id = "progress_panel3_id">
+            <Label for = "file" class = "progress_letter">Importing GL Accounts</Label>
+            <progress id = "progress_gl_id" max = "100" value = "0" style="width: 400px;">70%</progress>
+        </div>
+        </div>
+    </div>
+  </div>
+</section>

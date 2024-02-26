@@ -1,0 +1,294 @@
+<section class="content">
+    <div class="content-block">
+        <div class="m-4"></div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="materialTableHeader">
+                        <div class="left">
+                            <ul class="header-buttons-left ms-0">
+                                <li class="tbl-title">
+                                    <h2 *ngIf="isDelete === 0">{{'USERS.VIEW.TITLE' |
+                                        translate}}</h2>
+                                    <h2 *ngIf="isDelete === 1">{{'USERS.VIEW.ARCHIVED_TITLE' |
+                                        translate}}</h2>
+                                </li>
+                                <li class="tbl-search-box">
+                                    <label for="search-input"><i class="material-icons search-icon">search</i></label>
+                                    <input placeholder="{{'COMMON.TOOL_TIP.SEARCH' |  translate}}" type="text"
+                                        class="browser-default search-field" aria-label="Search box"
+                                        (input)="onSearchChange($event)">
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="right users-dropdown">
+                            <ul class="tbl-export-btn">
+                                <li class="tbl-header-btn" *ngIf="isDelete === 0">
+                                    <form [formGroup]="userSelectForm">
+                                        <mat-form-field [hidden]=!selection.hasValue() class="example-full-width"
+                                            appearance="outline">
+                                            <mat-label>Action for selected</mat-label>
+                                            <mat-select [(ngModel)]="selectedValue" name="food"
+                                                (selectionChange)="onBookChange($event)" formControlName="userstatus">
+                                                <mat-option [value]="1">
+                                                    Active
+                                                </mat-option>
+                                                <mat-option [value]="2">
+                                                    Inactive
+                                                </mat-option>
+                                                <mat-option [value]="3">
+                                                    Archive
+                                                </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </form>
+                                    <!-- <div class="m-l-10" [hidden]=!selection.hasValue() matTooltip="{{'COMMON.TOOL_TIP.MULTI_ARCHIVE' |
+                                        translate}}">
+                                        <button mat-mini-fab color="warn" (click)="removeSelectedRows()">
+                                            <mat-icon class="col-white">archive</mat-icon>
+                                        </button>
+                                    </div> -->
+                                </li>
+                                <li class="tbl-header-btn" *ngIf="isDelete === 0">
+                                    <div class="m-l-10" matTooltip="{{'COMMON.TOOL_TIP.REFRESH' |
+                                    translate}}">
+                                        <button mat-mini-fab color="primary" (click)="refresh()">
+                                            <mat-icon class="col-white">refresh</mat-icon>
+                                        </button>
+                                    </div>
+                                </li>
+                                <li class="tbl-header-btn" *ngIf="isDelete === 0 && role_permission.users.Add">
+                                    <div class="m-l-10" matTooltip="{{'COMMON.TOOL_TIP.IMPORT_TEMPLATE' |
+                                    translate}}">
+                                        <button mat-mini-fab color="primary" (click)="downloadImport()">
+                                            <mat-icon class="col-white">file_download</mat-icon>
+                                        </button>
+                                    </div>
+                                </li>
+                                <li class="tbl-header-btn" *ngIf="isDelete === 0 && role_permission.users.Add">
+                                    <div class="m-l-10" matTooltip="{{'COMMON.TOOL_TIP.IMPORT' |
+                                    translate}}">
+                                        <input id="file-upload" class="mr-2" type="file" style="display: none"
+                                            (change)="onFileChange($event)" #OpenFilebox />
+                                        <button mat-mini-fab color="primary" (click)="importFileAction()">
+                                            <mat-icon class="col-white">file_upload</mat-icon>
+                                        </button>
+                                    </div>
+                                </li>
+                                <!-- <li class="tbl-header-btn" *ngIf="isDelete === 0">
+                                    <div class="m-l-10" matTooltip="{{'COMMON.TOOL_TIP.REPORT' |
+                                    translate}}" (click)="userReport()">
+                                        <button mat-mini-fab color="primary">
+                                            <mat-icon class="col-white">insert_drive_file</mat-icon>
+                                        </button>
+                                    </div>
+                                </li> -->
+                                <li class="tbl-header-btn" *ngIf="isDelete === 0">
+                                    <div class="m-l-10" matTooltip="{{'COMMON.TOOL_TIP.HISTORY' |
+                                    translate}}">
+                                        <button mat-mini-fab color="primary" (click)="openHistory()">
+                                            <mat-icon class="col-white">history</mat-icon>
+                                        </button>
+                                    </div>
+                                </li>
+
+                                <li class="tbl-header-btn" *ngIf="isDelete === 0">
+                                    <div class="m-l-10" matTooltip="{{'COMMON.TOOL_TIP.LIST_TO_GRID' |
+                                    translate}}">
+                                        <button mat-mini-fab color="primary" (click)="listToGrid()">
+                                            <mat-icon class="col-white">grid_on </mat-icon>
+                                        </button>
+                                    </div>
+                                </li>
+                                <li class="tbl-header-btn" *ngIf="isDelete === 0 && role_permission.users.Delete">
+                                    <div class="m-l-10" matTooltip="{{'COMMON.TOOL_TIP.ARCHIVE' |
+                                    translate}}">
+                                        <button mat-mini-fab color="warn" (click)="gotoArchiveUnarchive()">
+                                            <mat-icon class="col-white">archive</mat-icon>
+                                        </button>
+                                    </div>
+                                </li>
+                                <li class="tbl-header-btn" *ngIf="isDelete === 1">
+                                    <div class="m-l-10" matTooltip="{{'COMMON.TOOL_TIP.BACK' |
+                                    translate}}">
+                                        <button mat-mini-fab color="warn" (click)="gotoArchiveUnarchive()">
+                                            <mat-icon class="col-white">close </mat-icon>
+                                        </button>
+                                    </div>
+                                </li>
+                                <li class="tbl-header-btn" *ngIf="isDelete === 0 && role_permission.users.Add">
+                                    <div class="m-l-10" matTooltip="{{'COMMON.TOOL_TIP.ADD' |
+                                    translate}}">
+                                        <button mat-mini-fab color="primary" (click)="addNewUser()">
+                                            <mat-icon class="col-white">add</mat-icon>
+                                        </button>
+                                    </div>
+                                </li>
+                                <li *ngIf="isDelete === 0">
+                                    <div class="export-button m-l-10" matTooltip="{{'COMMON.TOOL_TIP.XLSX' |
+                                        translate}}">
+                                        <img src="assets/images/icons/xlsx.png" alt="" (click)="exportExcel()" />
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="body overflow-auto">
+                        <div class="table-responsive">
+                            <table mat-table #table [dataSource]="dataSource" matSort (matSortChange)="sortData($event)"
+                                class="mat-cell">
+                                <ng-container matColumnDef="select">
+                                    <mat-header-cell *matHeaderCellDef class="psl-1"
+                                        [ngClass]="'tbl-col-width-per-selected'">
+                                        <mat-checkbox (change)="$event ? masterToggle() : null"
+                                            [checked]="selection.hasValue() && isAllSelected()"
+                                            [indeterminate]="selection.hasValue() && !isAllSelected()"
+                                            [ngClass]="'tbl-checkbox' ">
+                                        </mat-checkbox>
+                                    </mat-header-cell>
+                                    <mat-cell *matCellDef="let row" class="psl-1"
+                                        [ngClass]="'tbl-col-width-per-selected'">
+                                        <mat-checkbox (click)="$event.stopPropagation()"
+                                            (change)="$event ? selection.toggle(row) : null"
+                                            [checked]="selection.isSelected(row)" [ngClass]="'tbl-checkbox'">
+                                        </mat-checkbox>
+                                    </mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="img">
+                                    <mat-header-cell mat-header-cell *matHeaderCellDef
+                                        [ngClass]="'tbl-col-width-per-image'"> {{'USERS.TABLE.IMAGE' |
+                                        translate}}
+                                    </mat-header-cell>
+                                    <mat-cell mat-cell *matCellDef="let row"
+                                        class="table-img tbl-col-width-per-image"><span
+                                            class="mobile-label">Image:</span>
+                                        <img [src]="row.userpicture" />
+                                    </mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="userfullname">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header>{{'USERS.TABLE.USER_NAME' |
+                                        translate}}
+                                    </mat-header-cell>
+                                    <mat-cell [matTooltip]="getNameTooltip(row)" (click)="editUser(row)"
+                                        *matCellDef="let row" (contextmenu)="onContextMenu($event, row)">
+                                        <span class="truncate-text"> <span
+                                                class="mobile-label">Name:</span>{{row.userfullname}}</span>
+                                    </mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="userphone">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header>{{'USERS.TABLE.PHONE' |
+                                        translate}}
+                                    </mat-header-cell>
+                                    <mat-cell (click)="editUser(row)" *matCellDef="let row"
+                                        (contextmenu)="onContextMenu($event, row)">
+                                        <span class="truncate-text"> <span
+                                                class="mobile-label">Phone:</span>{{row.userphone | phoneFormatPipe}}</span>
+                                    </mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="useremail">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header>{{'USERS.TABLE.EMAIL' |
+                                        translate}}
+                                    </mat-header-cell>
+                                    <mat-cell *matCellDef="let row" (click)="editUser(row)"
+                                        [matTooltip]="getEmailTooltip(row)" (contextmenu)="onContextMenu($event, row)">
+                                        <span class="truncate-text"> <span
+                                                class="mobile-label">Email:</span>{{row.useremail}}</span>
+                                    </mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="role_name">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header>{{'USERS.TABLE.ROLE' |
+                                        translate}}
+                                    </mat-header-cell>
+                                    <mat-cell (click)="editUser(row)" *matCellDef="let row"
+                                        (contextmenu)="onContextMenu($event, row)">
+                                        <span class="truncate-text"> <span
+                                                class="mobile-label">Role:</span>{{row.role_name}}</span>
+                                    </mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="userjob_title_name">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header>{{'USERS.TABLE.JOB_TITLE' |
+                                        translate}}
+                                    </mat-header-cell>
+                                    <mat-cell [matTooltip]="getJobTitleTooltip(row)" (click)="editUser(row)"
+                                        *matCellDef="let row" (contextmenu)="onContextMenu($event, row)">
+                                        <span class="mobile-label">Job
+                                            Title:</span>{{row.userjob_title_name}}
+                                    </mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="department_name">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header>{{'USERS.TABLE.DEPARTMENT' |
+                                        translate}}
+                                    </mat-header-cell>
+                                    <mat-cell [matTooltip]="getDepartmentTooltip(row)" (click)="editUser(row)"
+                                        *matCellDef="let row" (contextmenu)="onContextMenu($event, row)">
+                                        <span class="truncate-text"> <span
+                                                class="mobile-label">Department:</span>{{row.department_name}}</span>
+                                    </mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="userstatus">
+                                    <mat-header-cell class="psl-1" [ngClass]="'tbl-col-width-per-action'"
+                                        *matHeaderCellDef mat-sort-header>{{'VENDOR.TABLE.STATUS' |
+                                        translate}}
+                                    </mat-header-cell>
+                                    <mat-cell mat-cell *matCellDef="let row" (contextmenu)="onContextMenu($event, row) "
+                                        class="tbl-col-width-per-action">
+                                        <span class="mobile-label">Status:</span>
+                                        <div *ngIf="row.userstatus===1" (click)="updateStatus(row)">
+                                            <span class="badge badge-solid-green">
+                                                {{'COMMON.STATUS.ACTIVE' | translate}}</span>
+                                        </div>
+                                        <div *ngIf="row.userstatus===2" (click)="updateStatus(row)">
+                                            <span class="badge badge-solid-red">
+                                                {{'COMMON.STATUS.INACTIVE' | translate}}</span>
+                                        </div>
+                                    </mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="actions">
+                                    <mat-header-cell class="psl-3" [ngClass]="'tbl-col-width-per-action'"
+                                        *matHeaderCellDef>{{'USERS.TABLE.ACTIONS' |
+                                        translate}}</mat-header-cell>
+                                    <mat-cell *matCellDef="let row; let i=index;" class="pr-0 tbl-col-width-per-action">
+                                        <button matTooltip="{{'COMMON.ACTIONS.EDIT' | translate}}" mat-icon-button
+                                            color="accent" (click)="$event.stopPropagation()" (click)="editUser(row)"
+                                            *ngIf="isDelete === 0" class="col-blue">
+                                            <app-feather-icons [icon]="'edit'" [class]="'tbl-fav-edit'">
+                                            </app-feather-icons>
+                                        </button>
+                                        <button mat-icon-button matTooltip="{{'COMMON.ACTIONS.ARCHIVE' | translate}}"
+                                            color="accent" (click)="$event.stopPropagation()"
+                                            (click)="deleteUser(row, 1)" *ngIf="isDelete === 0" class="col-red">
+                                            <mat-icon>archive</mat-icon>
+                                        </button>
+                                        <button mat-icon-button matTooltip="{{'COMMON.ACTIONS.RESTORE' | translate}}"
+                                            color="accent" (click)="$event.stopPropagation()"
+                                            (click)="deleteUser(row, 0)" *ngIf="isDelete === 1" class="col-red">
+                                            <mat-icon>archive</mat-icon>
+                                        </button>
+                                    </mat-cell>
+                                </ng-container>
+
+                                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                                <mat-row *matRowDef="let row; columns: displayedColumns;" [style.cursor]="'pointer'"
+                                    matRipple>
+                                </mat-row>
+                            </table>
+                        </div>
+                        <!-- Loading spinner -->
+                        <div *ngIf="userService?.isTblLoading" class="tbl-spinner">
+                            <app-loading></app-loading>
+                        </div>
+                        <!-- context menu end -->
+                        <div *ngIf="!userService?.isTblLoading" class="no-results"
+                            [style.display]="userList.length === 0 ? '' : 'none'">
+                            {{'COMMON.LISTING.EMPTY' | translate}}
+                        </div>
+                        <mat-paginator #paginator [length]="pager!.total" [pageIndex]="tableRequest.pageIndex"
+                            [pageSize]="tableRequest.pageSize" [pageSizeOptions]="[5, 10, 25, 100]"
+                            (page)="changePage($event)">
+                        </mat-paginator>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

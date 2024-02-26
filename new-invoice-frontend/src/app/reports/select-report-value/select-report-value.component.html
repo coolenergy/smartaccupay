@@ -1,0 +1,94 @@
+<div class="addContainer">
+    <app-model-header [title]="data.title" (dialogClose)="dialogRef.close()"></app-model-header>
+    <div mat-dialog-content class="mr-set">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+            <div class="card-body">
+                <div class="custom-form">
+                    <form class="validate-form mt-3" [formGroup]="form">
+                        <div class="row"
+                            *ngIf="data.title === reportType.reportVendor || data.title === reportType.openVendor">
+                            <mat-checkbox formControlName="All_Vendors" (change)="onChangeValueAll_Vendors($event)"
+                                class="example-margin" color="primary">All Vendor</mat-checkbox>
+                            <div class="col-xl-12col-lg-12 col-md-12 col-sm-12 mb-2">
+                                <mat-form-field class="example-full-width" appearance="outline">
+                                    <mat-label>Vendor</mat-label>
+                                    <mat-select formControlName="vendor_ids" multiple #vendorSelect>
+                                        <mat-select-filter [placeholder]="'Filter'" [displayMember]="'vendor_name'"
+                                            [array]="variablesVendorList" (filteredReturn)="vendorList =$event"
+                                            *ngIf="vendorSelect.focused">
+                                        </mat-select-filter>
+                                        <mat-option *ngFor="let vendor of vendorList" [value]="vendor._id">
+                                            {{vendor.vendor_name}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row" *ngIf="data.title === reportType.openApprover">
+                            <mat-checkbox formControlName="All_Users" (change)="onChangeValueAll_Users($event)"
+                                class="example-margin" color="primary">All Users</mat-checkbox>
+                            <div class="col-xl-12col-lg-12 col-md-12 col-sm-12 mb-2">
+                                <mat-form-field class="example-full-width" appearance="outline">
+                                    <mat-label>User</mat-label>
+                                    <mat-select formControlName="assign_to_ids" multiple #userSelect>
+                                        <mat-select-filter [placeholder]="'Filter'" [displayMember]="'userfullname'"
+                                            [array]="variablesUserList" (filteredReturn)="userList =$event"
+                                            *ngIf="userSelect.focused">
+                                        </mat-select-filter>
+                                        <mat-option *ngFor="let user of userList" [value]="user._id">
+                                            {{user.userfullname}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row" *ngIf="data.title === reportType.openClass">
+                            <mat-checkbox formControlName="All_ClassNames"
+                                (change)="onChangeValueAll_ClassNames($event)" class="example-margin" color="primary">
+                                All Class Name</mat-checkbox>
+                            <div class="col-xl-12col-lg-12 col-md-12 col-sm-12 mb-2">
+                                <mat-form-field class="example-full-width" appearance="outline">
+                                    <mat-label>Class Name</mat-label>
+                                    <mat-select formControlName="class_name_ids" multiple #classNameSelect>
+                                        <mat-select-filter [placeholder]="'Filter'" [displayMember]="'name'"
+                                            [array]="variablesClassNameList" (filteredReturn)="classNameList =$event"
+                                            *ngIf="classNameSelect.focused">
+                                        </mat-select-filter>
+                                        <mat-option *ngFor="let class of classNameList" [value]="class._id">
+                                            {{class.name}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row" *ngIf="data.title === reportType.openClientJob">
+                            <mat-checkbox formControlName="All_JobClients"
+                                (change)="onChangeValueAll_JobClients($event)" class="example-margin" color="primary">
+                                All Client/Job Names</mat-checkbox>
+                            <div class="col-xl-12col-lg-12 col-md-12 col-sm-12 mb-2">
+                                <mat-form-field class="example-full-width" appearance="outline">
+                                    <mat-label>Client/Job Name</mat-label>
+                                    <mat-select formControlName="job_client_name_ids" multiple #clientSelect>
+                                        <mat-select-filter [placeholder]="'Filter'" [displayMember]="'client_name'"
+                                            [array]="variablesClientJob" (filteredReturn)="clientList =$event"
+                                            *ngIf="clientSelect.focused">
+                                        </mat-select-filter>
+                                        <mat-option *ngFor="let client of clientList" [value]="client._id">
+                                            {{client.client_name}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="container-auth-form-btn">
+                            <div style="text-align:center; ">
+                                <button mat-raised-button color="primary" (click)="viewReport()" class="auth-form-btn"
+                                    type="submit">View Report</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+@import 'src/app/styles/variables';
+
+.main-cust-setting-div {
+    width: 100%;
+
+    @media (max-width: $normal) {}
+
+    @media (max-width: $small) {
+        flex-wrap: wrap;
+    }
+
+    @media (max-width: $medium) {
+        flex-wrap: wrap;
+    }
+}
+
+.main-one-input-field {
+    width: 100%;
+}
+
+.cust-margin {
+    margin: auto 0;
+}
+
+.center-cust {
+    text-align: center;
+}

@@ -1,0 +1,53 @@
+<div class="wrapper-cust-admin" fxLayout style="height: 95%">
+    <div class="d-flex justify-content-between">
+        <h1 class="screen-title">
+            {{ "Sidebar-Report" | translate | titlecase }}
+        </h1>
+        <div class="row mr-2 action-button">
+            <mat-form-field appearance="outline" class="cust-report-full-width-fields">
+                <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
+                    <input matStartDate formControlName="start_date"
+                        placeholder="{{'Company-Material-Report-StartDate' | translate}}" disabled #dateRangeStart>
+                    <input matEndDate formControlName="end_date"
+                        placeholder="{{'Company-Material-Report-EndDate' | translate}}" disabled #dateRangeEnd
+                        (dateChange)="dateRangeChange(dateRangeStart, dateRangeEnd)">
+                </mat-date-range-input>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-date-range-picker #picker disabled="false"></mat-date-range-picker>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="wrapper-cust-admin cust-width" *ngIf="showTable">
+        <div class=" cust-padding-tmp">
+            <div class="margin-cust-top table-responsive cust-padding-tmp">
+                <div>
+                    <table *ngIf="showInvoiceTable" datatable [dtOptions]="dtOptions" class="row-border hover  ">
+                        <thead>
+                            <tr>
+                                <th>{{"invoice_no" | translate}}</th>
+                                <th>{{"po_no" | translate}}</th>
+                                <th>{{"Vendor_Name" | translate}}</th>
+                                <th>{{"packing_slip_no" | translate}}</th>
+                                <th>{{"Receiving_Slip" | translate}}</th>
+                                <th>{{"Employee-form-Status" | translate}}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let invoice of allInvoices">
+                                <td>{{ invoice.invoice }}</td>
+                                <td>{{ invoice.p_o }}</td>
+                                <td>{{ invoice.vendor.vendor_name }}</td>
+                                <td>{{ invoice.packing_slip }}</td>
+                                <td>{{ invoice.receiving_slip }}</td>
+                                <td
+                                    [ngClass]="invoice.status == 'Pending'? 'pendingcss' : 'Approvedcss' && invoice.status == 'Approved'? 'Approvedcss' : 'Rejectcss'&& invoice.status == 'Rejected'? 'Rejectcss' : 'Rejectcss'">
+                                    {{ invoice.status }}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

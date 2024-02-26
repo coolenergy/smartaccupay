@@ -1,0 +1,238 @@
+﻿/*
+ *  Document   : badgelistgroupitem.scss
+ *  Author     : RedStar Template
+ *  Description: This scss file for badge style classes
+ */
+.badge {
+  padding: 5px 8px;
+  line-height: 12px;
+  border: 1px solid;
+  font-weight: 400;
+  font-size: 13px;
+}
+
+.list-group-item {
+  @include border-radius(0);
+  @include transition(0.5s);
+}
+
+.list-group {
+  .active,
+  .list-group-item.active {
+    background-color: #2196f3;
+    border-color: #2196f3;
+
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: #2196f3;
+      border-color: #2196f3;
+    }
+
+    .list-group-item-text {
+      color: #dfe9f1;
+      font-size: 13px;
+
+      &:hover,
+      &:active,
+      &:focus {
+        color: #dfe9f1;
+      }
+    }
+  }
+  a,
+  button {
+    &.list-group-item {
+      color: #555;
+    }
+    &.list-group-item.active {
+      color: #dfe9f1;
+    }
+  }
+
+  .list-group-item.active {
+    &:hover,
+    &:focus,
+    &:active {
+      .list-group-item-text {
+        color: #dfe9f1;
+      }
+    }
+  }
+
+  .list-group-item {
+    &:first-child,
+    &:last-child {
+      @include border-radius(0);
+    }
+
+    .list-group-item-heading {
+      font-weight: bold;
+      font-size: 17px;
+    }
+    text-align: left;
+    &:focus,
+    &:hover {
+      background-color: #f5f5f5;
+    }
+  }
+
+  .list-group-item-success {
+    background-color: #2b982b;
+    border: none;
+    color: #fff;
+
+    &:hover,
+    &:focus {
+      background-color: #2b982b;
+      color: #fff;
+      opacity: 0.8;
+    }
+  }
+
+  .list-group-item-info {
+    background-color: #00b0e4;
+    border: none;
+    color: #fff;
+
+    &:hover,
+    &:focus {
+      background-color: #00b0e4;
+      color: #fff;
+      opacity: 0.8;
+    }
+  }
+
+  .list-group-item-warning {
+    background-color: #ff9600;
+    border: none;
+    color: #fff;
+
+    &:hover,
+    &:focus {
+      background-color: #ff9600;
+      color: #fff;
+      opacity: 0.8;
+    }
+  }
+
+  .list-group-item-danger {
+    background-color: #fb483a;
+    border: none;
+    color: #fff;
+
+    &:hover,
+    &:focus {
+      background-color: #fb483a;
+      color: #fff;
+      opacity: 0.8;
+    }
+  }
+
+  @each $key, $val in $colors {
+    .pl-#{$key} {
+      stroke: $val;
+    }
+
+    .list-group-bg-#{$key} {
+      background-color: $val;
+      border: none;
+      color: #fff;
+
+      &:hover,
+      &:focus {
+        background-color: $val;
+        color: #fff;
+        opacity: 0.8;
+      }
+    }
+  }
+}
+span.badge {
+  min-width: auto;
+  float: none;
+  font-size: 13px;
+}
+.list-group span.badge {
+  float: right;
+}
+.btn-success .badge {
+  color: #5cb85c;
+  background-color: #fff;
+}
+.btn-primary .badge {
+  color: #337ab7;
+  background-color: #fff;
+}
+.btn-danger .badge {
+  color: #d9534f;
+  background-color: #fff;
+}
+.btn-warning .badge {
+  color: #f0ad4e;
+  background-color: #fff;
+}
+.badge-solid-red {
+  color: #f11541;
+  background-color: rgba(241, 21, 65, 0.15);
+  border: none;
+  padding: 5px 12px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+.badge-solid-purple {
+  color: #6f42c1;
+  background-color: rgba(111, 66, 193, 0.15);
+  border: none;
+  padding: 5px 12px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+.badge-solid-green {
+  color: #198754;
+  background-color: rgba(25, 135, 84, 0.15);
+  border: none;
+  padding: 5px 12px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+.badge-solid-blue {
+  color: #0d6efd;
+  background-color: rgba(13, 110, 253, 0.15);
+  border: none;
+  padding: 5px 12px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+.badge-solid-pink {
+  color: #fd0dfd;
+  background-color: rgba(253, 13, 253, 0.15);
+  border: none;
+  padding: 5px 12px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+.badge-solid-orange {
+  color: #fd7e14;
+  background-color: rgba(253, 126, 20, 0.15);
+  border: none;
+  padding: 5px 12px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+.badge-solid-cyan {
+  color: #0dcaf0;
+  background-color: rgba(13, 202, 240, 0.15);
+  border: none;
+  padding: 5px 12px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+.badge-solid-brown {
+  color: #964b00;
+  background-color: rgba(150, 75, 0, 0.15);
+  border: none;
+  padding: 5px 12px;
+  font-weight: 500;
+  line-height: 1.2;
+}

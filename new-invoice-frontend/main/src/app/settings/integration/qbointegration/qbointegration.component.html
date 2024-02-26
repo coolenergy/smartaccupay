@@ -1,0 +1,95 @@
+<section class="content">
+    <div class="content-block">
+        <div class="m-4"></div>
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="materialTableHeader">
+                        <div class="left">
+                            <ul class="header-buttons-left ms-0">
+                                <li class="tbl-title">
+                                    <h2>Quickbooks Online Integration</h2>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="right">
+                            <ul class="tbl-export-btn">
+                                <li class="tbl-header-btn">
+                                    <div class="m-l-10" matTooltip="{{'COMMON.TOOL_TIP.BACK' |
+                                        translate}}">
+                                        <button mat-mini-fab color="warn" (click)="back()">
+                                            <mat-icon class="col-white">close </mat-icon>
+                                        </button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="body overflow-auto">
+                        <div class="main-cust-setting-div">
+
+                            <div class="main-search-bar" *ngIf="showConnectionButton">
+                                <div class="cust-button-margin">
+                                    <button mat-stroked-button class="sign-button cust-padding-top padding-left-cust"
+                                        (click)="connect()">
+                                        <div *ngIf="!qboIntegrated">Connect</div>
+                                        <div *ngIf="qboIntegrated">Disconnect</div>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-xl-4">
+                                        <div class="card custom-background-color">
+                                            <div class="card-body">
+                                                <div class="row justify-content-center">
+                                                    <img src="{{qboIcon}}" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-8">
+                                        <div class="card custom-background-color">
+                                            <div class="card-body cust-card-body mt-3">
+                                                <p class="card-text">Rovuk A/P's QuickBooks Online integration allows
+                                                    your team to view the QuickBooks data to Rovuk A/P.
+                                                    QuickBooks Online is a powerful tool for managing financial records
+                                                    and accounting data. Rovuk A/P consolidates item receipts, purchase
+                                                    orders, and invoices in a single place to give your team the
+                                                    confidence they need to close your books accurately and on time.
+                                                </p>
+                                                <div>
+                                                    <p class="card-text">
+                                                        Requirements</p>
+                                                    <ul>
+                                                        <li class="card-text">A Rovuk A/P Account</li>
+                                                        <li class="card-text">A Quickbooks Online Account</li>
+                                                    </ul>
+                                                </div>
+
+                                                <div>
+                                                    <button mat-raised-button (click)="saveData()" id="blogin_id"
+                                                        color="primary">
+                                                        <i class="fas fa-sign-in-alt button-icon-position"></i>
+                                                        {{'Login' | translate }}</button>
+                                                    <button mat-raised-button (click)="logout()" color="warn"
+                                                        id="blogout_id" style="background-color: red;display: none;">
+                                                        <i class="fas fa-sign-out-alt button-icon-position"></i>
+                                                        {{'Logout' | translate }}</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,61 @@
+<!-- <h2 mat-dialog-title>{{data.labl_tmp}} {{'Employee-form-Document' | translate }}</h2> -->
+<div class="row">
+  <div class="col-3">
+  </div>
+  <div class="col-6 dialog-head-center">
+    <h2 mat-dialog-title>{{data.labl_tmp}} {{'Employee-form-Document' | translate }}</h2>
+  </div>
+  <div class="col-3 dialog-head-right">
+    <button class="import-export-btn-datatable cust-margin-div" matTooltip="{{ 'All-save' | translate }}" type="submit"
+      (click)="saveData()"><img src="{{saveIcon}}" alt="" class="pr-1" height="20px">
+    </button>
+    <button class="import-export-btn-datatable cust-margin-div" matTooltip="{{ 'All-exit' | translate }}"
+      mat-dialog-close>
+      <img src="{{backIcon}}" alt="" class="far fa-paper-plane" height="20px">
+    </button>
+  </div>
+</div>
+<form class="form" [formGroup]="form" (ngSubmit)="saveData()">
+  <mat-dialog-content class="mat-typography" style="min-width: 700px; overflow: visible !important;">
+    <div class="contact-cust-width-full">
+      <mat-form-field appearance="outline" class="contact-cust-width-full">
+        <mat-label>{{'Employee-form-Document-Type' | translate }}</mat-label>
+        <mat-select formControlName="userdocument_type_id" class="dark-cust-color" #db_Doc_typesSelect
+          (ngModelChange)="showHideExpirationDate($event)" required>
+          <mat-select-filter [placeholder]="'Filter'" [displayMember]="'document_type_name'"
+            *ngIf="db_Doc_typesSelect.focused" [array]="variablesdb_Doc_types" (filteredReturn)="db_Doc_types =$event">
+          </mat-select-filter>
+          <mat-option *ngFor="let db_Doc_type of db_Doc_types" [value]="db_Doc_type._id">
+            {{db_Doc_type.document_type_name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="contact-cust-width-full" *ngIf="showHideDate">
+      <mat-form-field appearance="outline" class="contact-cust-width-full">
+        <mat-label>{{'Employee-form-Document-Expiration' | translate }}</mat-label>
+        <input matInput [matDatepicker]="picker" disabled formControlName="userdocument_expire_date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker disabled="false"></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="contact-cust-width-full">
+      <div class="contact-cust-width-full">
+        <div class="doc-upload-cust">
+          <input (change)="fileChangeEvent($event)" type="file" placeholder="{{'Employee-form-Document' | translate }}">
+        </div>
+      </div>
+    </div>
+    <div class="ml-3">
+      <mat-slide-toggle size="large" color="primary" formControlName="show_on_qrcode_scan">
+        {{'Team_Document_qr_code' | translate}}
+      </mat-slide-toggle>
+    </div>
+  </mat-dialog-content>
+  <!-- <mat-dialog-actions align="center">
+    <button mat-raised-button mat-dialog-close><img src="{{backIcon}}" alt="" class="pr-1" height="15px">{{'All-exit' |
+      translate }}</button>
+    <button mat-raised-button type="submit" color="primary"><img src="{{saveIcon}}" alt="" class="pr-1"
+        height="15px">{{'All-save' | translate }}</button>
+  </mat-dialog-actions> -->
+</form>

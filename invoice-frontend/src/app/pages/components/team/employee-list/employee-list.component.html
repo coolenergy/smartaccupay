@@ -1,0 +1,161 @@
+<div class="wrapper-cust-admin" fxLayout style="height: 95%">
+  <div class="d-flex justify-content-between">
+    <h1 class="screen-title">
+      {{ "Sidebar-Team" | translate | titlecase }}
+    </h1>
+
+
+    <div class="col-md-6">
+      <div class="screen-title-section cust-user-heading-inline">
+        <div *ngIf="addTeamMember" class="inner-search-bar cust-heght-textbox">
+          <div class="main-search-bar">
+            <button *ngIf="role_permission.role_permission.users.Delete" mat-stroked-button style="margin-right: 2px;"
+              class="sign-button" mat-raised-button (click)="gotoArchive();">
+              <img src="{{archivedIcon}}" alt="" class="pr-1" height="19px">
+              {{'Archived_all' | translate }}
+            </button>
+            <button mat-stroked-button color="primary" (click)="openForImportDownloadDialog();"
+              matTooltip="{{ 'Employee-Import-Template' | translate }}" aria-label="Left Align">
+              {{'Employee-Import-Template' | translate}}
+            </button>
+
+            <input id="file-upload" type="file" style="display: none;" (click)="OpenFilebox.value = null"
+              (change)="onFileChange($event)" #OpenFilebox />
+
+            <button class="import-export-btn-datatable button_workersEditClass cust-margin-div" aria-label="Left Align"
+              matTooltip="{{ 'TOOLTIP_IMPORT' | translate }}" (click)="importFileAction();">
+              <img src="{{importIcon}}" alt="" height="20px">
+            </button>
+
+            <button *ngIf="role_permission.role_permission.users.Add" mat-raised-button color="primary"
+              class="sign-button" (click)="btnClick();"><img src="{{add_my_self_icon}}" alt="" height="20px">
+              {{'Employee-Add-Team-Button' | translate }}
+            </button>
+
+            <button *ngIf="isManagement && role_permission.role_permission.users.Add" mat-raised-button color="primary"
+              class="sign-button ml-1" (click)="openManagementUserDialog();"><img src="{{add_my_self_icon}}" alt=""
+                height="20px">
+              {{'Export_Employee_Add_Team_Button' | translate }}
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="wrapper-cust-admin">
+    <div class="main-search-bar">
+      <div class="inner-search-bar">
+      </div>
+      <div class="inner-search-bar cust-heght-textbox">
+        <button class="import-export-btn-datatable button_workersEditClass cust-margin-div"
+          matTooltip="{{ 'TOOLTIP_HISTORY' | translate }}" (click)="openHistoryDialog();">
+          <img src="{{historyIcon}}" alt="" height="20px">
+        </button>
+
+        <button class="import-export-btn-datatable button_workersEditClass cust-margin-div"
+          (click)="openReportDialog();" matTooltip="{{ 'TOOLTIP_REPORT' | translate }}" aria-label="Left Align">
+          <img src="{{reportIcon}}" alt="" height="20px">
+        </button>
+
+        <mat-form-field *ngIf="gridtolist" class="cust-padding-top" appearance="outline">
+          <mat-label>{{'Employee-List-status' | translate }}</mat-label>
+          <mat-select (change)="changeStatus($event)" [(ngModel)]="username_status">
+            <mat-option value="All">{{'Team-EmployeeList-Status-All' | translate}}</mat-option>
+            <mat-option value="1">{{'Team-EmployeeList-Status-Active' | translate}}</mat-option>
+            <mat-option value="2">{{'Team-EmployeeList-Status-In-Active' | translate}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field *ngIf="gridtolist" class="cust-padding-top" appearance="outline">
+          <mat-label>{{'Employee-List-Search-User' | translate }}</mat-label>
+          <input matInput [(ngModel)]="username_search" placeholder="{{'Employee-List-Search-User' | translate }}">
+        </mat-form-field>
+        <!-- 
+        <button mat-stroked-button class="sign-button cust-padding-top padding-left-cust" (click)="gridTolist();"> {{
+          btn_grid_list_text }} </button> -->
+        <button mat-stroked-button class="sign-button cust-padding-top padding-left-cust" (click)="gridTolist()">
+          <img src="{{ gridIcon }}" alt="" class="pr-1" height="15px" *ngIf="!gridtolist" />
+          <img src="{{ listIcon }}" alt="" class="pr-1" height="15px" *ngIf="gridtolist" />
+          {{ btn_grid_list_text }}
+        </button>
+        <button *ngIf="gridtolist" mat-stroked-button (click)="sorting_name();"
+          class="sign-button cust-padding-top padding-left-cust">
+          <i class="fa fa-sort" *ngIf="soruing_all"></i>
+          <i class="fa fa-sort-up" *ngIf="sorting_asc"></i>
+          <i class="fa fa-sort-down" *ngIf="sorting_desc"></i> {{"Agent-username" | translate }}
+        </button>
+      </div>
+    </div>
+
+    <div class="">
+      <div>
+        <div class="cust-one-div-user" *ngIf="gridtolist">
+          <div class="list-square-div"
+            *ngFor="let userArray of usersArray | empListFilter : username_search | empListFilterStatus : username_status">
+            <div class="card-cust-project example-card">
+              <app-user-card [UserData]="userArray" [deleteTeamMember]="deleteTeamMember"></app-user-card>
+            </div>
+          </div>
+        </div>
+        <div class=" cust-padding-tmp">
+          <div *ngIf="!gridtolist" class="margin-cust-top table-responsive cust-padding-tmp">
+            <div>
+              <table *ngIf="isEmployeeData" datatable [dtOptions]="dtOptions" class="row-border hover  ">
+                <thead>
+                  <tr>
+                    <th>{{"Agent-username" | translate}}</th>
+                    <th>{{"Agent-email" | translate}}</th>
+                    <th>{{'employee_list_phone' | translate}}</th>
+                    <th>{{"Project-Workers-Role" | translate}}</th>
+                    <th>{{"Employee-form-Job-Title" | translate}}</th>
+                    <th>{{"Employee-form-Department" | translate}}</th>
+                    <th>{{"Employee-form-Status" | translate}}</th>
+                    <th width="1%" data-orderable="false">{{"All-Action" | translate }}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let userArray of usersArray">
+                    <td>{{ userArray.userfullname }}</td>
+                    <td>{{ userArray.useremail }}</td>
+                    <td>{{ phonenoFormat(userArray.userphone) }}</td>
+                    <td>{{ userArray.role_name }}</td>
+                    <td>{{ userArray.userjob_title_name }}</td>
+                    <td>{{ userArray.department_name }}</td>
+                    <td width="1%">{{ userArray.userstatus == 1 ? acticve_word :inacticve_word }}</td>
+                    <td width="1%">
+                      <div *ngIf="deleteTeamMember">
+                        <div class="dropdown">
+                          <i class="fas fa-ellipsis-v cust-fontsize-tmp float-right-cust" aria-hidden="true"></i>
+                          <div class="dropdown-content-cust">
+                            <a (click)="viewpageoprn(userArray._id);" class="button_shiftEditClass"><img
+                                src="{{editIcon}}" alt="" height="20px"> {{'All-Edit' |
+                              translate}}</a>
+                            <a (click)="deleteTimecardButtonClick(userArray._id)" class="button_shiftDeleteClass"><img
+                                src="{{trashIcon}}" alt="" height="20px"> {{'All-Delete' | translate}}</a>
+                          </div>
+                        </div>
+                      </div>
+                      <div *ngIf="!deleteTeamMember">
+                        <div class="dropdown">
+                          <i class="fas fa-ellipsis-v cust-fontsize-tmp float-right-cust" aria-hidden="true"></i>
+                          <div class="dropdown-content-cust">
+                            <a (click)="viewpageoprn(userArray._id);" class="button_shiftEditClass"><img
+                                src="{{editIcon}}" alt="" height="20px"> {{'All-Edit' |
+                              translate}}</a>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

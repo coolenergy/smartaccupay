@@ -1,0 +1,86 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+/dist
+/tmp
+/out-tsc
+# Only exists if Bazel was run
+/bazel-out
+
+# dependencies
+/node_modules
+
+
+/invoice-backend/node_modules
+/invoice-backend/config/config.js
+/invoice-backend/config/rovuk.json
+/invoice-backend/config/rovuk-hemin.json
+/invoice-backend/package.json
+/invoice-backend/package-lock.json
+
+/new-invoice-frontend/main/node_modules
+/new-invoice-frontend/main/dist
+/new-invoice-frontend/main/src/environments
+/new-invoice-frontend/main/.angular
+/new-invoice-frontend/main/package-lock.json
+
+/new-invoice-frontend/node_modules
+/new-invoice-frontend/dist
+/new-invoice-frontend/src/environments 
+/new-invoice-frontend/.angular
+/new-invoice-frontend/package-lock.json
+
+
+/invoice-frontend/node_modules
+/invoice-frontend/dist
+/invoice-frontend/src/environments
+/invoice-frontend/package.json
+/invoice-frontend/package-lock.json
+/invoice-frontend/.angular
+
+/quickbooks-js-master/node_modules
+/quickbooks-js-master/package-lock.json
+/quickbooks-js-master/.angular
+/quickbooks-js-master/.travis.yml
+
+
+
+# profiling files
+chrome-profiler-events*.json
+speed-measure-plugin*.json
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+/typings
+
+# System Files
+.DS_Store
+Thumbs.db
+
+# Python Project
+/invoice-python/venv
+/invoice-python/__pycache__
+/invoice-python/.env

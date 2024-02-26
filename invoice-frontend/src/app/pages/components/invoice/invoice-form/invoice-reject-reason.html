@@ -1,0 +1,37 @@
+<!-- <div class="modal-header cust-report-header-footer-div">
+    <h2 class="modal-title" id="modal-basic-title" class="cust-report-label-header-text">{{'Team_Report' |
+        translate}}</h2>
+</div> -->
+<div class="row  modal-header">
+    <div class="col-3">
+        <img class="crl mr-2" height="50px" width="50px" src="./assets/logo/invoice_logo.png" />
+    </div>
+    <div class="col-6 dialog-head-center">
+        <h2 class="cust-report-label-header-text">Reject Reason</h2>
+    </div>
+    <div class="col-3 dialog-head-right">
+        <button class="import-export-btn-datatable cust-margin-div" matTooltip="{{ 'All-exit' | translate }}"
+            mat-dialog-close>
+            <img src="{{exitIcon}}" alt="" class="far fa-paper-plane" height="20px">
+        </button>
+    </div>
+</div>
+<form [formGroup]="invoiceinfo">
+    <div class="modal-body">
+        <mat-form-field appearance="outline" style="width: 100%;" class="main-one-input-field">
+            <mat-label>{{'Changeorder_reason' | translate }}</mat-label>
+            <textarea matInput appTextareaAutoresizeproject class="input-capitalized-textArea"
+                placeholder="{{'Changeorder_reason' | translate }}" formControlName="reject_reason"></textarea>
+        </mat-form-field>
+    </div>
+    <div class="modal-footer cust-report-header-footer-div">
+        <mat-dialog-actions>
+            <button mat-raised-button mat-dialog-close>
+                <img src="{{exitIcon}}" alt="" height="15px">
+                {{'All-Cancel' | translate }}</button>
+            <button mat-raised-button type="submit" (click)="saveData()" color="primary">
+                <img src="{{saveIcon}}" alt="" height="20px">
+                {{'All-save' | translate }}</button>
+        </mat-dialog-actions>
+    </div>
+</form>

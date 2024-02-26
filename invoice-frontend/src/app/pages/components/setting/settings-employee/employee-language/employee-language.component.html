@@ -1,0 +1,101 @@
+<!-- <div>
+    <mat-grid-list cols="3" rowHeight="3:1">
+        <mat-grid-tile *ngFor="let language of language_data">
+            <mat-card class="document-card">
+                <mat-card-title-group class="cust-card-title-group">
+                    <mat-card-content style="width: 100%">{{
+                    language.name
+                    }}</mat-card-content>
+                    <div fxFlex style="width: 100%"></div>
+                    <div class="dropdown zIndex-cust">
+                        <i class="fas fa-ellipsis-v cust-fontsize-tmp float-right-cust" id="dropdownMenuButton"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-hidden="true"></i>
+                        <div class="dropdown-menu dropdown-content-cust" aria-labelledby="dropdownMenuButton">
+                            <a (click)="
+                          addOtherSetting(
+                            language,
+                            'Language',
+                            'Language',
+                            'Settings_OtherSettings_Add_Language'
+                          )
+                        " class="dropdown-item button_shiftEditClass">
+                                <img src="{{ editIcon }}" alt="" height="20px" />
+                                {{ "All-Edit" | translate }}</a>
+                            <a (click)="deletesetting(language)" class="dropdown-item button_shiftDeleteClass">
+                                <img src="{{ deleteIcon }}" alt="" height="20px" />
+                                {{ "All-Delete" | translate }}</a>
+                        </div>
+                    </div>
+                </mat-card-title-group>
+            </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div> -->
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="screen-title-section cust-h1-inline button-margin">
+            <div class="inner-search-bar"></div>
+            <button mat-stroked-button mat-raised-button color="primary" class="sign-button cust-margin-div"
+                (click)="addLanguage({})">
+                <img src="{{ addIcon }}" alt="" height="20px" />
+                {{ "Settings_OtherSettings_Language" | translate }}
+            </button>
+        </div>
+    </div>
+</div>
+<!-- <mat-grid-list cols="3" rowHeight="3:1">
+    <mat-grid-tile *ngFor="let language of alllanguage">
+        <mat-card class="document-card">
+            <mat-card-title-group class="cust-card-title-group">
+                <mat-card-content style="width: 100%">{{ language.name }}</mat-card-content> -->
+<!-- <div fxFlex style="width: 100%"></div>
+                <div class="dropdown zIndex-cust">
+                    <i class="fas fa-ellipsis-v cust-fontsize-tmp float-right-cust" id="dropdownMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-hidden="true"></i>
+                    <div class="dropdown-menu dropdown-content-cust" aria-labelledby="dropdownMenuButton">
+                        <a (click)="addLanguage(language)" class="dropdown-item button_shiftEditClass">
+                            <img src="{{ editIcon }}" alt="" height="15px" />
+                            {{ "All-Edit" | translate }}</a>
+                        <a (click)="deleteLanguage(language)" class="dropdown-item button_shiftDeleteClass">
+                            <img src="{{ deleteIcon }}" alt="" height="15px" />
+                            {{ "All-Delete" | translate }}</a>
+                    </div>
+                </div> -->
+
+<!-- <mat-menu #menu="matMenu">
+                    <button (click)="addJobtype(language)" class="button_shiftEditClass" mat-menu-item>
+                        <span><img src="{{editIcon}}" alt="" height="15px">
+                            {{'All-Edit' | translate}}</span>
+                    </button>
+                    <button (click)="deleteJobType(language)" class="button_shiftDeleteClass" mat-menu-item>
+                        <span><img src="{{deleteIcon}}" alt="" height="15px">
+                            {{'All-Delete' | translate}}</span>
+                    </button>
+                </mat-menu>
+            </mat-card-title-group>
+        </mat-card>
+    </mat-grid-tile> -->
+<mat-grid-list cols="3" rowHeight="3:1">
+    <mat-grid-tile *ngFor="let language of alllanguage">
+        <mat-card class="document-card">
+            <mat-card-title-group class="cust-card-title-group">
+                <mat-card-content style="width: 100%">{{ language.name }}</mat-card-content>
+
+                <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Menu">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                    <button (click)="addLanguage(language)" class="button_shiftEditClass" mat-menu-item>
+                        <span><img src="{{editIcon}}" alt="" height="15px">
+                            {{'All-Edit' | translate}}</span>
+                    </button>
+                    <button (click)="deleteLanguage(language)" class="button_shiftDeleteClass" mat-menu-item>
+                        <span><img src="{{deleteIcon}}" alt="" height="15px">
+                            {{'All-Delete' | translate}}</span>
+                    </button>
+                </mat-menu>
+            </mat-card-title-group>
+        </mat-card>
+    </mat-grid-tile>
+</mat-grid-list>

@@ -1,0 +1,32 @@
+<div class="wrapper-cust-admin">
+
+    <div class="container">
+        <div class="row d-flex justify-content-end pb-2">
+            <button mat-stroked-button color="primary" (click)="downloadImportTemplate();" matTooltip=""
+                aria-label="Left Align">
+                {{'Employee-Import-Template' | translate}}
+            </button>
+
+            <input id="file-upload" type="file" style="display: none;" (click)="OpenFilebox.value = null"
+                #OpenFilebox />
+            <button class="import-export-btn-datatable button_workersEditClass cust-margin-div" aria-label="Left Align"
+                matTooltip="">
+                <img src="{{importIcon}}" alt="" height="20px">
+            </button>
+        </div>
+        <div *ngIf="show_tabs">
+            <mat-tab-group mat-align-tabs="center">
+                <mat-tab label="Terms">
+                    <app-terms></app-terms>
+                </mat-tab>
+                <mat-tab label="Tax rate">
+                    <app-tax-rate></app-tax-rate>
+                </mat-tab>
+                <mat-tab label="Documents">
+                    <app-documents></app-documents>
+                </mat-tab>
+
+            </mat-tab-group>
+        </div>
+    </div>
+</div>

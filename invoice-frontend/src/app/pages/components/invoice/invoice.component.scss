@@ -1,0 +1,632 @@
+@import 'src/app/styles/variables';
+
+.main-cust-emp-from {
+    // display: flex;
+    width: 100%;
+
+    @media (max-width: $normal) {}
+
+    @media (max-width: $small) {
+        flex-wrap: wrap;
+    }
+
+    @media (max-width: $medium) {
+        flex-wrap: wrap;
+    }
+}
+
+.main-cust-emp-profile {
+    width: 30%;
+    margin: auto 0;
+
+    @media (max-width: $normal) {
+        flex-wrap: wrap;
+    }
+
+    @media (max-width: $small) {
+        width: 100%;
+
+    }
+}
+
+.main-cust-emp-inputpersonal {
+    width: 100%;
+
+    @media (max-width: $small) {
+        width: 100%;
+
+    }
+}
+
+.main-first-row {
+    display: flex;
+    width: 100%;
+
+    @media (max-width: $small) {
+        width: 100%;
+    }
+}
+
+.main-first-col1 {
+    width: 33.33%;
+}
+
+.main-first-col2 {
+    width: 33.33%;
+}
+
+.main-first-col3 {
+    width: 33.33%;
+}
+
+.main-second-row {
+    display: flex;
+    width: 100%;
+
+    @media (max-width: $normal) {}
+
+    @media (max-width: $small) {
+
+        width: 100%;
+
+    }
+}
+
+.main-second-col1 {
+    width: 50%;
+}
+
+.main-second-col2 {
+    width: 50%;
+}
+
+.main-cust-emp-cont-info {
+    display: flex;
+    width: 100%;
+
+    @media (max-width: $normal) {
+        flex-wrap: wrap;
+    }
+}
+
+.main-cust-emp-cont {
+    width: 50%;
+}
+
+.main-cust-emp-info {
+    width: 50%;
+}
+
+.inner-main-cust {
+    display: flex;
+    width: 100%;
+
+    @media (max-width: $normal) {}
+}
+
+.inner-cust {
+    width: 50%;
+}
+
+.main-four-cust {
+    display: flex;
+    width: 100%;
+
+    @media (max-width: $normal) {
+        flex-wrap: wrap;
+    }
+}
+
+.main-four-inner {
+    width: 23.5%;
+}
+
+.margin-top-cust {
+    margin-top: 1%;
+}
+
+.main-cust-doc {
+    display: flex;
+    width: 100%;
+
+    @media (max-width: $normal) {
+        flex-wrap: wrap;
+    }
+}
+
+.inner-cust-doc {
+    width: 33.33%;
+}
+
+.doc-upload-cust {
+    margin: .25em 0;
+    padding: 1em;
+    border: 1px solid #e8e8e8;
+    border-radius: 5px;
+}
+
+.image-wrap {
+    padding: 10px;
+    border: solid 1px #e0e0e0;
+    display: inline-block;
+}
+
+.img-space {
+    border: dashed 1px #d3d3d3;
+    border-radius: 8px;
+    background-color: #f2f2f2;
+    height: auto;
+    width: 100%;
+    min-height: 175px;
+
+    @media (max-width: $medium) {
+        min-height: 100px;
+    }
+
+    @media (max-width: $small) {
+        min-height: 150px;
+    }
+}
+
+.img-space img {
+    display: block;
+    width: 50%;
+    height: 100%;
+    margin: auto;
+    cursor: pointer;
+}
+
+.fileInputProfileWrap {
+    width: 100%;
+    height: auto;
+}
+
+.fileInputProfile {
+    position: absolute;
+    z-index: 99;
+    opacity: 0;
+}
+
+.fileInputProfile[disabled]+.img-space {
+    pointer-events: none;
+    cursor: not-allowed !important;
+}
+
+.main-one-input-field {
+    width: 100%;
+}
+
+.small-one-input-field {
+    width: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.padding-left-cust {
+    padding-left: 2% !important;
+
+    @media (max-width: $small) {
+        padding-left: 0 !important;
+    }
+
+    @media (max-width: $medium) {
+        padding-left: 0 !important;
+    }
+
+    @media (max-width: $large) {
+        flex-wrap: wrap;
+        padding-left: 0 !important;
+    }
+
+    @media (max-width: $extra-large) {
+        padding-left: 5px !important;
+    }
+}
+
+.circular--landscape img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border: #023e8a solid 1px;
+}
+
+.circular--landscape {
+    display: inline-block;
+    position: relative;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 50%;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+
+    @media (max-width: $medium) {
+        min-height: 100px;
+    }
+
+    @media (max-width: $small) {
+        min-height: 150px;
+    }
+}
+
+.card-text-centre {
+    font-size: 1.1em !important;
+    padding-bottom: 1em;
+    padding-top: 5px;
+    text-align: center;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+.user-menu__button-custom-small {
+    top: 1px;
+    outline: none;
+    z-index: 1025;
+    margin: 2px;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    border: 0px;
+    background: #023E8A;
+    color: white;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: scale-down;
+    }
+
+    &:hover {
+        background: #023E8A;
+    }
+}
+
+.head-text {
+    width: 100%;
+    height: 30px;
+    color: white;
+
+    background-color: #023e8af7;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.mat-card {
+    padding: 0 !important;
+}
+
+.editing {
+    margin: 0;
+    position: absolute;
+    padding-left: 10px;
+}
+
+.mat-stepper-label-position-bottom .mat-horizontal-stepper-header-container {
+    padding-top: 3% !important;
+}
+
+.schedule-input {
+    width: 100%;
+}
+
+.image-wrap {
+    padding: 10px;
+    border: solid 1px #e0e0e0;
+    display: inline-block;
+}
+
+.img-space {
+    border: dashed 1px #d3d3d3;
+    border-radius: 8px;
+    background-color: #f2f2f2;
+    height: auto;
+    width: 100%;
+    min-height: 175px;
+}
+
+.img-space img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    cursor: pointer;
+}
+
+.fileInputProfileWrap {
+    width: 100%;
+    height: auto;
+}
+
+.fileInputProfile {
+    position: absolute;
+    /*  height: 100%;
+    width: 100%; */
+    z-index: 99;
+    opacity: 0;
+}
+
+.cust-full-width {
+    width: 100%;
+}
+
+.card {
+    // height: 200px;
+    width: 300px;
+    background-color: #FFFFFF;
+    overflow: hidden;
+    border-radius: 20px;
+    cursor: pointer;
+    //box-shadow: 0 0 8px 8px #f3f2f2;
+}
+
+.btn-action-lg .material-icons {
+    font-size: 41px;
+}
+
+.btn-action-lg {
+    min-width: 56px;
+    width: 56px;
+    height: 56px;
+    line-height: 84px;
+    padding: 0;
+    border-radius: 28px;
+}
+
+.btn-raised {
+    -webkit-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16), 0 2px 5px rgba(0, 0, 0, 0.26);
+    -moz-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16), 0 2px 5px rgba(0, 0, 0, 0.26);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16), 0 2px 5px rgba(0, 0, 0, 0.26);
+}
+
+.btn-accent {
+    color: #ffffff;
+    background-color: #023E8A;
+}
+
+.btn-accent:hover,
+.btn-accent:focus,
+.btn-accent.focus,
+.btn-accent:active,
+.btn-accent.active {
+    color: #ffffff;
+    background-color: #023E8A;
+}
+
+.container {
+    text-align: center;
+    padding-top: 30px;
+}
+
+.wrapper-cust-admin {
+    margin: 1% 1%;
+}
+
+.example-card {
+    height: 1000px;
+    width: auto;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    float: none;
+}
+
+.contact-cust-width-full {
+    width: 100%;
+    // padding-left: 10px;
+}
+
+.menu-icon {
+    text-align: right;
+    padding: 10px 15px;
+}
+
+.carddark {
+    background-color: #424242;
+    color: #ffffff;
+}
+
+.cardlight {
+    background-color: #023e8af7;
+    color: #ffffff;
+}
+
+.cardshadowlight {
+    box-shadow: 0 0 8px 8px #f3f2f2;
+}
+
+.cardshadowdark {
+    box-shadow: 0 0 3px 3px #424242;
+}
+
+.center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.card-body {
+    // min-height: 200px;
+    text-align: center;
+    padding: 5px 10px !important;
+
+    .data {
+        text-align: left;
+        font-weight: 400;
+        padding: 10px;
+    }
+}
+
+.cardsmall {
+    // height: 200px;
+    width: 200px;
+    background-color: #FFFFFF;
+    overflow: hidden;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 0 0 4px 4px #f0eeee;
+}
+
+
+.mat-form-field-wrapper {
+    padding-bottom: 0px !important;
+}
+
+.container-cust {
+    width: 50%;
+
+    padding: 1rem;
+
+    text-align: center;
+    border: dotted 2px black;
+
+    position: relative;
+    margin: 0 auto;
+    border-radius: 5px;
+
+    input {
+        opacity: 0;
+        position: absolute;
+        z-index: 2;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+    }
+
+    label {
+        color: $blue;
+        // width: 100px;
+        height: 25px;
+        border-radius: 21.5px;
+        //background-color: $blue;
+        text-align: center;
+        padding: 3px !important;
+    }
+
+    h3 {
+        font-size: 14px;
+        font-weight: 500;
+        color: #38424c;
+        margin-bottom: 0px;
+    }
+}
+
+.fileover {
+    animation: shake 1s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes shake {
+    0% {
+        transform: translate(1px, 1px) rotate(0deg);
+    }
+
+    10% {
+        transform: translate(-1px, -2px) rotate(-1deg);
+    }
+
+    20% {
+        transform: translate(-3px, 0px) rotate(1deg);
+    }
+
+    30% {
+        transform: translate(3px, 2px) rotate(0deg);
+    }
+
+    40% {
+        transform: translate(1px, -1px) rotate(1deg);
+    }
+
+    50% {
+        transform: translate(-1px, 2px) rotate(-1deg);
+    }
+
+    60% {
+        transform: translate(-3px, 1px) rotate(0deg);
+    }
+
+    70% {
+        transform: translate(3px, 1px) rotate(-1deg);
+    }
+
+    80% {
+        transform: translate(-1px, -1px) rotate(1deg);
+    }
+
+    90% {
+        transform: translate(1px, 2px) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(1px, -2px) rotate(-1deg);
+    }
+}
+
+.display-cust {
+    display: inline-flex;
+}
+
+.head-text {
+    width: 100%;
+    height: 30px;
+    color: white;
+    margin-bottom: 1.3rem;
+    background-color: #023e8af7;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.mat-card {
+    padding: 0 !important;
+}
+
+
+
+.screen-title {
+    margin-top: auto;
+    margin-bottom: auto
+}
+
+.Approvedcss {
+    color: orange;
+}
+
+.Rejectcss {
+    color: red;
+}
+
+.pendingcss {
+    color: green;
+}
+
+.dropdown {
+    height: 25px;
+}
+
+.table-responsive {
+    display: block;
+    width: 100%;
+    overflow-x: unset !important;
+    -webkit-overflow-scrolling: touch;
+}
+
+.Approvedcss {
+    color: #0fb900;
+}
+
+.Rejectcss {
+    color: red;
+}
+
+.pendingcss {
+    color: hsl(19, 94%, 55%)
+}

@@ -1,0 +1,31 @@
+<div class="row">
+    <div class="col-2">
+        <img class="crl mr-2" height="50px" width="50px" src="./assets/logo/invoice_logo.png" />
+    </div>
+    <div class="col-9 dialog-head-center">
+        <h2 class="cust-report-label-header-text">{{'History' | translate}}</h2>
+    </div>
+    <div class="col-1 dialog-head-right">
+        <button class="import-export-btn-datatable cust-margin-div" matTooltip="{{ 'All-exit' | translate }}"
+            mat-dialog-close>
+            <img src="{{exitIcon}}" alt="" class="far fa-paper-plane" height="20px" />
+        </button>
+    </div>
+</div>
+<div class="search-results" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50"
+    (scrolled)="onScroll()" [scrollWindow]="false" [ngStyle]="setHeightStyles()">
+    <div class="hbox" *ngFor=" let item of dashboardHistory">
+        <div class="row pb-2">
+            <div class="col-1 mt-2"><img class="userimg"
+                    src="{{item.userpicture || '../assets/images/user_placeholder.png'}}" />
+            </div>
+            <div class="col-11 mt-2">
+                <b> {{item.user.userfullname}} </b>{{item.action}} <b> {{item.module}} </b> at
+                <b>{{temp_MMDDYYY_format(item.created_at)}}</b> from <b>{{item.action_from}}.</b>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>

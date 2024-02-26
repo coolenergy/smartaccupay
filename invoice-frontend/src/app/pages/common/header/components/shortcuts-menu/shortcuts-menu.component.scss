@@ -1,0 +1,95 @@
+@import 'src/app/styles/colors';
+@import 'src/app/styles/font';
+@import 'src/app/styles/variables';
+
+.email-button {
+  background-color: $header-background-color_cust;
+  box-shadow: none;
+  margin-left: 16px;
+
+  &__icon {
+    color: $white;
+  }
+
+  &:hover {
+    background-color: $header-button-background-color_cust-hover;
+  }
+
+  @media (max-width: $small) {
+    margin-top: 0;
+  }
+}
+
+.mat-icon {
+  height: 27px !important;
+  width: 27px !important;
+}
+
+
+
+.background-active {
+  background-color: #c3cfde;
+}   
+
+.cust-image{
+    font-size: 20px;
+    margin-top: 1px;
+}
+
+.user-menu {
+    &__item-title {
+      color: $light-grey;
+  
+      &:hover {
+        color: $dark-grey;
+        background-color: $blue-white;
+  
+        & .user-menu-icon {
+          color: #536DFE;
+        }
+      }
+    }
+  }
+
+  .user-menu-icon {
+    
+    margin-right: 25px;
+    
+  }
+  .sign-button-wrapper {
+    text-align: center;
+    padding: 8px 0 16px 0;
+    width: 100%;
+  }
+  
+  .sign-button {
+    border: 1px solid;
+    color: $blue;
+    width: 80%;
+  }
+
+  .cust-other-app-main{
+      width: 100%;
+  }
+
+  .header-other-app{
+      text-align: center;
+  }
+
+  .cust-image-tools{
+      width: 50px;
+      height: 50px;
+      object-fit: scale-down;
+  }
+
+  .cust-col-aling{
+      text-align: center;
+  }
+
+.cust-button-menu{
+  
+  color: white;
+}
+.i-cust-margin{
+  margin-right: 10px;
+}

@@ -1,0 +1,113 @@
+/* You can add global styles to this file, and also import other style files
+Created by: @LogicalStack
+*/
+html,
+body {
+  background:#CCC;
+  height: 100vh;
+  padding: 0px;
+  margin: 0px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  font-family: "Poppins", sans-serif;
+  font-weight: initial;
+  line-height: normal;
+  // -webkit-font-smoothing: antialiased;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 0px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 0px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #c1c1c1;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';
+
+.screen-title-section {
+  margin-bottom: 10px;
+  // border-bottom: 1px solid #d7d9df;
+
+  .screen-title {
+    color: #424242;
+    font-size: 22px;
+    font-weight: 400;
+    margin: 0;
+  }
+
+  .breadcrumb {
+    padding: 0px 0px;
+    background-color: transparent;
+    margin-bottom: 7px;
+  }
+
+}
+app-project-details .mat-horizontal-content-container{
+  padding: 0!important
+}
+.darkMode .mat-button, .darkMode .mat-icon-button, .darkMode .mat-stroked-button {
+  color: rgba(255, 255, 255, 0.7);
+  background: transparent;
+}
+.cust-h1-inline{
+  display: inline-flex;
+  justify-content: space-between;
+  width: 100%;
+  //padding: 10px 12px;
+}  .iv-snap-view{
+  opacity: 1!important;
+}
+app-image-viewer{
+  position: absolute;
+  top: 0;
+  position: fixed;
+  width: 100%;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  z-index: 1026;
+}
+
+.my-class .mat-dialog-container{
+  height: 450px;
+  width: 650px;
+  box-shadow: none;
+  background-color:transparent;
+  // padding: 0px;
+  // margin: 0px;
+}
+
+.my-class .mat-dialog-title{
+  margin: 0px;
+}
+
+.carddark {
+  background-color: #424242;
+  color: #ffffff;
+}
+
+.cardlight {
+  background-color: #023e8af7;
+  color: #ffffff;
+}

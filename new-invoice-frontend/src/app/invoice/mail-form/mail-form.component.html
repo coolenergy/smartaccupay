@@ -1,0 +1,99 @@
+<div class="addContainer">
+    <app-model-header [title]="title" (dialogClose)="dialogRef.close()"></app-model-header>
+    <div mat-dialog-content>
+        <form class="register-form m-4" [formGroup]="mailInfo" (ngSubmit)="submit">
+            <div>
+                <b>From</b>
+            </div>
+            <div class="row">
+                <div class=" col-xl-12 col-lg-12 col-md-12 col-sm-12 ">
+                    <mat-chip [removable]="removable">
+                        {{SmtpEmail}}
+                    </mat-chip>
+                </div>
+            </div>
+            <div class="Row mt-2">
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>TO</mat-label>
+                    <mat-select formControlName="to" multiple (selectionChange)="onUsertoChange($event)" #toUserSelect>
+                        <mat-select-filter [placeholder]="'Filter'" [displayMember]="'userfullname'"
+                            [array]="variablesUserToList" (filteredReturn)="usertoList =$event"
+                            *ngIf="toUserSelect.focused">
+                        </mat-select-filter>
+                        <mat-option *ngFor="let user of usertoList" [value]="user.useremail"><span><img class="img-b"
+                                    [src]="user.userpicture" height="35px" width="35px" alt="">
+                            </span>{{user.userfullname}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <div class="row mt-1">
+                    <div *ngFor="let user of selectedToUsers">
+                        <mat-chip class="mr-1 mb-1" [removable]="removable" (removed)="removeUserTOemail(user)">
+                            {{user}}
+                            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                        </mat-chip>
+                    </div>
+                </div>
+            </div>
+            <div class="Row mt-2">
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Copy</mat-label>
+                    <mat-select formControlName="cc" multiple (selectionChange)="onUserCopyChange($event)"
+                        #ccUserSelect>
+                        <mat-select-filter [placeholder]="'Filter'" [displayMember]="'userfullname'"
+                            [array]="variablesUserList" (filteredReturn)="userList =$event"
+                            *ngIf="ccUserSelect.focused">
+                        </mat-select-filter>
+                        <mat-option *ngFor="let user of userList" [value]="user.useremail"> <span><img class="img-b"
+                                    [src]="user.userpicture" height="35px" width="35px" alt="">
+                            </span>{{user.userfullname}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <div class="row mt-1">
+                    <div *ngFor="let user of selectedUsers">
+                        <mat-chip class="mr-1 mb-1" [removable]="removable" (removed)="removeUseremail(user)">
+                            {{user}}
+                            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                        </mat-chip>
+                    </div>
+                </div>
+
+            </div>
+            <!-- <div class="row">
+                <div class=" col-xl-12 col-lg-12 col-md-12 col-sm-12 ">
+                    <mat-chip [removable]="removable">
+                        rana@gmail.com
+                        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                    </mat-chip>
+                </div>
+            </div> -->
+            <div class="row mt-2">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                    <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Subject</mat-label>
+                        <input matInput formControlName="subject">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row form-old mt-2 textarea-max">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                    <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Message</mat-label>
+                        <textarea matInput formControlName="message">
+                        </textarea>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="align-div">
+                    <div class="example-button-row">
+                        <button mat-raised-button color="primary" class="width-set-2" [disabled]="!mailInfo.valid"
+                            [mat-dialog-close]="1" (click)="submit()">Send</button>
+                        <button mat-raised-button color="warn" class="width-set-1" tabindex="-1"
+                            (click)="dialogRef.close()">{{'COMMON.ACTIONS.CANCEL' |
+                            translate}}</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

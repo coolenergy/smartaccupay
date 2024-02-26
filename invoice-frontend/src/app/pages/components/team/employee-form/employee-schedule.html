@@ -1,0 +1,60 @@
+<h2 mat-dialog-title>{{data.labl_tmp}} {{'SCHEDULE-header' | translate }}</h2>
+<form class="form" [formGroup]="form" (ngSubmit)="saveData()">
+    <mat-dialog-content class="mat-typography" style="min-width: 600px;">
+        <div class="container">
+            <div class="row">
+                <!-- <mat-form-field *ngIf="!is_edit" appearance="outline" class="schedule-input">
+                    <mat-label>{{'SCHEDULE-Employee' | translate }}</mat-label>
+                    <mat-select formControlName="schedule_employee_ids"
+                        placeholder="{{'SCHEDULE-Employee' | translate}}" multiple>
+                        <mat-select-filter [placeholder]="'Filter'" [displayMember]="'userfullname'"
+                            [array]="variables2" (filteredReturn)="filteredList5 =$event"></mat-select-filter>
+                        <mat-option *ngFor="let item of filteredList5" [value]="item._id">
+                            {{item.userfullname | titlecase}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field> -->
+                <!-- <mat-form-field *ngIf="is_edit" appearance="outline" class="schedule-input">
+                    <mat-label>{{'SCHEDULE-Employee' | translate }}</mat-label>
+                    <mat-select formControlName="schedule_employee_ids"
+                        placeholder="{{'SCHEDULE-Employee' | translate}}" multiple>
+                        <mat-select-filter [placeholder]="'Filter'" [displayMember]="'userfullname'"
+                            [array]="variables2" (filteredReturn)="filteredList5 =$event"></mat-select-filter>
+                        <mat-option *ngFor="let item of selectedItems" [value]="item._id">
+                            {{item.userfullname | titlecase}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field> -->
+            </div>
+            <div class="row">
+                <mat-form-field appearance="outline" class="schedule-input">
+                    <mat-label>{{'SCHEDULE-Shift' | translate }}</mat-label>
+                    <mat-select formControlName="schedule_shift_id" placeholder="{{'SCHEDULE-Shift' | translate}}">
+                        <mat-option *ngFor="let item of shiftList" [value]="item._id">
+                            {{item.shift_name | titlecase}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="row">
+                <mat-form-field appearance="outline" class="schedule-input">
+                    <mat-label>{{'SCHEDULE-Location' | translate }}</mat-label>
+                    <mat-select formControlName="schedule_location_id"
+                        placeholder="{{'SCHEDULE-Location' | translate}}">
+                        <mat-option *ngFor="let item of locationList" [value]="item._id">
+                            {{item.location_name | titlecase}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+    </mat-dialog-content>
+
+    <mat-dialog-actions align="center">
+        <button mat-raised-button mat-dialog-close><img src="{{backIcon}}" alt="" class="pr-1"
+                height="15px">{{'All-exit' | translate }}</button>
+        <button mat-raised-button type="submit" color="primary"><img src="{{saveIcon}}" alt="" class="pr-1"
+                height="15px">{{'All-save' | translate }}</button>
+    </mat-dialog-actions>
+
+</form>

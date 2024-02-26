@@ -1,0 +1,39 @@
+<div class="row modal-header">
+    <div class="col-2 dialog-head-left"></div>
+    <div class="col-8 dialog-head-center">
+        <h2 mat-dialog-title>{{ "Select_Document_Type" | translate }}</h2>
+    </div>
+    <div class="col-2 dialog-head-right">
+        <button class="import-export-btn-datatable cust-margin-div" matTooltip="{{ 'All-exit' | translate }}"
+            mat-dialog-close>
+            <img src="{{ exitIcon }}" alt="" class="far fa-paper-plane" height="20px" />
+        </button>
+    </div>
+</div>
+
+<form class="form" [formGroup]="selectdocumenttype">
+    <mat-dialog-content class="mat-typography" style="min-width: 600px">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="main-one-input-field" appearance="outline">
+                        <mat-label>{{'Select_Document_Type' | translate}}</mat-label>
+                        <mat-select formControlName="select_form" required
+                            (ngModelChange)="onDocumentSelectFormSelect($event)"
+                            placeholder="{{'Select_Document_Type' | translate}}">
+                            <mat-option *ngFor="let select of DOCUMENT_TYPE" [value]="select.key">
+                                {{select.name | translate }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions align="center">
+        <button mat-raised-button mat-dialog-close>
+            <img src="{{ exitIcon }}" alt="" height="15px" />
+            {{ "All-exit" | translate }}
+        </button>
+    </mat-dialog-actions>
+</form>

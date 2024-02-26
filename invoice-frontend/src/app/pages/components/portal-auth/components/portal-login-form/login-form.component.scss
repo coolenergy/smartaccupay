@@ -1,0 +1,96 @@
+@import "src/app/styles/colors";
+@import "src/app/styles/font";
+
+.form {
+  width: 100%;
+
+  &__input {
+    width: 100%;
+    margin-top: 6px;
+  }
+}
+
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__login {
+    margin-right: 10px;
+  }
+
+  &__logo-img {
+    margin-bottom: 1px;
+  }
+
+  &__forget {
+    font-size: 12px;
+    font-weight: $fw-lighter;
+    color: $blue;
+  }
+}
+
+/* CheckBox Light Theme */
+.mat-checkbox ::ng-deep .mat-checkbox-frame {
+  border-color: #023e8a !important;
+}
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-ripple .mat-ripple-element {
+  opacity: 0.03 !important;
+  background-color: #023e8a !important;
+}
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background,
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+  background-color: #023e8a !important;
+}
+
+.term-condition {
+  // color: white;
+}
+
+.placeholder {
+  position: absolute;
+  top: 5px;
+  bottom: 0;
+  height: 24px;
+  font-size: 25px;
+  right: 5px;
+}
+
+.auth-page__group-title {
+  // color: white;
+}
+
+::ng-deep .mat-checkbox {
+  .mat-checkbox-frame {
+    // border-color: white !important;
+  }
+}
+
+::ng-deep .mat-checkbox-checked {
+  .mat-checkbox-checkmark {
+    // background: #ffffff !important;
+
+    .mat-checkbox-checkmark-path {
+      // stroke: rgba(2, 62, 138, 0.968627451) !important;
+      stroke-width: 5px;
+    }
+  }
+}
+
+mat-label {
+  color: rgb(0, 0, 0);
+}
+
+// mat-form-field {
+//   color: rgb(0, 0, 0) !important;
+// }
+
+:host ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+  color: rgb(5, 5, 5) !important;
+}
+
+:host ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline:hover {
+  color: rgb(5, 5, 5) !important;
+}

@@ -1,0 +1,83 @@
+<!-- <div class="display-inline-cust">
+  <div class="col-md-12">
+    <div class="screen-title-section cust-h1-inline">
+      <div class="inner-search-bar"></div>
+      <button mat-raised-button (click)="back()" class="cust-button-form">
+        <img src="{{ backIcon }}" alt="" height="20px" />
+        {{ "All-back" | translate }}
+      </button>
+    </div>
+  </div>
+</div>
+<div class="main-search-bar">
+  <div class="row">
+    <div class="one-div-cust-user">
+      <div class="header-text-cust statastic-card mt-2">
+        <div class="statastic-card-title">{{'Dashboard_Pending_File' | translate }}</div>
+        <div class="number">
+          <div class="mt-2">{{counts.pending_files}}</div>
+        </div>
+      </div>
+    </div>
+
+  </div> -->
+<div class="display-inline-cust">
+  <div class="col-md-12">
+    <div class="screen-title-section cust-h1-inline">
+      <div class="inner-search-bar">
+        <div class="header-text-cust statastic-card mt-2">
+          <div class="statastic-card-title">{{'Dashboard_Pending_File' | translate }}</div>
+          <div class="number">
+            <div class="mt-2">{{counts.pending_files}}</div>
+          </div>
+        </div>
+      </div>
+      <button mat-raised-button (click)="back()" class="cust-button-form b-hight">
+        <img src="{{ backIcon }}" alt="" height="20px" />
+        {{ "All-back" | translate }}
+      </button>
+
+    </div>
+  </div>
+</div>
+
+
+
+<div class="wrapper-cust-admin" fxLayout style="height: 95%">
+  <mat-tab-group mat-align-tabs="center" (selectedTabChange)="onTabChanged($event)">
+    <mat-tab label="{{'Dashboard_Pending_File' | translate}}">
+      <div class="wrapper-cust-admin cust-width ">
+        <div class="table-responsive cust-padding cust-padding-tmp mt-2" *ngIf="showTable">
+          <table datatable [dtOptions]="dtOptions" id="dtOptions" class="row-border hover">
+          </table>
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab *ngIf="Document_View_time"
+      matTooltip="This {{Document_View_time_value}} days comes form settings - Document view">
+      <ng-template mat-tab-label>
+        <label class="labelHeading mt-2"
+          matTooltip="This {{Document_View_time_value}} days comes form settings - Document view"
+          matTooltipClass="example-tooltip-red1">{{'Pending_Files_Older_Then' | translate}}
+          {{Document_View_time_value}}&nbsp;{{'Days' | translate}}
+        </label>
+      </ng-template>
+      <div class="wrapper-cust-admin cust-width ">
+        <div class="table-responsive cust-padding cust-padding-tmp mt-2" *ngIf="showViewTable">
+          <table datatable [dtOptions]="dtOptionsView" id="dtOptionsView" class="row-border hover">
+          </table>
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab label="{{'Dashboard_Duplicate_File' | translate}}">
+      <div class="wrapper-cust-admin cust-width ">
+        <div class="table-responsive cust-padding cust-padding-tmp mt-2" *ngIf="showDuplicateTable">
+          <table datatable [dtOptions]="dtOptionsDuplicate" id="dtOptionsDuplicate" class="row-border hover">
+          </table>
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>
+<!-- </div> -->
+<ngx-gallery [options]="galleryOptions" [images]="galleryImages" #gallery></ngx-gallery>

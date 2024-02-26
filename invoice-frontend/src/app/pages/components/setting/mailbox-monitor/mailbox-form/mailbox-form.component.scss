@@ -1,0 +1,72 @@
+.cust-full-width {
+     width: 100%;
+}
+
+.card {
+     // height: 200px;
+     width: 200px;
+     background-color: #FFFFFF;
+     overflow: hidden;
+     border-radius: 20px;
+     cursor: pointer;
+     box-shadow: 0 0 8px 8px #f3f2f2;
+}
+
+.btn-action-lg .material-icons {
+     font-size: 41px;
+}
+
+.btn-action-lg {
+     min-width: 56px;
+     width: 56px;
+     height: 56px;
+     line-height: 84px;
+     padding: 0;
+     border-radius: 28px;
+}
+
+.btn-raised {
+     -webkit-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16), 0 2px 5px rgba(0, 0, 0, 0.26);
+     -moz-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16), 0 2px 5px rgba(0, 0, 0, 0.26);
+     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16), 0 2px 5px rgba(0, 0, 0, 0.26);
+}
+
+.btn-accent {
+     color: #ffffff;
+     background-color: #023E8A;
+}
+
+.btn-accent:hover,
+.btn-accent:focus,
+.btn-accent.focus,
+.btn-accent:active,
+.btn-accent.active {
+     color: #ffffff;
+     background-color: #023E8A;
+}
+
+.container {
+     text-align: center;
+     padding-top: 30px;
+}
+
+.wrapper-cust-admin {
+     margin: 1% 1%;
+}
+
+::ng-deep .s2-confirm {
+     width: 150px !important;
+}
+
+::ng-deep .btn-gray {
+     background-color: grey !important;
+     color: white !important;
+}
+
+.mat-form-field {
+     display: unset !important;
+}
+
+.mat-card {
+     padding: unset !important;
+}

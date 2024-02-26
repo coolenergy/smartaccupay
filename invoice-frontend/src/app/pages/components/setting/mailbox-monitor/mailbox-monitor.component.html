@@ -1,0 +1,24 @@
+<div class="wrapper-cust-admin">
+
+    <div class="row">
+        <div class="col-10 dialog-head-left">
+
+        </div>
+
+        <div class="col-2 dialog-head-right">
+
+            <button mat-stroked-button class="sign-button cust-margin-div" mat-raised-button color="primary"
+                (click)="addMailBox();">
+                <img src="{{addIcon}}" alt="" height="20px">
+                {{'Mail Box' | translate}}
+            </button>
+        </div>
+    </div>
+    <div class="wrapper-cust-admin cust-width ">
+        <div class="table-responsive cust-padding cust-padding-tmp mt-5" *ngIf="showTable">
+            <table datatable [dtOptions]="dtOptions" class="row-border hover">
+            </table>
+        </div>
+    </div>
+
+</div>

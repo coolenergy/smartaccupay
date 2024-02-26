@@ -1,0 +1,218 @@
+<section class="content">
+     <div class="content-block">
+          <div class="m-4"></div>
+          <div class="row">
+               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card">
+                         <div class="materialTableHeader">
+                              <div class="left">
+                                   <ul class="header-buttons-left ms-0">
+                                        <li class="tbl-title">
+                                             <h2 *ngIf="isDelete === 0">Vendor</h2>
+                                             <h2 *ngIf="isDelete === 1">Archived Vendor</h2>
+                                        </li>
+                                        <li class="tbl-search-box">
+                                             <label for="search-input"><i
+                                                       class="material-icons search-icon">search</i></label>
+                                             <input [(ngModel)]="vendorname_search"
+                                                  placeholder="{{'COMMON.TOOL_TIP.SEARCH' | translate}}" type="text"
+                                                  #filter class="browser-default search-field" aria-label="Search box">
+                                        </li>
+                                   </ul>
+                              </div>
+                              <div class="right">
+                                   <ul class="tbl-export-btn">
+                                        <li *ngIf="isDelete === 0" class="vendor-dropdowns">
+                                             <mat-form-field class="cust-padding-top" appearance="outline">
+                                                  <mat-label>{{'Status' | translate }}</mat-label>
+                                                  <mat-select [(ngModel)]="vendor_status">
+                                                       <mat-option value="All">{{'All' | translate}}</mat-option>
+                                                       <mat-option value="1">{{'Active' | translate}}</mat-option>
+                                                       <mat-option value="2">{{'Inactive' | translate}}</mat-option>
+                                                  </mat-select>
+                                             </mat-form-field>
+                                        </li>
+                                        <li class="tbl-header-btn" *ngIf="isDelete === 0">
+                                             <div class="m-l-10" matTooltip="{{'COMMON.TOOL_TIP.REFRESH' |
+                                             translate}}">
+                                                  <button mat-mini-fab color="primary" (click)="refresh()">
+                                                       <mat-icon class="col-white">refresh</mat-icon>
+                                                  </button>
+                                             </div>
+                                        </li>
+                                        <li class="tbl-header-btn" *ngIf="!isHideAddActionQBD && isDelete === 0">
+                                             <div class="m-l-10" matTooltip="{{'COMMON.TOOL_TIP.IMPORT_TEMPLATE' |
+                                             translate}}">
+                                                  <button mat-mini-fab color="primary" (click)="downloadImport()">
+                                                       <mat-icon class="col-white">file_download</mat-icon>
+                                                  </button>
+                                             </div>
+                                        </li>
+                                        <li class="tbl-header-btn" *ngIf="!isHideAddActionQBD && isDelete === 0">
+                                             <div class="m-l-10" matTooltip="{{'COMMON.TOOL_TIP.IMPORT' |
+                                             translate}}">
+                                                  <input id="file-upload" class="mr-2" type="file" style="display: none"
+                                                       (change)="onFileChange($event)" #OpenFilebox />
+                                                  <button mat-mini-fab color="primary" (click)="importFileAction()">
+                                                       <mat-icon class="col-white">file_upload</mat-icon>
+                                                  </button>
+                                             </div>
+                                        </li>
+                                        <!-- <li class="tbl-header-btn" *ngIf="isDelete === 0">
+                                             <div class="m-l-10" matTooltip="{{'COMMON.TOOL_TIP.REPORT' |
+                                             translate}}" (click)="vendorReport()">
+                                                  <button mat-mini-fab color="primary">
+                                                       <mat-icon class="col-white">insert_drive_file</mat-icon>
+                                                  </button>
+                                             </div>
+                                        </li> -->
+                                        <li class="tbl-header-btn" *ngIf="isDelete === 0">
+                                             <div class="m-l-10" matTooltip="{{'COMMON.TOOL_TIP.HISTORY' |
+                                             translate}}">
+                                                  <button mat-mini-fab color="primary" (click)="openHistory()">
+                                                       <mat-icon class="col-white">history</mat-icon>
+                                                  </button>
+                                             </div>
+                                        </li>
+                                        <li class="tbl-header-btn" *ngIf="isDelete === 0">
+                                             <div class="m-l-10" matTooltip="{{'COMMON.TOOL_TIP.GRID_TO_LIST' |
+                                             translate}}">
+                                                  <button mat-mini-fab color="primary" (click)="gotolist()">
+                                                       <mat-icon class="col-white">view_list </mat-icon>
+                                                  </button>
+                                             </div>
+                                        </li>
+                                        <li class="tbl-header-btn" *ngIf="isDelete === 0 && !isHideAddActionQBD">
+                                             <div class="m-l-10" matTooltip="{{'COMMON.TOOL_TIP.ARCHIVE' |
+                                             translate}}">
+                                                  <button mat-mini-fab color="warn" (click)="gotoArchiveUnarchive()">
+                                                       <mat-icon class="col-white">archive</mat-icon>
+                                                  </button>
+                                             </div>
+                                        </li>
+                                        <li class="tbl-header-btn" *ngIf="isDelete === 1">
+                                             <div class="m-l-10" matTooltip="{{'COMMON.TOOL_TIP.BACK' |
+                                             translate}}">
+                                                  <button mat-mini-fab color="warn" (click)="gotoArchiveUnarchive()">
+                                                       <mat-icon class="col-white">close </mat-icon>
+                                                  </button>
+                                             </div>
+                                        </li>
+                                        <li class="tbl-header-btn" *ngIf="isDelete === 0  && !isHideAddActionQBD">
+                                             <div class="m-l-10" matTooltip="{{'COMMON.TOOL_TIP.ADD' |
+                                             translate}}">
+                                                  <button mat-mini-fab color="primary" (click)="addNew()">
+                                                       <mat-icon class="col-white">add</mat-icon>
+                                                  </button>
+                                             </div>
+                                        </li>
+
+                                   </ul>
+                              </div>
+                         </div>
+
+                         <div class="body overflow-auto">
+                              <div class="row">
+                                   <div class="test col-xs-12 col-sm-6 col-md-4 col-xl-3"
+                                        *ngFor="let vendor of vendorList  | vendorListFilter : vendorname_search |vendorListFilterStatus : vendor_status">
+                                        <div class="card hover-card font-white card-border">
+                                             <div class="m-b-20">
+                                                  <div class="contact-grid card-h" (click)="editVendor(vendor)">
+                                                       <div class="profile-header">
+                                                            <div class="col-12 m-1 d-flex">
+                                                                 <div class="col-4">
+                                                                      <img [src]="vendor.vendor_image || 'assets/images/vendor.png'"
+                                                                           class="user-img1 img-bg" width="80px"
+                                                                           height="80px " alt="">
+                                                                 </div>
+                                                                 <div class="mt-4 m-1 col-8">
+                                                                      <div class="m-1 font-white font-s txt-alg">
+                                                                           <b> {{vendor.vendor_name}}</b>
+                                                                           <br>
+                                                                           <div
+                                                                                *ngIf="is_quickbooks_online || is_quickbooks_desktop">
+                                                                                <img *ngIf="!vendor.is_quickbooks"
+                                                                                     [src]="quickbooksGreyIcon" alt=""
+                                                                                     height="23" width="23" />
+                                                                                <img *ngIf="vendor.is_quickbooks"
+                                                                                     [src]="quickbooksGreenIcon" alt=""
+                                                                                     height="23" width="23" />
+                                                                           </div>
+                                                                      </div>
+                                                                 </div>
+                                                            </div>
+                                                       </div>
+                                                       <div class="m-1 text-a">
+                                                            <div class="d-flex font-s">
+                                                                 <i class="material-icons my-auto font-s">email</i>
+                                                                 <span class="font-sp">
+                                                                      {{vendor.vendor_email}}</span>
+                                                            </div>
+                                                       </div>
+                                                       <div class="m-1 text-a" *ngIf="vendor.userphone !== 0">
+                                                            <div class="d-flex font-s">
+                                                                 <i class="material-icons my-auto font-s">phone</i>
+                                                                 <span class="font-sp">
+                                                                      {{formatPhoneNumber(vendor.vendor_phone)}}</span>
+                                                            </div>
+                                                       </div>
+                                                       <div class="col-12 d-flex">
+                                                            <div class="col-6">
+                                                                 <b> Invoice</b>
+                                                                 <P> {{vendor.invoices}}</P>
+                                                            </div>
+                                                            <div class="col-6">
+                                                                 <b> Amount Paid This Year</b>
+                                                                 <P class="truncate-text">
+                                                                      {{formateAmount(vendor.invoices_total)}}
+                                                                 </P>
+                                                            </div>
+                                                       </div>
+                                                       <div class="col-12 d-flex">
+                                                            <div class="col-6">
+                                                                 <b>Open Invoice</b>
+                                                                 <P> {{vendor.open_invoices}}</P>
+                                                            </div>
+                                                            <div class="col-6 mb-1">
+                                                                 <b>Amount open</b>
+                                                                 <P class="truncate-text">
+                                                                      {{formateAmount(vendor.open_invoices_total)}}
+                                                                 </P>
+                                                            </div>
+                                                       </div>
+                                                       <div class="chip"
+                                                            [ngClass]="vendor.vendor_status === 1 ? 'active' :'inactive'">
+
+                                                            {{vendor.vendor_status === 1 ? active_word :inactive_word }}
+                                                       </div>
+
+                                                  </div>
+                                             </div>
+                                        </div>
+
+                                   </div>
+                              </div>
+                         </div>
+                         <div *ngIf="cardLoading" class="tbl-spinner">
+                              <app-loading></app-loading>
+                         </div>
+
+                         <div *ngIf="vendor_status === '2' && vendorInactiveList?.length === 0">
+                              <div>
+                                   <h5 class="font-white massge-status">
+                                        {{'VENDOR.VIEW.ACTIVE_STATUS_MASSAGE' | translate}}
+                                   </h5>
+                              </div>
+                         </div>
+                         <div *ngIf="vendor_status === '1' && vendorActiveList?.length === 0">
+                              <div>
+                                   <h5 class="font-white massge-status">
+                                        {{'VENDOR.VIEW.INACTIVE_STATUS_MASSAGE' | translate}}
+                                   </h5>
+                              </div>
+                         </div>
+                    </div>
+               </div>
+          </div>
+     </div>
+</section>

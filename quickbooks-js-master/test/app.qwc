@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<QBWCXML>
+   <AppName>Rovuk A/P</AppName>
+   <AppID></AppID>
+   <AppURL>http://localhost:8080/wsdl</AppURL>
+   <AppDescription>A Web Connector for the Rovuk A/P</AppDescription>
+   <AppSupport>https://www.rovuk.com/</AppSupport>
+   <UserName>username</UserName>
+   <OwnerID>{57571caa-e934-4f14-b3bf-dfdbacdd273a}</OwnerID>
+   <FileID>{dc25fda6-bce2-493b-9e04-a1560bde96e4}</FileID>
+   <QBType>QBFS</QBType>
+   <Scheduler>
+      <RunEveryNSeconds>600</RunEveryNSeconds>
+   </Scheduler>
+   <IsReadOnly>false</IsReadOnly>
+</QBWCXML>

@@ -1,0 +1,52 @@
+version: "3.1"
+
+services:
+  api:
+    image: api
+    build:
+      context: .
+      dockerfile: ./api/Dockerfile
+    ports:
+#      - 80:80
+      - 8000:8000
+    depends_on:
+      - worker
+    environment:
+      - PYTHONUNBUFFERED=1
+
+  worker:
+    image: worker
+    build:
+      context: .
+      dockerfile: ./worker/Dockerfile
+    depends_on:
+      - mongo
+      - cache
+    environment:
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - ~/rovuk_data:/data
+
+  mongo:
+    image: mongo:6.0.3
+#    environment:
+#      MONGO_INITDB_ROOT_USERNAME: root
+#      MONGO_INITDB_ROOT_PASSWORD: rootpassword
+    ports:
+      - 27017:27017
+    volumes:
+      - mongo:/data/db
+
+  cache:
+    image: redis:6.2-alpine
+#    restart: always
+    ports:
+      - 6379:6379
+    command: redis-server --save 20 1 --loglevel warning
+    volumes:
+      - cache:/data
+
+
+volumes:
+  mongo:
+  cache:

@@ -1,0 +1,115 @@
+<section class="content">
+    <div class="content-block">
+        <div class="m-4"></div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="materialTableHeader">
+                        <div class="left">
+                            <ul class="header-buttons-left ms-0">
+                                <li class="tbl-title">
+                                    <h2>
+                                        <strong *ngIf="id === null">{{'DOCUMENT.ADD' | translate}}</strong>
+                                        <strong *ngIf="id !== null">{{'DOCUMENT.EDIT' | translate}}</strong>
+                                    </h2>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="right">
+                            <ul class="tbl-export-btn">
+                                <li class="tbl-header-btn">
+                                    <div class="m-l-10" matTooltip="{{'COMMON.TOOL_TIP.BACK' | translate}}">
+                                        <button mat-mini-fab color="warn" (click)="confirmExit()">
+                                            <mat-icon class="col-white">close</mat-icon>
+                                        </button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="body">
+                        <form [formGroup]="form!">
+                            <div class="main-cust-emp-from">
+                                <div class="padding-left-cust main-cust-emp-inputpersonal">
+                                    <div class="row mt-3">
+                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                                            <mat-form-field class="example-full-width" appearance="outline">
+                                                <mat-label>{{'DOCUMENT.FORM.DOCUMENT_TYPE' | translate}}</mat-label>
+                                                <mat-select formControlName="userdocument_type_id" #documentTypeSelect
+                                                    class="dark-cust-color"
+                                                    (ngModelChange)="selectDocumentType($event)">
+                                                    <mat-select-filter [placeholder]="'Filter'"
+                                                        [displayMember]="'document_type_name'"
+                                                        *ngIf="documentTypeSelect.focused"
+                                                        [array]="variablesDocumentTypeList"
+                                                        (filteredReturn)="documentTypeList =$event">
+                                                    </mat-select-filter>
+                                                    <mat-option *ngFor="let relationship of documentTypeList"
+                                                        [value]="relationship._id">
+                                                        {{relationship.document_type_name}}
+                                                    </mat-option>
+                                                </mat-select>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <div class="row" *ngIf="showHideDate">
+                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                                            <mat-form-field class="example-full-width" appearance="outline">
+                                                <mat-label>{{'DOCUMENT.FORM.EXPIRATION_DATE' | translate}}</mat-label>
+                                                <!-- <input matInput formControlName="userdocument_expire_date" required> -->
+                                                <input matInput [matDatepicker]="picker" readonly
+                                                    formControlName="userdocument_expire_date">
+                                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                                <mat-datepicker #picker disabled="false"></mat-datepicker>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <div class="contact-cust-width-full">
+                                        <div class="contact-cust-width-full">
+                                            <div class="doc-upload-cust">
+                                                <input (change)="fileChangeEvent($event)" type="file"
+                                                    placeholder="{{'DOCUMENT.FORM.DOCUMENT' | translate }}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="d-flex justify-content-center">
+                                        <div class="" *ngIf="is_edit">
+                                          <div class="row cust-margin">
+                                            <div class="files-list">
+                                  
+                                              <div class="single-file">
+                                                <a [href]="data.reqData.userdocument_url" target="_blank">
+                                                  <div class="file-icon">
+                                                    <img [src]="thumbNetworkImage(data.reqData.userdocument_url)" alt="">
+                                                  </div>
+                                                </a>
+                                                <div class="info" alignment="center">
+                                                  <h4 class="name">
+                                                    {{ data.reqData.userdocument_url.split('/').pop() }}
+                                                  </h4>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div> -->
+                                    <div class="row">
+                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                                            <button *ngIf="role_permission.users.emergencyContact.Edit"
+                                                class="btn-space" mat-raised-button color="primary"
+                                                [disabled]="!form.valid"
+                                                (click)="saveUserDocument()">{{'COMMON.ACTIONS.SAVE'|
+                                                translate}}</button>
+                                            <button type="button" mat-raised-button color="warn"
+                                                (click)="confirmExit()">{{'COMMON.ACTIONS.CANCEL'| translate}}</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

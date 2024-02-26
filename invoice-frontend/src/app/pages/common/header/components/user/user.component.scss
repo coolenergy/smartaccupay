@@ -1,0 +1,74 @@
+@import 'src/app/styles/colors';
+@import 'src/app/styles/font';
+@import 'src/app/styles/variables';
+
+.user-button {
+  background-color: $header-background-color_cust;
+  box-shadow: none;
+  margin-left: 16px;
+
+  &__icon {
+    color: $white;
+  }
+  
+  @media (max-width: $small) {
+    margin-top: 0;
+  }
+}
+
+.mat-icon {
+  height: 27px !important;
+  width: 27px !important;
+}
+
+.user-menu-title {
+  padding: 16px 48px 0 16px;
+  margin-bottom: 4px;
+
+  &__name {
+    margin-bottom: 4px;
+    font-weight: $fw-lighter;
+    font-size: $fs-large;
+    color: $dark-grey;
+  }
+
+  &__link {
+    color: $blue;
+    font-weight: $fw-lighter;
+    font-size: $fs-small;
+    text-decoration: none;
+  }
+}
+
+.user-menu-icon {
+  color: $light-grey;
+  margin-right: 16px;
+  opacity: .8;
+}
+
+.sign-button-wrapper {
+  text-align: center;
+  padding: 8px 0 16px 0;
+  width: 100%;
+}
+
+.sign-button {
+  border: 1px solid;
+  color: $blue;
+  width: 80%;
+}
+
+.user-menu {
+  &__item-title {
+    color: $light-grey;
+
+    &:hover {
+      color: $dark-grey;
+      background-color: $blue-white;
+
+      & .user-menu-icon {
+        color: #536DFE;
+      }
+    }
+  }
+}

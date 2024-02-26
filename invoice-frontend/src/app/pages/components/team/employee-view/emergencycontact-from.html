@@ -1,0 +1,110 @@
+<div class="row  modal-header">
+  <div class="col-3 dialog-head-left">
+  </div>
+  <div class="col-6 dialog-head-center">
+    <h2 mat-dialog-title>{{data.labl_tmp}} {{'Employee-form-Emergency-contact' | translate }}</h2>
+  </div>
+  <div class="col-3 dialog-head-right">
+    <button class="import-export-btn-datatable cust-margin-div" matTooltip="{{ 'All-save' | translate }}"
+      (click)="saveData()"><img src="{{saveIcon}}" alt="" class="pr-1" height="20px">
+    </button>
+    <button class="import-export-btn-datatable cust-margin-div" matTooltip="{{ 'All-exit' | translate }}"
+      mat-dialog-close>
+      <img src="{{backIcon}}" alt="" class="far fa-paper-plane" height="20px">
+    </button>
+  </div>
+</div>
+<form class="form" [formGroup]="form" (ngSubmit)="saveData()">
+  <mat-dialog-content class="mat-typography" style="min-width: 700px;">
+    <!-- <h2 mat-dialog-title>{{data.labl_tmp}} {{'Employee-form-Emergency-contact' | translate }}</h2> -->
+    <div>
+      <mat-form-field appearance="outline" class="contact-cust-width">
+        <mat-label>{{'Emergency-Contact-Form-name' | translate }}</mat-label>
+        <input matInput formControlName="emergency_contact_name" class="input-capitalized-textfield"
+          placeholder="{{'Emergency-Contact-Form-name' | translate }}" required>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="contact-cust-width">
+        <mat-label>{{'Emergency-Contact-Form-Relation' | translate }}</mat-label>
+        <mat-select formControlName="emergency_contact_relation" #relation_arraySelect class="dark-cust-color" required>
+          <mat-select-filter [placeholder]="'Filter'" [displayMember]="'relationship_name'"
+            *ngIf="relation_arraySelect.focused" [array]="variablesrelation_array"
+            (filteredReturn)="relation_array =$event">
+          </mat-select-filter>
+          <mat-option *ngFor="let relation of relation_array" [value]="relation._id">
+            {{relation.relationship_name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field appearance="outline" class="contact-cust-width">
+        <mat-label>{{'Emergency-Contact-Form-Phone' | translate }}</mat-label>
+        <input matInput mask="(000) 000-0000" maxlength="14"
+          onkeypress="return String.fromCharCode(event.charCode).match(/[^0-9]/g) === null"
+          formControlName="emergency_contact_phone" placeholder="{{'Emergency-Contact-Form-Phone' | translate }}"
+          required>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="contact-cust-width">
+        <mat-label>{{'Emergency-Contact-Form-Email' | translate }}</mat-label>
+        <input matInput formControlName="emergency_contact_email"
+          placeholder="{{'Emergency-Contact-Form-Email' | translate }}" required>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field appearance="outline" class="contact-cust-width-full">
+        <mat-label>{{'Emergency-Contact-Form-Address' | translate }}</mat-label>
+        <input matInput formControlName="emergency_contact_fulladdress" class="input-capitalized-textfield"
+          placeholder="{{'Emergency-Contact-Form-Address' | translate }}">
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field appearance="outline" class="contact-cust-width">
+        <mat-label>{{'Emergency-Contact-Form-Street1' | translate }}</mat-label>
+        <input matInput formControlName="emergency_contact_street1" class="input-capitalized-textfield"
+          placeholder="{{'Emergency-Contact-Form-Street1' | translate }}">
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="contact-cust-width">
+        <mat-label>{{'Emergency-Contact-Form-Street2' | translate }}</mat-label>
+        <input matInput formControlName="emergency_contact_street2" class="input-capitalized-textfield"
+          placeholder="{{'Emergency-Contact-Form-Street2' | translate }}">
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field appearance="outline" class="contact-cust-width">
+        <mat-label>{{'Emergency-Contact-Form-City' | translate }}</mat-label>
+        <input matInput formControlName="emergency_contact_city" class="input-capitalized-textfield"
+          placeholder="{{'Emergency-Contact-Form-City' | translate }}">
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="contact-cust-width">
+        <mat-label>{{'Emergency-Contact-Form-State' | translate }}</mat-label>
+        <input matInput onkeypress="return String.fromCharCode(event.charCode).match(/[^A-Za-z]/g) === null"
+          formControlName="emergency_contact_state" class="input-capitalized-textfield"
+          placeholder="{{'Emergency-Contact-Form-State' | translate }}">
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field appearance="outline" class="contact-cust-width">
+        <mat-label>{{'Emergency-Contact-Form-ZipCode' | translate }}</mat-label>
+        <input matInput maxlength="5" onkeypress="return String.fromCharCode(event.charCode).match(/[^0-9]/g) === null"
+          formControlName="emergency_contact_zipcode" placeholder="{{'Emergency-Contact-Form-ZipCode' | translate }}">
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="contact-cust-width">
+        <mat-label>{{'Emergency-Contact-Form-Country' | translate }}</mat-label>
+        <input matInput onkeypress="return String.fromCharCode(event.charCode).match(/[^A-Za-z. ()]/g) === null"
+          formControlName="emergency_contact_country" class="input-capitalized-textfield"
+          placeholder="{{'Emergency-Contact-Form-Country' | translate }}">
+      </mat-form-field>
+    </div>
+    <!-- <mat-dialog-actions align="center">
+      <button mat-raised-button mat-dialog-close><img src="{{backIcon}}" alt="" class="pr-1" height="15px">{{'All-exit'
+        | translate }}</button>
+      <button mat-raised-button type="submit" color="primary"><img src="{{saveIcon}}" alt="" class="pr-1"
+          height="15px">{{'All-save' | translate }}</button>
+    </mat-dialog-actions>-->
+  </mat-dialog-content>
+</form>

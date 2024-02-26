@@ -1,0 +1,79 @@
+<div class="row">
+    <div class="col-3 dialog-head-left">
+    </div>
+    <div class="col-6 dialog-head-center">
+
+    </div>
+    <div class="col-3 dialog-head-right">
+
+        <button class="import-export-btn-datatable cust-margin-div" matTooltip="{{ 'All-exit' | translate }}"
+            mat-dialog-close>
+            <img src="{{exitIcon}}" alt="" class="far fa-paper-plane" height="20px">
+        </button>
+    </div>
+</div>
+<div class="row mt-3">
+    <h3 style="margin: auto;">Upload files or drag and drop them from your computer into this window.</h3>
+    <div class="row pt-4" style="margin: auto;">
+        <div class="containers-cust" appDnd (fileDropped)="onFileDropped($event)">
+            <div><img src="{{fileIcon}}" alt="" height="25px"></div>
+
+            <input type="file" #fileDropRef id="fileDropRef" multiple (change)="fileBrowseHandler($event)" />
+            <label for="fileDropRef">
+                Drop your files here</label>
+        </div>
+        <p class="pt-3" style="margin: auto;">We will create a separate invoice for each PDF page</p>
+
+    </div>
+</div>
+<div class="mt-4" style="text-align: center;">
+    <button mat-raised-button color="primary" (click)="uploadDocuments()" class="cust-button-form">Upload Files</button>
+</div>
+<div class="row cust-margin">
+    <div class="files-list">
+        <div class="single-file" *ngFor="let file of files; let i = index">
+            <div class="file-icon">
+                <img [src]="thumbImage(file)" alt="">
+            </div>
+            <div class="info" alignment="center">
+                <h4 class="name">
+                    {{ file?.name }}
+                </h4>
+            </div>
+
+            <div class="delete" (click)="deleteFile(i)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="18" viewBox="0 0 14 18">
+                    <path fill="#B1B1B1" fill-rule="nonzero"
+                        d="M1 16c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2H3c-1.1 0-2 .9-2 2v10zm3.17-7.83a.996.996 0 0 1 1.41 0L7 9.59l1.42-1.42a.996.996 0 1 1 1.41 1.41L8.41 11l1.42 1.42a.996.996 0 1 1-1.41 1.41L7 12.41l-1.42 1.42a.996.996 0 1 1-1.41-1.41L5.59 11 4.17 9.58a.996.996 0 0 1 0-1.41zM10.5 1L9.79.29C9.61.11 9.35 0 9.09 0H4.91c-.26 0-.52.11-.7.29L3.5 1H1c-.55 0-1 .45-1 1s.45 1 1 1h12c.55 0 1-.45 1-1s-.45-1-1-1h-2.5z" />
+                </svg>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row cust-margin" *ngIf="_id">
+    <div class="files-list">
+
+        <div class="single-file" *ngFor="let file of last_files_array; let i = index">
+            <div class="file-icon" (click)="imageNetworkPreview(last_files_array, i)">
+                <img [src]="thumbNetworkImage(i)" alt="">
+            </div>
+            <div class="info" alignment="center">
+                <h4 class="name">
+                    {{ file.split('/').pop() }}
+                </h4>
+            </div>
+
+            <div class="delete" (click)="deleteFile_old(i)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="18" viewBox="0 0 14 18">
+                    <path fill="#B1B1B1" fill-rule="nonzero"
+                        d="M1 16c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2H3c-1.1 0-2 .9-2 2v10zm3.17-7.83a.996.996 0 0 1 1.41 0L7 9.59l1.42-1.42a.996.996 0 1 1 1.41 1.41L8.41 11l1.42 1.42a.996.996 0 1 1-1.41 1.41L7 12.41l-1.42 1.42a.996.996 0 1 1-1.41-1.41L5.59 11 4.17 9.58a.996.996 0 0 1 0-1.41zM10.5 1L9.79.29C9.61.11 9.35 0 9.09 0H4.91c-.26 0-.52.11-.7.29L3.5 1H1c-.55 0-1 .45-1 1s.45 1 1 1h12c.55 0 1-.45 1-1s-.45-1-1-1h-2.5z" />
+                </svg>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<ngx-gallery [options]="galleryOptions" [images]="galleryImages" #gallery></ngx-gallery>

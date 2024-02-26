@@ -1,0 +1,184 @@
+<nav #navbar class="navbar active">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a href="#" onClick="return false;" class="navbar-toggle collapsed"
+        (click)="isNavbarCollapsed = !isNavbarCollapsed" aria-expanded="false"></a>
+      <a href="#" onClick="return false;" class="bars" (click)="mobileMenuSidebarOpen($event,'overlay-open')"></a>
+      <a class="navbar-brand" (click)="openDashboard()">
+        <img src="assets/images/rovukinvoice.png" alt="" height="38px" width="30px" />
+        <span class="logo-name">
+          Smart<b>Accu</b>Pay
+        </span>
+      </a>
+    </div>
+    <div class="collapse navbar-collapse" [ngClass]="isNavbarCollapsed ? '' : 'show'">
+      <ul class="pull-left collapse-menu-icon">
+        <li>
+          <button mat-button (click)="callSidemenuCollapse()" class="sidemenu-collapse nav-notification-icons"> <i
+              class="material-icons-outlined icon-color">
+              menu
+            </i></button>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right field-h">
+        <!-- Full Screen Button -->
+        <!-- <li class="fullscreen">
+          <button mat-button class="nav-notification-icons" (click)="callFullscreen()"> <i
+              class="material-icons-outlined icon-color">
+              fullscreen
+            </i></button>
+        </li> -->
+        <!-- #END# Full Screen Button -->
+        <!-- Full Language Button -->
+        <li class="fullscreen">
+          <app-language></app-language>
+          <!-- <button mat-button class="nav-notification-icons" (click)="languageSwitcher()"> <i
+              class="material-icons-outlined icon-color">
+              language
+            </i></button> -->
+        </li>
+        <li class="tbl-search-box">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>{{'COMMON.TOOL_TIP.SEARCH' | translate}}</mat-label>
+            <input matInput id="search" class="input-capitalized-textfield" [formControl]="searchControl"
+              (input)="onSearchChange($event)">
+          </mat-form-field>
+          <button mat-mini-fab id="global-search" color="primary" [matMenuTriggerFor]="searchMenu"
+            style="display: none;">
+
+          </button>
+          <mat-menu #searchMenu="matMenu" class="nfc-menu search-div">
+            <div class="nfc-header">
+              <h5 class="mb-0">Search</h5>
+            </div>
+            <div class="nfc-dropdown">
+              <ng-scrollbar style="height: 350px" visibility="hover">
+                <div class="d-flex align-items-center justify-content-center">
+                  <app-loading *ngIf="invoiceLoader"></app-loading>
+                </div>
+                <div *ngIf="!invoiceLoader">
+                  <div *ngIf="invoiceList.length === 0" class="no-search-data text-center">
+                    No Invoice Available
+                  </div>
+                  <div class="noti-list header-menu">
+                    <div class="menu">
+                      <div>
+                        <button mat-menu-item *ngFor="let invoice of invoiceList" (click)="openInvoiceDetail(invoice)"
+                          class="search-button">
+                          <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 menu-info">
+                              <span class="menu-title"><b>Vendor</b> {{invoice.vendor_data?.vendor_name}}</span>
+                              <span class="menu-title mt-2"><b>Invoice Number</b> {{invoice.invoice_no}}</span>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 menu-info">
+                              <span class="menu-title"><b>Amount</b>
+                                ${{numberWithCommas(invoice.invoice_total_amount)}} </span>
+                              <span class="menu-title mt-2"><b>Status</b> {{invoice.status}}</span>
+                            </div>
+                          </div>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ng-scrollbar>
+            </div>
+          </mat-menu>
+        </li>
+        <!-- #END# Language Button -->
+        <li matTooltip="{{'COMMON.TOOL_TIP.INVOICEMSG' |  translate}}">
+          <button mat-button class="nav-notification-icons" (click)="viewMessage()">
+            <mat-icon matBadge="{{unseenCount}}" matBadgeColor="warn" *ngIf="unseenCount !== 0">message</mat-icon>
+            <mat-icon *ngIf="unseenCount === 0">message</mat-icon>
+          </button>
+        </li>
+        <!-- #START# Notifications-->
+        <li matTooltip="{{'COMMON.TOOL_TIP.NOTIFICATION' |  translate}}">
+          <button mat-button [matMenuTriggerFor]="notificationMenu" class="nav-notification-icons">
+            <mat-icon matBadge="{{notificationCount}}" matBadgeColor="warn" class="material-icons-outlined icon-color"
+              *ngIf="notificationCount !== 0">notifications_active</mat-icon>
+            <mat-icon *ngIf="notificationCount === 0">notifications_active</mat-icon>
+          </button>
+
+          <mat-menu #notificationMenu="matMenu" class="nfc-menu notification-div">
+            <div class="nfc-header">
+              <h5 class="mb-0">Notitications</h5>
+              <a class="nfc-mark-as-read" (click)="markAllRead()">Mark all as read</a>
+            </div>
+            <div class="nfc-dropdown" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50"
+              (scrolled)="onScroll()" [scrollWindow]="false" [ngStyle]="setHeightStyles()">
+              <div class="d-flex align-items-center justify-content-center">
+                <app-loading *ngIf="notificationLoading"></app-loading>
+              </div>
+              <div *ngIf="!notificationLoading">
+                <div *ngIf="notificationList.length === 0" class="no-search-data text-center">
+                  No Notification Available
+                </div>
+                <div class="noti-list header-menu">
+                  <div class="menu">
+                    <div>
+                      <button mat-menu-item *ngFor="let notification of notificationList"
+                        (click)="openNotificationPage(notification)" class="notification-button"
+                        [ngClass]="!notification.is_seen ? 'unseen-msg' : ''">
+                        <span class="menu-info">
+                          <span class="menu-title fw-bold">{{notification.notification_title}}</span>
+                          <span class="menu-title mt-2">{{notification.notification_description}}</span>
+                          <span class="menu-desc mt-2">
+                            <i class="material-icons">access_time</i>
+                            {{(notification.created_at * 1000) | date: 'dd MMM, yyyy hh:mm a'}}
+                          </span>
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </mat-menu>
+        </li>
+        <!-- #END# Notifications-->
+        <li class="nav-item user_profile">
+          <button mat-button [matMenuTriggerFor]="profilemenu">
+            <div class="chip dropdown-toggle" ngbDropdownToggle class="">
+              <span>{{userName}}</span>
+              <img src="{{userPicture}}" class="user_img" width="32" height="32" alt="">
+            </div>
+          </button>
+          <mat-menu #profilemenu="matMenu" class="profile-menu">
+            <div class="noti-list">
+              <div class="menu ">
+                <div class="user_dw_menu">
+                  <button mat-menu-item (click)="goUserProfile()" *ngIf="role_permission.users.View">
+                    <app-feather-icons [icon]="'user'" [class]="'user-menu-icons'"></app-feather-icons>Account
+                  </button>
+                  <button (click)="goChangePassword()" mat-menu-item>
+                    <app-feather-icons [icon]="'key'" [class]="'user-menu-icons'"></app-feather-icons>Change Password
+                  </button>
+                  <button mat-menu-item *ngIf="companyList.length > 1" (click)="switchCompany()">
+                    <app-feather-icons [icon]="'repeat'" [class]="'user-menu-icons'"></app-feather-icons>Switch
+                    Company
+                  </button>
+                  <button mat-menu-item (click)="gotoSettings()" *ngIf="role_permission.settings.View">
+                    <app-feather-icons [icon]="'settings'" [class]="'user-menu-icons'"></app-feather-icons>Settings
+                  </button>
+                  <div mat-menu-item class="user-menu__item-title">
+                    <app-feather-icons [icon]="'sun'" [class]="'user-menu-icons'"></app-feather-icons>
+                    <app-feather-icons [icon]="'moon'" [class]="'user-menu-icons'"></app-feather-icons>
+                    <span>
+                      <mat-slide-toggle [(ngModel)]="isDarTheme" [formControl]="toggleControl" color="primary">Dark Mode
+                      </mat-slide-toggle>
+                    </span>
+                  </div>
+                  <button mat-menu-item (click)="logout()">
+                    <app-feather-icons [icon]="'log-out'" [class]="'user-menu-icons'"></app-feather-icons>Logout
+                  </button>
+                </div>
+              </div>
+            </div>
+          </mat-menu>
+        </li>
+        <!-- #END# Tasks -->
+      </ul>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,70 @@
+<div>
+  <!-- Left Sidebar -->
+  <aside id="leftsidebar" class="sidebar" (mouseenter)="mouseHover()" (mouseleave)="mouseOut()">
+    <!-- Menu -->
+    <div class="menu">
+      <ng-scrollbar [style.height]="listMaxHeight + 'px'" visibility="hover">
+        <ul class="list">
+          <li class="sidebar-user-panel">
+            <div class="user-panel align-img">
+              <div class=" image">
+                <img src="{{companyLogo}}" class="img-circle user-img-circle" alt="" height="50px" width="50px" />
+              </div>
+            </div>
+            <div class="profile-usertitle">
+              <div class="sidebar-userpic-name">{{companyName}}</div>
+              <div class="profile-usertitle-job ">{{companyCode}}</div>
+            </div>
+          </li>
+          <!-- Top Most level menu -->
+          <li *ngFor="let sidebarItem of sidebarItems"
+            [routerLinkActive]="sidebarItem.submenu.length !== 0 ? 'active' : 'active-top'">
+            <div class="header" *ngIf="sidebarItem.groupTitle === true">{{sidebarItem.title}}</div>
+            <a [routerLink]="sidebarItem.class === '' ? [sidebarItem.path] : null" *ngIf="!sidebarItem.groupTitle;"
+              [ngClass]="[sidebarItem.class]" (click)="callToggleMenu($event, sidebarItem.submenu.length)"
+              class="menu-top">
+              <i [ngClass]="[sidebarItem.iconType]">{{sidebarItem.icon}}</i>
+              <span class="hide-menu">{{sidebarItem.title}}
+              </span>
+              <span *ngIf="sidebarItem.badge !== '' " [ngClass]="[sidebarItem.badgeClass]">{{sidebarItem.badge}}</span>
+            </a>
+            <!-- First level menu -->
+            <ul class="ml-menu" *ngIf="sidebarItem.submenu.length > 0">
+              <li *ngFor="let sidebarSubItem1 of sidebarItem.submenu"
+                [routerLinkActive]="sidebarSubItem1.submenu.length > 0 ? '' : 'active'">
+                <a [routerLink]="sidebarSubItem1.submenu.length > 0 ? null : [sidebarSubItem1.path]"
+                  (click)="callToggleMenu($event,sidebarSubItem1.submenu.length)" [ngClass]="[sidebarSubItem1.class]">
+                  {{sidebarSubItem1.title}}
+                </a>
+                <!-- Second level menu -->
+                <ul class="ml-menu-2" *ngIf="sidebarSubItem1.submenu.length > 0">
+                  <li *ngFor="let sidebarSubItem2 of sidebarSubItem1.submenu"
+                    [routerLinkActive]="sidebarSubItem2.submenu.length > 0 ? '' : 'active'">
+                    <a [routerLink]="sidebarSubItem2.submenu.length > 0 ? null : [sidebarSubItem2.path]"
+                      (click)="callToggleMenu($event,sidebarSubItem2.submenu.length)"
+                      [ngClass]="[sidebarSubItem2.class]">
+                      {{sidebarSubItem2.title}}
+                    </a>
+                    <!-- Third level menu -->
+                    <ul class="ml-menu-3" *ngIf="sidebarSubItem2.submenu.length > 0">
+                      <li *ngFor="let sidebarSubItem3 of sidebarSubItem2.submenu"
+                        [routerLinkActive]="sidebarSubItem3.submenu.length > 0 ? '' : 'active'">
+                        <a [routerLink]="sidebarSubItem3.submenu.length > 0 ? null : [sidebarSubItem3.path]"
+                          (click)="callToggleMenu($event,sidebarSubItem3.submenu.length)"
+                          [ngClass]="[sidebarSubItem3.class]">
+                          {{sidebarSubItem3.title}}
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </ng-scrollbar>
+    </div>
+    <!-- #Menu -->
+  </aside>
+  <!-- #END# Left Sidebar -->
+</div>

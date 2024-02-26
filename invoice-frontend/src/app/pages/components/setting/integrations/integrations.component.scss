@@ -1,0 +1,61 @@
+//scss
+@import 'src/app/styles/variables';
+@import 'src/app/styles/colors';
+@import 'src/app/styles/font';
+
+.main-cust-setting-div {
+    width: 100%;
+
+    @media (max-width: $normal) {}
+
+    @media (max-width: $small) {
+        flex-wrap: wrap;
+    }
+
+    @media (max-width: $medium) {
+        flex-wrap: wrap;
+    }
+}
+
+.main-one-input-field {
+    width: 100%;
+}
+
+.cust-margin {
+    margin: auto 0;
+}
+
+.center-cust {
+    text-align: center;
+}
+
+.custom-card {
+    height: 130px;
+    position: relative;
+    background-color: #dedede;
+}
+
+.custom-card-set {
+    margin: 0;
+    position: absolute;
+}
+
+.custom-card-title {
+    color: #000;
+    font-size: 25px;
+    font-weight: inherit;
+}
+
+.custom-card-description {
+    color: #737373;
+    font-size: 14px;
+    font-weight: inherit;
+}
+
+.button-icon-position {
+    color: white;
+    font-size: large;
+    position: relative;
+    top: -1.5px;
+    left: -3px;
+}

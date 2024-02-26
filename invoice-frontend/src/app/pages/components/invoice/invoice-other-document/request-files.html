@@ -1,0 +1,52 @@
+<div class="row modal-header">
+    <div class="col-2 dialog-head-left"></div>
+    <div class="col-8 dialog-head-center">
+        <h2 class="modal-title" id="modal-basic-title" class="cust-report-label-header-text">
+            {{'Request_For_Files' | translate}}
+        </h2>
+    </div>
+    <div class="col-2 dialog-head-right">
+        <button class="import-export-btn-datatable cust-margin-div" matTooltip="{{ 'All-exit' | translate }}"
+            mat-dialog-close>
+            <img src="{{exitIcon}}" alt="" class="far fa-paper-plane" height="20px" />
+        </button>
+    </div>
+</div>
+<form [formGroup]="vendorInfo">
+    <div class="modal-body">
+
+
+        <h4 mat-dialog-title class="cust-report-label-header-text">
+            {{'Company-Expenses-Send-report' | translate}}
+            <button mat-raised-button color="primary" *ngIf="is_oneOnly" (click)="ADD_MY_SELF()"><img
+                    src="{{add_my_self_icon}}" alt="" class="mr-1 cust-all-add-my-self-img"
+                    height="20px">{{'add-my-self' | translate}}
+            </button>
+        </h4>
+        <mat-form-field class="example-chip-list" appearance="outline" class="cust-report-full-width-fields">
+            <mat-chip-list #chipList aria-label="Email selection">
+                <mat-chip *ngFor="let email of emailsList" [selectable]="selectable" [removable]="removable"
+                    (removed)="internalEmailremove(email)">
+                    {{email}}
+                    <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                </mat-chip>
+                <input placeholder="{{'Company-Items-Report-EnterEmail' | translate}}" [matChipInputFor]="chipList"
+                    [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
+                    (matChipInputTokenEnd)="addInternalEmail($event)" />
+            </mat-chip-list>
+        </mat-form-field>
+    </div>
+
+    <div class="modal-footer cust-report-header-footer-div">
+        <mat-dialog-actions>
+            <button mat-raised-button mat-dialog-close>
+                <img src="{{exitIcon}}" alt="" height="15px" />
+                {{'All-Cancel' | translate }}
+            </button>
+            <button mat-raised-button type="submit" (click)="saveData()" color="primary">
+                <img src="{{saveIcon}}" alt="" height="20px" />
+                {{'All-save' | translate }}
+            </button>
+        </mat-dialog-actions>
+    </div>
+</form>

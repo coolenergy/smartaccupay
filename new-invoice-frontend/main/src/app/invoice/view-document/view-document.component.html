@@ -1,0 +1,501 @@
+<section class="content">
+    <div class="content-block">
+        <div class="m-4"></div>
+        <div class="card">
+            <div class="materialTableHeader">
+                <div class="left">
+                    <ul class="header-buttons-left ms-0">
+                        <li class="tbl-title">
+                            <h2 style="margin-right: 15px;">{{selectedDocumentType.replace("_"," ") | titlecase}}</h2>
+                        </li>
+                    </ul>
+                </div>
+                <div class="right">
+                    <ul class="tbl-export-btn">
+                        <li class="tbl-header-btn">
+                            <div class="m-l-10" matTooltip="Back">
+                                <button (click)="back()" mat-mini-fab color="primary">
+                                    <mat-icon class="col-white">keyboard_return</mat-icon>
+                                </button>
+                            </div>
+                        </li>
+                        <li class="tbl-header-btn">
+                            <div class="m-l-10" matTooltip="Back To Invoice Listing">
+                                <button (click)="backListing()" mat-mini-fab color="warn">
+                                    <mat-icon class="col-white">close</mat-icon>
+                                </button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="body overflow-auto">
+                <div class="row">
+                    <div *ngIf="showEditForm" class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <form *ngIf="selectedDocumentType === documentTypes.po" class="register-form m-4"
+                            [formGroup]="poForm">
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-2">
+                                    <mat-form-field class="example-full-width" appearance="outline">
+                                        <mat-label>Document Type</mat-label>
+
+                                        <mat-select formControlName="document_type"
+                                            (selectionChange)="onDocumentTypeChange($event)">
+                                            <mat-option *ngFor="let docType of documentTypesList" [value]="docType.key">
+                                                {{docType.name}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-2">
+                                    <mat-form-field class="example-full-width" appearance="outline">
+                                        <mat-label>Vendor Name</mat-label>
+                                        <input formControlName="vendor_name" matInput readonly />
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-2">
+                                    <mat-form-field class="example-full-width" appearance="outline">
+                                        <mat-label>Quote Number</mat-label>
+                                        <input formControlName="quote_no" matInput />
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-2">
+                                    <mat-form-field class="example-full-width" appearance="outline">
+                                        <mat-label>Date</mat-label>
+                                        <input matInput [max]="maxDate" [matDatepicker]="poDatePicker"
+                                            formControlName="date_epoch">
+                                        <mat-datepicker-toggle matSuffix [for]="poDatePicker"></mat-datepicker-toggle>
+                                        <mat-datepicker #poDatePicker></mat-datepicker>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-2">
+                                    <mat-form-field class="example-full-width" appearance="outline">
+                                        <mat-label>Shipping Method</mat-label>
+                                        <input formControlName="shipping_method" matInput />
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-2">
+                                    <mat-form-field class="example-full-width" appearance="outline">
+                                        <mat-label>Sub Total</mat-label>
+                                        <span class="dollar-align" matPrefix>$</span>
+                                        <input matInput class="input-capitalized-textfield"
+                                            onkeypress="return String.fromCharCode(event.charCode).match(/[^0-9]/g) === null"
+                                            (input)="poAmountChange($event,'sub_total')" numbersOnly
+                                            formControlName="sub_total" />
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-2">
+                                    <mat-form-field class="example-full-width" appearance="outline">
+                                        <mat-label>Tax Amount</mat-label>
+                                        <span class="dollar-align" matPrefix>$</span>
+                                        <input matInput class="input-capitalized-textfield"
+                                            onkeypress="return String.fromCharCode(event.charCode).match(/[^0-9]/g) === null"
+                                            (input)="poAmountChange($event,'tax')" numbersOnly formControlName="tax" />
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-2">
+                                    <mat-form-field class="example-full-width" appearance="outline">
+                                        <mat-label>PO Total</mat-label>
+                                        <span class="dollar-align" matPrefix>$</span>
+                                        <input matInput class="input-capitalized-textfield"
+                                            onkeypress="return String.fromCharCode(event.charCode).match(/[^0-9]/g) === null"
+                                            (input)="poAmountChange($event,'po_total')" numbersOnly
+                                            formControlName="po_total">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-2">
+                                    <mat-form-field class="example-full-width" appearance="outline">
+                                        <mat-label>Receiver Phone</mat-label>
+                                        <input formControlName="receiver_phone" matInput />
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                                    <mat-form-field class="example-full-width" appearance="outline">
+                                        <mat-label>Terms</mat-label>
+                                        <mat-select formControlName="terms" style="font-size: 12px;" #termListSelect>
+                                            <mat-select-filter [placeholder]="'Filter'" [displayMember]="'name'"
+                                                [array]="variablestermList" (filteredReturn)="termsList =$event"
+                                                *ngIf="termListSelect.focused">
+                                            </mat-select-filter>
+                                            <mat-option *ngFor="let term of termsList" [value]="term._id">
+                                                {{term.name}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row form-old ">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                                    <mat-form-field class="example-full-width" appearance="outline">
+                                        <mat-label>Address</mat-label>
+                                        <textarea matInput formControlName="address"></textarea>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                                    <button (click)="savePO()" class="btn-space" mat-raised-button
+                                        color="primary">{{'COMMON.ACTIONS.SAVE'|
+                                    translate}}</button>
+                                    <button type="button" mat-raised-button color="warn"
+                                        (click)="back()">{{'COMMON.ACTIONS.CANCEL'| translate}}</button>
+                                </div>
+                            </div>
+                        </form>
+
+                        <form *ngIf="selectedDocumentType === documentTypes.quote" class="register-form m-4"
+                            [formGroup]="quoteForm">
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-2">
+                                    <mat-form-field class="example-full-width" appearance="outline">
+                                        <mat-label>Document Type</mat-label>
+
+                                        <mat-select formControlName="document_type"
+                                            (selectionChange)="onDocumentTypeChange($event)">
+                                            <mat-option *ngFor="let docType of documentTypesList" [value]="docType.key">
+                                                {{docType.name}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-2">
+                                    <mat-form-field class="example-full-width" appearance="outline">
+                                        <mat-label>Vendor Name</mat-label>
+                                        <input formControlName="vendor_name" matInput readonly />
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-2">
+                                    <mat-form-field class="example-full-width" appearance="outline">
+                                        <mat-label>Quote Number</mat-label>
+                                        <input formControlName="quote_no" matInput />
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-2">
+                                    <mat-form-field class="example-full-width" appearance="outline">
+                                        <mat-label>Date</mat-label>
+                                        <input matInput [matDatepicker]="quoteDatePicker" formControlName="date_epoch">
+                                        <mat-datepicker-toggle matSuffix
+                                            [for]="quoteDatePicker"></mat-datepicker-toggle>
+                                        <mat-datepicker #quoteDatePicker></mat-datepicker>
+                                    </mat-form-field>
+
+
+
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-2">
+                                    <mat-form-field class="example-full-width" appearance="outline">
+                                        <mat-label>Shipping Method</mat-label>
+                                        <input formControlName="shipping_method" matInput />
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-2">
+                                    <mat-form-field class="example-full-width" appearance="outline">
+                                        <mat-label>Sub Total</mat-label>
+                                        <span class="dollar-align" matPrefix>$</span>
+                                        <input matInput class="input-capitalized-textfield"
+                                            onkeypress="return String.fromCharCode(event.charCode).match(/[^0-9]/g) === null"
+                                            (input)="quoteAmountChange($event,'sub_total')" numbersOnly
+                                            formControlName="sub_total">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-2">
+                                    <mat-form-field class="example-full-width" appearance="outline">
+                                        <mat-label>Tax Amount</mat-label>
+                                        <span class="dollar-align" matPrefix>$</span>
+                                        <input matInput class="input-capitalized-textfield"
+                                            onkeypress="return String.fromCharCode(event.charCode).match(/[^0-9]/g) === null"
+                                            (input)="quoteAmountChange($event,'tax')" numbersOnly formControlName="tax">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-2">
+                                    <mat-form-field class="example-full-width" appearance="outline">
+                                        <mat-label>Quote Total</mat-label>
+                                        <span class="dollar-align" matPrefix>$</span>
+                                        <input matInput class="input-capitalized-textfield"
+                                            onkeypress="return String.fromCharCode(event.charCode).match(/[^0-9]/g) === null"
+                                            (input)="quoteAmountChange($event,'quote_total')" numbersOnly
+                                            formControlName="quote_total">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-2">
+                                    <mat-form-field class="example-full-width" appearance="outline">
+                                        <mat-label>Receiver Phone</mat-label>
+                                        <input formControlName="receiver_phone" matInput />
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                                    <mat-form-field class="example-full-width" appearance="outline">
+                                        <mat-label>Terms</mat-label>
+                                        <mat-select formControlName="terms" style="font-size: 12px;" #termSelect>
+                                            <mat-select-filter [placeholder]="'Filter'" [displayMember]="'name'"
+                                                [array]="variablestermList" (filteredReturn)="termsList =$event"
+                                                *ngIf="termSelect.focused">
+                                            </mat-select-filter>
+                                            <mat-option *ngFor="let term of termsList" [value]="term._id">
+                                                {{term.name}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row form-old">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                                    <mat-form-field class="example-full-width" appearance="outline">
+                                        <mat-label>Address</mat-label>
+                                        <textarea matInput formControlName="address"></textarea>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                                    <button class="btn-space" (click)="saveQuote()" mat-raised-button color="primary"
+                                        [disabled]="!quoteForm.valid">{{'COMMON.ACTIONS.SAVE'|
+                                    translate}}</button>
+                                    <button type="button" mat-raised-button color="warn"
+                                        (click)="back()">{{'COMMON.ACTIONS.CANCEL'| translate}}</button>
+                                </div>
+                            </div>
+                        </form>
+
+                        <form *ngIf="selectedDocumentType === documentTypes.packingSlip" class="register-form m-4"
+                            [formGroup]="packingSlipForm">
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-2">
+                                    <mat-form-field class="example-full-width" appearance="outline">
+                                        <mat-label>Document Type</mat-label>
+
+                                        <mat-select formControlName="document_type"
+                                            (selectionChange)="onDocumentTypeChange($event)">
+                                            <mat-option *ngFor="let docType of documentTypesList" [value]="docType.key">
+                                                {{docType.name}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-2">
+                                    <mat-form-field class="example-full-width" appearance="outline">
+                                        <mat-label>Vendor Name</mat-label>
+                                        <input formControlName="vendor_name" matInput readonly />
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-2">
+                                    <mat-form-field class="example-full-width" appearance="outline">
+                                        <mat-label>Invoice#</mat-label>
+                                        <input formControlName="invoice_no" matInput />
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                                    <mat-form-field class="example-full-width" appearance="outline">
+                                        <mat-label>Date</mat-label>
+                                        <input matInput [max]="maxDate" [matDatepicker]="packingSlipDatePicker"
+                                            formControlName="date_epoch">
+                                        <mat-datepicker-toggle matSuffix
+                                            [for]="packingSlipDatePicker"></mat-datepicker-toggle>
+                                        <mat-datepicker #packingSlipDatePicker></mat-datepicker>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                                    <mat-form-field class="example-full-width" appearance="outline">
+                                        <mat-label>PO#</mat-label>
+                                        <input formControlName="po_no" matInput />
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                                    <mat-form-field class="example-full-width" appearance="outline">
+                                        <mat-label>Shipping Address</mat-label>
+                                        <input formControlName="address" matInput />
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                                    <mat-form-field class="example-full-width" appearance="outline">
+                                        <mat-label>Received By</mat-label>
+                                        <input formControlName="received_by" matInput />
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                                    <button (click)="savePackingSlip()" class="btn-space" mat-raised-button
+                                        color="primary" [disabled]="!packingSlipForm.valid">{{'COMMON.ACTIONS.SAVE'|
+                                    translate}}</button>
+                                    <button type="button" mat-raised-button color="warn"
+                                        (click)="back()">{{'COMMON.ACTIONS.CANCEL'| translate}}</button>
+                                </div>
+                            </div>
+                        </form>
+
+                        <form *ngIf="selectedDocumentType === documentTypes.receivingSlip" class="register-form m-4"
+                            [formGroup]="receivingSlipForm">
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-2">
+                                    <mat-form-field class="example-full-width" appearance="outline">
+                                        <mat-label>Document Type</mat-label>
+
+                                        <mat-select formControlName="document_type"
+                                            (selectionChange)="onDocumentTypeChange($event)">
+                                            <mat-option *ngFor="let docType of documentTypesList" [value]="docType.key">
+                                                {{docType.name}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-2">
+                                    <mat-form-field class="example-full-width" appearance="outline">
+                                        <mat-label>Vendor Name</mat-label>
+                                        <input formControlName="vendor_name" matInput readonly />
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-2">
+                                    <mat-form-field class="example-full-width" appearance="outline">
+                                        <mat-label>Invoice#</mat-label>
+                                        <input formControlName="invoice_no" matInput />
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                                    <mat-form-field class="example-full-width" appearance="outline">
+                                        <mat-label>Date</mat-label>
+                                        <input matInput [max]="maxDate" [matDatepicker]="receivingSlipDatePicker"
+                                            formControlName="date_epoch">
+                                        <mat-datepicker-toggle matSuffix
+                                            [for]="receivingSlipDatePicker"></mat-datepicker-toggle>
+                                        <mat-datepicker #receivingSlipDatePicker></mat-datepicker>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                                    <mat-form-field class="example-full-width" appearance="outline">
+                                        <mat-label>PO#</mat-label>
+                                        <input formControlName="po_no" matInput />
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                                    <mat-form-field class="example-full-width" appearance="outline">
+                                        <mat-label>Shipping Address</mat-label>
+                                        <input formControlName="address" matInput />
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                                    <mat-form-field class="example-full-width" appearance="outline">
+                                        <mat-label>Received By</mat-label>
+                                        <input formControlName="received_by" matInput />
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                                    <button (click)="saveReceivingSlip()" class="btn-space" mat-raised-button
+                                        color="primary" [disabled]="!receivingSlipForm.valid">{{'COMMON.ACTIONS.SAVE'|
+                                    translate}}</button>
+                                    <button type="button" mat-raised-button color="warn"
+                                        (click)="back()">{{'COMMON.ACTIONS.CANCEL'| translate}}</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <ng-container [ngTemplateOutlet]="viewPDFEditTemplate" [ngTemplateOutletContext]="{url:pdf_url}"
+                            *ngIf="loadPDF">
+                        </ng-container>
+                    </div>
+                    <div *ngIf="!showEditForm" class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <ng-container [ngTemplateOutlet]="viewPDFTemplate" [ngTemplateOutletContext]="{url:invoicePDF}"
+                            *ngIf="loadPDF">
+                        </ng-container>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<ng-template #viewPDFTemplate let-url='url'>
+    <div class="card pdf-h">
+        <div class="pdf-btn">
+            <button matTooltip="{{'COMMON.TOOL_TIP.DOWNLOAD' |  translate}}" class="m-2" mat-mini-fab
+                (click)="download()" color="primary">
+                <mat-icon class="col-white">download</mat-icon>
+            </button>
+            <button matTooltip="{{'COMMON.TOOL_TIP.PRINT' |  translate}}" mat-mini-fab (click)="print()"
+                color="primary">
+                <mat-icon class="col-white">print</mat-icon>
+            </button>
+        </div>
+        <div id="outerContainer">
+            <div class="pdf-container">
+                <div *ngIf="pdf_url === ''" class="no-pdf text-center">
+                    <div> No PDF document available </div>
+                    <input type="file" #fileDropRef id="fileDropRef" (change)="fileBrowseHandler($event)"
+                        #OpenFilebox />
+                    <button class="btn-space" mat-raised-button color="primary" (click)="uploadDocument()">
+                        {{'COMMON.ACTIONS.UPLOAD'| translate}}
+                    </button>
+                </div>
+                <app-custompdfviewer [pdf_url]="url"></app-custompdfviewer>
+                <!-- <pdf-viewer [src]="url" [rotation]="0" [original-size]="false" [show-all]="true" [fit-to-page]="false"
+                    [zoom]="1" [zoom-scale]="'page-width'" [stick-to-page]="false" [render-text]="true"
+                    [external-link-target]="'blank'" [autoresize]="true" [show-borders]="false"
+                    style="width: 100%; height: 710px;"></pdf-viewer> -->
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #viewPDFEditTemplate let-url='url'>
+    <div class="card pdf-h">
+        <div class="pdf-btn">
+            <button matTooltip="{{'COMMON.TOOL_TIP.EDIT' |  translate}}" class="mr-2 mt-2" mat-mini-fab
+                (click)="goDocumentForm()" color="primary">
+                <mat-icon class="col-white">edit</mat-icon>
+            </button>
+            <button matTooltip="{{'COMMON.TOOL_TIP.REMOVE' |  translate}}" class="mr-2 mt-2" mat-mini-fab
+                (click)="removePDF()" color="primary" *ngIf="id !== null && pdf_url !== ''">
+                <mat-icon class="col-white">archive</mat-icon>
+            </button>
+            <button matTooltip="{{'COMMON.TOOL_TIP.DOWNLOAD' |  translate}}" class="mr-2 mt-2" mat-mini-fab
+                (click)="download()" color="primary">
+                <mat-icon class="col-white">download</mat-icon>
+            </button>
+            <button matTooltip="{{'COMMON.TOOL_TIP.PRINT' |  translate}}" class="mt-2" mat-mini-fab (click)="print()"
+                color="primary">
+                <mat-icon class="col-white">print</mat-icon>
+            </button>
+
+        </div>
+        <div id="outerContainer">
+            <div class="pdf-container">
+                <div *ngIf="pdf_url === ''" class="no-pdf text-center">
+                    <div> No PDF document available </div>
+                    <input type="file" #fileDropRef id="fileDropRef" (change)="fileBrowseHandler($event)"
+                        #OpenFilebox />
+                    <button class="btn-space" mat-raised-button color="primary" (click)="uploadDocument()">
+                        {{'COMMON.ACTIONS.UPLOAD'| translate}}
+                    </button>
+                </div>
+                <app-custompdfviewer [pdf_url]="pdf_url" *ngIf="!pdfLoader"></app-custompdfviewer>
+                <!--   <pdf-viewer [src]="pdf_url" [rotation]="0" [original-size]="false" [show-all]="true"
+                    [fit-to-page]="false" [zoom]="1" [zoom-scale]="'page-width'" [stick-to-page]="false"
+                    [render-text]="true" [external-link-target]="'blank'" [autoresize]="true" [show-borders]="false"
+                    style="width: 100%; height: 710px;"></pdf-viewer> -->
+            </div>
+        </div>
+    </div>
+</ng-template>

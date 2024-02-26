@@ -1,0 +1,210 @@
+<section class="content">
+    <div class="content-block">
+        <div class="m-4"></div>
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="materialTableHeader">
+                        <div class="left">
+                            <ul class="header-buttons-left ms-0">
+                                <li class="tbl-title">
+                                    <h2>{{'SETTINGS.COMPANY_INFO_FORM.EDIT_TITLE' |
+                                        translate}}</h2>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="right">
+                            <ul class="tbl-export-btn">
+                                <li class="tbl-header-btn">
+                                    <div class="m-l-10" matTooltip="{{'COMMON.TOOL_TIP.BACK' |
+                                        translate}}">
+                                        <button mat-mini-fab color="warn" (click)="confirmExit()">
+                                            <mat-icon class="col-white">close</mat-icon>
+                                        </button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="body">
+                        <form class="register-form m-4" [formGroup]="companyinfoForm">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="logo-div pointer">
+                                        <div>
+                                            <input type="file" #OpenFilebox id="OpenFilebox" multiple
+                                                (change)="filechangeEvent($event)" class="fileInputProfile">
+                                            <div class="inner-image-cust" (click)="openfilebox()">
+                                                <ng-container *ngIf="!isImageSaved">
+                                                    <img src="{{companyLogo}}" class="flux-brand-logo" alt="" />
+                                                </ng-container>
+                                                <ng-container *ngIf="isImageSaved">
+                                                    <img class="flux-brand-logo" [src]="cardImageBase64" alt="logo" />
+                                                </ng-container>
+
+                                                <!-- <div class="middle">
+                                                    <i class="fa fa-pencil-alt cust-fontsize-tmp"
+                                                        aria-hidden="true"></i>
+                                                </div> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                                    <mat-form-field class="example-full-width" appearance="outline">
+                                        <mat-label>{{'SETTINGS.VIEW.COMPANY_NAME' | translate}}</mat-label>
+                                        <input matInput formControlName="companyname"
+                                            style="text-transform:capitalize !important;" required>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                                    <mat-form-field class="example-full-width" appearance="outline">
+                                        <mat-label>{{'SETTINGS.VIEW.COMPANY_CODE' | translate}}</mat-label>
+                                        <input required formControlName="companycode" readOnly matInput />
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                                    <mat-form-field class="example-full-width" appearance="outline">
+                                        <mat-label>{{'SETTINGS.VIEW.WEBSITE' | translate}}</mat-label>
+                                        <input matInput formControlName="companywebsite" required>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                                    <mat-form-field class="example-full-width" appearance="outline">
+                                        <mat-label>{{'SETTINGS.VIEW.PHONE' | translate}}</mat-label>
+                                        <input matInput mask="(000) 000-0000" formControlName="companyphone">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-2">
+                                    <mat-form-field class="example-full-width" appearance="outline">
+                                        <mat-label>{{'SETTINGS.VIEW.EMAIL_ADDRESS' | translate}}</mat-label>
+                                        <input matInput formControlName="companyemail">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-2">
+                                    <mat-form-field class="example-full-width" appearance="outline">
+                                        <mat-label>{{'SETTINGS.VIEW.PHONE2' | translate}}</mat-label>
+                                        <input matInput mask="(000) 000-0000" formControlName="companyphone2">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                                    <mat-form-field class="example-full-width" appearance="outline">
+                                        <mat-label>{{'SETTINGS.VIEW.TYPE_OF_COMPANY' | translate}}</mat-label>
+                                        <mat-select formControlName="companytype" #CompnayTypes_dataSelect required>
+                                            <mat-select-filter [placeholder]="'Filter'" [displayMember]="'name'"
+                                                *ngIf="CompnayTypes_dataSelect.focused"
+                                                [array]="variablesCompnayTypes_data"
+                                                (filteredReturn)="CompnayTypes_data =$event">
+                                            </mat-select-filter>
+                                            <mat-option *ngFor="let companyType of CompnayTypes_data"
+                                                [value]="companyType._id">
+                                                {{companyType.name}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                                    <mat-form-field class="example-full-width" appearance="outline">
+                                        <mat-label>{{'SETTINGS.VIEW.NIGP_CODE' | translate}}</mat-label>
+                                        <mat-select formControlName="companydivision" #csiDivisionsSelect multiple
+                                            required placeholder="{{'SETTINGS.VIEW.NIGP_CODE' | translate}}">
+                                            <mat-select-filter [placeholder]="'Filter'" [displayMember]="'name'"
+                                                *ngIf="csiDivisionsSelect.focused" [array]="variablesCSIDivisions"
+                                                (filteredReturn)="csiDivisions =$event">
+                                            </mat-select-filter>
+                                            <mat-option *ngFor="let division of csiDivisions" [value]="division._id">
+                                                {{division.name}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                                    <mat-form-field class="example-full-width" appearance="outline">
+                                        <mat-label>{{'SETTINGS.VIEW.COMPANY_SIZE' | translate}}</mat-label>
+                                        <mat-select class="dark-cust-color" formControlName="companysize"
+                                            #CompnaySizes_dataSelect required>
+                                            <mat-select-filter [placeholder]="'Filter'" [displayMember]="'name'"
+                                                *ngIf="CompnaySizes_dataSelect.focused"
+                                                [array]="variablesCompnaySizes_data"
+                                                (filteredReturn)="CompnaySizes_data =$event">
+                                            </mat-select-filter>
+                                            <mat-option *ngFor="let compnaysize of CompnaySizes_data"
+                                                [value]="compnaysize._id">
+                                                {{compnaysize.name}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                                    <mat-form-field class="example-full-width" appearance="outline">
+                                        <mat-label>{{'SETTINGS.VIEW.COMPANY_ACTIVE_SINCE' | translate}}</mat-label>
+                                        <mat-select class="dark-cust-color" formControlName="companyactivesince"
+                                            readonly required>
+                                            <mat-option *ngFor="let value of range" [value]="value">
+                                                {{value}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                                    <mat-form-field class="example-full-width" appearance="outline">
+                                        <mat-label>{{'VENDOR.ADD_EDIT.ADDRESS' | translate}}</mat-label>
+                                        <input style="text-transform:capitalize !important;" matInput
+                                            formControlName="companyaddress">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                                    <mat-form-field class="example-full-width" appearance="outline">
+                                        <mat-label>{{'VENDOR.ADD_EDIT.CITY' | translate}}</mat-label>
+                                        <input style="text-transform:capitalize !important;" matInput
+                                            formControlName="companyaddresscity" required>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                                    <mat-form-field class="example-full-width" appearance="outline">
+                                        <mat-label>{{'VENDOR.ADD_EDIT.STATE' | translate}}</mat-label>
+                                        <input matInput style="text-transform:capitalize !important;"
+                                            formControlName="companyaddressstate" required>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                                    <mat-form-field class="example-full-width" appearance="outline">
+                                        <mat-label>{{'VENDOR.ADD_EDIT.ZIP_CODE' | translate}}</mat-label>
+                                        <input matInput formControlName="companyaddresszip" required>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                                    <button class="btn-space" mat-raised-button color="primary"
+                                        [disabled]="!companyinfoForm.valid"
+                                        (click)="saveVendor()">{{'COMMON.ACTIONS.SAVE'|
+                                        translate}}</button>
+                                    <button type="button" mat-raised-button color="warn"
+                                        (click)="confirmExit()">{{'COMMON.ACTIONS.CANCEL'| translate}}</button>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<ngx-gallery [options]="galleryOptions" [images]="galleryImages" #gallery></ngx-gallery>

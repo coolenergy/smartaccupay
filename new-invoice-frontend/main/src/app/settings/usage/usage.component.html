@@ -1,0 +1,139 @@
+<section class="content">
+  <div class="content-block">
+    <div class="m-4"></div>
+    <div class="row clearfix">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+          <div class="materialTableHeader">
+            <div class="left">
+              <ul class="header-buttons-left ms-0">
+                <li class="tbl-title">
+                  <h2>Usage</h2>
+                </li>
+              </ul>
+            </div>
+            <div class="right">
+              <ul class="tbl-export-btn">
+                <li class="tbl-header-btn">
+                  <div class="m-l-10" matTooltip="{{'COMMON.TOOL_TIP.BACK' |
+                  translate}}">
+                    <button mat-mini-fab color="warn" (click)="back()">
+                      <mat-icon class="col-white">close </mat-icon>
+                    </button>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="body overflow-auto">
+            <form [formGroup]="usageinfo">
+
+              <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field appearance="outline" class="example-full-width">
+                    <mat-label>{{'SETTINGS.SETTINGS_OTHER_OPTION.USAGE_MODULE.NUMBER' | translate}}</mat-label>
+                    <input matInput formControlName="totalSuervisor" readonly class="input-capitalized-textfield">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field appearance="outline" class="example-full-width">
+                    <mat-label>{{'SETTINGS.SETTINGS_OTHER_OPTION.USAGE_MODULE.STORAGE' | translate}}</mat-label>
+                    <input matInput formControlName="bucket_size" readonly class="input-capitalized-textfield">
+                  </mat-form-field>
+                </div>
+              </div>
+
+
+              <div class="table-responsive">
+                <table mat-table #table [dataSource]="dataSource" matSort class="mat-cell">
+
+                  <ng-container matColumnDef="month_name">
+                    <mat-header-cell class="psl-1" *matHeaderCellDef mat-sort-header>Month
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let row" class="psl-1">{{row.month_name}}</mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="invoice">
+                    <mat-header-cell class="psl-1" *matHeaderCellDef mat-sort-header>Invoice
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let row" class="psl-1">{{row.INVOICE}}</mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="po">
+                    <mat-header-cell class="psl-1" *matHeaderCellDef mat-sort-header>PO
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let row" class="psl-1">{{row.PURCHASE_ORDER}}</mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="packing_slip">
+                    <mat-header-cell class="psl-1" *matHeaderCellDef mat-sort-header>Packing Slip
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let row" class="psl-1">{{row.PACKING_SLIP}}</mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="receiving_slip">
+                    <mat-header-cell class="psl-1" *matHeaderCellDef mat-sort-header>Receiving Slip
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let row" class="psl-1">{{row.RECEIVING_SLIP}}</mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="quote">
+                    <mat-header-cell class="psl-1" *matHeaderCellDef mat-sort-header>Quote
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let row" class="psl-1">{{row.QUOTE}}</mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="other">
+                    <mat-header-cell class="psl-1" *matHeaderCellDef mat-sort-header>Other
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let row" class="psl-1">{{row.OTHER}}</mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="duplicated">
+                    <mat-header-cell class="psl-1" *matHeaderCellDef mat-sort-header>Duplicated
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let row" class="psl-1">{{row.DUPLICATED}}</mat-cell>
+                  </ng-container>
+                  <!-- <ng-container matColumnDef="actions">
+                    <mat-header-cell class="psl-3" [ngClass]="'tbl-col-width-per-action'"
+                      *matHeaderCellDef>{{'VENDOR.TABLE.ACTIONS' |
+                            translate}}</mat-header-cell>
+                    <mat-cell *matCellDef="let row; let i=index;" class="pr-0 tbl-col-width-per-action">
+                      <button matTooltip="{{'COMMON.ACTIONS.EDIT' |
+                                        translate}}" mat-icon-button color="accent" (click)="$event.stopPropagation()"
+                          *ngIf="isDelete === 0" class="col-blue">
+                        <app-feather-icons [icon]="'edit'" [class]="'tbl-fav-edit'">
+                        </app-feather-icons>
+                      </button>
+                      <button mat-icon-button matTooltip="{{'COMMON.ACTIONS.ARCHIVE' |
+                                        translate}}" color="accent" (click)="$event.stopPropagation()"
+                        (click)="deleteClient(row, 1)" *ngIf="isDelete === 0" class="col-red">
+                        <mat-icon>archive</mat-icon>
+                      </button>
+                      <button *ngIf="role_permission.clientJob.Delete && isDelete === 1" mat-icon-button matTooltip="{{'COMMON.ACTIONS.RESTORE' |
+                                        translate}}" color="accent" (click)="$event.stopPropagation()"
+                        (click)="deleteClient(row, 0)" class="col-red">
+                        <mat-icon>archive</mat-icon>
+                      </button>
+                    </mat-cell>
+                  </ng-container> -->
+
+                  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                  <mat-row *matRowDef="let row; columns: displayedColumns;" [style.cursor]="'pointer'" matRipple>
+                  </mat-row>
+                </table>
+              </div>
+              <!-- Loading spinner -->
+              <div *ngIf="usageService?.isAPCountTblLoading" class="tbl-spinner">
+                <app-loading></app-loading>
+              </div>
+              <div *ngIf="!usageService?.isAPCountTblLoading" class="no-results"
+                [style.display]="dataSource.renderedData.length === 0 ? '' : 'none'">
+                {{'COMMON.LISTING.EMPTY' | translate}}
+              </div>
+              <mat-paginator #paginator [length]="dataSource.filteredData.length" [pageIndex]="0" [pageSize]="10"
+                [pageSizeOptions]="[5, 10, 25, 100]">
+              </mat-paginator>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>

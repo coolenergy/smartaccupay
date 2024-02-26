@@ -1,0 +1,55 @@
+<div class="display-inline-cust">
+  <div class="col-md-12">
+    <div class="screen-title-section cust-h1-inline">
+      <div class="inner-search-bar">
+        <div class="header-text-cust statastic-card mt-1">
+          <div class="statastic-card-title">{{ status }} Invoices</div>
+          <div class="number-new" [ngClass]="
+                    status == 'Pending'
+                      ? 'pending-background'
+                      : status == 'Approved'
+                      ? 'approve-background'
+                      : status == 'Rejected'
+                      ? 'reject-background'
+                      : status == 'Late'
+                      ? 'late-background'
+                      : ''
+                  ">
+            <div class="mt-2">{{ count }}</div>
+          </div>
+        </div>
+      </div>
+
+      <button mat-stroked-button class="sign-button cust-padding-top padding-left-cust b-hight" (click)="gridTolist()">
+        <img src="{{ gridIcon }}" alt="" class="pr-1" height="15px" *ngIf="!gridtolist" />
+        <img src="{{ listIcon }}" alt="" class="pr-1" height="15px" *ngIf="gridtolist" />
+        {{ btn_grid_list_text }}
+      </button>
+
+      <button class="import-export-btn-datatable button_workersEditClass cust-margin-div b-hight"
+        (click)="invoiceReportDialog()" matTooltip="{{ 'TOOLTIP_REPORT' | translate }}" aria-label="Left Align">
+        <img src="{{reportIcon}}" alt="" height="20px">
+      </button>
+      <button mat-raised-button (click)="back()" class="cust-button-form b-hight">
+        <img src="{{ backIcon }}" alt="" height="20px" />
+        {{ "All-back" | translate }}
+      </button>
+
+    </div>
+  </div>
+</div>
+
+
+<div class="wrapper-cust-admin cust-width">
+  <div class=" row ml-3" *ngIf="gridtolist">
+    <div class="mb-3 mr-4" *ngFor="let invoice of allInvoices">
+      <app-invoice-card [invoice]="invoice" (invoiceUpdateCard)="invoiceUpdateCard()"></app-invoice-card>
+    </div>
+  </div>
+</div>
+<div class="wrapper-cust-admin cust-width">
+  <div *ngIf="!gridtolist && showTable" class="table-responsive cust-padding cust-padding-tmp mt-5">
+    <table datatable [dtOptions]="dtOptions" id="dtOptions_vendor" class="row-border hover"></table>
+  </div>
+</div>
+<ngx-gallery [options]="galleryOptions" [images]="galleryImages" #gallery></ngx-gallery>

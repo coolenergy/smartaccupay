@@ -1,0 +1,74 @@
+.full-width {
+    width: 100%;
+}
+
+.mr-set {
+    margin: 10px;
+}
+
+.align-div {
+    display: flex;
+    justify-content: center;
+}
+
+
+::ng-deep .mat-mdc-text-field-wrapper {
+    height: 40px !important;
+}
+
+::ng-deep .mat-mdc-text-field-wrapper .mat-mdc-form-field-flex .mat-mdc-floating-label {
+    top: 32px !important;
+}
+
+::ng-deep .mat-mdc-form-field-flex {
+    height: 40px !important;
+}
+
+::ng-deep .mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field .mdc-notched-outline__notch {
+    height: 40px !important;
+}
+
+::ng-deep .form-new[_ngcontent-ywe-c269] .mat-mdc-text-field-wrapper .mat-mdc-form-field-flex .mat-mdc-floating-label {
+    height: 40px !important;
+
+}
+
+::ng-deep.mat-mdc-form-field:not(.mat-form-field-no-animations) .mdc-floating-label {
+    transition: transform 150ms cubic-bezier(0.4, 0, 0.2, 1), color 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    height: 40px !important;
+    font-size: 14px !important;
+}
+
+::ng-deep .mdc-text-field--outline .mdc-floating-label {
+    left: 10px !important;
+}
+
+
+// new new new 
+
+
+::ng-deep .mat-form-field:not(.mat-form-field-has-label) .mat-form-field-infix {
+    border-top-width: 0;
+}
+
+::ng-deep .mb-2 {
+    margin-bottom: 0.0rem !important;
+}
+
+::ng-deep .mat-mdc-text-field-wrapper.mdc-text-field--outlined .mat-mdc-form-field-infix {
+    padding-top: 9px !important;
+
+}
+
+::ng-deep .mat-mdc-form-field-infix {
+    min-height: unset !important;
+}
+
+::ng-deep .mat-mdc-select {
+    font-size: 12px !important;
+}
+
+::ng-deep .mdc-evolution-chip-set .mdc-evolution-chip {
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+}

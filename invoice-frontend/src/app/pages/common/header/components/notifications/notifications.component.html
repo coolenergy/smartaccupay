@@ -1,0 +1,85 @@
+<button class="btn email-button position-relative" mat-mini-fab [matMenuTriggerFor]="notifications"
+    #menuTrigger="matMenuTrigger">
+    <img src="{{notificationIcon}}" alt="" height="20px">
+    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+        *ngIf="unseen_count != 0">
+        <label *ngIf="unseen_count > 99; else elseBlock">99+</label>
+        <ng-template #elseBlock>{{unseen_count}}</ng-template>
+    </span>
+</button>
+<mat-menu #notifications="matMenu" xPosition="before" class="notification-div">
+    <div class="d-flex justify-content-between mx-3 my-2" (click)="$event.stopPropagation();">
+        <button type="button" class="btn btn-outline-secondary notification-title-button"
+            (click)="seenAllNotification()"> {{'Mark_all_as_read' | translate}}</button>
+        <button type="button" class="btn btn-outline-secondary notification-title-button" (click)="showNotification()">
+            <label *ngIf="showAllNotification"> {{'Show_only_Unread' | translate}}</label>
+            <label *ngIf="!showAllNotification">{{'Show_All' | translate}}</label>
+        </button>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="container mt-2" style="width: 300px" *ngIf="temp_notificationList.length == 0 && !is_httpCall"
+        (click)="$event.stopPropagation();">
+        <div class="card flex-row ">
+            <div class="card-body">
+                <div class="no-notification" [ngClass]="mode == 'on' ? 'dark-no-notification' : ''">No Notification
+                    Found</div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="temp_notificationList.length != 0" class="container notification-data" infiniteScroll
+        [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="onScroll()" [scrollWindow]="false"
+        style="height: 600px !important; overflow-y: scroll;">
+
+        <div class="flex-row" *ngFor="let notification of temp_notificationList; let i = index;">
+            <div class="card" (click)="$event.stopPropagation();">
+                <!-- <img class="crl card-img-left example-card-img-responsive" src="./assets/logo/Rovuk sponsor.png" /> -->
+                <div class="card-body"
+                    [ngClass]="!notification.is_seen ? mode == 'on' ? 'dark-unseen-notification' : 'unseen-notification' : ''">
+                    <div class="d-flex bd-highlight">
+                        <div class="mr-2 flex-shrink-1 bd-highlight">
+                            <mat-checkbox class="example-margin align-top" color="primary"
+                                [checked]="notification.is_complete" (click)="completeAction(notification,i)">
+                            </mat-checkbox>
+                        </div>
+                        <div class="w-100 bd-highlight" (click)="openPage(notification)">
+                            <div class="notification-title" [ngClass]="mode == 'on' ? 'dark-notification-title' : ''">
+                                {{notification.notification_title}}
+                            </div>
+                            <div class="notification-description"
+                                [ngClass]="mode == 'on' ? 'dark-notification-description' : ''">
+                                {{notification.notification_description}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex mt-2">
+                        <button type="button" class="btn btn-outline-secondary btn-sm notification-button col-md-auto"
+                            (click)="seenAction(notification,i)">
+                            <lable *ngIf="notification.is_seen"> {{'Mark_as_Unread' | translate}}</lable>
+                            <lable *ngIf="!notification.is_seen">{{'Mark_as_Read' | translate}}</lable>
+                        </button>
+                        <button type="button"
+                            class="btn btn-outline-secondary btn-sm notification-button col-md-auto ml-2"
+                            (click)="completeAction(notification,i)">
+                            <lable *ngIf="notification.is_complete"> {{'Completed' | translate}}
+                            </lable>
+                            <lable *ngIf="!notification.is_complete">{{'Mark_as_Complete' | translate}}</lable>
+                        </button>
+                        <div class="notification-time col" (click)="openPage(notification)"
+                            [ngClass]="mode == 'on' ? 'dark-notification-time' : ''">
+                            {{tmp_datetime(notification.created_at)}}
+                        </div>
+                    </div>
+                    <!-- <div class="bottomleft">Bottom Left</div> -->
+                </div>
+            </div>
+
+        </div>
+        <div *ngIf="is_httpCall">
+            <div class="cust-middel-spinner">
+                <img src="./assets/images/rovuk-gif.gif" alt="" style="width:100px;height:110px;">
+            </div>
+        </div>
+    </div>
+    <!-- <mat-divider></mat-divider> -->
+
+</mat-menu>

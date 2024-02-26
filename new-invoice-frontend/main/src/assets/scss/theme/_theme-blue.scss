@@ -1,0 +1,185 @@
+﻿/*
+ *  Document   : theme-blue.scss
+ *  Author     : RedStar Template
+ *  Description: This scss file for blue theme style classes
+ */
+@import "_theme-color-variables";
+
+.theme-blue {
+  .navbar {
+    background-color: transparent;
+    .icon-color {
+      color: #fff;
+    }
+    .navbar-nav.navbar-right .user_profile span {
+      color: #fff;
+    }
+  }
+  .navbar.active {
+    // background-color: $theme-blue !important;
+    background: #00b4db; /* fallback for old browsers */
+    background: -webkit-linear-gradient(
+      to right,
+      #048efb,
+      #08b1d6
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+      to right,
+      #048efb,
+      #08b1d6
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+    .nav {
+      > li {
+        > a {
+          color: #fff;
+        }
+      }
+    }
+    .collapse-menu-icon .mat-icon {
+      color: #fff;
+    }
+    .navbar-right .nav-notification-icons .mat-icon {
+      color: #fff;
+    }
+  }
+
+  .nav {
+    > li {
+      > a {
+        &:hover {
+          background-color: $theme-blue-nav-anchor_hover;
+          text-decoration: none;
+        }
+
+        &:focus {
+          background-color: $theme-blue-nav-anchor_focus;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+
+  .bars {
+    color: $theme-blue-bar;
+  }
+
+  .sidebar {
+    .menu {
+      .list {
+        li {
+          &.active {
+            background-color: $theme-blue-menu-list-active;
+          }
+          a {
+            -moz-transition: all 0.3s;
+            -o-transition: all 0.3s;
+            -webkit-transition: all 0.3s;
+            transition: all 0.3s;
+            i,
+            span {
+              -moz-transition: all 0.3s;
+              -o-transition: all 0.3s;
+              -webkit-transition: all 0.3s;
+              transition: all 0.3s;
+            }
+          }
+        }
+
+        .ml-menu {
+          background-color: $theme-blue-menu-list-submenu;
+        }
+      }
+    }
+
+    .legal {
+      background-color: $theme-blue-legal-bg;
+
+      .copyright {
+        a {
+          color: $theme-blue !important;
+        }
+      }
+    }
+  }
+
+  .breadcrumb li a {
+    color: $theme-blue !important;
+  }
+
+  .page-item.active .page-link {
+    background-color: $theme-blue;
+    border-color: $theme-blue;
+    color: #ffffff;
+    border-radius: 50%;
+    box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.2);
+  }
+
+  .btn-primary {
+    background-color: $theme-blue !important;
+    color: #fff !important;
+    border-color: $theme-blue !important;
+    &:hover {
+      background-color: $theme-blue !important;
+      color: #fff !important;
+    }
+    &:active {
+      background-color: $theme-blue !important;
+      color: #fff !important;
+    }
+    &:focus {
+      background-color: $theme-blue !important;
+      color: #fff !important;
+    }
+    &:disabled {
+      background-color: $theme-blue !important;
+      color: #fff !important;
+    }
+  }
+  .btn-outline-primary {
+    background: 0 0 !important;
+    color: $theme-blue !important;
+    border: 1px solid $theme-blue !important;
+    &:hover {
+      background: $theme-blue !important;
+      color: #fff !important;
+      border: 1px solid $theme-blue !important;
+    }
+  }
+  .timelineLabelColor strong {
+    color: $theme-blue !important;
+  }
+  .top-sidebar {
+    .horizontal-menu {
+      li {
+        &.active {
+          > a {
+            color: $theme-blue;
+          }
+        }
+        a {
+          -moz-transition: all 0.3s;
+          -o-transition: all 0.3s;
+          -webkit-transition: all 0.3s;
+          transition: all 0.3s;
+          &:hover {
+            color: $theme-blue;
+          }
+        }
+      }
+    }
+  }
+
+  .nav-tabs > li > a:before {
+    border-bottom: 2px solid $theme-blue;
+  }
+}
+/*Logo Header Background Color*/
+.logo-blue {
+  .navbar-header {
+    background-color: $theme-blue;
+  }
+}

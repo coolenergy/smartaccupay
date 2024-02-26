@@ -1,0 +1,51 @@
+<div class="row modal-header">
+    <div class="col-2 dialog-head-left">
+    </div>
+    <div class="col-8 dialog-head-center">
+        <h2 mat-dialog-title>{{'Restore_user' | translate}}</h2>
+    </div>
+    <div class="col-2 dialog-head-right">
+        <button class="import-export-btn-datatable cust-margin-div" matTooltip="{{ 'All-exit' | translate }}"
+            mat-dialog-close>
+            <img src="{{exitIcon}}" alt="" class="far fa-paper-plane" height="20px">
+        </button>
+    </div>
+</div>
+<form class="form" [formGroup]="userRoleInfo">
+    <mat-dialog-content class="mat-typography" style="min-width: 600px;">
+        <div class="container mt-2">
+            <div class="col">
+                <mat-form-field appearance="outline" class="schedule-input" style="width:100%">
+                    <mat-label>{{'Project-Workers-Role' | translate }}</mat-label>
+                    <mat-select formControlName="userroleId" placeholder="{{'Project-Workers-Role' | translate }}"
+                        required>
+                        <mat-select-filter [placeholder]="'Filter'" [displayMember]="'role_name'"
+                            [array]="variablesRoleList" (filteredReturn)="roleList =$event">
+                        </mat-select-filter>
+                        <mat-option *ngFor="let item of roleList" [value]="item.role_id">
+                            {{item.role_name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col">
+                <mat-form-field class="schedule-input" style="width:100%" appearance="outline">
+                    <mat-label>{{'Employee-form-Status' | translate }}</mat-label>
+                    <mat-select formControlName="userstatus" class="dark-cust-color" required>
+                        <mat-option *ngFor="let status of statuss" [value]="status.value">
+                            {{status.tmp_lanaguage | translate }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions align="center">
+        <button mat-raised-button mat-dialog-close>
+            <img src="{{exitIcon}}" alt="" height="15px">
+            {{'All-exit' | translate }}</button>
+        <button mat-raised-button color="primary" (click)="restoreUser()">
+            <img src="{{saveIcon}}" alt="" height="15px">
+            {{'All-save' | translate }}</button>
+    </mat-dialog-actions>
+</form>

@@ -1,0 +1,23 @@
+<h2 mat-dialog-title>{{'Setting-Employee-Department' | translate }}</h2>
+<form class="form" [formGroup]="employeedepartment">
+    <div class="container">
+        <div class="row">
+            <mat-form-field appearance="outline" class="shift-input">
+                <mat-label>{{'Setting-Employee-Department' | translate }}</mat-label>
+                <input matInput placeholder="{{'Setting-Employee-Department' | translate }}"
+                    formControlName="department_name" required>
+            </mat-form-field>
+        </div>
+    </div>
+
+    <mat-dialog-actions align="center">
+        <button mat-raised-button mat-dialog-close>
+            <img src="{{exitIcon}}" alt="" height="15px">
+            {{'All-exit' | translate }}</button>
+        <button mat-raised-button type="submit" (click)="saveData()" color="primary">
+            <img src="{{saveIcon}}" alt="" height="20px">
+            {{'All-save' | translate
+            }}</button>
+    </mat-dialog-actions>
+
+</form>

@@ -1,0 +1,18 @@
+<div class="addContainer">
+     <app-model-header [title]="title" (dialogClose)="dialogRef.close()"></app-model-header>
+     <div mat-dialog-content>
+          <div class="card-title">
+               {{'SETTINGS.SETTINGS_OTHER_OPTION.OTHER_SETTINGS_MODULE.DOWNLOAD_IMPORT_INSTRUCTION' | translate}}
+          </div>
+          <div class="row">
+               <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2 align-div">
+                    <div class="example-button-row">
+                         <button mat-raised-button color="warn" class="width-set-1 btn-width" (click)="downloadImport()"
+                              tabindex="-1">{{'SETTINGS.SETTINGS_OTHER_OPTION.OTHER_SETTINGS_MODULE.OK_TO_IMPORT' |
+                              translate}}</button>
+                    </div>
+               </div>
+          </div>
+     </div>
+
+</div>

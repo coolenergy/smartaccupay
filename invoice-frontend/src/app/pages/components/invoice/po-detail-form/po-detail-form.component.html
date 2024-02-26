@@ -1,0 +1,293 @@
+<mat-card class="">
+    <div class="wrapper-cust-admin ">
+        <div class="row ml-2 pt-2 mb-2">
+            <div class="screen-title-section  cust-h1-inline">
+                <h1 class="screen-title">
+                    {{ "P_O_Details" | translate }}
+                </h1>
+
+
+                <!-- <h1 class="screen-title ">
+                    <p>Status:&nbsp;<span
+                            [ngClass]="status == 'Pending'? 'pendingcss' : 'Approvedcss' && status == 'Approved'? 'Approvedcss' : 'Rejectcss'&& status == 'Rejected'? 'Rejectcss' : 'Rejectcss'">
+                            {{status | translate}}</span></p>
+                </h1> -->
+
+
+
+                <div class="col-6 dialog-head-right">
+                    <button class="import-export-btn-datatable cust-margin-div" (click)="back()"
+                        matTooltip="{{ 'All-exit' | translate }}">
+                        <img src="{{exitIcon}}" alt="" class="far fa-paper-plane" height="20px">
+                    </button>
+                </div>
+            </div>
+        </div>
+        <mat-accordion [displayMode]="displayMode" [multi]="multi" class="mat-expansion-demo-width">
+            <mat-nav-list>
+                <!-- [expanded]="hide" -->
+                <mat-expansion-panel [expanded]="hide" [hideToggle]="hideToggle">
+                    <mat-expansion-panel-header class="hover">
+                        <h4 class="mt-3">{{ "Invoice_preview" | translate }}</h4>
+                    </mat-expansion-panel-header>
+
+                    <div class="row">
+
+                        <div class="Invoicepreview">
+
+
+                            <mat-card class="example-card" style=" box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);">
+
+                                <div class=" paddings pt-3">
+                                    <form class="form" [formGroup]="invoiceform">
+                                        <div class="main-cust-image pb-3">
+
+                                            <div class="col">
+                                                <b>{{'Document-type' | translate }}:</b>&nbsp;&nbsp;
+                                                <img *ngIf="badge.document_type== true"
+                                                    class="crl  card-img-left example-card-img-responsive mr-2"
+                                                    height="20px" width="20px" src="{{badgeIcon}}" />
+                                                <mat-form-field>
+                                                    <mat-select formControlName="document_type" #myselect
+                                                        #DocumentTypeSelect>
+                                                        <mat-select-filter [displayMember]="'name'"
+                                                            *ngIf="DocumentTypeSelect.focused" [placeholder]="'Filter'"
+                                                            [array]="variablesDocumenttype"
+                                                            (filteredReturn)="DocumentType =$event">
+                                                        </mat-select-filter>
+                                                        <mat-option *ngFor="let documenttype of DocumentType"
+                                                            [value]="documenttype.key">
+                                                            {{documenttype.name}}
+                                                        </mat-option>
+                                                    </mat-select>
+                                                </mat-form-field>
+                                            </div>
+                                            <div class="col">
+                                                <b>{{'Project-Timecard-Date' | translate }}:</b>&nbsp;&nbsp;
+                                                <img *ngIf="badge.date_epoch== true"
+                                                    class="crl  card-img-left example-card-img-responsive mr-2"
+                                                    height="20px" width="20px" src="{{badgeIcon}}" />
+                                                <mat-form-field>
+                                                    <input matInput [matDatepicker]="poDate" disabled readonly
+                                                        formControlName="date_epoch" />
+                                                    <mat-datepicker-toggle matSuffix
+                                                        [for]="poDate"></mat-datepicker-toggle>
+                                                    <mat-datepicker #poDate disabled="false"></mat-datepicker>
+                                                </mat-form-field>
+                                            </div>
+                                            <div class="col ">
+                                                <b>{{'Vendor_Name' | translate }}:</b>&nbsp;&nbsp;
+
+                                                <img *ngIf="badge.vendor== true"
+                                                    class="crl  card-img-left example-card-img-responsive mr-2"
+                                                    height="20px" width="20px" src="{{badgeIcon}}" />
+
+                                                <mat-form-field>
+                                                    <input type="text" aria-label="Number" matInput
+                                                        [formControl]="vendor" [matAutocomplete]="auto">
+                                                    <mat-autocomplete [displayWith]="displayOption"
+                                                        #auto="matAutocomplete">
+                                                        <mat-option *ngFor="let option of filteredVendors | async"
+                                                            [value]="option"
+                                                            (onSelectionChange)="getIdFromVendor($event, option)">
+                                                            {{option.vendor_name}}
+                                                        </mat-option>
+                                                    </mat-autocomplete>
+                                                </mat-form-field>
+                                            </div>
+                                            <div class="col">
+                                                <b>{{'Vendor_ID' | translate }}:</b>&nbsp;&nbsp;
+                                                <img *ngIf="badge.vendor_id== true"
+                                                    class="crl  card-img-left example-card-img-responsive mr-2"
+                                                    height="20px" width="20px" src="{{badgeIcon}}" />
+                                                <mat-form-field>
+
+                                                    <input matInput placeholder="{{'' | translate }}"
+                                                        formControlName="vendor_id">
+                                                </mat-form-field>
+                                            </div>
+
+                                            <div class="col">
+                                                <b>{{'po_no' | translate }}:</b>&nbsp;&nbsp;
+                                                <img *ngIf="badge.po_number== true"
+                                                    class="crl  card-img-left example-card-img-responsive mr-2"
+                                                    height="20px" width="20px" src="{{badgeIcon}}" />
+                                                <mat-form-field>
+
+                                                    <input matInput placeholder="{{'' | translate }}"
+                                                        formControlName="po_number">
+                                                </mat-form-field>
+                                            </div>
+                                            <div class="col ">
+                                                <b>{{'Customer_Id' | translate }}:</b>&nbsp;&nbsp;
+                                                <img *ngIf="badge.customer_id== true"
+                                                    class="crl  card-img-left example-card-img-responsive mr-2"
+                                                    height="20px" width="20px" src="{{badgeIcon}}" />
+
+                                                <mat-form-field>
+                                                    <input matInput placeholder="{{' ' | translate }}"
+                                                        formControlName="customer_id" />
+                                                </mat-form-field>
+                                            </div>
+                                            <div class="col">
+                                                <b>{{'terms' | translate }}:</b>&nbsp;&nbsp;
+                                                <img *ngIf="badge.terms== true"
+                                                    class="crl  card-img-left example-card-img-responsive mr-2"
+                                                    height="20px" width="20px" src="{{badgeIcon}}" />
+                                                <mat-form-field>
+
+                                                    <input matInput placeholder="{{'' | translate }}"
+                                                        formControlName="terms" />
+                                                </mat-form-field>
+                                            </div>
+
+                                            <div class="col">
+                                                <b>{{'delivery_date' | translate }}:</b>&nbsp;&nbsp;
+                                                <img *ngIf="badge.delivery_date_epoch== true"
+                                                    class="crl  card-img-left example-card-img-responsive mr-2"
+                                                    height="20px" width="20px" src="{{badgeIcon}}" />
+                                                <mat-form-field>
+                                                    <input matInput [matDatepicker]="deliveryDate" disabled readonly
+                                                        formControlName="delivery_date_epoch" />
+                                                    <mat-datepicker-toggle matSuffix
+                                                        [for]="deliveryDate"></mat-datepicker-toggle>
+                                                    <mat-datepicker #deliveryDate disabled="false"></mat-datepicker>
+                                                </mat-form-field>
+                                            </div>
+                                            <div class="col">
+                                                <b>{{'delivery_address' | translate }}:</b>&nbsp;&nbsp;
+                                                <img *ngIf="badge.delivery_address== true"
+                                                    class="crl  card-img-left example-card-img-responsive mr-2"
+                                                    height="20px" width="20px" src="{{badgeIcon}}" />
+                                                <mat-form-field>
+
+                                                    <input matInput placeholder="{{'' | translate }}"
+                                                        formControlName="delivery_address">
+                                                </mat-form-field>
+                                            </div>
+                                            <div class="col">
+                                                <b>{{'due_date' | translate }}:</b>&nbsp;&nbsp;
+                                                <img *ngIf="badge.due_date_epoch== true"
+                                                    class="crl  card-img-left example-card-img-responsive mr-2"
+                                                    height="20px" width="20px" src="{{badgeIcon}}" />
+                                                <mat-form-field>
+                                                    <input matInput [matDatepicker]="dueDate" disabled readonly
+                                                        formControlName="due_date_epoch" />
+                                                    <mat-datepicker-toggle matSuffix
+                                                        [for]="dueDate"></mat-datepicker-toggle>
+                                                    <mat-datepicker #dueDate disabled="false"></mat-datepicker>
+                                                </mat-form-field>
+                                            </div>
+                                            <div class="col">
+                                                <b>{{'quote_number' | translate }}:</b>&nbsp;&nbsp;
+                                                <img *ngIf="badge.quote_number== true"
+                                                    class="crl  card-img-left example-card-img-responsive mr-2"
+                                                    height="20px" width="20px" src="{{badgeIcon}}" />
+                                                <mat-form-field>
+
+                                                    <input matInput placeholder="{{'' | translate }}"
+                                                        formControlName="quote_number">
+                                                </mat-form-field>
+                                            </div>
+                                            <div class="col">
+                                                <b>{{'contract_number' | translate }}:</b>&nbsp;&nbsp;
+                                                <img *ngIf="badge.contract_number== true"
+                                                    class="crl  card-img-left example-card-img-responsive mr-2"
+                                                    height="20px" width="20px" src="{{badgeIcon}}" />
+                                                <mat-form-field>
+
+                                                    <input matInput placeholder="{{'' | translate }}"
+                                                        formControlName="contract_number">
+                                                </mat-form-field>
+                                            </div>
+
+                                            <div class="col">
+                                                <b> {{'sub_totle' | translate }}:</b>&nbsp;&nbsp;
+                                                <img *ngIf="badge.sub_total== true"
+                                                    class="crl  card-img-left example-card-img-responsive mr-2"
+                                                    height="20px" width="20px" src="{{badgeIcon}}" />
+                                                <mat-form-field>
+
+                                                    <input matInput placeholder="{{'' | translate }}"
+                                                        formControlName=sub_total>
+                                                </mat-form-field>
+                                            </div>
+                                            <div class="col">
+                                                <b>{{'Company-po-form-Tax' | translate }}:</b>&nbsp;&nbsp;
+                                                <img *ngIf="badge.tax== true"
+                                                    class="crl  card-img-left example-card-img-responsive mr-2"
+                                                    height="20px" width="20px" src="{{badgeIcon}}" />
+                                                <mat-form-field>
+
+                                                    <input matInput placeholder="{{'' | translate }}"
+                                                        formControlName="tax">
+                                                </mat-form-field>
+                                            </div>
+                                            <div class="col">
+                                                <b> {{'P_O_Totle' | translate }}:</b>&nbsp;&nbsp;
+                                                <img *ngIf="badge.po_total== true"
+                                                    class="crl  card-img-left example-card-img-responsive mr-2"
+                                                    height="20px" width="20px" src="{{badgeIcon}}" />
+                                                <mat-form-field>
+
+                                                    <input matInput placeholder="{{'' | translate }}"
+                                                        formControlName=po_total>
+                                                </mat-form-field>
+                                            </div>
+
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="button-margin cust-center-save ">
+                                    <button mat-raised-button class="cust-button-form" (click)="back()"><img
+                                            src="{{backIcon}}" alt="" class="pr-1"
+                                            height="15px">{{'All-back' | translate}}</button>
+                                    <button mat-raised-button (click)="saveData()" color="primary"
+                                        class="cust-button-form"><img src="{{saveIcon}}" alt="" class="pr-1"
+                                            height="15px">{{'All-save' | translate}}</button>
+
+                                </div>
+                                <div class="col-6">
+
+                                </div>
+
+                            </mat-card>
+
+
+                        </div>
+
+
+
+
+                        <div class="col-md-7 col-lg-7 col-sm-10">
+                            <mat-card class="example-card" style=" box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);">
+                                <div class="pdf-data">
+                                    <div class="pt-2 pdf-header">
+                                        <button mat-raised-button color="primary" (click)="download()"
+                                            class="cust-button-form"><img src="{{downloadIcon}}" alt="" class=""
+                                                height="20px" style=" padding-right: 4px;">{{'PO-View-Download' |
+                                translate}}</button>
+                                        <button mat-raised-button color="primary" (click)="print()"
+                                            class="cust-button-form"><img src="{{printIcon}}" alt="" class=""
+                                                height="15px" style=" padding-right: 4px;">{{'PO-View-Print' |
+                                translate}}</button>
+                                    </div>
+                                    <div class="pdf-viewer" *ngIf="loadInvoice">
+                                        <pdf-viewer id="pdf" [src]="pdf_url" [rotation]="0" [original-size]="false"
+                                            [show-all]="true" [fit-to-page]="false" [zoom]="1"
+                                            [zoom-scale]="'page-width'" [stick-to-page]="false" [render-text]="true"
+                                            [external-link-target]="'blank'" [autoresize]="true" [show-borders]="false"
+                                            [external-link-target]="'blank'" style="display: block;"></pdf-viewer>
+                                    </div>
+                                </div>
+                            </mat-card>
+                        </div>
+
+                    </div>
+                </mat-expansion-panel>
+            </mat-nav-list>
+            <app-common-document [module]="module.Po" [data]="invoiceData" *ngIf="loadInvoice">
+            </app-common-document>
+        </mat-accordion>
+    </div>
+</mat-card>

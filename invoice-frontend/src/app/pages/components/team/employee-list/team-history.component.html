@@ -1,0 +1,58 @@
+<div class="row">
+    <div class="col-2">
+        <img class="crl mr-2" height="50px" width="50px" src="./assets/logo/invoice_logo.png" />
+    </div>
+    <div class="col-9 dialog-head-center">
+        <h2 class="cust-report-label-header-text">{{'Team-Employee-History' | translate}}</h2>
+    </div>
+    <div class="col-1 dialog-head-right">
+        <button class="import-export-btn-datatable cust-margin-div" matTooltip="{{ 'All-exit' | translate }}"
+            mat-dialog-close>
+            <img src="{{exitIcon}}" alt="" class="far fa-paper-plane" height="20px" />
+        </button>
+    </div>
+</div>
+<div class="search-results" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50"
+    (scrolled)="onScroll()" [scrollWindow]="false" [ngStyle]="setHeightStyles()">
+    <!-- <div class="row main-search-bar cust-end-search">
+        <div class="col-6 inner-search-bar">
+            <mat-form-field class="main-one-input-field cust-padding-top" appearance="outline">
+                <mat-label>{{ "Search_all" | translate }}</mat-label>
+                <input matInput [(ngModel)]="search" placeholder="{{ 'Search_all' | translate }}"
+                    (keyup)="onKey($event)" />
+            </mat-form-field>
+        </div>
+
+        <div class="col-6" style="padding: 10px;">
+            <button mat-raised-button color="primary" class="sign-button cust-padding-top padding-left-cust"
+                (click)="searchActivity()">
+                <img src="{{ SearchIcon }}" alt="" height="15px" />
+                {{ "Search_all" | translate }}
+            </button>
+        </div>
+    </div> -->
+    <div class="hbox" *ngFor="let item of taskHistory">
+        <!-- <div *ngFor="let oneActivity of activityArray"> -->
+        <div class="row pb-2 ">
+            <div class="col-1 mt-2"><img class="userimg"
+                    src="{{item.history_created_by.userpicture || '../assets/images/user_placeholder.png'}}" />
+            </div>
+            <div class="col-11 mt-2">
+                <b> {{item.history_created_by.userfullname}} </b> {{item.action}} <b>
+                    {{item.user.username}}
+                </b>
+                at
+                <b>{{tmp_date(item.history_created_at)}}</b> from <b>{{item.taken_device}}.</b>
+
+                <table class="table history-table" *ngIf="item.action == 'Insert' || item.action == 'Update'">
+                    <tr *ngFor="let data of item.data">
+                        <th>{{data.key}}</th>
+                        <td>{{data.value}}
+                        </td>
+                    </tr>
+                </table>
+                <!-- <hr class="solid"> -->
+            </div>
+        </div>
+    </div>
+</div>

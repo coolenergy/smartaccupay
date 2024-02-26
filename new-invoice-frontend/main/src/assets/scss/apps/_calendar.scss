@@ -1,0 +1,340 @@
+/*
+ *  Document   : _calendar.scss
+ *  Author     : RedStar Template
+ *  Description: This scss file for style related to calendar app
+ */
+
+#event_title {
+  font-size: 1.2rem;
+}
+
+#calendar {
+  float: right;
+  width: 100%;
+}
+
+#external-events {
+  .fc-event {
+    padding: 5px 10px;
+    font-size: 14px;
+    margin-bottom: 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+    cursor: move;
+  }
+
+  .form-check .form-check-label {
+    font-size: 14px;
+  }
+}
+
+.cal-event {
+  display: inline-block !important;
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  padding: 0;
+}
+
+.fc-state-active {
+  background: #a389d4 !important;
+  color: #fff;
+}
+
+.fc-day-grid-event {
+  color: white !important;
+  text-align: center;
+}
+
+.fc-event-primary {
+  border: none !important;
+  background-color: #007bff !important;
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14),
+    0 7px 10px -5px rgba(0, 154, 255, 0.4);
+  color: #fff;
+}
+
+.fc-event-warning {
+  border: none !important;
+  background-color: #ff9800 !important;
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14),
+    0 7px 10px -5px rgba(255, 152, 0, 0.4);
+  color: #fff;
+}
+
+.fc-event-success {
+  border: none !important;
+  position: relative;
+  background-color: #53b958 !important;
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14),
+    0 7px 10px -5px rgba(76, 175, 80, 0.4);
+  font-weight: 400;
+  color: #fff;
+}
+
+.fc-event-danger {
+  border: none !important;
+  background-color: #f9483b !important;
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14),
+    0 7px 10px -5px rgba(244, 67, 54, 0.4);
+  color: #fff;
+}
+
+.fc-event-info {
+  border: none !important;
+  position: relative;
+  background-color: #03c5de !important;
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14),
+    0 7px 10px -5px rgba(0, 188, 212, 0.4);
+  font-weight: 400;
+  color: #fff;
+}
+
+.fc-event-default {
+  background: #007bff;
+  border: 1px solid #007bff;
+}
+
+.fc-state-default {
+  border: 1px solid #eee;
+  background: transparent !important;
+  color: #7e869d;
+  border-radius: 0;
+}
+
+.catLbl {
+  font-weight: 600;
+  color: #34395e;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  margin-bottom: 0;
+}
+
+.fc .fc-button-primary {
+  background-color: #ffffff !important;
+  border: 1px solid #eee !important;
+  color: #7e869d !important;
+  border-radius: 5px !important;
+  margin-right: 8px !important;
+
+  &:disabled {
+    color: #fff !important;
+    background-color: #6777ef !important;
+    border-color: #6777ef !important;
+  }
+
+  &:hover {
+    color: #868181 !important;
+    background-color: #e1e0e0 !important;
+    border-color: #e1e0e0 !important;
+  }
+
+  &:focus {
+    box-shadow: none !important;
+  }
+
+  &:not(:disabled) {
+    &.fc-button-active {
+      color: #fff !important;
+      background-color: #6777ef !important;
+      border-color: #6777ef !important;
+    }
+
+    &:active {
+      color: #fff !important;
+      background-color: #6777ef !important;
+      border-color: #6777ef !important;
+    }
+  }
+}
+
+.fc-color-picker {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  > li {
+    float: left;
+    font-size: 30px;
+    margin-right: 5px;
+    line-height: 30px;
+  }
+}
+
+.fc-content-skeleton thead {
+  border-bottom: none;
+}
+
+.fc-toolbar h2 {
+  font-size: 16px;
+  margin-top: 4px;
+}
+
+.fc-view {
+  border-color: #f2f2f2;
+
+  > table {
+    border-color: #f2f2f2;
+
+    th {
+      border-color: #ddd;
+      color: color(fontdark) !important;
+      font-weight: 500;
+      padding: 15px;
+    }
+  }
+
+  color: color(fontdark) !important;
+  font-weight: 500;
+  padding: 10px;
+
+  .fc-scrollgrid-section {
+    > th {
+      padding: 0px;
+    }
+  }
+}
+
+.fc-view-container > .fc-view {
+  padding: 0;
+}
+
+.fc-view {
+  color: #666;
+  text-align: right;
+
+  > table td {
+    color: #666;
+    text-align: right;
+  }
+}
+
+.fc button .fc-icon {
+  top: -0.09em;
+}
+
+.fc-basic-view {
+  .fc-day-number,
+  .fc-week-number {
+    padding: 10px;
+  }
+}
+
+.fc .fc-daygrid-event {
+  padding: 0px 10px;
+  box-shadow: 0 4px 25px 0 rgba(0, 0, 0, 0.1);
+  color: #ffffff;
+  text-align: left;
+}
+.fc-daygrid-block-event .fc-event-time {
+  font-weight: 400 !important;
+  font-size: 12px;
+}
+.fc-daygrid-event-dot {
+  display: none;
+}
+.fc-daygrid-dot-event .fc-event-title {
+  font-weight: 400 !important;
+  text-align: left;
+  font-size: 12px;
+}
+.fc-daygrid-dot-event .fc-event-time {
+  font-weight: 400 !important;
+  text-align: left;
+  font-size: 12px;
+}
+.fc-event-title-container .fc-event-title {
+  font-weight: 400 !important;
+  text-align: left;
+  font-size: 12px;
+}
+
+tr:first-child > td > .fc-day-grid-event {
+  margin-bottom: 10px;
+}
+
+.fc-state-default {
+  border-radius: 3px;
+  background-color: #f2f2f2;
+  background-image: none;
+  border: none;
+  box-shadow: none;
+  text-transform: capitalize;
+  font-weight: 500;
+}
+
+.fc button {
+  height: auto;
+  padding: 10px 15px;
+  text-shadow: none;
+  border-radius: 0;
+
+  &.fc-state-active {
+    background-color: color(primary);
+    color: #fff;
+  }
+}
+
+.fc .fc-axis {
+  vertical-align: middle;
+  padding: 0 4px;
+  white-space: nowrap;
+}
+
+.ngx-mat-timepicker {
+  .ng-pristine {
+    td {
+      padding: 0px;
+      border-top: none;
+      border-bottom: none;
+    }
+  }
+}
+
+.fc-time-grid-event .fc-content {
+  color: #ffffff;
+}
+
+.fc-list-event {
+  color: #ffffff;
+}
+
+.fc-list-event:hover td {
+  background-color: #cccaca !important;
+}
+
+.fc-event-container:hover {
+  cursor: pointer;
+}
+
+.fc-daygrid-day-top {
+  text-align: center;
+  display: block !important;
+  .fc-daygrid-day-number {
+    color: #666;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 4px 0;
+    font-size: 12px !important;
+  }
+}
+.fc-day-today .fc-daygrid-day-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 25px;
+  height: 25px;
+  margin: 4px 0;
+  font-size: 12px;
+  border-radius: 50%;
+  background: #6777ef;
+  color: #fff;
+}
+.fc .fc-daygrid-day.fc-day-today {
+  background-color: transparent !important;
+}
+.fc .fc-col-header-cell-cushion {
+  color: #666;
+}

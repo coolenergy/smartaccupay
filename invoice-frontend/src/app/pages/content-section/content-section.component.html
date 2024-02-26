@@ -1,0 +1,8 @@
+<div class="flux-content-section" [attr.nav-layout]="navLayout" [ngStyle]="{'height.px': contentHeight}"
+  [attr.navbar-type]="toggleStatus ? defaultNavbar : toggleNavbar " [attr.effect-type]="navbarEffect"
+  [attr.device-type]="deviceType">
+
+  <div class="flux-wrapper">
+    <router-outlet></router-outlet>
+  </div>
+</div>

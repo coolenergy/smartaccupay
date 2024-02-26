@@ -1,0 +1,183 @@
+﻿/*
+ *  Document   : theme-cyan.scss
+ *  Author     : RedStar Template
+ *  Description: This scss file for cyan theme style classes
+ */
+@import "_theme-color-variables";
+
+.theme-cyan {
+  .navbar {
+    background-color: transparent;
+    .icon-color {
+      color: #fff;
+    }
+    .navbar-nav.navbar-right .user_profile span {
+      color: #fff;
+    }
+  }
+  .navbar.active {
+    // background-color: $theme-cyan !important;
+    background: #4cb8c4; /* fallback for old browsers */
+    background: -webkit-linear-gradient(
+      to right,
+      #0fdbdc,
+      #1ab5b9
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+      to right,
+      #0fdbdc,
+      #1ab5b9
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+    .nav {
+      > li {
+        > a {
+          color: #fff;
+        }
+      }
+    }
+    .collapse-menu-icon .mat-icon {
+      color: #fff;
+    }
+    .navbar-right .nav-notification-icons .mat-icon {
+      color: #fff;
+    }
+  }
+
+  .nav {
+    > li {
+      > a {
+        &:hover {
+          background-color: $theme-cyan-nav-anchor_hover;
+          text-decoration: none;
+        }
+
+        &:focus {
+          background-color: $theme-cyan-nav-anchor_focus;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+
+  .bars {
+    color: $theme-cyan-bar;
+  }
+
+  .sidebar {
+    .menu {
+      .list {
+        li {
+          &.active {
+            background-color: $theme-cyan-menu-list-active;
+          }
+          a {
+            -moz-transition: all 0.3s;
+            -o-transition: all 0.3s;
+            -webkit-transition: all 0.3s;
+            transition: all 0.3s;
+            i,
+            span {
+              -moz-transition: all 0.3s;
+              -o-transition: all 0.3s;
+              -webkit-transition: all 0.3s;
+              transition: all 0.3s;
+            }
+          }
+        }
+        .ml-menu {
+          background-color: $theme-cyan-menu-list-submenu;
+        }
+      }
+    }
+
+    .legal {
+      background-color: $theme-cyan-legal-bg;
+
+      .copyright {
+        a {
+          color: $theme-cyan !important;
+        }
+      }
+    }
+  }
+
+  .breadcrumb li a {
+    color: $theme-cyan !important;
+  }
+
+  .page-item.active .page-link {
+    background-color: $theme-cyan;
+    border-color: $theme-cyan;
+    color: #ffffff;
+    border-radius: 50%;
+    box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.2);
+  }
+
+  .btn-primary {
+    background-color: $theme-cyan !important;
+    color: #fff !important;
+    border-color: $theme-cyan !important;
+    &:hover {
+      background-color: $theme-cyan !important;
+      color: #fff !important;
+    }
+    &:active {
+      background-color: $theme-cyan !important;
+      color: #fff !important;
+    }
+    &:focus {
+      background-color: $theme-cyan !important;
+      color: #fff !important;
+    }
+    &:disabled {
+      background-color: $theme-cyan !important;
+      color: #fff !important;
+    }
+  }
+  .btn-outline-primary {
+    background: 0 0 !important;
+    color: $theme-cyan !important;
+    border: 1px solid $theme-cyan !important;
+    &:hover {
+      background: $theme-cyan !important;
+      color: #fff !important;
+      border: 1px solid $theme-cyan !important;
+    }
+  }
+  .timelineLabelColor strong {
+    color: $theme-cyan !important;
+  }
+  .top-sidebar {
+    .horizontal-menu {
+      li {
+        &.active {
+          > a {
+            color: $theme-cyan;
+          }
+        }
+        a {
+          -moz-transition: all 0.3s;
+          -o-transition: all 0.3s;
+          -webkit-transition: all 0.3s;
+          transition: all 0.3s;
+          &:hover {
+            color: $theme-cyan;
+          }
+        }
+      }
+    }
+  }
+
+  .nav-tabs > li > a:before {
+    border-bottom: 2px solid $theme-cyan;
+  }
+}
+/*Logo Header Background Color*/
+.logo-cyan {
+  .navbar-header {
+    background-color: $theme-cyan;
+  }
+}

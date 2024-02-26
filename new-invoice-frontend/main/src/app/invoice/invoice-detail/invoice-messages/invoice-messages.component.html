@@ -1,0 +1,129 @@
+<section class="content">
+    <div class="content-block">
+        <div class="m-4"></div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="materialTableHeader">
+                        <div class="left">
+                            <ul class="header-buttons-left ms-0">
+                                <li class="tbl-title">
+                                    <h2>Invoice Messages</h2>
+                                </li>
+                                <li class="tbl-search-box">
+                                    <label for="search-input"><i class="material-icons search-icon">search</i></label>
+                                    <input placeholder="Search" type="text" #filter class="browser-default search-field"
+                                        aria-label="Search box">
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="right">
+                            <ul class="tbl-export-btn">
+                                <li>
+                                    <div class="export-button m-l-10" matTooltip="{{'COMMON.TOOL_TIP.XLSX' |
+                                        translate}}">
+                                        <img src="assets/images/icons/xlsx.png" alt="" (click)="exportExcel()" />
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="body overflow-auto">
+                        <div class="table-responsive">
+                            <table mat-table #table [dataSource]="dataSource" matSort class="mat-cell">
+                                <ng-container matColumnDef="created_at">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header>Date & Time
+                                    </mat-header-cell>
+                                    <mat-cell *matCellDef="let row" (click)="viewMessage(row)"
+                                        (contextmenu)="onContextMenu($event, row)">
+                                        <span class="mobile-label">Date &
+                                            Time:</span>{{(row.created_at * 1000) | date: 'MM/dd/yyyy hh:mm a'}}</mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="sender">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header>Sender
+                                    </mat-header-cell>
+                                    <mat-cell *matCellDef="let row" (click)="viewMessage(row)"
+                                        (contextmenu)="onContextMenu($event, row)">
+                                        <span
+                                            class="mobile-label">Sender:</span>{{row.last_message_sender.userfullname}}</mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="last_message">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header>Last Message
+                                    </mat-header-cell>
+                                    <mat-cell *matCellDef="let row" (click)="viewMessage(row)"
+                                        (contextmenu)="onContextMenu($event, row)">
+                                        <span class="mobile-label">Last
+                                            Message:</span>{{row.last_message.message}}</mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="invoice_no">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header>Invoice Number
+                                    </mat-header-cell>
+                                    <mat-cell *matCellDef="let row" (click)="viewMessage(row)"
+                                        (contextmenu)="onContextMenu($event, row)">
+                                        <span class="mobile-label">Invoice
+                                            Number:</span>{{row.invoice.invoice_no}}</mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="due_date">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header>Due Date
+                                    </mat-header-cell>
+                                    <mat-cell *matCellDef="let row" (click)="viewMessage(row)"
+                                        (contextmenu)="onContextMenu($event, row)">
+                                        <span class="mobile-label">Due
+                                            Date:</span>{{(row.invoice.due_date_epoch * 1000) | date: 'MM/dd/yyyy'}}</mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="vendor">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header>Vendor
+                                    </mat-header-cell>
+                                    <mat-cell *matCellDef="let row" (click)="viewMessage(row)"
+                                        (contextmenu)="onContextMenu($event, row)">
+                                        <span
+                                            class="mobile-label">Vendor:</span>{{row.invoice.vendor.vendor_name}}</mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="total_amount">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header>Total Amount
+                                    </mat-header-cell>
+                                    <mat-cell *matCellDef="let row" (click)="viewMessage(row)"
+                                        (contextmenu)="onContextMenu($event, row)">
+                                        <span class="mobile-label">Total
+                                            Amount:</span>$
+                                        {{numberWithCommas(row.invoice.invoice_total_amount)}}</mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="actions">
+                                    <mat-header-cell class="pr-0 tbl-col-width-per-action"
+                                        *matHeaderCellDef>Actions</mat-header-cell>
+                                    <mat-cell *matCellDef="let row; let i=index;" class="pr-0 tbl-col-width-per-action">
+                                        <button mat-icon-button color="primary" (click)="$event.stopPropagation()"
+                                            (click)="viewMessage(row)" class="col-blue">
+                                            <app-feather-icons [icon]="'eye'"
+                                                [class]="'tbl-fav-eye'"></app-feather-icons>
+                                        </button>
+                                        <button mat-icon-button color="accent" (click)="$event.stopPropagation()"
+                                            (click)="deleteMessage(row)" class="col-red">
+                                            <mat-icon>archive</mat-icon>
+                                        </button>
+                                    </mat-cell>
+                                </ng-container>
+                                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                                <mat-row *matRowDef="let row; columns: displayedColumns;" [style.cursor]="'pointer'"
+                                    matRipple>
+                                </mat-row>
+                            </table>
+                        </div>
+                        <!-- Loading spinner -->
+                        <div *ngIf="exampleDatabase?.isMessageTblLoading" class="tbl-spinner">
+                            <mat-progress-spinner color="primary" [diameter]="40" mode="indeterminate">
+                            </mat-progress-spinner>
+                        </div>
+                        <div *ngIf="!exampleDatabase?.isMessageTblLoading" class="no-results"
+                            [style.display]="dataSource.renderedData.length === 0 ? '' : 'none'">
+                            {{'COMMON.LISTING.EMPTY' | translate}}
+                        </div>
+                        <mat-paginator #paginator [length]="dataSource.filteredData.length" [pageIndex]="0"
+                            [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
+                        </mat-paginator>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

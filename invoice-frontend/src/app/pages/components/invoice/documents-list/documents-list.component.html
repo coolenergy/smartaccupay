@@ -1,0 +1,58 @@
+<div class="wrapper-cust-admin" fxLayout style="height: 95%">
+    <div class="d-flex justify-content-between">
+
+        <h1 class="screen-title">
+            {{ "iframe_tab_Documents" | translate | titlecase }}
+        </h1>
+        <div class="row mr-2 action-button">
+
+        </div>
+    </div>
+    <div class="wrapper-cust-admin" fxLayout style="height: 95%">
+        <mat-tab-group mat-align-tabs="center" (selectedTabChange)="onTabChanged($event)"
+            [(selectedIndex)]="step_index">
+            <mat-tab label="{{'Invoice' | translate}}">
+                <div class="table-responsive cust-padding cust-padding-tmp mt-4" *ngIf="showTable">
+                    <table datatable [dtOptions]="dtOptions" id="dtOptions" class="row-border hover">
+                    </table>
+                </div>
+            </mat-tab>
+            <mat-tab label="{{'P.O' | translate }}">
+                <div class="table-responsive cust-padding cust-padding-tmp mt-4" *ngIf="showTable">
+                    <table datatable [dtOptions]="dtOptions" id="dtOptions" class="row-border hover">
+                    </table>
+                </div>
+            </mat-tab>
+            <mat-tab label="{{'Packing Slip' | translate }}">
+                <div class="table-responsive cust-padding cust-padding-tmp mt-4" *ngIf="showTable">
+                    <table datatable [dtOptions]="dtOptions" id="dtOptions" class="row-border hover">
+                    </table>
+                </div>
+            </mat-tab>
+            <mat-tab label="{{'Receiving Slip' | translate }}">
+                <div class="table-responsive cust-padding cust-padding-tmp mt-4" *ngIf="showTable">
+                    <table datatable [dtOptions]="dtOptions" id="dtOptions" class="row-border hover">
+                    </table>
+                </div>
+            </mat-tab>
+            <mat-tab label="{{'Quote' | translate }}">
+                <div class="table-responsive cust-padding cust-padding-tmp mt-4" *ngIf="showTable">
+                    <table datatable [dtOptions]="dtOptions" id="dtOptions" class="row-border hover">
+                    </table>
+                </div>
+            </mat-tab>
+            <mat-tab label="{{'Other_Documents' | translate }}">
+                <div class="table-responsive cust-padding cust-padding-tmp mt-4" *ngIf="showTable">
+                    <table datatable [dtOptions]="dtOptions" id="dtOptions" class="row-border hover">
+                    </table>
+                </div>
+            </mat-tab>
+            <mat-tab label="{{'Archive_Orphan_Documents' | translate}}">
+                <div class="table-responsive cust-padding cust-padding-tmp mt-4" *ngIf="showTable">
+                    <table datatable [dtOptions]="dtOptions" id="dtOptions" class="row-border hover">
+                    </table>
+                </div>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+</div>

@@ -1,0 +1,165 @@
+<!-- <div class="auth-page">
+
+  <div class="auth-page__content-block">
+    <div class="auth-page__content-wrapper">
+
+      <h4 class="auth-page__group-title" *ngIf="showCompanyCode || showLogin">{{'Admin-Login-Welcome-text' | translate}}
+      </h4>
+
+      <div class="cust-center" *ngIf="showLogin">
+        <mat-chip-list style="display: inline-flex;">
+          <mat-chip [removable]="removable" (removed)="removacode()">
+            {{c_code}}
+            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+          </mat-chip>
+        </mat-chip-list>
+      </div>
+      <app-login-form *ngIf="showLogin"></app-login-form>
+      <button class="form-actions__forget" mat-button *ngIf="showLogin" (click)="openForgotPasswordPress()"><span><a
+            class="login-link" target="_blank">{{'Admin-Login-Forgot-Password' | translate}}</a></span></button>
+      <form (ngSubmit)="savecompnaycode()" [formGroup]="form" *ngIf="showCompanyCode">
+        <div class="cust-class-center">
+          <mat-form-field class="form__input cust-input-width" appearance="outline">
+            <mat-label>{{'Admin-Login-Comapny-Code' | translate }}</mat-label>
+            <input matInput placeholder="{{'Admin-Login-Comapny-Code' | translate}}" class="dark-cust-color"
+              formControlName="companycode" prefix="R-" mask="000000" type="text" required>
+          </mat-form-field>
+        </div>
+        <div class="form-actions">
+          <button class="form-actions__login" mat-raised-button color="primary"
+            type="submit">{{'Admin-Login-Continue-Button' | translate}}</button>
+        </div>
+      </form>
+      <form [formGroup]="forgotpassword_form" (ngSubmit)="forgotPasswordPress()" *ngIf="showForgotPassword">
+
+        <h4 class="auth-page__group-title">{{'Admin-Login-Forgot-Password-Title' | translate }}</h4>
+        <p style="text-align:center">{{'Admin-Login-Forgot-Password-SubTitle' | translate }}</p>
+
+        <mat-form-field class="form_input_cust" appearance="outline">
+          <mat-label>{{'Admin-Login-Email-Placeholder' | translate }}</mat-label>
+          <input matInput placeholder="{{ 'Admin-Login-Email-Placeholder' | translate}}" class="dark-cust-color"
+            type="email" formControlName="useremail">
+        </mat-form-field>
+
+        <div class="form-actions">
+          <button class="form-actions__login" mat-raised-button color="primary"
+            type="submit">{{'Admin-Login-Forgot-Password-SendButton' | translate }}</button>
+        </div>
+        <div class="form-actions">
+          <button class="form-actions__forget" mat-button type="button" (click)="resetForgotPasswordPress()"
+            *ngIf="showForgotPassword"><span>{{'Admin-Login-Forgot-Password-AlreadyUser' | translate }}</span><span><a
+                class="login-link" target="_blank">{{'Admin-Login-Forgot-Password-Login' |
+                translate}}</a></span></button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+  
+  <div class="auth-page__logo" style="background-image:url(./assets/images/bg01.jpg);background-repeat:no-repeat;">
+    <div class="auth-page__logo-wrapper">
+      <img class="auth-page__logo-img" width="40%" height="40%" src="./assets/logo/rovuck.png" alt="logo">
+      <h6 class="auth-page__logo-title">ROVUK</h6>
+    </div>
+  </div>
+</div> -->
+
+<div class="auth-page-full-bg" style="background-image:url(./assets/images/full_bg.jpg);">
+  <div class="card-overlay">
+    <div class="auth-page__content-block">
+      <div class="auth-page__content-wrapper">
+
+        <h4 class="auth-page__group-title" *ngIf="showCompanyCode || showLogin">WELCOME TO ROVUK A/P
+        </h4>
+
+        <div class="cust-center" *ngIf="showLogin">
+          <mat-chip-list style="display: inline-flex;">
+            <mat-chip [removable]="removable" (removed)="removacode()">
+              {{c_code}}
+              <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+            </mat-chip>
+          </mat-chip-list>
+        </div>
+        <app-login-form *ngIf="showLogin"></app-login-form>
+        <button class="form-actions__forget" mat-button *ngIf="showLogin" (click)="openForgotPasswordPress()"><span><a
+              class="login-link" target="_blank">{{'Admin-Login-Forgot-Password' | translate}}</a></span></button>
+        <form (ngSubmit)="savecompnaycode()" [formGroup]="form" *ngIf="showCompanyCode">
+          <div class="cust-class-center">
+            <mat-form-field class="form__input cust-input-width" appearance="outline">
+              <mat-label>{{'Admin-Login-Comapny-Code' | translate }}</mat-label>
+              <input matInput placeholder="{{'Admin-Login-Comapny-Code' | translate}}" class="dark-cust-color"
+                formControlName="companycode" prefix="R-" mask="000000" type="text" required>
+            </mat-form-field>
+          </div>
+          <div class="form-actions">
+            <button style="float: left;" class="form-actions__login" mat-raised-button color="primary"
+              type="submit">{{'Admin-Login-Continue-Button' | translate}}</button>
+            <img style="float: right;" class="form-actions__logo-img" width="30%" height="30%"
+              src="./assets/images/powerby_auth.png" alt="logo">
+          </div>
+        </form>
+        <form [formGroup]="forgotpassword_form" (ngSubmit)="forgotPasswordPress()" *ngIf="showForgotPassword">
+
+          <h4 class="auth-page__group-title">{{'Admin-Login-Forgot-Password-Title' | translate }}</h4>
+          <p style="text-align:center; color: white;">{{'Admin-Login-Forgot-Password-SubTitle' | translate }}</p>
+
+          <mat-form-field class="form_input_cust" appearance="outline">
+            <mat-label>{{'Admin-Login-Email-Placeholder' | translate }}</mat-label>
+            <input matInput placeholder="{{ 'Admin-Login-Email-Placeholder' | translate}}" class="dark-cust-color"
+              type="email" formControlName="useremail">
+          </mat-form-field>
+
+          <div class="form-actions">
+            <button class="form-actions__login" mat-raised-button color="primary"
+              type="submit">{{'Admin-Login-Forgot-Password-SendButton' | translate }}</button>
+            <img style="float: right;" class="form-actions__logo-img" width="30%" height="30%"
+              src="./assets/images/powerby_auth.png" alt="logo">
+          </div>
+          <div class="form-actions">
+            <button class="form-actions__forget" mat-button type="button" (click)="resetForgotPasswordPress()"
+              *ngIf="showForgotPassword"><span>{{'Admin-Login-Forgot-Password-AlreadyUser' | translate
+                }}</span><span><a class="login-link" target="_blank">{{'Admin-Login-Forgot-Password-Login' |
+                  translate}}</a></span></button>
+          </div>
+
+        </form>
+        <!-- Use OTP -->
+        <!--  && showOTPOption -->
+        <div *ngIf="showLogin" class="otp-text" (click)="openOTPScreen()">Or use One time password
+          (OTP)
+        </div>
+        <form [formGroup]="otp_form" *ngIf="showOTP">
+          <mat-form-field class="form_input_cust mt-2" appearance="outline">
+            <mat-label>{{'Admin-Login-Email-Placeholder' | translate }}</mat-label>
+            <input matInput placeholder="{{ 'Admin-Login-Email-Placeholder' | translate}}" class="dark-cust-color"
+              type="email" formControlName="useremail">
+          </mat-form-field>
+
+          <div *ngIf="sentOTP">
+            <div class="text-center mb-4">
+              <ng-otp-input #ngOtpInput [config]="otpConfig" (onInputChange)="onOtpChange($event)"></ng-otp-input>
+            </div>
+            <div class="enter-otp-text">Please insert the one time password (OTP) we send to your e-mail to access the
+              platform</div>
+            <div class="text-center mt-2">
+              <label>Didn't get a verification code? </label>
+              <label class="resend-otp ml-2" (click)="sendOTP()">Send Again</label>
+              <!-- in <label class="otp-timer">{{displayTime()}}
+                </label> -->
+            </div>
+          </div>
+          <div class="form-actions">
+            <button *ngIf="sentOTP" class="form-actions__login" mat-raised-button color="primary"
+              (click)="submitOTP()">{{'All_Submit' | translate }}</button>
+            <button *ngIf="!sentOTP" class="form-actions__login" mat-raised-button color="primary"
+              (click)="sendOTP()">{{'Admin-Login-Forgot-Password-SendButton' | translate }}</button>
+            <img style="float: right;" class="form-actions__logo-img" width="30%" height="30%"
+              src="./assets/images/powerby_auth.png" alt="logo">
+          </div>
+
+          <div class="otp-text mt-2" (click)="openLoginScreen()">Or use Email Password</div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

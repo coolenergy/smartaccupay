@@ -1,0 +1,31 @@
+$colors: (
+  'red': #f44336,
+  'pink': #e91e63,
+  'purple': #6f42c1,
+  'indigo': #3f51b5,
+  'blue': #0d6efd,
+  'cyan': #00bcd4,
+  'teal': #20c997,
+  'green': #198754,
+  'yellow': #ffe821,
+  'orange': #ff9800,
+  'deep-orange': #ff5722,
+  'brown': #795548,
+  'grey': #9e9e9e,
+  'black': #000000,
+  'white': #ffffff,
+) !default;
+
+$linear-colors: (
+  'green': linear-gradient(to right, #56ab2f, #a8e063),
+  'orange': linear-gradient(to right, #f7971e, #ffd200),
+  'blue': linear-gradient(to right, #00b4db, #0083b0),
+  'cyan': linear-gradient(45deg, #72c2ff, #86f0ff),
+  'red': linear-gradient(316deg, #fc5286, #fbaaa2),
+  'purple': linear-gradient(to right, #834d9b, #d04ed6),
+  'purple-dark': linear-gradient(45deg, #a52dd8, #e29bf1),
+);
+
+//Fonts Family
+$navbar-font-family: 'Roboto', sans-serif;
+$sidebar-font-family: 'Roboto', sans-serif;

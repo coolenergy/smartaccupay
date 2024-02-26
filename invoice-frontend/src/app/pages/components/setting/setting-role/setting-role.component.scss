@@ -1,0 +1,48 @@
+@import 'src/app/styles/variables';
+
+.main-cust-setting-div {
+    width: 100%;
+
+    @media (max-width: $normal) {
+        max-width: 1310px;
+    }
+
+    @media (max-width: $small) {
+        flex-wrap: wrap;
+    }
+
+    @media (max-width: $medium) {
+        flex-wrap: wrap;
+    }
+}
+
+.cust-div-inner {
+    margin-left: 15px;
+}
+
+.example-margin {
+    height: 0px;
+}
+
+.cust-header-text {
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.cust-inner-text {
+    font-size: 13px;
+    font-weight: 500;
+}
+
+
+.cust-center-justify {
+    text-align: center;
+}
+
+.cust-margin-top {
+    margin-top: 10px;
+}
+
+.cust-main-div {
+    max-width: 1310px !important;
+}

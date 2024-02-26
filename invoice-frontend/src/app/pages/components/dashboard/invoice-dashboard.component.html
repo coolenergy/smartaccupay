@@ -1,0 +1,181 @@
+<div class="container-fluid">
+    <div class="main-row-cust-div">
+        <div class="one-div-cust-user" (click)="gotoFilesList()">
+            <div class="header-text-cust statastic-card mt-2">
+                <div class="statastic-card-title">{{'Dashboard_Pending_File' | translate }}</div>
+                <div class="number">
+                    <div class="mt-2">{{counts.pending_files}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="one-div-cust-user" (click)="gotoList('Pending')">
+            <div class="header-text-cust statastic-card mt-2">
+                <div class="statastic-card-title">{{'Dashboard_Pending_Invoice' | translate }}</div>
+                <div class="number-new">
+                    <div class="mt-2">{{counts.pending_invoices}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="one-div-cust-user" (click)="gotoList('Approved')">
+            <div class="header-text-cust statastic-card mt-2">
+                <div class="statastic-card-title">{{'Dashboard_Approved_Invoice' | translate }}</div>
+                <div class="number-app">
+                    <div class="mt-2">{{counts.approved_invoices}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="one-div-cust-user" (click)="gotoList('Rejected')">
+            <div class="header-text-cust statastic-card mt-2">
+                <div class="statastic-card-title">{{'Dashboard_Rejected_Invoice' | translate }}</div>
+                <div class="number-rej">
+                    <div class="mt-2">{{counts.rejected_invoices}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="one-div-cust-user" (click)="gotoList('Late')">
+            <div class="header-text-cust statastic-card mt-2">
+                <div class="statastic-card-title">{{'Dashboard_Late_Invoice' | translate }}</div>
+                <div class="number-tk">
+                    <div class="mt-2">{{counts.late_invoices}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-row-cust-div">
+        <div class="one-div-cust-user mr-3">
+            <b class="ml-1">{{'Pending_Invoice' | translate }}</b>
+            <div class="header-text-cust detail-list-card mt-2">
+                <div class="text-center"
+                    *ngIf="cardList.pending_invoices != null && cardList.pending_invoices.length == 0">
+                    {{'No_Pending_Invoice' |
+                    translate}}
+                </div>
+                <div class="one-div-cust-user-card" *ngFor="let data of cardList.pending_invoices">
+                    <div class="statastic-card mt-2 " (click)="gotoEditInvoice(data)"
+                        [ngClass]="mode == 'on'? 'header-text-cust-card-dark' : 'header-text-cust-card '">
+                        <div class="statastic-small-card-title ml-2">
+                            <div>Invoice#: {{data.invoice}}</div>
+                            <div>Invoice date: {{data.invoice_date}}</div>
+                            <div>Last update: {{temp_MMDDYYY(data.updated_at)}}</div>
+                        </div>
+                        <div class="number-card-small">
+                            Total: {{data.total}}
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <div class="one-div-cust-user mr-3">
+            <b class="ml-1">{{'Processed_Invoice' | translate }}</b>
+            <div class="header-text-cust detail-list-card mt-2">
+                <div class="text-center"
+                    *ngIf="cardList.process_invoices != null && cardList.process_invoices.length == 0">
+                    {{'No_Processed_Invoice' |
+                    translate}}
+                </div>
+                <div class="one-div-cust-user-card" *ngFor="let data of cardList.process_invoices">
+                    <div class="statastic-card mt-2" (click)="gotoEditInvoice(data)"
+                        [ngClass]="mode == 'on'? 'header-text-cust-card-dark' : 'header-text-cust-card '">
+                        <div class="statastic-small-card-title ml-2">
+                            <div>Invoice#: {{data.invoice}}</div>
+                            <div>Invoice date: {{data.invoice_date}}</div>
+                            <div>Last update: {{temp_MMDDYYY(data.updated_at)}}</div>
+                        </div>
+                        <div class="number-card-process">
+                            Total: {{data.total}}
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="one-div-cust-user">
+            <b class="ml-1">{{'Reject_Invoice' | translate }}</b>
+            <div class="header-text-cust detail-list-card mt-2">
+                <div class="text-center"
+                    *ngIf="cardList.cancelled_invoices != null && cardList.cancelled_invoices.length == 0">
+                    {{'No_Reject_Invoice' |
+                    translate}}
+                </div>
+                <div class="one-div-cust-user-card" *ngFor="let data of cardList.cancelled_invoices">
+                    <div class="statastic-card mt-2" (click)="gotoEditInvoice(data)"
+                        [ngClass]="mode == 'on'? 'header-text-cust-card-dark' : 'header-text-cust-card '">
+                        <div class="statastic-small-card-title ml-2">
+
+                            <div>Invoice#: {{data.invoice}}</div>
+                            <div>Invoice date: {{data.invoice_date}}</div>
+                            <div>Last update: {{temp_MMDDYYY(data.updated_at)}}</div>
+                        </div>
+                        <div class="number-card-cancle">
+                            Total: {{data.total}}
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="" style="max-width: 100%;">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-8">
+                <div class="main-row-cust-div">
+                    <div class="one-div-cust-user">
+                        <b class="ml-1">Reports</b>
+                        <div class="mt-2">
+                            <div class="card-body">
+                                <div style="display: block;" *ngIf="showChart">
+                                    <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels"
+                                        [options]="barChartOptions" [plugins]="barChartPlugins"
+                                        [legend]="barChartLegend" [chartType]="barChartType">
+                                    </canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-4">
+                <div class="">
+                    <div class="">
+                        <b class="ml-1">Last Activity History</b>
+                        <div class="mt-2 header-text-cust-chart"
+                            [ngClass]="mode == 'on'? 'header-text-cust-chart-dark' : ''">
+
+                            <div class="search-results" infiniteScroll [infiniteScrollDistance]="2"
+                                [infiniteScrollThrottle]="50" (scrolled)="onScroll()" [scrollWindow]="false"
+                                [ngStyle]="setHeightStyles()"
+                                [ngClass]="mode == 'on'? 'card-history-dark' : 'card-history'">
+                                <div class="card-body  mb-2" *ngFor=" let item of dashboardHistory">
+                                    <div class="d-flex flex-row">
+                                        <div class="pr-2">
+                                            <img class="crl card-img-left example-card-img-responsive"
+                                                src="{{item.userpicture || '../assets/images/user_placeholder.png'}}" />
+                                        </div>
+
+                                        <div class="history-text">
+                                            <b [ngClass]="mode == 'on'? 'text-color-dark' : 'text-color'"
+                                                (click)="goToUserProfile(item)" style="font-size: 12px;">
+                                                {{item.created_by.userfullname}} </b>
+                                            <b style="font-size: 12px;">{{item.action}}</b><b
+                                                [ngClass]="mode == 'on'? 'text-color-dark' : 'text-color'"
+                                                style="font-size: 12px;" (click)="goToInvoiceForm(item)">
+
+                                                {{item.module}} </b>
+                                            <b style="font-size: 12px;"> at </b>
+                                            <b style="font-size: 12px;">{{tmp_date(item.created_at)}}</b>
+                                            <b style="font-size: 12px;"> from </b>
+                                            <b style="font-size: 12px;">{{item.action_from}}.</b>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

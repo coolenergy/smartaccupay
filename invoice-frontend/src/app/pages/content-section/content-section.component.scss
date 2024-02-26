@@ -1,0 +1,78 @@
+.flux-content-section[nav-layout="horizontal"] {
+  margin-left: 0px !important;
+}
+
+.flux-content-section[navbar-type="expanded"][effect-type="overlay"] {
+  margin-left: 0px;
+}
+
+.flux-content-section[navbar-type="expanded"][effect-type="shrink"] {
+  margin-left: 230px;
+}
+
+.flux-content-section[navbar-type="expanded"][effect-type="push"] {
+  margin-left: 230px;
+  margin-right: -230px;
+}
+
+.flux-content-section[navbar-type="collapsed"][effect-type="overlay"] {
+  margin-left: 50px;
+}
+
+.flux-content-section[navbar-type="collapsed"][effect-type="shrink"] {
+  margin-left: 50px;
+}
+
+.flux-content-section[navbar-type="collapsed"][effect-type="push"] {
+  margin-left: 50px;
+}
+
+.flux-content-section[navbar-type="offcanvas"][effect-type="overlay"] {
+  margin-left: 0px;
+}
+
+.flux-content-section[navbar-type="offcanvas"][effect-type="shrink"] {
+  margin-left: 0px;
+}
+
+.flux-content-section[ntagavbar-type="offcanvas"][effect-type="push"] {
+  margin-left: 0px;
+}
+
+.flux-content-section {
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 100vh;
+  position: relative;
+  padding: 0px;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+
+  .flux-wrapper {
+    position: relative;
+    height: inherit;
+    width: 100%;
+    padding: 10px 0;
+  }
+
+  .screen-title-section {
+    margin-bottom: 10px;
+    border-bottom: 1px solid #d7d9df;
+
+    .screen-title {
+      color: #424242;
+      font-size: 22px;
+      font-weight: 400;
+      margin: 0;
+    }
+
+    .breadcrumb {
+      padding: 0px 0px;
+      background-color: transparent;
+      margin-bottom: 7px;
+    }
+
+  }
+}

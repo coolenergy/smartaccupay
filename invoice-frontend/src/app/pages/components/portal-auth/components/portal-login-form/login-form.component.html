@@ -1,0 +1,38 @@
+<form class="form" [formGroup]="form" (ngSubmit)="login()">
+  <mat-form-field class="form__input" appearance="outline">
+    <mat-label>{{'Admin-Login-Email-Placeholder' | translate }}</mat-label>
+    <input matInput placeholder="{{ 'Admin-Login-Email-Placeholder' | translate}}" class="dark-cust-color" type="email"
+      formControlName="email">
+  </mat-form-field>
+
+  <mat-form-field class="form__input" appearance="outline">
+    <mat-label>{{'Admin-Login-Password-Placeholder' | translate }}</mat-label>
+    <input matInput placeholder="{{'Admin-Login-Password-Placeholder' | translate }}" class="dark-cust-color"
+      type="password" [type]="hide ? 'password' : 'text'" formControlName="password">
+    <mat-icon matprefix class="placeholder" (click)="eyeButtonForPassword()">{{hide ? 'visibility_off' : 'visibility'}}
+    </mat-icon>
+  </mat-form-field>
+
+  <mat-checkbox labelPosition="after" #saveUserNameCheckBox (change)="onSaveUsernameChanged($event.checked)"
+    [(ngModel)]="checked" formControlName="terms" class="auth-page__group-title">
+    {{'Portal-LogIn-IAgreeToThe' | translate}} <span><a (click)="langurl()" class="term-condition"
+        target="_blank">{{'Portal-LogIn-terms&conditions' | translate}}</a></span>
+  </mat-checkbox>
+
+  <div class="form-actions">
+    <button style="float: left;" class="form-actions__login" mat-raised-button color="primary" type="submit">{{'Admin-Login-Login-Button' |
+      translate }}</button>
+    <img style="float: right;background-color: rgba(255, 255, 255, 0.969);" class="form-actions__logo-img" width="30%"
+      height="30%" src="./assets/images/powerby_auth.png" alt="logo">
+  </div>
+</form>
+
+<!-- <form>
+  <mat-form-field class="form__input" appearance="outline">
+    <mat-label>{{'Admin-Login-Password-Placeholder' | translate }}</mat-label>
+    <span matPrefix>$ &nbsp;</span>
+    <input matInput placeholder="{{'Admin-Login-Password-Placeholder' | translate }}" class="dark-cust-color"
+      type="text" name="check" mask="separator.0" thousandSeparator="," [ngModel]="check_curr">
+    (ngModelChange)="somethingChanged($event)" 
+  </mat-form-field>
+</form> -->

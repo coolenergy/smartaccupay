@@ -1,0 +1,28 @@
+<div class="wrapper-cust-admin">
+
+    <div class="container">
+        <div *ngIf="show_tabs">
+            <mat-tab-group mat-align-tabs="center">
+                <mat-tab label="{{'Employee-form-Document-Type' | translate }}">
+                    <app-employee-document-type></app-employee-document-type>
+                </mat-tab>
+                <mat-tab label="{{ 'Setting-Employee-Department' | translate }}">
+                    <app-employee-departments></app-employee-departments>
+                </mat-tab>
+                <mat-tab label="{{'Setting-Employee-Job-Title' | translate}} ">
+                    <app-employee-jobtitle></app-employee-jobtitle>
+                </mat-tab>
+                <mat-tab label="{{'Setting-Employee-Job-Type' |  translate}} ">
+                    <app-employee-jobtype></app-employee-jobtype>
+                </mat-tab>
+                <mat-tab label="{{'Setting-Employee-Relationship' | translate }}">
+                    <app-employee-relationship></app-employee-relationship>
+                </mat-tab>
+                <mat-tab label="{{'Rovuk_Managment_Setting_Language' | translate }}">
+                    <app-employee-language></app-employee-language>
+
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+    </div>
+</div>

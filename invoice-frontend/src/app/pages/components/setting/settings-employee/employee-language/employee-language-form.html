@@ -1,0 +1,37 @@
+<div class="row">
+    <div class="col-10 dialog-head-left">
+        <h2 mat-dialog-title>{{'Settings_OtherSettings_Language' | translate}}</h2>
+    </div>
+    <!-- <div class="col-8 dialog-head-center">
+        
+    </div> -->
+    <div class="col-2 dialog-head-right">
+        <button class="import-export-btn-datatable cust-margin-div" matTooltip="{{ 'All-exit' | translate }}"
+            (click)="confirmexit()">
+            <img src="{{exitIcon}}" alt="" class="far fa-paper-plane" height="20px">
+        </button>
+    </div>
+</div>
+<!-- <h2 mat-dialog-title>{{'Settings_OtherSettings_Language' | translate}}</h2> -->
+<form class="form" [formGroup]="Languageform">
+    <div class="container">
+        <div class="row">
+            <mat-form-field appearance="outline" style="width: 100%;">
+                <mat-label>{{'Settings_OtherSettings_Language' | translate}}</mat-label>
+                <input matInput placeholder="{{'Settings_OtherSettings_Language' | translate}}" formControlName="name"
+                    required>
+            </mat-form-field>
+        </div>
+    </div>
+
+    <mat-dialog-actions align="center">
+        <button mat-raised-button (click)="confirmexit()">
+            <img src="{{exitIcon}}" alt="" height="15px">
+            {{'All-exit' | translate }}</button>
+        <button mat-raised-button type="submit" (click)="saveData()" color="primary">
+            <img src="{{saveIcon}}" alt="" height="20px">
+            {{'All-save' | translate
+            }}</button>
+    </mat-dialog-actions>
+
+</form>

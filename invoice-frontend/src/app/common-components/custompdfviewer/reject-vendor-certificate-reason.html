@@ -1,0 +1,19 @@
+<h2 mat-dialog-title>Reject Certificate Reason</h2>
+
+<form class="form" [formGroup]="rejectForm" (ngSubmit)="sendData()">
+    <mat-dialog-content class="mat-typography" style="min-width: 600px;">
+        <div class="col-12">
+            <mat-form-field class="contact-cust-width-full" appearance="outline">
+                <mat-label>{{'reject_reason' | translate}}</mat-label>
+                <input matInput required class="input-capitalized-textfield"
+                    placeholder="{{'reject_reason' | translate}}" formControlName="reject_reason" />
+            </mat-form-field>
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions align="center">
+        <button mat-raised-button mat-dialog-close><img src="{{backIcon}}" alt="" class="pr-1"
+                height="15px">{{'All-exit' | translate }}</button>
+        <button mat-raised-button type="submit" color="primary"><img src="{{saveIcon}}" alt="" class="pr-1"
+                height="15px">{{'All-save' | translate}}</button>
+    </mat-dialog-actions>
+</form>

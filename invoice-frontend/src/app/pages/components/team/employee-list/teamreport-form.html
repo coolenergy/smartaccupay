@@ -1,0 +1,96 @@
+<!-- <div class="modal-header cust-report-header-footer-div">
+    <h2 class="modal-title" id="modal-basic-title" class="cust-report-label-header-text">{{'Team_Report' |
+        translate}}</h2>
+</div> -->
+<div class="row  modal-header">
+    <div class="col-3">
+        <img class="crl mr-2" height="50px" width="50px" src="./assets/logo/invoice_logo.png" />
+    </div>
+    <div class="col-6 dialog-head-center">
+        <h2 class="cust-report-label-header-text">{{'Team_Report' |
+            translate}}</h2>
+    </div>
+    <div class="col-3 dialog-head-right">
+        <!-- <button class="import-export-btn-datatable cust-margin-div" matTooltip="{{ 'All-save' | translate }}"
+            type="submit" (click)="saveData()"><img src="{{saveIcon}}" alt="" class="pr-1" height="20px">
+        </button> -->
+        <button class="import-export-btn-datatable cust-margin-div" matTooltip="{{ 'All-exit' | translate }}"
+            mat-dialog-close>
+            <img src="{{exitIcon}}" alt="" class="far fa-paper-plane" height="20px">
+        </button>
+    </div>
+</div>
+<form [formGroup]="timecardinfo">
+    <div class="modal-body">
+        <h4 mat-dialog-title class="cust-report-label-header-text">{{'Company-Equipment-Select-Status' |
+            translate}}</h4>
+        <div>
+            <mat-checkbox formControlName="All_Status" (change)="onChangeValueAll_Status($event)" class="example-margin"
+                color="primary">{{'All_Status' | translate }} </mat-checkbox>
+        </div>
+        <mat-form-field appearance="outline" class="cust-report-full-width-fields">
+            <mat-label>{{'Company-Vendor-status' | translate }}</mat-label>
+            <mat-select formControlName="status_ids" placeholder="{{'Company-Vendor-status' | translate }}" multiple>
+                <mat-option *ngFor="let status of statusList" [value]="status.value">
+                    {{translate.instant(status.tmp_lanaguage)}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <h4 mat-dialog-title class="cust-report-label-header-text">{{'Team_Select_Role' | translate }}
+        </h4>
+        <div>
+            <mat-checkbox formControlName="All_Roles" (change)="onChangeValueAll_Roles($event)" class="example-margin"
+                color="primary">{{'All_Roles' | translate }}</mat-checkbox>
+        </div>
+        <mat-form-field appearance="outline" class="cust-report-full-width-fields">
+            <mat-label>{{'Settings-Roles' | translate }}</mat-label>
+            <mat-select formControlName="role_ids" placeholder="{{'Settings-Roles' | translate }}" multiple>
+                <mat-option *ngFor="let role of rolesList" [value]="role.role_id">
+                    {{role.role_name | titlecase}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <!-- <h4 mat-dialog-title class="cust-report-label-header-text">{{'Company-Expenses-Select-time' | translate }}</h4>
+        <mat-form-field appearance="outline" class="cust-report-full-width-fields">
+            <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
+                <input matStartDate formControlName="start" placeholder="{{'Start_Date' | translate}}" disabled>
+                <input matEndDate formControlName="end" placeholder="{{'End_Date' |  translate}}" disabled>
+            </mat-date-range-input>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker disabled="false"></mat-date-range-picker>
+        </mat-form-field> -->
+
+        <h4 mat-dialog-title class="cust-report-label-header-text">{{'Company-Items-Report-SendEmail' | translate }}
+            <button mat-raised-button color="primary" *ngIf="is_oneOnly" (click)="addmyself()"><img
+                    src="{{add_my_self_icon}}" alt="" class="mr-1 cust-all-add-my-self-img"
+                    height="20px">{{'add-my-self' |
+                translate}}</button>
+        </h4>
+        <mat-form-field class="example-chip-list" appearance="outline" class="cust-report-full-width-fields">
+            <mat-chip-list #chipList aria-label="Email selection">
+                <mat-chip *ngFor="let email of emailsList" [selectable]="selectable" [removable]="removable"
+                    (removed)="internalEmailremove(email)">
+                    {{email}}
+                    <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                </mat-chip>
+                <input autocomplete="new-chipemail" placeholder="{{'Company-Items-Report-EnterEmail' | translate }}"
+                    [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                    [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="addInternalEmail($event)">
+            </mat-chip-list>
+        </mat-form-field>
+    </div>
+
+    <div class="modal-footer cust-report-header-footer-div">
+        <mat-dialog-actions>
+            <button mat-raised-button mat-dialog-close>
+                <img src="{{exitIcon}}" alt="" height="15px">
+                {{'All-Cancel' | translate }}</button>
+            <button mat-raised-button type="submit" (click)="saveData()" color="primary">
+                <img src="{{saveIcon}}" alt="" height="20px">
+                {{'All-save' | translate
+                }}</button>
+        </mat-dialog-actions>
+    </div>
+</form>

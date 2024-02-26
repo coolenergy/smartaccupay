@@ -1,0 +1,45 @@
+<div class="user-button" aria-label="Left Align" mat-mini-fab [matMenuTriggerFor]="userMenu"><img
+    src="{{headerUserIcon}}" alt="" height="20px">
+</div>
+<mat-menu #userMenu="matMenu" xPosition="before">
+  <!-- Login User name display -->
+  <div class="user-menu-title">
+    <h4 class="user-menu-title__name">{{user.name}}</h4>
+  </div>
+
+  <!-- Profile - Move to the user profile -->
+  <button *ngIf="(usertype == 'invoice-portal')" mat-menu-item class="user-menu__item-title"
+    (click)="employeeProfileOpen()">
+    <img src="{{usericon}}" alt="" height="20px"> {{'User-Profile' | translate }}
+  </button>
+
+  <!-- Move to Change Password -->
+  <button mat-menu-item class="user-menu__item-title" (click)="changePasswordPageAction()">
+    <img src="{{changePasswordIcon}}" alt="" height="15px"> {{'User-Profile-ChangePassword' |
+    translate }}
+  </button>
+
+  <!-- Move to Help Page -->
+  <button mat-menu-item class="user-menu__item-title" (click)="helpPageAction()">
+    <img src="{{helpIcon}}" alt="" height="15px"> {{'User-Profile-Help' | translate }}
+  </button>
+
+  <!-- Move to the Terms page-->
+  <button mat-menu-item class="user-menu__item-title" (click)="termsPageAction()">
+    <img src="{{termsIcon}}" alt="" height="15px"> {{'User-Profile-TermsOfUse' |
+    translate}}
+  </button>
+
+  <!-- Change the Theme of the app - Dark Mode and Light Mode -->
+  <div mat-menu-item class="user-menu__item-title">
+    <img src="{{themeModeIcon}}" alt="" height="20px"> &nbsp;
+    <mat-slide-toggle [(ngModel)]="isChecked" [formControl]="toggleControl" color="primary">{{'User-Profile-DarkMode' |
+      translate}}</mat-slide-toggle>
+  </div>
+
+  <!-- Logout from the Portal -->
+  <button mat-menu-item class="user-menu__item-title" (click)="logout()">
+    <img src="{{logoutIcon}}" alt="" height="15px"> {{'User-Profile-SignOut' |
+    translate}}
+  </button>
+</mat-menu>

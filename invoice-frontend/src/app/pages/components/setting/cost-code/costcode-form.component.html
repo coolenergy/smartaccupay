@@ -1,0 +1,52 @@
+<div class="row">
+    <div class="col-4 dialog-head-left">
+        <h2 mat-dialog-title>{{'Project-Setting-Costcode-Manually-Form-Heading' | translate }}</h2>
+    </div>
+    <div class="col-6 dialog-head-center">
+    </div>
+    <div class="col-2 dialog-head-right">
+        <button class="import-export-btn-datatable cust-margin-div" matTooltip="{{ 'All-exit' | translate }}"
+            (click)="confirmexit()">
+            <img src="{{exitIcon}}" alt="" class="far fa-paper-plane" height="20px">
+        </button>
+    </div>
+</div>
+<!-- <h2 mat-dialog-title>{{'Project-Setting-Costcode-Manually-Form-Heading' | translate }}</h2> -->
+<form class="form" [formGroup]="costcodesave">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <mat-form-field appearance="outline" class="shift-input">
+                    <mat-label>{{'Project-Setting-Costcode-Manually-Form-Cost-cocde' | translate}}</mat-label>
+                    <input matInput placeholder="{{'Project-Setting-Costcode-Manually-Form-Cost-cocde' | translate}}"
+                        formControlName="costcode" required>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-6">
+                <mat-form-field appearance="outline" class="shift-input">
+                    <mat-label>{{'Project-Setting-Costcode-Manually-Form-Division' | translate}}</mat-label>
+                    <input matInput placeholder="{{'Project-Setting-Costcode-Manually-Form-Division' | translate}}"
+                        formControlName="division" required>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div>
+            <mat-form-field appearance="outline" class="shift-input">
+                <mat-label>{{'Project-Setting-Costcode-Manually-Form-Description' | translate}}</mat-label>
+                <textarea matInput appTextareaAutoresizeproject class="input-capitalized-textArea"
+                    placeholder="{{'Project-Setting-Costcode-Manually-Form-Description' | translate}}"
+                    formControlName="description"></textarea>
+            </mat-form-field>
+        </div>
+    </div>
+
+</form>
+<mat-dialog-actions align="center">
+    <button mat-raised-button (click)="confirmexit()">
+        <img src="{{exitIcon}}" alt="" height="15px">
+        {{'All-exit' | translate }}</button>
+    <button mat-raised-button (click)="saveData()" color="primary">
+        <img src="{{saveIcon}}" alt="" height="20px">
+        {{'All-save' | translate }}</button>
+</mat-dialog-actions>

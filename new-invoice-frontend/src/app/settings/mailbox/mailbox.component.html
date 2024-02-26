@@ -1,0 +1,154 @@
+<section class="content">
+  <div class="content-block">
+    <div class="m-4"></div>
+    <div class="row mailbox">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+          <div class="materialTableHeader">
+            <div class="left">
+              <ul class="header-buttons-left ms-0">
+                <li class="tbl-title">
+                  <h2 *ngIf="isDelete === 0">{{'SETTINGS.SETTINGS_OTHER_OPTION.MAIL_BOX.HEADER' | translate}}</h2>
+                  <h2 *ngIf="isDelete === 1">{{'SETTINGS.SETTINGS_OTHER_OPTION.MAIL_BOX.HEADER_ARCHIVE' | translate}}
+                  </h2>
+                </li>
+                <li class="tbl-search-box">
+                  <label for="search-input"><i class="material-icons search-icon">search</i></label>
+                  <input placeholder="Search" type="text" #filter class="browser-default search-field"
+                    aria-label="Search box">
+                </li>
+              </ul>
+            </div>
+            <div class="right">
+              <ul class="tbl-export-btn">
+                <li class="tbl-header-btn">
+                  <div class="m-l-10" matTooltip="{{'COMMON.TOOL_TIP.REFRESH' |
+                                        translate}}" *ngIf="isDelete === 0">
+                    <button mat-mini-fab color="primary" (click)="refresh()">
+                      <mat-icon class="col-white">refresh</mat-icon>
+                    </button>
+                  </div>
+                </li>
+                <li class="tbl-header-btn">
+                  <div class="m-l-10" [hidden]=!selection.hasValue() matTooltip="DELETE">
+                    <button mat-mini-fab color="primary" (click)="removeSelectedRows()">
+                      <mat-icon class="col-white">delete
+                      </mat-icon>
+                    </button>
+                  </div>
+                </li>
+                <!-- <li class="tbl-header-btn" *ngIf="isDelete === 0">
+                  <div class="m-l-10" matTooltip="{{'COMMON.TOOL_TIP.ARCHIVE' |
+                                        translate}}">
+                    <button mat-mini-fab color="warn" (click)="gotoArchiveUnarchive()">
+                      <mat-icon class="col-white">archive
+                      </mat-icon>
+                    </button>
+                  </div>
+                </li>
+                <li class="tbl-header-btn" *ngIf="isDelete === 0">
+                  <div class="m-l-10" matTooltip="{{'COMMON.TOOL_TIP.ADD' |
+                                        translate}}">
+                    <button mat-mini-fab color="primary" (click)="addNew()">
+                      <mat-icon class="col-white">add</mat-icon>
+                    </button>
+                  </div>
+                </li> -->
+                <li class="tbl-header-btn" *ngIf="isDelete === 0">
+                  <div class="m-l-10" matTooltip="{{'COMMON.TOOL_TIP.BACK' |
+                                          translate}}">
+                    <button mat-mini-fab color="warn" (click)="back()">
+                      <mat-icon class="col-white">close </mat-icon>
+                    </button>
+                  </div>
+                </li>
+                <li class="tbl-header-btn" *ngIf="isDelete === 1">
+                  <div class="m-l-10" matTooltip="{{'COMMON.TOOL_TIP.BACK' |
+                        translate}}">
+                    <button mat-mini-fab color="warn" (click)="gotoArchiveUnarchive()">
+                      <mat-icon class="col-white">close </mat-icon>
+                    </button>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="body overflow-auto">
+            <div class="table-responsive">
+              <table mat-table #table [dataSource]="dataSource" matSort class="mat-cell">
+                <ng-container matColumnDef="email">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header>{{'SETTINGS.SETTINGS_OTHER_OPTION.MAIL_BOX.EMAIL' |
+                    translate}}</mat-header-cell>
+                  <mat-cell (click)="editMailbox(row)" *matCellDef="let row" (contextmenu)="onContextMenu($event, row)">
+                    <span class="mobile-label">Email:</span> {{row.email}}
+                  </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="imap">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header>{{'SETTINGS.SETTINGS_OTHER_OPTION.MAIL_BOX.IMAP' |
+                    translate}}</mat-header-cell>
+                  <mat-cell (click)="editMailbox(row)" *matCellDef="let row" (contextmenu)="onContextMenu($event, row)">
+                    <span class="mobile-label">IMAP:</span> {{row.imap }}
+                  </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="port">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header>{{'SETTINGS.SETTINGS_OTHER_OPTION.MAIL_BOX.PORT' |
+                    translate}}</mat-header-cell>
+                  <mat-cell (click)="editMailbox(row)" *matCellDef="let row" (contextmenu)="onContextMenu($event, row)">
+                    <span class="mobile-label">Port:</span> {{row.port}}
+                  </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="time">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header>{{'SETTINGS.SETTINGS_OTHER_OPTION.MAIL_BOX.TIME' |
+                    translate}}
+                  </mat-header-cell>
+                  <mat-cell (click)="editMailbox(row)" *matCellDef="let row" (contextmenu)="onContextMenu($event, row)"
+                    matTooltip="{{row.address}}">
+                    <span class="truncate-text"><span class="mobile-label">Time:</span> {{row.time}}</span>
+                  </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="actions">
+                  <mat-header-cell class="psl-3" [ngClass]="'tbl-col-width-per-action'"
+                    *matHeaderCellDef>{{'VENDOR.TABLE.ACTIONS' |
+                    translate}}</mat-header-cell>
+                  <mat-cell *matCellDef="let row; let i=index;" class="pr-0 tbl-col-width-per-action">
+                    <button matTooltip="{{'COMMON.ACTIONS.EDIT' |
+                                  translate}}" mat-icon-button color="accent" (click)="$event.stopPropagation()"
+                      (click)="editMailbox(row)" *ngIf="isDelete === 0" class="col-blue">
+                      <app-feather-icons [icon]="'edit'" [class]="'tbl-fav-edit'">
+                      </app-feather-icons>
+                    </button>
+                    <button mat-icon-button matTooltip="{{'COMMON.ACTIONS.ARCHIVE' |
+                                  translate}}" color="accent" (click)="$event.stopPropagation()"
+                      (click)="deleteMailbox(row, 1)" *ngIf="isDelete === 0" class="col-red">
+                      <mat-icon>archive</mat-icon>
+                    </button>
+                    <button mat-icon-button matTooltip="{{'COMMON.ACTIONS.RESTORE' |
+                                  translate}}" color="accent" (click)="$event.stopPropagation()"
+                      (click)="deleteMailbox(row, 0)" *ngIf="isDelete === 1" class="col-red">
+                      <mat-icon>archive</mat-icon>
+                    </button>
+                  </mat-cell>
+                </ng-container>
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;" [style.cursor]="'pointer'" matRipple>
+                </mat-row>
+              </table>
+            </div>
+            <!-- Loading spinner -->
+            <div *ngIf="mailboxService?.isMailBoxTblLoading" class="tbl-spinner">
+              <app-loading></app-loading>
+            </div>
+            <div *ngIf="!mailboxService?.isMailBoxTblLoading" class="no-results"
+              [style.display]="dataSource.renderedData.length === 0 ? '' : 'none'">
+              {{'COMMON.LISTING.EMPTY' | translate}}
+            </div>
+            <mat-paginator #paginator [length]="dataSource.filteredData.length" [pageIndex]="0" [pageSize]="10"
+              [pageSizeOptions]="[5, 10, 25, 100]">
+            </mat-paginator>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

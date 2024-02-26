@@ -1,0 +1,129 @@
+.dashboard-count {
+    border-radius: 10px;
+    display: flex;
+    cursor: pointer;
+
+    .icon {
+        border-radius: 10px 0px 0px 10px;
+        width: 60px;
+        padding: 20px 20px;
+    }
+
+    .details {
+        padding: 10px 15px;
+
+        .count {
+            font-weight: 800;
+            font-size: 18px;
+        }
+
+        .description {
+            font-weight: 500;
+        }
+    }
+}
+
+.pending-document-bg {
+    background-color: #D9E8FF;
+}
+
+.pending-document-icon-bg {
+    background-color: #0D6EFD;
+}
+
+.pending-invoice-bg {
+    background-color: #FEDEF7;
+}
+
+.pending-invoice-icon-bg {
+    background-color: #D626AF;
+}
+
+.sent-for-approval-bg {
+    background-color: #D2FFF2;
+}
+
+.sent-for-approval-icon-bg {
+    background-color: #23BB8E;
+}
+
+.rejected-invoice-bg {
+    background-color: #FFE1E1;
+}
+
+.rejected-invoice-icon-bg {
+    background-color: #EE1313;
+}
+
+.close-to-due-date-bg {
+    background-color: #FFFADD;
+}
+
+.close-to-due-date-icon-bg {
+    background-color: #FDE14E;
+}
+
+.on-hold-bg {
+    background-color: #EFDEFF;
+}
+
+.on-hold-icon-bg {
+    background-color: #8533D7;
+}
+
+.duplicate-bg {
+    background-color: #FFE9DC;
+}
+
+.duplicate-icon-bg {
+    background-color: #EF742F;
+}
+
+.job-cost {
+    height: 470px;
+}
+
+.document .body {
+    padding-top: 0px;
+    min-height: 220px;
+    height: 220px;
+}
+
+.doc-file-type {
+    border: 1px solid #D1D1D1;
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 5px;
+    cursor: pointer;
+
+    .last-updated {
+        margin-bottom: 0px;
+    }
+
+    .amount {
+        color: #F10007;
+    }
+}
+
+.doc-file-type .d-flex {
+    margin-bottom: 0px !important;
+    padding-bottom: 0px !important;
+    border-bottom: none !important;
+}
+
+.profile-header .col-lg-6 {
+    margin-bottom: 0px !important;
+}
+
+.job-cost-table {
+    display: block;
+    height: 390px;
+
+    tbody {
+        height: 330px;
+    }
+
+    .amount {
+        width: 100px;
+    }
+}

@@ -1,0 +1,88 @@
+<div class="row modal-header">
+    <div class="col-2">
+        <img class="crl mr-2" height="50px" width="50px" src="./assets/logo/invoice_logo.png" />
+    </div>
+
+    <div class="col-8 dialog-head-center">
+        <h2 class="modal-title" id="modal-basic-title" class="cust-report-label-header-text">
+            {{'Company-Vendor-Report' | translate}}
+        </h2>
+    </div>
+    <div class="col-2 dialog-head-right">
+        <button class="import-export-btn-datatable cust-margin-div" matTooltip="{{ 'All-exit' | translate }}"
+            mat-dialog-close>
+            <img src="{{exitIcon}}" alt="" class="far fa-paper-plane" height="20px" />
+        </button>
+    </div>
+</div>
+<form [formGroup]="vendorInfo">
+    <div class="modal-body">
+        <h4 mat-dialog-title class="cust-report-label-header-text">
+            {{'Company-Vendor-select-terms' | translate}}
+        </h4>
+        <div>
+            <mat-checkbox formControlName="All_Terms" (change)="onChangeValueAll_Terms($event)" class="example-margin"
+                color="primary">{{'All_TREMS' | translate}}</mat-checkbox>
+        </div>
+        <mat-form-field appearance="outline" class="main-one-input-field">
+            <mat-label>{{'Company-Vendor-Terms' | translate }}</mat-label>
+            <mat-select formControlName="terms_ids" multiple placeholder="{{'Company-Vendor-Terms' | translate }}"
+                required>
+                <mat-option *ngFor="let item of termList" [value]="item._id">
+                    {{item.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <h4 mat-dialog-title class="cust-report-label-header-text">
+            {{'Invoice_Status_Select' | translate}}
+        </h4>
+        <div>
+            <mat-checkbox formControlName="All_Invoice_Status" (change)="onChangeValueAll_VendorStatus($event)"
+                class="example-margin" color="primary">{{'All_Invoice_Status' | translate}}</mat-checkbox>
+        </div>
+        <mat-form-field appearance="outline" class="main-one-input-field">
+            <mat-label>{{'Company-Vendor-status' | translate }}</mat-label>
+            <mat-select formControlName="invoice_status" multiple placeholder="{{'Company-Vendor-status' | translate }}"
+                required>
+                <mat-option *ngFor="let item of statusList" [value]="item.key">
+                    {{item.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <h4 mat-dialog-title class="cust-report-label-header-text">
+            {{'Company-Expenses-Send-report' | translate}}
+            <button mat-raised-button color="primary" *ngIf="is_oneOnly" (click)="ADD_MY_SELF()"><img
+                    src="{{add_my_self_icon}}" alt="" class="mr-1 cust-all-add-my-self-img"
+                    height="20px">{{'add-my-self' | translate}}
+            </button>
+        </h4>
+        <mat-form-field class="example-chip-list" appearance="outline" class="cust-report-full-width-fields">
+            <mat-chip-list #chipList aria-label="Email selection">
+                <mat-chip *ngFor="let email of emailsList" [selectable]="selectable" [removable]="removable"
+                    (removed)="internalEmailremove(email)">
+                    {{email}}
+                    <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                </mat-chip>
+                <input placeholder="{{'Company-Items-Report-EnterEmail' | translate}}" [matChipInputFor]="chipList"
+                    [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
+                    (matChipInputTokenEnd)="addInternalEmail($event)" />
+            </mat-chip-list>
+        </mat-form-field>
+
+    </div>
+
+    <div class="modal-footer cust-report-header-footer-div">
+        <mat-dialog-actions>
+            <button mat-raised-button mat-dialog-close>
+                <img src="{{exitIcon}}" alt="" height="15px" />
+                {{'All-Cancel' | translate }}
+            </button>
+            <button mat-raised-button type="submit" (click)="saveData()" color="primary">
+                <img src="{{saveIcon}}" alt="" height="20px" />
+                {{'All-save' | translate }}
+            </button>
+        </mat-dialog-actions>
+    </div>
+</form>

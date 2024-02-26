@@ -1,0 +1,24 @@
+<div class="user-box">
+    <div class="profile">
+        <img src="{{UserData.userpicture || defalut_image}} " class="image-cust-card" alt="" />
+        <div class="details">
+            <h3 class="word-wrap-cust" matTooltip="{{UserData.userfullname}}">{{UserData.userfullname}}</h3>
+            <p class="word-wrap-cust" matTooltip="{{UserData.userjob_title_name}}"> {{UserData.userjob_title_name}} </p>
+            <p class="word-wrap-cust" matTooltip="{{UserData.userphone}}">{{phonenoFormat(UserData.userphone)}}</p>
+            <p class="word-wrap-cust" matTooltip="{{UserData.useremail}}">{{UserData.useremail}}</p>
+        </div>
+    </div>
+
+    <div class="status" [ngClass]="UserData.userstatus == 1 ? 'active' :'inactive'">
+        {{UserData.userstatus == 1 ? acticve_word :inacticve_word }}
+    </div>
+
+    <div *ngIf="!deleteTeamMember">
+        <div class="action">
+            <button class="user-menu__button-custom-small" (click)="recoverTeamMember(UserData._id)">
+                <img src="{{restoreIcon}}" alt="" height="20px" />
+            </button>
+        </div>
+    </div>
+
+</div>

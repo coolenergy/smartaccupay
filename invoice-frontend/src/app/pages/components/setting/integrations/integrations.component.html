@@ -1,0 +1,25 @@
+<div class="wrapper-cust-admin">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12 cust-margin" style="margin-bottom:60px">
+                <div class="center-cust">
+                    <img src="./assets/img/quickbooks_logo.png" alt="" width="40%" height="40%" />
+                </div>
+            </div>
+            <div class="col-xl-6">
+                <form [formGroup]="integrationinfo">
+                    <div class="container">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row cust-center-justify">
+            <button mat-raised-button (click)="saveData()" id="blogin_id" color="primary">
+                <i class="fas fa-sign-in-alt button-icon-position"></i>
+                {{'Login' | translate }}</button>
+            <button mat-raised-button (click)="logout()" color="warn" id="blogout_id" style="background-color: red;display: none;">
+                <i class="fas fa-sign-out-alt button-icon-position"></i>
+                {{'Logout' | translate }}</button>
+        </div>
+    </div>
+</div>

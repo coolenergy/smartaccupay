@@ -1,0 +1,164 @@
+<div class="wrapper-cust-admin" fxLayout style="height: 95%">
+    <div class="screen-title">
+
+        <h1>{{'Portal-Main-Settings' | translate}}</h1>
+    </div>
+    <!-- <button mat-stroked-button class="sign-button" (click)="routefun()">
+        {{'Settings-Other-Add-Item-Type'| translate}}
+    </button> -->
+    <mat-horizontal-stepper labelPosition="bottom" fxFlex="100" #stepper [(selectedIndex)]="step_index"
+        (selectionChange)="selectionChange($event)">
+        <ng-template matStepperIcon="edit" let-index="index">
+            <img *ngIf="index == 0" src="{{companyinfo_white}}" alt="" height="15px">
+            <img *ngIf="index == 1" src="{{MAILBOX_WHILE}}" alt="" height="15px">
+            <img *ngIf="index == 2" src="{{userIcon_white}}" alt="" height="15px">
+            <img *ngIf="index == 3" src="{{roleicon_white}}" alt="" height="15px">
+            <mat-icon *ngIf="index == 4">phonelink_ring</mat-icon>
+            <img *ngIf="index == 5" src="{{smtp_white}}" alt="" height="15px">
+            <img *ngIf="index == 6" src="{{integration_whiteIcon}}" alt="" height="15px">
+            <img *ngIf="index == 7" src="{{usage_whiteIcon}}" alt="" height="15px">
+            <img *ngIf="index == 8" src="{{other_settings_white}}" alt="" height="15px">
+            <img *ngIf="index == 9" src="{{security_settings_white}}" alt="" height="15px">
+            <img *ngIf="index == 10" src="{{costcode_white}}" alt="" height="15px">
+            <img *ngIf="index == 11" src="{{Document_view}}" alt="" height="15px">
+
+        </ng-template>
+
+        <ng-template matStepperIcon="companyprofile">
+            <img src="{{companyinfo}}" alt="" height="15px">
+        </ng-template>
+
+        <ng-template matStepperIcon="mailbox">
+            <img src="{{MAILBOX_BLACK}}" alt="" height="15px">
+        </ng-template>
+
+        <ng-template matStepperIcon="employee">
+            <img src="{{userIcon}}" alt="" height="15px">
+        </ng-template>
+
+        <ng-template matStepperIcon="role">
+            <img src="{{roleIcon}}" alt="" height="15px">
+        </ng-template>
+
+        <ng-template matStepperIcon="integrations">
+            <img src="{{integrationIcon}}" alt="" height="15px">
+        </ng-template>
+
+        <ng-template matStepperIcon="alert">
+            <mat-icon style="color: black;">phonelink_ring</mat-icon>
+        </ng-template>
+
+        <ng-template matStepperIcon="smtp">
+
+            <img src="{{smtp}}" alt="" height="15px">
+        </ng-template>
+        <ng-template matStepperIcon="Usage">
+
+            <img src="{{usageIcon}}" alt="" height="15px">
+        </ng-template>
+        <ng-template matStepperIcon="other">
+
+            <img src="{{other_settings}}" alt="" height="15px">
+        </ng-template>
+        <ng-template matStepperIcon="security">
+            <img src="{{security_settings}}" alt="" height="15px">
+        </ng-template>
+        <ng-template matStepperIcon="costcode">
+
+            <img src="{{costcode}}" alt="" height="15px">
+        </ng-template>
+        <ng-template matStepperIcon="documentview">
+
+            <img src="{{Document_view_white}}" alt="" height="15px">
+        </ng-template>
+
+
+        <mat-step state="companyprofile" [completed]="false">
+            <form>
+                <ng-template matStepLabel>{{'Settings-CompanyInformation' | translate}}</ng-template>
+                <app-settings-companyinfo></app-settings-companyinfo>
+            </form>
+        </mat-step>
+
+        <mat-step state="mailbox" [completed]="false">
+            <form>
+                <ng-template matStepLabel>Mailboxes to Monitor</ng-template>
+                <app-mailbox-monitor></app-mailbox-monitor>
+            </form>
+        </mat-step>
+
+        <mat-step state="employee" [completed]="false">
+            <form>
+                <ng-template matStepLabel>{{'settings_tab_employee' | translate}}</ng-template>
+                <app-settings-employee></app-settings-employee>
+            </form>
+        </mat-step>
+
+        <mat-step state="role" [completed]="false">
+            <form>
+                <ng-template matStepLabel>{{'settings_tab_role' | translate}}</ng-template>
+                <app-setting-role></app-setting-role>
+            </form>
+        </mat-step>
+
+
+        <mat-step state="alert" [completed]="false">
+            <form>
+                <ng-template matStepLabel>Alerts</ng-template>
+                <app-alerts></app-alerts>
+            </form>
+        </mat-step>
+
+
+
+
+        <mat-step state="smtp" [completed]="false">
+            <form>
+                <ng-template matStepLabel>{{'Settings-SMTP' | translate}}</ng-template>
+                <app-settings-smtp></app-settings-smtp>
+            </form>
+        </mat-step>
+
+        <mat-step state="integrations" [completed]="false">
+            <form>
+                <ng-template matStepLabel>Integrations</ng-template>
+                <app-integrations></app-integrations>
+            </form>
+        </mat-step>
+
+        <mat-step state="Usage" [completed]="false">
+            <form>
+                <ng-template matStepLabel>Usage</ng-template>
+                <app-usage></app-usage>
+            </form>
+        </mat-step>
+
+        <mat-step state="other" [completed]="false">
+            <form>
+                <ng-template matStepLabel>{{'Settings-OtherSettings' | translate}}</ng-template>
+                <app-invoice-other-settings></app-invoice-other-settings>
+            </form>
+        </mat-step>
+
+        <mat-step state="security" [completed]="false">
+            <form>
+                <ng-template matStepLabel>{{'Settings-Security' | translate}}</ng-template>
+                <app-settings-security></app-settings-security>
+            </form>
+        </mat-step>
+
+        <mat-step state="costcode" [completed]="false">
+            <form>
+                <ng-template matStepLabel>Cost Code</ng-template>
+                <app-cost-code></app-cost-code>
+            </form>
+        </mat-step>
+        <mat-step state="documentview" [completed]="false">
+            <form>
+                <ng-template matStepLabel>Document View</ng-template>
+                <app-document-view></app-document-view>
+            </form>
+        </mat-step>
+
+    </mat-horizontal-stepper>
+</div>

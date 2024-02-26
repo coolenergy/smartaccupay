@@ -1,0 +1,31 @@
+
+.cust-div-inner {
+    margin-left: 15px;
+}
+
+.example-margin {
+    height: 0px;
+}
+
+.cust-header-text {
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.cust-inner-text {
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.cust-center-justify {
+    text-align: center;
+}
+
+.cust-margin-top {
+    margin-top: 10px;
+}
+
+::ng-deep .mat-mdc-tab-body-content {
+    height: 100%;
+    overflow: hidden !important;
+}

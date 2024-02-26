@@ -1,0 +1,198 @@
+<div class="wrapper-cust-admin">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <form [formGroup]="compnayinfo">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <div class="logo-div">
+                                    <div>
+                                        <input type="file" class="fileInputProfile" #OpenFilebox
+                                            (change)="fileChangeEvent($event)">
+                                        <div class="inner-image-cust" (click)="openfilebox()">
+                                            <ng-container *ngIf="!isImageSaved">
+                                                <img src="{{company_logo}}" class="flux-brand-logo" alt="" />
+                                            </ng-container>
+                                            <ng-container *ngIf="isImageSaved">
+                                                <img class="flux-brand-logo" [src]="cardImageBase64" alt="logo" />
+                                            </ng-container>
+
+                                            <div class="middle">
+                                                <i class="fa fa-pencil-alt cust-fontsize-tmp" aria-hidden="true"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <mat-form-field appearance="outline" class="main-one-input-field">
+                                    <mat-label>{{'Setting-Company-name' | translate}}</mat-label>
+                                    <input matInput #message maxlength="30" class="input-capitalized-textfield"
+                                        formControlName="companyname"
+                                        placeholder="{{'Setting-Company-name' | translate}}">
+                                    <mat-hint align="end">{{message.value?.length || 0}}/30</mat-hint>
+                                </mat-form-field>
+                            </div>
+                            <div class="col">
+                                <mat-form-field appearance="outline" class="main-one-input-field">
+                                    <mat-label>{{'Setting-Company-code' | translate}}</mat-label>
+                                    <input matInput disabled class="input-capitalized-textfield"
+                                        formControlName="companycode" readOnly
+                                        placeholder="{{'Setting-Company-code' | translate}}">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <mat-form-field appearance="outline" class="main-one-input-field">
+                                    <mat-label>{{'Setting-Company-website' | translate}}</mat-label>
+                                    <input matInput formControlName="companywebsite"
+                                        placeholder="{{'Setting-Company-website' | translate}}">
+                                </mat-form-field>
+                            </div>
+                            <div class="col">
+                                <mat-form-field appearance="outline" class="main-one-input-field">
+                                    <mat-label>{{'Setting-Company-phone' | translate}}</mat-label>
+                                    <input matInput mask="(000) 000-0000" formControlName="companyphone" maxlength="14"
+                                        onkeypress="return String.fromCharCode(event.charCode).match(/[^0-9]/g) === null" />
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <mat-form-field appearance="outline" class="main-one-input-field">
+                                    <mat-label>{{'Setting-Company-email' | translate}}</mat-label>
+                                    <input matInput formControlName="companyemail"
+                                        placeholder="{{'Setting-Company-email' | translate}}">
+                                </mat-form-field>
+                            </div>
+                            <div class="col">
+                                <mat-form-field appearance="outline" class="main-one-input-field">
+                                    <mat-label>{{'Setting-Company-phone2' | translate}}</mat-label>
+                                    <input matInput mask="(000) 000-0000" maxlength="14"
+                                        onkeypress="return String.fromCharCode(event.charCode).match(/[^0-9]/g) === null"
+                                        formControlName="companyphone2"
+                                        placeholder="{{'Setting-Company-phone2' | translate}}">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <mat-form-field class="main-one-input-field" appearance="outline">
+                                    <mat-label>{{'Setting-Company-Type' | translate }}</mat-label>
+                                    <mat-select class="dark-cust-color" (ngModelChange)="onVendorTypeSelect($event)"
+                                        formControlName="companytype" #CompnayTypes_dataSelect required>
+                                        <mat-select-filter [placeholder]="'Filter'" [displayMember]="'name'"
+                                            *ngIf="CompnayTypes_dataSelect.focused" [array]="variablesCompnayTypes_data"
+                                            (filteredReturn)="CompnayTypes_data =$event">
+                                        </mat-select-filter>
+                                        <mat-option *ngFor="let companyType of CompnayTypes_data"
+                                            [value]="companyType._id">
+                                            {{companyType.name}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="col">
+                                <mat-form-field appearance="outline" class="main-one-input-field">
+                                    <mat-label>{{'VendorForm_Vendor_NIGP_Code' | translate}}</mat-label>
+                                    <mat-select formControlName="companydivision" #csiDivisionsSelect multiple required
+                                        placeholder="{{'VendorForm_Vendor_NIGP_Code' | translate}}">
+                                        <mat-select-filter [placeholder]="'Filter'" [displayMember]="'name'"
+                                            *ngIf="csiDivisionsSelect.focused" [array]="variablesCSIDivisions"
+                                            (filteredReturn)="csiDivisions =$event">
+                                        </mat-select-filter>
+                                        <mat-option *ngFor="let division of csiDivisions" [value]="division._id">
+                                            {{division.name}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <mat-form-field class="main-one-input-field" appearance="outline">
+                                    <mat-label>{{'Company-Size' | translate }}</mat-label>
+                                    <mat-select class="dark-cust-color" formControlName="companysize"
+                                        #CompnaySizes_dataSelect required>
+                                        <mat-select-filter [placeholder]="'Filter'" [displayMember]="'name'"
+                                            *ngIf="CompnaySizes_dataSelect.focused" [array]="variablesCompnaySizes_data"
+                                            (filteredReturn)="CompnaySizes_data =$event">
+                                        </mat-select-filter>
+                                        <mat-option *ngFor="let compnaysize of CompnaySizes_data"
+                                            [value]="compnaysize._id">
+                                            {{compnaysize.name}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="col">
+                                <mat-form-field appearance="outline" class="main-one-input-field">
+                                    <mat-label>{{'Company-Active-since' | translate}}</mat-label>
+                                    <mat-select class="dark-cust-color" formControlName="companyactivesince" disabled
+                                        readonly required>
+                                        <mat-option *ngFor="let value of range" [value]="value">
+                                            {{value}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <mat-form-field appearance="outline" class="main-one-input-field">
+                                    <mat-label>{{'Setting-Company-Address' | translate}}</mat-label>
+                                    <input matInput #address maxlength="50" class="input-capitalized-textfield"
+                                        formControlName="companyaddress"
+                                        placeholder="{{'Setting-Company-Address' | translate}}">
+                                    <mat-hint align="end">{{address.value?.length || 0}}/50</mat-hint>
+                                </mat-form-field>
+                            </div>
+                            <div class="col">
+                                <mat-form-field appearance="outline" class="main-one-input-field">
+                                    <mat-label>{{'Setting-Company-Address-city' | translate}}</mat-label>
+                                    <input matInput maxlength="20" class="input-capitalized-textfield"
+                                        formControlName="companyaddresscity"
+                                        placeholder="{{'Setting-Company-Address-city' | translate}}">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <mat-form-field appearance="outline" class="main-one-input-field">
+                                    <mat-label>{{'Setting-Company-Address-state' | translate}}</mat-label>
+                                    <input matInput maxlength="20"
+                                        onkeypress="return String.fromCharCode(event.charCode).match(/[^A-Za-z]/g) === null"
+                                        class="input-capitalized-textfield" formControlName="companyaddressstate"
+                                        placeholder="{{'Setting-Company-Address-state' | translate}}">
+                                </mat-form-field>
+                            </div>
+                            <div class="col">
+                                <mat-form-field appearance="outline" class="main-one-input-field">
+                                    <mat-label>{{'Setting-Company-Address-zipcode' | translate}}</mat-label>
+                                    <input matInput class="input-capitalized-textfield"
+                                        formControlName="companyaddresszip" maxlength="5"
+                                        onkeypress="return String.fromCharCode(event.charCode).match(/[^0-9]/g) === null"
+                                        placeholder="{{'Setting-Company-Address-zipcode' | translate}}">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row cust-center-justify">
+                        <!-- <button mat-stroked-button style="margin-right: 10px;" class="sign-button" (click)="back();">
+                            <img src="./assets/diversityicon/backarrow.png" alt="" class="pr-1"
+                                height="15px">{{'All-back' | translate }}
+                        </button> -->
+                        <button mat-raised-button type="submit" (click)="saveData()" color="primary"><img
+                                src="{{saveIcon}}" alt="" class="pr-1" height="15px">{{'All-save' |
+                            translate
+                            }}</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

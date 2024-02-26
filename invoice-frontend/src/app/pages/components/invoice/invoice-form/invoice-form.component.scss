@@ -1,0 +1,392 @@
+@import 'src/app/styles/variables';
+
+.project-data-card {
+    margin: 0%;
+}
+
+.image-wrap {
+    padding: 10px;
+    border: solid 1px #e0e0e0;
+    display: inline-block;
+}
+
+.img-space {
+    border: dashed 1px #d3d3d3;
+    border-radius: 8px;
+    background-color: #f2f2f2;
+    height: auto;
+    width: 100%;
+}
+
+.img-space img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    cursor: pointer;
+}
+
+.fileInputProfileWrap {
+    width: 100%;
+    height: auto;
+}
+
+.fileInputProfile {
+    position: absolute;
+    z-index: 99;
+    opacity: 0;
+}
+
+.fileInputProfile[disabled]+.img-space {
+    pointer-events: none;
+    cursor: not-allowed !important;
+}
+
+@media only screen and (max-width: 768px) and (min-width: 320px) {
+    .mat-form-field {
+        width: 122px !important;
+    }
+
+    .invoice-form {
+        b {
+
+            font-size: 11px;
+        }
+    }
+}
+
+.formclass {
+    height: 850px;
+
+    .mat-form-field {
+        width: 170px !important;
+    }
+
+}
+
+
+.main-one-input-field {
+    width: 100%;
+}
+
+.main-one-row {
+    padding: auto;
+    display: flex;
+}
+
+.main-one-col {
+    width: 50%;
+}
+
+.main-cust-image {
+    width: 100%;
+}
+
+.fileInputProfileWrap {
+    width: 100%;
+    height: auto;
+}
+
+.fileInputProfileWrap {
+    width: 100%;
+    height: auto;
+}
+
+.fileInputProfile[disabled]+.img-space {
+    pointer-events: none;
+    cursor: not-allowed !important;
+}
+
+.btn-raised {
+    width: 50%;
+    border-radius: 14px;
+    -webkit-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16), 0 2px 5px rgba(0, 0, 0, 0.26);
+    -moz-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16), 0 2px 5px rgba(0, 0, 0, 0.26);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16), 0 2px 5px rgba(0, 0, 0, 0.26);
+}
+
+.image-cust-height-width {
+    height: 100%;
+}
+
+.align {
+    text-align: center;
+}
+
+.one-cust-image {
+    width: 50%;
+    height: auto;
+}
+
+.two-cust-image {
+    width: 70%;
+}
+
+.color-button {
+    width: 180px;
+    height: 40px;
+    display: block;
+    border-radius: 9px;
+    border: none;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cust-center-save {
+    text-align: center;
+}
+
+.cust-full-width {
+    width: 100%;
+}
+
+.p-margin-top-cust {
+    margin-top: -15px;
+}
+
+.head-text {
+    width: 100%;
+    height: 30px;
+    color: white;
+    margin-bottom: 1.3rem;
+    background-color: #023e8af7;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.mat-card {
+    padding: 0 !important;
+}
+
+.editing {
+    margin: 0;
+    position: absolute;
+    padding-left: 10px;
+}
+
+::ng-deep .s2-confirm {
+    width: 130px !important;
+}
+
+::ng-deep .btn-gray {
+    background-color: grey !important;
+    color: white !important;
+}
+
+.pdf-viewer {
+    height: 1035px;
+    overflow-y: scroll;
+}
+
+.pdf-header {
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0);
+    text-align: right
+}
+
+form {
+    margin-left: 30px;
+}
+
+.editing {
+    margin-left: 30px;
+}
+
+.r1 {
+    margin-left: -15px;
+}
+
+.paddings {
+    // padding-left: 1rem !important;
+    text-align: right !important;
+    margin-right: 25px;
+}
+
+.invoice-form {
+    b {
+        padding-top: 13px;
+        float: left !important;
+        // font-size: 11px;
+    }
+}
+
+.col {
+    height: 40px;
+
+}
+
+.button-margin {
+    margin-top: 90px;
+    padding-bottom: 50px;
+}
+
+.Approve {
+    background-color: green;
+    color: rgb(255, 255, 255);
+}
+
+.Denied {
+    background-color: red;
+    color: rgb(255, 255, 255);
+}
+
+.Invoicepreview {
+    width: 450px;
+}
+
+::ng-deep .flux-content-section[navbar-type="expanded"][effect-type="push"] {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+}
+
+::ng-deep .s2-confirm {
+    width: 130px !important;
+}
+
+::ng-deep .btn-gray {
+    background-color: grey !important;
+    color: white !important;
+}
+
+.Approvedcss {
+
+    color: green;
+}
+
+.Rejectcss {
+    color: red;
+}
+
+.pendingcss {
+    color: orange;
+}
+
+.mat-option {
+    font-size: 11px !important;
+    line-height: unset !important;
+}
+
+// .............................history................ //
+
+.hbox {
+    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.5), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+}
+
+.activity {
+    display: flex;
+    font-size: 14px;
+    margin-bottom: 20px;
+    position: relative;
+    border-bottom: 1px solid #dadada;
+}
+
+.avatar {
+    img {
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        margin-right: 15px;
+        border: 1px solid #023e8a;
+    }
+}
+
+.sign-button {
+    margin-left: 15px;
+}
+
+.main-one-input-field {
+    width: 100%;
+}
+
+::ng-deep .darkMode {
+    .preview {
+        border: 1px solid #dadada !important;
+        background-color: transparent !important;
+    }
+
+    .avatar {
+        img {
+            border: 1px solid #dadada !important;
+        }
+    }
+}
+
+.dataTable {
+    width: unset !important;
+}
+
+.userimg {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: 1px solid black;
+}
+
+th {
+    background-color: rgb(196, 196, 196);
+    height: 100%;
+    width: 50%;
+}
+
+td {
+    background-color: rgb(236, 236, 236);
+    height: 100%;
+    width: 50%;
+}
+
+.display-inline-cust {
+    justify-self: flex-end;
+    height: 40px;
+}
+
+.cust-width {
+    width: 100%;
+}
+
+.cust-padding {
+    padding-bottom: 50px;
+}
+
+.modal-body {
+    min-height: 75%;
+}
+
+/* Solid border */
+hr.solid {
+    border-top: 3px solid #bbb;
+}
+
+.screen-title {
+    margin-top: auto;
+    margin-bottom: auto
+}
+
+// expansion-panel
+
+::ng-deep .mat-expansion-panel-header {
+
+    height: 35px !important;
+    background-color: #023E8A !important;
+    color: white;
+
+}
+
+::ng-deep .darkMode .mat-expansion-panel-header {
+
+    height: 35px !important;
+    background-color: #30343d !important;
+    color: white;
+
+}
+
+::ng-deep .mat-expansion-indicator::after {
+    color: white;
+    height: 11px;
+    width: 11px;
+}
+
+::ng-deep .mat-expansion-panel-body {
+    padding: 0px !important;
+}

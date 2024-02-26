@@ -1,0 +1,53 @@
+.card-cust-project {
+    // text-align: left;
+    // width: 150px;
+    // height: 200px;
+    // margin: 4px !important;
+    // cursor: pointer;
+    // transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+    // border-radius: 4px;
+
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: flex-start;
+    padding-top: 15px;
+}
+
+.example-card {
+    height: 302px;
+    width: 267px;
+    border-radius: 4px;
+    box-shadow: 1px 1px 1px 1px grey;
+    transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.list-square-div {
+    margin: 10px;
+}
+
+.main-search-bar {
+    display: flex;
+}
+
+.emptyStateDiv {
+    height: 100%;
+    width: 100%;
+    min-height: 500px;
+    text-align: center;
+    align-content: center;
+    position: relative;
+}
+
+.vertical-center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.image-cust-card {
+    margin-bottom: 15px;
+}

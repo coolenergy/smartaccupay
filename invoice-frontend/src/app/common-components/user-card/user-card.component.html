@@ -1,0 +1,50 @@
+<div class="user-box">
+    <div id="containers">
+        <div id="infoi">
+            <div *ngIf="UserData.compliance_officer" class="user-compliance-image">
+                <!-- <img src="{{userComplianceIcon}}" alt="" /> -->
+            </div>
+        </div>
+        <div id="navi">
+            <div class="profile">
+                <img src="{{UserData.userpicture || defalut_image}} " class="image-cust-card" alt="" />
+                <div class="details">
+                    <h3 class="word-wrap-cust" matTooltip="{{UserData.userfullname}}">{{UserData.userfullname}}</h3>
+                    <p class="word-wrap-cust" matTooltip="{{UserData.userjob_title_name}}">
+                        {{UserData.userjob_title_name}}
+                    </p>
+                    <p class="word-wrap-cust" matTooltip="{{UserData.userphone}}">{{phonenoFormat(UserData.userphone)}}
+                    </p>
+                    <p class="word-wrap-cust" matTooltip="{{UserData.useremail}}">{{UserData.useremail}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="status" [ngClass]="UserData.userstatus == 1 ? 'active' :'inactive'">
+        {{UserData.userstatus == 1 ? acticve_word :inacticve_word }}
+    </div>
+
+    <div *ngIf="!deleteTeamMember">
+        <div class="action">
+            <button *ngIf="role_permissions.role_permission.users.Edit" class="user-menu__button-custom-small"
+                (click)="viewEmployeePage(UserData._id)">
+                <img src="{{editIcon}}" alt="">
+            </button>
+        </div>
+    </div>
+
+    <div *ngIf="deleteTeamMember">
+        <div class="action">
+            <button *ngIf="role_permissions.role_permission.users.Edit" class="user-menu__button-custom-small"
+                (click)="viewEmployeePage(UserData._id)">
+                <img src="{{editIcon}}" alt="">
+            </button>
+
+            <button *ngIf="role_permissions.role_permission.users.Delete" class="user-menu__button-custom-small"
+                (click)="deleteEmployeeAction()">
+                <img src="{{trashIcon}}" alt="">
+            </button>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,51 @@
+<h2 mat-dialog-title>Terms</h2>
+<form class="form" [formGroup]="term">
+    <div class="container">
+
+        <div class="row">
+            <mat-form-field appearance="outline" class="shift-input">
+                <mat-label>{{'Company-Vendor-Terms' | translate}}</mat-label>
+                <input matInput placeholder="{{'Company-Vendor-Terms' | translate}}" formControlName="name" required>
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline" class="shift-input">
+                <mat-label>{{'due_days' | translate}}</mat-label>
+                <input matInput placeholder="{{'due_days' | translate}}" numbersOnly
+                    onkeypress="return String.fromCharCode(event.charCode).match(/[^0-9]/g) === null"
+                    formControlName="due_days" required>
+            </mat-form-field>
+        </div>
+
+        <div class="">
+            <div style="margin-top: 10px; margin-bottom: 10px;">
+                <mat-slide-toggle size="large" color="primary" formControlName="is_discount">
+                    {{'Add_Discount' | translate}}
+                </mat-slide-toggle>
+            </div>
+        </div>
+        <div class="row" *ngIf="term.get('is_discount').value == true">
+            <mat-form-field class="shift-input" appearance="outline">
+                <mat-label>{{'Trems_Discount' | translate}}%</mat-label>
+                <input type="text" matInput placeholder="" formControlName="discount" numbersOnly
+                    (keypress)="retainagePercentageChange($event)">
+            </mat-form-field>
+        </div>
+
+    </div>
+
+
+
+
+    <mat-dialog-actions align="center">
+        <button mat-raised-button mat-dialog-close>
+            <img src="{{exitIcon}}" alt="" height="15px">
+            {{'All-exit' | translate }}</button>
+        <button mat-raised-button type="submit" (click)="saveData()" color="primary">
+            <img src="{{saveIcon}}" alt="" height="20px">
+            {{'All-save' | translate
+            }}</button>
+    </mat-dialog-actions>
+
+</form>

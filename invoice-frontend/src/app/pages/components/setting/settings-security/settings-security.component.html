@@ -1,0 +1,31 @@
+<div class="main-cust-setting-div">
+    <div class="container">
+        <div class="">
+            <mat-slide-toggle color="primary" [(ngModel)]="timeoutSwitch"
+                (ngModelChange)="modelSwitchChangeTimeOut($event)">
+                {{'Amount_minutes' | translate}}
+            </mat-slide-toggle>
+            <mat-form-field appearance="outline" class="ml-2">
+                <mat-select [(ngModel)]="timer" (ngModelChange)="modelChangeTimeout($event)" class="dark-cust-color"
+                    required>
+                    <mat-option *ngFor="let option of timerOptions" [value]="option.key">
+                        {{option.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="">
+            <mat-slide-toggle color="primary" [(ngModel)]="otpSwitch" (ngModelChange)="modelSwitchChangeOtp($event)">
+                {{'enable_otp' | translate}}
+            </mat-slide-toggle>
+            <mat-form-field appearance="outline" class="ml-2">
+                <mat-select [(ngModel)]="otp" (ngModelChange)="modelChangeOtp($event)" class="dark-cust-color" required>
+                    <mat-option *ngFor="let option of otpOptions" [value]="option.key">
+                        {{option.tmp_language | translate}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+</div>

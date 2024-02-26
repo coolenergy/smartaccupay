@@ -1,0 +1,95 @@
+<div class="auth-container">
+
+     <div class="row auth-main" style="background-image: url(assets/images/full_bg.jpg);">
+          <div class="col-sm-4 auth-form-section">
+               <div class="form-section">
+                    <div class="auth-wrapper" *ngIf="!showCompanyList">
+                         <form class="validate-form" [formGroup]="authForm">
+
+                              <div class="row">
+                                   <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                                        <h2 class="welcome-msg cust-center">Welcome</h2>
+                                        <mat-form-field class="example-full-width" appearance="outline">
+                                             <mat-label>Email</mat-label>
+                                             <input matInput formControlName="useremail" required>
+                                        </mat-form-field>
+                                   </div>
+                              </div>
+                              <div *ngIf="sentOTP">
+                                   <div class="text-center mb-4">
+                                        <ng-otp-input #ngOtpInput [config]="otpConfig"
+                                             (onInputChange)="onOtpChange($event)"></ng-otp-input>
+                                   </div>
+                                   <div class="enter-otp-text cust-center">Please insert the one time password (OTP) we
+                                        send to your
+                                        e-mail to access the
+                                        platform</div>
+                                   <div class="text-center mt-2">
+                                        <label>Didn't get a verification code? </label>
+                                        <a class="txt1" (click)="sendOTP()">
+                                             Send Again
+                                        </a>
+                                   </div>
+                              </div>
+                              <div *ngIf="sentOTP" class="container-auth-form-btn mt-5">
+                                   <button mat-raised-button color color="primary" class="auth-form-btn"
+                                        (click)="submitOTP()">
+                                        Submit
+                                   </button>
+                              </div>
+                              <div *ngIf="!sentOTP" class="container-auth-form-btn mt-5">
+                                   <button mat-raised-button color color="primary" class="auth-form-btn"
+                                        (click)="sendOTP()">
+                                        Send
+                                   </button>
+                              </div>
+                              <div class="w-full p-t-25 text-center">
+                                   <div>
+                                        <a (click)="openLogin()" class="txt1">
+                                             Or use Email Password
+                                        </a>
+                                   </div>
+                              </div>
+                         </form>
+                    </div>
+                    <div *ngIf="showCompanyList">
+                         <h2 class="welcome-msg cust-center"> Select Company </h2>
+                         <div class="cust-center mb-2">
+                              <mat-chip [removable]=" removable" (removed)="removeUseremail()">
+                                   {{useremail}}
+                                   <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                              </mat-chip>
+                         </div>
+                         <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-12 mt-3">
+                              <div class="card">
+                                   <div class="card-body">
+                                        <div class="media-list position-relative">
+                                             <div class="table-responsive" id="project-team-scroll">
+                                                  <table class="table table-hover table-xl mb-0">
+                                                       <tbody>
+                                                            <tr *ngFor="let company of companyList"
+                                                                 (click)="selectCompany(company)">
+                                                                 <td class="text-truncate d-flex companydata">
+                                                                      <img class="rounded-circle"
+                                                                           src="{{company.companylogo}}" alt=""
+                                                                           title="">
+                                                                      <div class="my-auto">{{company.companyname}}</div>
+                                                                 </td>
+                                                            </tr>
+                                                       </tbody>
+                                                  </table>
+                                             </div>
+                                        </div>
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+               </div>
+          </div>
+          <div class="col-sm-8 px-0 d-none d-sm-block">
+               <div class="left-img">
+               </div>
+          </div>
+
+     </div>
+</div>

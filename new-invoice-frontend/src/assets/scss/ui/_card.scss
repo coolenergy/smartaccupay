@@ -1,0 +1,328 @@
+﻿/*
+ *  Document   : _card.scss
+ *  Author     : RedStar Template
+ *  Description: This scss file for card style classes
+ */
+.card {
+  background: #fff;
+  min-height: 50px;
+  position: relative;
+  margin-bottom: 24px;
+  border: 1px solid #f2f4f9;
+  border-radius: 10px;
+  box-shadow: -8px 12px 18px 0 #dadee8;
+
+  .card-inside-title {
+    margin-top: 25px;
+    margin-bottom: 15px;
+    display: block;
+    font-size: 15px;
+    color: #000;
+
+    small {
+      color: #999;
+      display: block;
+      font-size: 11px;
+      margin-top: 5px;
+
+      a {
+        color: #777;
+        font-weight: bold;
+      }
+    }
+  }
+
+  .card-inside-title:first-child {
+    margin-top: 0;
+  }
+
+  .bg-red,
+  .bg-pink,
+  .bg-purple,
+  .bg-indigo,
+  .bg-blue,
+  .bg-cyan,
+  .bg-teal,
+  .bg-green,
+  .bg-yellow,
+  .bg-orange,
+  .bg-deep-orange,
+  .bg-brown,
+  .bg-grey,
+  .bg-black {
+    border-bottom: none !important;
+    color: #fff !important;
+
+    h2,
+    small,
+    .material-icons {
+      color: #fff !important;
+    }
+
+    .badge {
+      background-color: #fff;
+      color: #555;
+    }
+  }
+
+  .header {
+    position: relative;
+    display: flex;
+    width: 100%;
+    color: #555;
+    padding: 10px 15px;
+    line-height: 30px;
+
+    .header-dropdown {
+      position: absolute;
+      top: 0px;
+      right: 10px;
+      list-style: none;
+
+      .dropdown-menu {
+        li {
+          display: block !important;
+        }
+      }
+
+      li {
+        display: inline-block;
+      }
+
+      i {
+        font-size: 20px;
+        color: #999;
+        @include transition(all 0.5s);
+
+        &:hover {
+          color: #000;
+        }
+      }
+    }
+
+    h2 {
+      margin: 0;
+      color: #5b626b;
+      font-size: 17px;
+      line-height: 28px;
+      padding-right: 10px;
+      font-weight: 500;
+
+      small {
+        display: block;
+        font-size: 12px;
+        margin-top: 5px;
+        color: #999;
+        line-height: 15px;
+
+        a {
+          font-weight: bold;
+          color: #777;
+        }
+      }
+    }
+
+    .col-xs-12 {
+      h2 {
+        margin-top: 5px;
+      }
+    }
+  }
+
+  .body {
+    font-size: 14px;
+    color: #555;
+    padding: 15px;
+
+    @for $i from 1 through 12 {
+
+      .col-xs-#{$i},
+      .col-sm-#{$i},
+      .col-md-#{$i},
+      .col-lg-#{$i} {
+        margin-bottom: 20px;
+      }
+    }
+  }
+
+  .list-body {
+    padding: 0px 10px;
+  }
+
+  &.card-statistic-1 .card-header,
+  &.card-statistic-2 .card-header {
+    border-color: transparent;
+    padding-bottom: 0;
+    height: auto;
+    min-height: auto;
+    display: block;
+  }
+
+  &.card-statistic-1 .card-icon {
+    width: 30px;
+    height: 30px;
+    margin: 10px 0px 0px 20px;
+    border-radius: 3px;
+    line-height: 78px;
+    text-align: center;
+    float: left;
+    font-size: 30px;
+  }
+
+  &.card-statistic-1 .card-header h4,
+  &.card-statistic-2 .card-header h4 {
+    line-height: 1.2;
+    color: color(muted);
+  }
+
+  &.card-statistic-1 .card-body,
+  &.card-statistic-2 .card-body {
+    padding-top: 0;
+  }
+
+  &.card-statistic-1 .card-body,
+  &.card-statistic-2 .card-body {
+    font-size: 26px;
+    font-weight: 700;
+    color: color(fontdark);
+    padding-bottom: 0;
+  }
+
+  &.card-statistic-1,
+  &.card-statistic-2 {
+    display: inline-block;
+    width: 100%;
+  }
+
+  &.card-statistic-1 .card-icon,
+  &.card-statistic-2 .card-icon {
+    width: 80px;
+    height: 80px;
+    margin: 10px;
+    border-radius: 3px;
+    line-height: 94px;
+    text-align: center;
+    float: left;
+    border-radius: 50px;
+    margin-right: 15px;
+
+    .ion,
+    .fas,
+    .far,
+    .fab,
+    .fal {
+      font-size: 22px;
+      color: #fff;
+    }
+  }
+
+  &.card-statistic-1 .card-icon {
+    line-height: 90px;
+  }
+
+  &.card-statistic-2 .card-icon {
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 22px;
+    margin: 25px;
+    box-shadow: 5px 3px 10px 0 rgba(21, 15, 15, 0.3);
+    border-radius: 10px;
+    background: #6777ef;
+  }
+
+  &.card-statistic-2 .card-icon-only {
+    font-size: 35px;
+    margin: 20px;
+  }
+
+  &.card-statistic-1 .card-header,
+  &.card-statistic-2 .card-header {
+    padding-bottom: 0;
+    padding-top: 25px;
+  }
+
+  &.card-statistic-2 .card-header+.card-body,
+  &.card-statistic-2 .card-body+.card-header {
+    padding-top: 0;
+  }
+
+  &.card-statistic-1 .card-header h4,
+  &.card-statistic-2 .card-header h4 {
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+  }
+
+  &.card-statistic-1 .card-header h4 {
+    margin-bottom: 0;
+  }
+
+  &.card-statistic-2 .card-header h4 {
+    text-transform: none;
+    margin-bottom: 0;
+  }
+
+  &.card-statistic-1 .card-body {
+    font-size: 20px;
+  }
+
+  &.card-statistic-2 {
+    .card-chart {
+      margin-left: -10px;
+      margin-right: -1px;
+      margin-bottom: -7px;
+
+      canvas {
+        height: 70px !important;
+      }
+    }
+
+    .card-right {
+      float: right;
+      margin: 15px 15px 15px 0px;
+    }
+  }
+}
+
+.plain-card {
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+  background: #fff;
+  overflow: hidden;
+  margin: 0.5rem 0 1rem 0;
+}
+
+.card-inner .progress {
+  height: 10px;
+  margin: 0px;
+}
+
+.col-block {
+  margin-left: 5px;
+}
+
+.card-height-100 {
+  height: 100px;
+}
+
+.doc-card-title {
+  color: #00bdf2;
+  font-size: 16px;
+}
+
+.doc-card-image {
+  background: #fff;
+  position: inherit;
+  padding: 2px;
+  box-shadow: 0 5px 25px 0 rgba(0, 0, 0, 0.2);
+}
+
+.card-spacing {
+  padding-right: 0px;
+}
+
+.list-unstyled {
+  background-color: white !important;
+}

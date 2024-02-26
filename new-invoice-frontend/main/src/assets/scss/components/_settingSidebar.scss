@@ -1,0 +1,196 @@
+.settingSidebar {
+  background: #fff;
+  position: fixed;
+  height: 100%;
+  width: 280px;
+  top: 62px;
+  right: -280px;
+  z-index: 999;
+  transition: 0.3s ease-in;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.16), 0 2px 10px rgba(0, 0, 0, 0.12);
+
+  .settingPanelToggle {
+    background: #6777ef;
+    padding: 13px 13px;
+    color: #fff;
+    position: absolute;
+    top: 30%;
+    left: -40px;
+    width: 40px;
+    border-radius: 10px 0 0 10px;
+    .setting-sidebar-icon .feather {
+      height: 17px;
+      width: 17px;
+    }
+  }
+
+  &.showSettingPanel {
+    right: 0;
+  }
+
+  .settingSidebar-body {
+    position: relative;
+    height: 100%;
+  }
+
+  .settingSidebar-tab {
+    display: flex;
+
+    .nav-item {
+      width: 33.33%;
+      text-align: center;
+
+      .nav-link {
+        padding: 15px 12px;
+        color: #6a7a8c;
+        border-bottom: 3px solid transparent;
+
+        &.active {
+          border-bottom: 3px solid #2962ff;
+          color: #2962ff;
+        }
+
+        &:hover {
+          border-bottom: 3px solid #2962ff;
+          color: #2962ff;
+        }
+      }
+    }
+  }
+
+  ul.choose-theme li {
+    display: inline-block;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  ul.choose-theme li div {
+    border-radius: 15px;
+    display: inline-block;
+    vertical-align: middle;
+    height: 25px;
+    width: 25px;
+    overflow: hidden;
+    position: relative;
+    margin: 4px;
+  }
+
+  ul.choose-theme li div.purple {
+    background: #6777ef;
+    -webkit-box-shadow: 4px 3px 6px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 4px 3px 6px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  ul.choose-theme li div.orange {
+    background: #ffa117;
+    -webkit-box-shadow: 4px 3px 6px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 4px 3px 6px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  ul.choose-theme li div.cyan {
+    background: #3dc7be;
+    -webkit-box-shadow: 4px 3px 6px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 4px 3px 6px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  ul.choose-theme li div.green {
+    background: #4caf4f;
+    -webkit-box-shadow: 4px 3px 6px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 4px 3px 6px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  ul.choose-theme li div.red {
+    background: #ea5455;
+    -webkit-box-shadow: 4px 3px 6px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 4px 3px 6px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  ul.choose-theme li div.white {
+    background: #ece8e8;
+    -webkit-box-shadow: 4px 3px 6px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 4px 3px 6px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  ul.choose-theme li div.black {
+    background: #343a40;
+    -webkit-box-shadow: 4px 3px 6px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 4px 3px 6px 0 rgba(0, 0, 0, 0.2);
+  }
+  ul.choose-theme li div.blue {
+    background: #03a9f3;
+    -webkit-box-shadow: 4px 3px 6px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 4px 3px 6px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  ul.choose-theme li.active div::after {
+    content: '\f00c';
+    color: #fff;
+    top: 4px;
+    left: 7px;
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    font-size: 12px;
+    position: absolute;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+  }
+
+  .setting-panel-header {
+    display: block;
+    padding: 15px 20px;
+    color: #212529;
+    font-size: 15px;
+    border: 1px solid #eae9e9;
+    background: #e9ecef;
+  }
+
+  .disk-server-setting {
+    .progress {
+      height: 8px;
+    }
+
+    p {
+      font-weight: bold;
+      margin: 0;
+      border-bottom: 1px solid #eee;
+      font-size: 14px;
+      text-align: left;
+      padding-bottom: 5px;
+    }
+  }
+
+  .rt-sidebar-last-ele {
+    margin-bottom: 70px !important;
+  }
+}
+.hiddenradio {
+  padding: 0px 20px 0px 0px;
+  margin: 0px 20px 0px 0px;
+}
+.hiddenradio [type='radio'] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* IMAGE STYLES */
+.hiddenradio [type='radio'] + img {
+  cursor: pointer;
+  height: auto;
+  width: 100%;
+  border: 3px solid #d5e0ec;
+}
+
+/* CHECKED STYLES */
+.hiddenradio [type='radio']:checked + img {
+  outline: 2px solid #6777ef;
+}
+
+@media only screen and (max-width: 1024px) {
+  .settingSidebar {
+    display: none;
+  }
+}

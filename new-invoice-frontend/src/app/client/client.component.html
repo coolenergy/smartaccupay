@@ -1,0 +1,272 @@
+<section class="content">
+    <div class="content-block">
+        <div class="m-4"></div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="materialTableHeader">
+                        <div class="left">
+                            <ul class="header-buttons-left ms-0">
+                                <li class="tbl-title">
+                                    <h2 *ngIf="isDelete === 0">{{'CLIENT.VIEW.TITLE' | translate}}</h2>
+                                    <h2 *ngIf="isDelete === 1">{{'CLIENT.VIEW.ARCHIVED_TITLE' | translate}}</h2>
+                                </li>
+                                <li class="tbl-search-box">
+                                    <label for="search-input"><i class="material-icons search-icon">search</i></label>
+                                    <input placeholder="{{'COMMON.TOOL_TIP.SEARCH' |  translate}}" type="text"
+                                        class="browser-default search-field" aria-label="Search box"
+                                        (input)="onSearchChange($event)">
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="right Invoicepreview">
+                            <ul class="tbl-export-btn">
+                                <li class="tbl-header-btn" *ngIf="isDelete === 0">
+                                    <form [formGroup]="rform">
+                                        <mat-form-field [hidden]=!selection.hasValue() class="example-full-width"
+                                            appearance="outline">
+                                            <mat-label>Action for selected</mat-label>
+                                            <mat-select [(ngModel)]="selectedValue" name="food"
+                                                (selectionChange)="onBookChange($event)"
+                                                formControlName="client_status">
+                                                <mat-option [value]="1">
+                                                    Active
+                                                </mat-option>
+                                                <mat-option [value]="2">
+                                                    Inactive
+                                                </mat-option>
+                                                <mat-option [value]="3">
+                                                    Archive
+                                                </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </form>
+
+                                </li>
+                                <li class="tbl-header-btn" *ngIf="isDelete === 0">
+                                    <div class="m-l-10" matTooltip="{{'COMMON.TOOL_TIP.REFRESH' |
+                                        translate}}">
+                                        <button mat-mini-fab color="primary" (click)="refresh()">
+                                            <mat-icon class="col-white">refresh</mat-icon>
+                                        </button>
+                                    </div>
+                                </li>
+                                <li class="tbl-header-btn" *ngIf="isDelete === 0 && !isHideAddActionQBD">
+                                    <div class="m-l-10" matTooltip="{{'COMMON.TOOL_TIP.IMPORT_TEMPLATE' |
+                                    translate}}">
+                                        <button mat-mini-fab color="primary" (click)="downloadImport()">
+                                            <mat-icon class="col-white">file_download</mat-icon>
+                                        </button>
+                                    </div>
+                                </li>
+                                <li class="tbl-header-btn"
+                                    *ngIf="isDelete === 0 && isDelete === 0 && !isHideAddActionQBD">
+                                    <div class="m-l-10" matTooltip="{{'COMMON.TOOL_TIP.IMPORT' |
+                                    translate}}">
+                                        <input id="file-upload" class="mr-2" type="file" style="display: none"
+                                            (change)="onFileChange($event)" #OpenFilebox />
+                                        <button mat-mini-fab color="primary" (click)="importFileAction()">
+                                            <mat-icon class="col-white">file_upload</mat-icon>
+                                        </button>
+                                    </div>
+                                </li>
+                                <li class="tbl-header-btn" *ngIf="isDelete === 0">
+                                    <div class="m-l-10" matTooltip="{{'COMMON.TOOL_TIP.HISTORY' |
+                                        translate}}">
+                                        <button mat-mini-fab color="primary" (click)="openHistory()">
+                                            <mat-icon class="col-white">history</mat-icon>
+                                        </button>
+                                    </div>
+                                </li>
+                                <li class="tbl-header-btn"
+                                    *ngIf="isDelete === 0 && isDelete === 0 && !isHideArchiveActionQBD">
+                                    <div class="m-l-10" matTooltip="{{'COMMON.TOOL_TIP.ARCHIVE' |
+                                        translate}}">
+                                        <button mat-mini-fab color="warn" (click)="gotoArchiveUnarchive()">
+                                            <mat-icon class="col-white">archive</mat-icon>
+                                        </button>
+                                    </div>
+                                </li>
+                                <li class="tbl-header-btn" *ngIf="isDelete === 1">
+                                    <div class="m-l-10" matTooltip="{{'COMMON.TOOL_TIP.BACK' |
+                                        translate}}">
+                                        <button mat-mini-fab color="warn" (click)="gotoArchiveUnarchive()">
+                                            <mat-icon class="col-white">close </mat-icon>
+                                        </button>
+                                    </div>
+                                </li>
+                                <li class="tbl-header-btn"
+                                    *ngIf="isDelete === 0 && isDelete === 0 && !isHideAddActionQBD">
+                                    <div class="m-l-10" matTooltip="{{'COMMON.TOOL_TIP.ADD' |
+                                        translate}}">
+                                        <button mat-mini-fab color="primary" (click)="addNew()">
+                                            <mat-icon class="col-white">add</mat-icon>
+                                        </button>
+                                    </div>
+                                </li>
+                                <li *ngIf="isDelete === 0">
+                                    <div class="export-button m-l-10" matTooltip="{{'COMMON.TOOL_TIP.XLSX' |
+                                        translate}}">
+                                        <img src="assets/images/icons/xlsx.png" alt="" (click)="exportExcel()" />
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="body overflow-auto">
+                        <div class="table-responsive">
+                            <table mat-table #table [dataSource]="dataSource" matSort (matSortChange)="sortData($event)"
+                                class="mat-cell">
+                                <ng-container matColumnDef="select">
+                                    <mat-header-cell *matHeaderCellDef class="psl-1"
+                                        [ngClass]="'tbl-col-width-per-selected'">
+                                        <mat-checkbox (change)="$event ? masterToggle() : null"
+                                            [checked]="selection.hasValue() && isAllSelected()"
+                                            [indeterminate]="selection.hasValue() && !isAllSelected()"
+                                            [ngClass]="'tbl-checkbox' ">
+                                        </mat-checkbox>
+                                    </mat-header-cell>
+                                    <mat-cell *matCellDef="let row" class="psl-1"
+                                        [ngClass]="'tbl-col-width-per-selected'">
+                                        <mat-checkbox (click)="$event.stopPropagation()"
+                                            (change)="$event ? selection.toggle(row) : null"
+                                            [checked]="selection.isSelected(row)" [ngClass]="'tbl-checkbox'">
+                                        </mat-checkbox>
+                                    </mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="client_name">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header
+                                        [ngClass]="'tbl-col-width-per-25-per'">{{'CLIENT.TABLE.CLIENT_NAME' | translate}}
+                                    </mat-header-cell>
+                                    <mat-cell *matCellDef="let row" [matTooltip]="getNameTooltip(row)"
+                                        class="tbl-col-width-per-25-per" (contextmenu)="onContextMenu($event, row)"
+                                        (click)="editClient(row)">
+                                        <span class="truncate-text"> <span class="mobile-label">Client
+                                                Name:</span>{{row.client_name}}</span>
+                                    </mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="client_number">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header
+                                        [ngClass]="'tbl-col-width-per-15-per'">{{'CLIENT.TABLE.CLIENT_NUMBER' |
+                                        translate}}
+                                    </mat-header-cell>
+                                    <mat-cell *matCellDef="let row" [matTooltip]="getNumberTooltip(row)"
+                                        class="tbl-col-width-per-15-per" (contextmenu)="onContextMenu($event, row)"
+                                        (click)="editClient(row)">
+                                        <span class="truncate-text"> <span class="mobile-label">Vendor
+                                                ID:</span>{{row.client_number}}</span>
+                                    </mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="client_email">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header
+                                        [ngClass]="'tbl-col-width-per-15-per'">
+                                        {{'CLIENT.TABLE.JOB_CONTACT_EMAIL' | translate}}
+                                    </mat-header-cell>
+                                    <mat-cell *matCellDef="let row" [matTooltip]="getTooltip(row)"
+                                        class="tbl-col-width-per-15-per" (contextmenu)="onContextMenu($event, row)"
+                                        (click)="editClient(row)">
+                                        <span class="truncate-text"> <span class="mobile-label">Job Contact
+                                                Email:</span>{{row.client_email}}</span>
+                                    </mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="approver_id">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header
+                                        [ngClass]="'tbl-col-width-per-15-per'">{{'CLIENT.TABLE.APPROVER' | translate}}
+                                    </mat-header-cell>
+                                    <mat-cell *matCellDef="let row" [matTooltip]="getApproverTooltip(row)"
+                                        class="tbl-col-width-per-15-per" (contextmenu)="onContextMenu($event, row)"
+                                        (click)="editClient(row)">
+                                        <span class="mobile-label">Approver:</span>
+                                        {{row.approver?.userfullname}}
+                                    </mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="client_cost_cost_id">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header
+                                        [ngClass]="'tbl-col-width-per-15-per'">{{'CLIENT.ADD_EDIT.COST_GL' |
+                                        translate}}</mat-header-cell>
+                                    <mat-cell *matCellDef="let row" [matTooltip]="getCostCodeTooltip(row)"
+                                        class="tbl-col-width-per-15-per" (contextmenu)="onContextMenu($event, row)"
+                                        (click)="editClient(row)">
+                                        <span class="truncate-text"> <span class="mobile-label">Cost Code:</span>
+                                            {{row.client_cost_cost?.value}}</span>
+                                    </mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="client_status">
+                                    <mat-header-cell class="psl-1" [ngClass]="'tbl-col-width-per-action'"
+                                        *matHeaderCellDef mat-sort-header>{{'VENDOR.TABLE.STATUS' |
+                                        translate}}
+                                    </mat-header-cell>
+                                    <mat-cell mat-cell *matCellDef="let row" (contextmenu)="onContextMenu($event, row) "
+                                        class="tbl-col-width-per-action">
+                                        <span class="mobile-label">Status:</span>
+                                        <div *ngIf="row.client_status===1" (click)="updateStatus(row)">
+                                            <span class="badge badge-solid-green">
+                                                {{'COMMON.STATUS.ACTIVE' | translate}}</span>
+                                        </div>
+                                        <div *ngIf="row.client_status===2" (click)="updateStatus(row)">
+                                            <span class="badge badge-solid-red">
+                                                {{'COMMON.STATUS.INACTIVE' | translate}}</span>
+                                        </div>
+                                    </mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="is_quickbooks">
+                                    <mat-header-cell *matHeaderCellDef class="tbl-col-width-per-quickbooks">
+                                        <img [src]="quickbooksGreenIcon" alt="" height="23" width="23" />
+                                    </mat-header-cell>
+                                    <mat-cell *matCellDef="let row" (click)="editClient(row)"
+                                        (contextmenu)="onContextMenu($event, row)" class="tbl-col-width-per-quickbooks">
+                                        <span class="mobile-label">Quickbooks:</span>
+                                        <img *ngIf="!row.is_quickbooks" [src]="quickbooksGreyIcon" alt="" height="23"
+                                            width="23" />
+                                        <img *ngIf="row.is_quickbooks" [src]="quickbooksGreenIcon" alt="" height="23"
+                                            width="23" />
+                                    </mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="actions">
+                                    <mat-header-cell class="psl-3" [ngClass]="'tbl-col-width-per-action'"
+                                        *matHeaderCellDef>{{'VENDOR.TABLE.ACTIONS' |
+                                        translate}}</mat-header-cell>
+                                    <mat-cell *matCellDef="let row; let i=index;" class="pr-0 tbl-col-width-per-action">
+                                        <button matTooltip="{{'COMMON.ACTIONS.EDIT' |
+                                                    translate}}" mat-icon-button color="accent"
+                                            (click)="$event.stopPropagation()" (click)="editClient(row)"
+                                            *ngIf="isDelete === 0" class="col-blue">
+                                            <app-feather-icons [icon]="'edit'" [class]="'tbl-fav-edit'">
+                                            </app-feather-icons>
+                                        </button>
+                                        <button mat-icon-button matTooltip="{{'COMMON.ACTIONS.ARCHIVE' |
+                                                    translate}}" color="accent" (click)="$event.stopPropagation()"
+                                            (click)="deleteClient(row, 1)" *ngIf="isDelete === 0" class="col-red">
+                                            <mat-icon>archive</mat-icon>
+                                        </button>
+                                        <button *ngIf="role_permission.clientJob.Delete && isDelete === 1"
+                                            mat-icon-button matTooltip="{{'COMMON.ACTIONS.RESTORE' |
+                                                    translate}}" color="accent" (click)="$event.stopPropagation()"
+                                            (click)="deleteClient(row, 0)" class="col-red">
+                                            <mat-icon>archive</mat-icon>
+                                        </button>
+                                    </mat-cell>
+                                </ng-container>
+
+                                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                                <mat-row *matRowDef="let row; columns: displayedColumns;" [style.cursor]="'pointer'"
+                                    matRipple>
+                                </mat-row>
+                            </table>
+                        </div>
+                        <!-- Loading spinner -->
+                        <div *ngIf="clientService?.isTblLoading" class="tbl-spinner">
+                            <app-loading></app-loading>
+                        </div>
+                        <div *ngIf="!clientService?.isTblLoading" class="no-results"
+                            [style.display]="clientJobList.length === 0 ? '' : 'none'">
+                            {{'COMMON.LISTING.EMPTY' | translate}}
+                        </div>
+                        <mat-paginator #paginator [length]="pager!.total" [pageIndex]="tableRequest.pageIndex"
+                            [pageSize]="tableRequest.pageSize" [pageSizeOptions]="[5, 10, 25, 100]"
+                            (page)="changePage($event)">
+                        </mat-paginator>
+                    </div>
+                </div>
+            </div>
+        </div>

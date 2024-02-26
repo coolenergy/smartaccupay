@@ -1,0 +1,379 @@
+<div class="wrapper-cust-admin" fxLayout style="height: 95%">
+    <div class="invoice-data" [ngClass]="mode == 'on'? 'header-text-cust-chart-dark' : 'header-text-cust-chart'">
+        <div class="d-flex justify-content-between p-3">
+            <div>
+                <p class="title">Invoice #</p>
+                <p *ngIf="loadInvoice">{{invoiceData.invoice}}</p>
+                <p *ngIf="!loadInvoice"></p>
+            </div>
+            <div>
+                <p class="title">P.O #</p>
+                <p *ngIf="loadInvoice">{{invoiceData.p_o}}</p>
+                <p *ngIf="!loadInvoice"></p>
+            </div>
+            <div>
+                <p class="title">Packing Slip</p>
+                <p *ngIf="loadInvoice">{{invoiceData.packing_slip}}</p>
+                <p *ngIf="!loadInvoice"></p>
+            </div>
+            <div>
+                <p class="title">Receiving Slip</p>
+                <p *ngIf="loadInvoice">{{invoiceData.receiving_slip}}</p>
+                <p *ngIf="!loadInvoice"></p>
+            </div>
+            <div>
+                <p class="title">{{'Files_Attached' | translate}}</p>
+                <p *ngIf="loadInvoice">{{invoiceData.attach_files}}</p>
+                <p *ngIf="!loadInvoice"></p>
+            </div>
+
+            <div>
+                <p class="title">Status</p>
+                <p [ngClass]="invoiceData.status == 'Pending'? 'pendingcss' : 'Approvedcss' && invoiceData.status == 'Approved'? 'Approvedcss' : 'Rejectcss'&& invoiceData.status == 'Rejected'? 'Rejectcss' : 'Rejectcss'"
+                    *ngIf="loadInvoice">
+                    {{invoiceData.status}}
+                </p>
+                <p *ngIf="!loadInvoice"></p>
+            </div>
+            <div class="row my-2">
+                <button *ngIf="role_permission.invoice.Edit" mat-raised-button color="primary"
+                    style="margin-right: 12px;" class="sign-button">
+                    <img src="{{add_my_self_icon}}" alt="" height="20px">
+                    Add to batch
+                </button>
+                <button (click)="openHistoryDialog()"
+                    class="import-export-btn-datatable button_workersEditClass cust-margin-div mr-2 "
+                    matTooltip="{{ 'TOOLTIP_HISTORY' | translate }}">
+                    <img src="{{historyIcon}}" alt="" height="20px">
+                </button>
+                <button class="import-export-btn-datatable cust-margin-div" (click)="back(invoiceData)"
+                    matTooltip="{{ 'All-exit' | translate }}">
+                    <img src="{{exitIcon}}" alt="" class="far fa-paper-plane" height="20px">
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-2" style="height:90%">
+        <div class="col-sm-12 col-md-12 col-lg-6">
+            <!-- Invoice_preview -->
+            <mat-accordion [displayMode]="displayMode" [multi]="multi" class="mat-expansion-demo-width">
+                <mat-nav-list>
+                    <!-- [expanded]="hide" -->
+                    <mat-expansion-panel [expanded]="hide" [hideToggle]="hideToggle">
+                        <mat-expansion-panel-header class="hover">
+                            <h4 class="mt-3">{{ "Invoice_preview" | translate }}</h4>
+                        </mat-expansion-panel-header>
+                        <div class="pdf-data" *ngIf="loadInvoice">
+                            <div class=" mt-1 pdf-header">
+
+                                <button style="background-color:green; color: white;"
+                                    *ngIf="role_permission.invoice.Edit && invoiceData.status != 'Approved' "
+                                    mat-raised-button (click)="updateInvoice(id,'Approved')"
+                                    class="cust-button-form Approve"><img src="{{approveIcon}}" alt="" height="15px">
+                                    {{'PO-View-Approve' | translate}}</button>
+                                <button style="background-color: red; color: white;"
+                                    *ngIf="role_permission.invoice.Edit && invoiceData.status != 'Rejected'"
+                                    mat-raised-button (click)="updateInvoice(id,'Rejected')"
+                                    class="cust-button-form Denied">
+                                    <img src="{{denyIcon}}" alt="" height="15px"> {{'reject_all' | translate}}</button>
+
+                                <button *ngIf="role_permission.invoice.Edit" mat-raised-button color="primary"
+                                    (click)="goToInvoiceEdit(invoiceData)" class="cust-button-form"><img
+                                        src="{{editIcon}}" alt="" class="" height="20px"
+                                        style=" padding-right: 4px;">{{'All-Edit' |
+                                    translate}}</button>
+                                <button mat-raised-button color="primary" (click)="download()"
+                                    class="cust-button-form"><img src="{{downloadIcon}}" alt="" class="" height="20px"
+                                        style=" padding-right: 4px;">{{'PO-View-Download' |
+                                    translate}}</button>
+                                <button mat-raised-button color="primary" (click)="print()"
+                                    class="cust-button-form"><img src="{{printIcon}}" alt="" class="" height="15px"
+                                        style=" padding-right: 4px;">{{'PO-View-Print' |
+                                    translate}}</button>
+                            </div>
+                            <div class="pdf-viewer" *ngIf="loadInvoice">
+                                <pdf-viewer id="pdf" [src]="invoiceData.pdf_url" [rotation]="0" [original-size]="false"
+                                    [show-all]="true" [fit-to-page]="false" [zoom]="1" [zoom-scale]="'page-width'"
+                                    [stick-to-page]="false" [render-text]="true" [external-link-target]="'blank'"
+                                    [autoresize]="true" [show-borders]="false" [external-link-target]="'blank'"
+                                    style="display: block;"></pdf-viewer>
+                            </div>
+                        </div>
+
+                    </mat-expansion-panel>
+                </mat-nav-list>
+                <!-- invoice-Notes -->
+                <mat-nav-list>
+                    <!-- [expanded]="invoice_notes" -->
+                    <mat-expansion-panel [hideToggle]="hideToggle" [disabled]="disabled">
+                        <mat-expansion-panel-header class="hover">
+                            <h4 class="mt-3">{{ "Project-Timecard-Notes" |
+                                translate }}</h4>
+                        </mat-expansion-panel-header>
+                        <div class="task-data  m-3">
+                            <div class="d-flex justify-content-end">
+                                <button *ngIf="role_permission.invoice.Edit" mat-raised-button color="primary"
+                                    (click)="addNotes()" class="sign-button "><img src="{{add_my_self_icon}}" alt=""
+                                        height="20px">
+                                    {{'Project-Timecard-Notes' | translate }}
+                                </button>
+                            </div>
+                            <div class="d-flex no-gutters" *ngFor="let note of notesList">
+                                <div class="col">
+                                    <div class="note-card mt-2"
+                                        [ngClass]="mode == 'on'? 'text-cust-notes-dark' : 'text-cust-notes'">
+                                        <div class="d-flex justify-content-start">
+                                            <img class="crl example-card-img-responsive mr-2"
+                                                src="{{note.userpicture || defalut_image}}" />
+                                            <div class="details">
+                                                <div class="d-flex justify-content-between user-info">
+                                                    <span>{{note.userfullname}}</span>
+                                                    <span>{{temp_MMDDYYY_format(note.updated_at)}}</span>
+                                                </div>
+                                                <pre class="note"
+                                                    [ngClass]="mode == 'on'? 'dark-note' : ''">{{note.notes}}</pre>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cust-margin mx-1 pt-2">
+                                    <a *ngIf="role_permission.invoice.Edit" mat-icon-button
+                                        aria-label="Example icon button with a vertical three dot icon"
+                                        (click)="deleteNote(note._id,invoice_id)">
+                                        <mat-icon>delete</mat-icon>
+                                    </a>
+                                </div>
+
+                            </div>
+                            <div *ngIf="show_Nots">
+                                <div class="">
+                                    <form class="form text-center p-2" [formGroup]="invoiceNoteform">
+                                        <mat-form-field appearance="outline" class="main-one-input-field">
+                                            <mat-label>{{'Project-Timecard-Notes' | translate }}</mat-label>
+                                            <textarea matInput appTextareaAutoresizeproject
+                                                class="input-capitalized-textArea" formControlName="notes"
+                                                placeholder="{{'Project-Timecard-Notes' | translate }}"></textarea>
+                                        </mat-form-field>
+                                    </form>
+                                </div>
+                                <div class="text-center mb-2">
+                                    <button *ngIf="role_permission.invoice.Edit" mat-raised-button (click)="saveNotes()"
+                                        color="primary" class="cust-button-form"><img src="{{saveIcon}}" alt=""
+                                            class="pr-1" height="15px">{{'All-save' |
+                                        translate}}</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </mat-expansion-panel>
+
+                </mat-nav-list>
+                <!-- Attchments -->
+                <mat-nav-list>
+                    <!-- [expanded]="Attchments" -->
+                    <mat-expansion-panel [hideToggle]="hideToggle" [disabled]="disabled">
+                        <mat-expansion-panel-header class="hover">
+                            <h4 class="mt-3">{{ "All-Attachment" | translate }}</h4>
+                        </mat-expansion-panel-header>
+                        <div class="row d-flex justify-content-end mt-1">
+
+                            <div *ngIf="role_permission.invoice.Edit" class="container-cust"
+                                [ngClass]="mode == 'on'? 'button_dark' : 'button_light'" appDnd
+                                (fileDropped)="onFileDropped($event)">
+                                <input type="file" #fileDropRef id="fileDropRef" multiple
+                                    (change)="fileBrowseHandler($event.target.files)" />
+                                <label for="fileDropRef"><img src="{{add_my_self_icon}}" alt="" height="20px">
+                                    {{'All-Attachment' | translate}}</label>
+                            </div>
+                        </div>
+
+                        <div class="row cust-margin">
+                            <div class="files-list">
+                                <div class="single-file" *ngFor="let file of files; let i = index">
+                                    <div class="file-icon">
+                                        <img [src]="thumbImage(file)" alt="">
+                                    </div>
+                                    <div class="info" alignment="center">
+                                        <h4 class="name">
+                                            {{ file?.name }}
+                                        </h4>
+                                    </div>
+
+                                    <div class="delete" (click)="deleteFile(i)">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="18"
+                                            viewBox="0 0 14 18">
+                                            <path fill="#B1B1B1" fill-rule="nonzero"
+                                                d="M1 16c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2H3c-1.1 0-2 .9-2 2v10zm3.17-7.83a.996.996 0 0 1 1.41 0L7 9.59l1.42-1.42a.996.996 0 1 1 1.41 1.41L8.41 11l1.42 1.42a.996.996 0 1 1-1.41 1.41L7 12.41l-1.42 1.42a.996.996 0 1 1-1.41-1.41L5.59 11 4.17 9.58a.996.996 0 0 1 0-1.41zM10.5 1L9.79.29C9.61.11 9.35 0 9.09 0H4.91c-.26 0-.52.11-.7.29L3.5 1H1c-.55 0-1 .45-1 1s.45 1 1 1h12c.55 0 1-.45 1-1s-.45-1-1-1h-2.5z" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row cust-margin">
+                            <div class="files-list">
+
+                                <div class="single-file" *ngFor="let file of files_old; let i = index">
+                                    <div class="file-icon" (click)="imageNetworkPreview(files_old, i)">
+                                        <img [src]="thumbNetworkImage(i)" alt="">
+                                    </div>
+                                    <div class="info" alignment="center">
+                                        <h4 class="name">
+                                            {{ file.split('/').pop() }}
+                                        </h4>
+                                    </div>
+
+                                    <div class="delete" *ngIf="role_permission.invoice.Delete"
+                                        (click)="deleteFile_old(i)">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="18"
+                                            viewBox="0 0 14 18">
+                                            <path fill="#B1B1B1" fill-rule="nonzero"
+                                                d="M1 16c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2H3c-1.1 0-2 .9-2 2v10zm3.17-7.83a.996.996 0 0 1 1.41 0L7 9.59l1.42-1.42a.996.996 0 1 1 1.41 1.41L8.41 11l1.42 1.42a.996.996 0 1 1-1.41 1.41L7 12.41l-1.42 1.42a.996.996 0 1 1-1.41-1.41L5.59 11 4.17 9.58a.996.996 0 0 1 0-1.41zM10.5 1L9.79.29C9.61.11 9.35 0 9.09 0H4.91c-.26 0-.52.11-.7.29L3.5 1H1c-.55 0-1 .45-1 1s.45 1 1 1h12c.55 0 1-.45 1-1s-.45-1-1-1h-2.5z" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center mb-2" *ngIf="files.length">
+                            <button *ngIf="role_permission.invoice.Edit" mat-raised-button (click)="saveAttchment()"
+                                color="primary" class="cust-button-form"><img src="{{saveIcon}}" alt="" class="pr-1"
+                                    height="15px">{{'All-save' |
+                                translate}}</button>
+                        </div>
+
+                    </mat-expansion-panel>
+                </mat-nav-list>
+
+
+            </mat-accordion>
+        </div>
+
+
+        <div class="col-sm-12 col-md-12 col-lg-6">
+            <div class="tab-h wrapper-cust-admin">
+                <div class="container">
+                    <!-- Invoice_preview -->
+
+                    <!-- <div class="d-flex flex-row">
+                        <mat-tab-group mat-align-tabs="center" *ngIf="show_tabs"
+                            (selectedTabChange)="onTabChanged($event)">
+                            <mat-tab label="{{'P.O' | translate }}">
+                                <app-invoice-other-document [documentType]="documentTypes.po"
+                                    [showPDF]="showPDF"></app-invoice-other-document>
+                            </mat-tab>
+                            <mat-tab label="{{ 'Packing Slip' | translate }}">
+                                <app-invoice-other-document [documentType]="documentTypes.packingSlip"
+                                    [showPDF]="showPDF"></app-invoice-other-document>
+                            </mat-tab>
+                            <mat-tab label="{{'Receiving Slip' | translate}} ">
+                                <app-invoice-other-document [documentType]="documentTypes.receivingSlip"
+                                    [showPDF]="showPDF"></app-invoice-other-document>
+                            </mat-tab>
+
+                            <mat-tab label="{{'Quote' | translate }}">
+                                <app-invoice-other-document [documentType]="documentTypes.quote"
+                                    [showPDF]="showPDF"></app-invoice-other-document>
+                            </mat-tab>
+                        </mat-tab-group>
+
+                        <button style="height: 35px;" mat-raised-button (click)="showHidePDF()" color="primary"
+                            class="cust-button-form"><img src="{{editIcon}}" alt="" class="pr-1"
+                                height="15px">{{'All-save' |
+                                            translate}}</button>
+                    </div> -->
+
+                    <div class="full-width">
+                        <div *ngIf="show_tabs" class=" d-flex  align-items-center flex-row">
+                            <div class="col border-1  custom-bg"
+                                [ngClass]="selectedDocumentType == documentTypes.po ? 'selected' : ''"
+                                (click)="setDocumentType(documentTypes.po)">
+                                {{'P.O' | translate }}
+                            </div>
+                            <div class="col custom-bg"
+                                [ngClass]="selectedDocumentType == documentTypes.packingSlip ? 'selected' : ''"
+                                (click)="setDocumentType(documentTypes.packingSlip)">
+                                {{'Packing Slip' | translate }}
+                            </div>
+                            <div class="col custom-bg"
+                                [ngClass]="selectedDocumentType == documentTypes.receivingSlip ? 'selected' : ''"
+                                (click)="setDocumentType(documentTypes.receivingSlip)">
+                                {{'Receiving Slip' | translate }}
+                            </div>
+                            <div class="col  custom-bg"
+                                [ngClass]="selectedDocumentType == documentTypes.quote ? 'selected' : ''"
+                                (click)="setDocumentType(documentTypes.quote)">
+                                {{'Quote' | translate }}
+                            </div>
+                            <!-- showPDF -->
+                            <div class="px-3 border custom-bg text-right" style="height: 39px;" (click)="clickArrow()">
+
+                                <div style="margin-bottom: 10px;" *ngIf="!showPDF"> <img src="{{downIcon}}" alt=""
+                                        class="" height="10px" style=" padding-right: 4px"></div>
+                                <div style="margin-top: 0px;" *ngIf="showPDF"> <img src="{{upIcon}}" alt="" class=""
+                                        height="10px" style=" padding-right: 4px"></div>
+
+
+                            </div>
+                            <!-- <mat-tab-group mat-align-tabs="center">
+                                <mat-tab label="{{'P.O' | translate }}">
+                                    <app-invoice-other-document [documentType]="documentTypes.po"></app-invoice-other-document>
+                    
+                                </mat-tab>
+                                <mat-tab label="{{ 'Packing Slip' | translate }}">
+                                    <app-invoice-other-document [documentType]="documentTypes.packingSlip"></app-invoice-other-document>
+                    
+                                </mat-tab>
+                                <mat-tab label="{{'Receiving Slip' | translate}} ">
+                                    <app-invoice-other-document [documentType]="documentTypes.receivingSlip"></app-invoice-other-document>
+                    
+                                </mat-tab>
+                    
+                                <mat-tab label="{{'Quote' | translate }}">
+                                    <app-invoice-other-document [documentType]="documentTypes.quote"></app-invoice-other-document>
+                    
+                                </mat-tab>
+                    
+                            </mat-tab-group> -->
+
+                        </div>
+                    </div>
+
+                    <app-invoice-other-document [documentType]="selectedDocumentType" [showPDF]="showPDF"
+                        *ngIf="loadDocumentData"></app-invoice-other-document>
+                    <!-- <div class="container">
+                        <div *ngIf="show_tabs">
+                            <mat-tab-group mat-align-tabs="center">
+                                <mat-tab label="{{'P.O' | translate }}">
+                                    <app-invoice-other-document
+                                        [documentType]="documentTypes.po"></app-invoice-other-document>
+
+                                </mat-tab>
+                                <mat-tab label="{{ 'Packing Slip' | translate }}">
+                                    <app-invoice-other-document
+                                        [documentType]="documentTypes.packingSlip"></app-invoice-other-document>
+
+                                </mat-tab>
+                                <mat-tab label="{{'Receiving Slip' | translate}} ">
+                                    <app-invoice-other-document
+                                        [documentType]="documentTypes.receivingSlip"></app-invoice-other-document>
+
+                                </mat-tab>
+
+                                <mat-tab label="{{'Quote' | translate }}">
+                                    <app-invoice-other-document
+                                        [documentType]="documentTypes.quote"></app-invoice-other-document>
+
+                                </mat-tab>
+
+                            </mat-tab-group>
+
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <ngx-gallery [options]="galleryOptions" [images]="galleryImages" #gallery></ngx-gallery>

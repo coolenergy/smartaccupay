@@ -1,0 +1,54 @@
+ ::ng-deep .dt-button {
+
+     background-color: green !important;
+     color: white !important;
+     height: 30px !important;
+ }
+
+ ::ng-deep .dt-button .buttons-columnVisibility .active {
+     background-color: rgb(89, 0, 255) !important;
+     color: white !important;
+ }
+
+ ::ng-deep .buttons-columnVisibility {
+     background-color: red !important;
+     color: white !important;
+ }
+
+ ::ng-deep .dt-down-arrow {
+     color: white !important;
+     padding-left: 15px !important;
+     line-height: 1em !important;
+     font-size: 10px;
+ }
+
+ ::ng-deep div.dt-button-collection button.dt-button.active:not(.disabled) {
+     background: green !important;
+     background-color: green !important;
+ }
+
+ ::ng-deep .button.dt-button span.dt-down-arrow {
+
+     padding-left: 17px !important;
+     line-height: 1em !important;
+ }
+
+
+
+ .Approvedcss {
+     color: #0fb900;
+ }
+
+ .Rejectcss {
+     color: red;
+ }
+
+ .pendingcss {
+     color: hsl(19, 94%, 55%)
+ }
+
+
+ .table-responsive {
+     overflow-x: unset !important;
+     margin-bottom: 50PX !important;
+ }

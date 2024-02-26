@@ -1,0 +1,44 @@
+<!-- 
+    File created by Krunal Tailor
+    Date 28-05-2022 01:44AM
+    Data list is only display not inserted.   
+ -->
+<h1 mat-dialog-title></h1>
+<div mat-dialog-content>
+    <table datatable [dtOptions]="dtOptions" class="row-border hover">
+        <thead>
+            <tr>
+                <th>{{'Employee-form-Status' | translate}}</th>
+                <th>{{'Agent-username' | translate}}</th>
+                <th>{{'Agent-email' | translate}}</th>
+                <th>{{'Project-Workers-Role' | translate}}</th>
+                <th>{{'Employee-form-Gender' | translate}}</th>
+                <th>{{'Project_Settings_Workers_Department' | translate}}</th>
+                <th>{{'Employee-form-Job-Title' | translate}}</th>
+                <th>{{'Employee-form-Job-Type' | translate}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let userdata of data.data" [ngClass]="{'backgroun-cust': userdata.status == false}">
+                <td>{{userdata.message}}</td>
+                <td>{{userdata.userfullname}}</td>
+                <td>{{userdata.useremail}}</td>
+                <td>{{userdata.user_role}}</td>
+                <td>{{userdata.usergender}}</td>
+                <td>{{userdata.userdepartment}}</td>
+                <td>{{userdata.userjob_title}}</td>
+                <td>{{userdata.userjob_type}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+<div mat-dialog-actions>
+    <div *ngIf="success_buttons" class="row justify-content-center w-100">
+        <button mat-raised-button color="primary" (click)="saveData()">{{'Ok_to_import' | translate }}</button>
+        <button mat-raised-button mat-dialog-close>{{'All-Cancel' | translate }}</button>
+    </div>
+    <div *ngIf="failed_buttons" class="row justify-content-center w-100">
+        <button mat-raised-button (click)="cancelImport()">{{'Cancel_Import' | translate }}</button>
+    </div>
+</div>

@@ -1,0 +1,99 @@
+<section class="content">
+    <div class="content-block">
+        <div class="m-4"></div>
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="materialTableHeader">
+                        <div class="left">
+                            <ul class="header-buttons-left ms-0">
+                                <li class="tbl-title">
+                                    <h2 *ngIf="id.length == 0">Add Mailbox</h2>
+                                    <h2 *ngIf="id.length > 0">Edit Mailbox</h2>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="right">
+                            <ul class="tbl-export-btn">
+                                <li class="tbl-header-btn">
+                                    <div class="m-l-10" matTooltip="{{'COMMON.TOOL_TIP.BACK' |
+                                    translate}}">
+                                        <button mat-mini-fab color="warn" (click)="confirmExit()">
+                                            <mat-icon class="col-white">close</mat-icon>
+                                        </button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="body">
+                        <form class="register-form m-4" [formGroup]="companyinfoForm">
+                            <div class="row mt-2">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                                    <mat-form-field appearance="outline" class="example-full-width">
+                                        <mat-label>Email Address</mat-label>
+                                        <input required matInput formControlName="email"
+                                            class="input-capitalized-textfield" placeholder="Email Address">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                                    <mat-form-field appearance="outline" class="example-full-width">
+                                        <mat-label>Password</mat-label>
+                                        <input required matInput formControlName="password"
+                                            class="input-capitalized-textfield" placeholder="password">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                                    <mat-form-field appearance="outline" class="example-full-width">
+                                        <mat-label>IMAP</mat-label>
+                                        <input required matInput formControlName="imap"
+                                            class="input-capitalized-textfield" placeholder="IMAP">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                                    <mat-form-field appearance="outline" class="example-full-width">
+                                        <mat-label>Port</mat-label>
+                                        <input required matInput formControlName="port"
+                                            onkeypress="return String.fromCharCode(event.charCode).match(/[^0-9]/g) === null"
+                                            class="input-capitalized-textfield" placeholder="Port">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                                    <mat-form-field appearance="outline" class="example-full-width">
+                                        <mat-label>Frequency
+                                        </mat-label>
+                                        <mat-select formControlName="time" (ngModelChange)="onSelectTime($event)"
+                                            class="dark-cust-color" required>
+                                            <mat-option *ngFor="let f of frequency" [value]="f.time">
+                                                {{f.value}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                                    <button class="btn-space" mat-raised-button color="primary"
+                                        [disabled]="!companyinfoForm.valid"
+                                        (click)="saveMailBox()">{{'COMMON.ACTIONS.SAVE'|
+                                        translate}}</button>
+                                    <button type="button" mat-raised-button color="warn"
+                                        (click)="confirmExit()">{{'COMMON.ACTIONS.CANCEL'| translate}}</button>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

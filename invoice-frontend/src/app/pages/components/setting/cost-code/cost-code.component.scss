@@ -1,0 +1,22 @@
+.inner-search-bar {
+    width: 80%;
+    margin-bottom: 5px;
+}
+
+.shift-input {
+    text-transform: capitalize;
+    width: 100% !important;
+}
+
+.button-margin {
+    padding: 7px 32px;
+}
+
+::ng-deep .s2-confirm {
+    width: 150px !important;
+}
+
+::ng-deep .btn-gray {
+    background-color: grey !important;
+    color: white !important;
+}

@@ -1,0 +1,42 @@
+<section class="content">
+    <div class="content-block">
+        <div class="m-4"></div>
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="materialTableHeader">
+                        <div class="left">
+                            <ul class="header-buttons-left ms-0">
+                                <li class="tbl-title">
+                                    <h2>{{'INVOICE.HISTORY.TITLE' | translate}}</h2>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="right">
+                            <ul class="tbl-export-btn">
+                                <li class="tbl-header-btn">
+                                    <div class="m-l-10" matTooltip="{{'COMMON.TOOL_TIP.BACK' |
+                                        translate}}">
+                                        <button mat-mini-fab color="warn" (click)="back()">
+                                            <mat-icon class="col-white">close </mat-icon>
+                                        </button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card-body" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50"
+                        (scrolled)="onScroll()" [scrollWindow]="false" [ngStyle]="setHeightStyles()">
+                        <ul class="list-unstyled user-progress list-unstyled-border list-unstyled-noborder">
+                            <app-history *ngFor="let history of invoiceHistory; let i = index" [history]="history"
+                                [title]="invoiceHistory[i].invoice.invoice_no" class="full-width"></app-history>
+                        </ul>
+                        <div *ngIf="historyLoading" class="tbl-spinner">
+                            <app-loading></app-loading>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

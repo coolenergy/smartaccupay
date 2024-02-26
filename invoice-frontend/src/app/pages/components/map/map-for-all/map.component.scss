@@ -1,0 +1,18 @@
+.cust-height {
+  height: 100% !important;
+}
+
+mgl-map {
+  height: 100%;
+  width: 100%;
+}
+
+::ng-deep {
+  .address {
+    background-color: #023E8A !important;
+  }
+
+  .darkMode .address {
+    background-color: #30343d !important;
+  }
+}

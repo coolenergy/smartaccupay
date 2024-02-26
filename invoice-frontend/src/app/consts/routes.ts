@@ -1,0 +1,25 @@
+export enum routes {
+  DASHBOARD = '/dashboard',
+  TYPOGRAPHY = '/typography',
+  EMPLOYEEFORM = '/employee-form',
+  EMPLOYEELIST = '/employee-list',
+  TABLES = '/tables',
+  NOTIFICATION = '/notification',
+  UI_ELEMENTS_ICONS = '/ui/icons',
+  UI_ELEMENTS_CHARTS = '/ui/charts',
+  UI_ELEMENTS_MAP = '/ui/map',
+  LOGIN = '/login',
+  TODAYACTIVITY = '/todaysactivity',
+  PROJECT = "/project",
+  SETTING = '/setting',
+
+  SUERADMINDASHBOARD = '/superadmin/dashboard',
+  SUERADMINDISTRIBUTORS = '/superadmin/distributors',
+  SUERADMINAGENT = '/superadmin/agents',
+  SUERADMINCLIENT = '/superadmin/clients',
+  SUERADMINSUPRADMIN = '/superadmin/adminusers',
+  SUPERADMINCOMPANYFROM = '/superadmin/companyform',
+  SUPERADMINCOMPANYLSIT = '/superadmin/company',
+
+  DASHBOARD_VENDOR = '/vendor/vendor-dashboard',
+}

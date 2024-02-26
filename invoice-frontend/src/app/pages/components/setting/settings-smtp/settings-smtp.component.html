@@ -1,0 +1,96 @@
+<div class="wrapper-cust-admin">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <form [formGroup]="smtpinfo">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <mat-form-field appearance="outline" class="main-one-input-field">
+                                    <mat-label>{{"Setting-smtp-server" | translate}}</mat-label>
+                                    <input matInput formControlName="tenant_smtp_server"
+                                        class="input-capitalized-textfield"
+                                        placeholder="{{'Setting-smtp-server' || translate}}">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <mat-form-field appearance="outline" class="main-one-input-field">
+                                    <mat-label>{{"Setting-smtp-username" | translate}}</mat-label>
+                                    <input matInput formControlName="tenant_smtp_username"
+                                        class="input-capitalized-textfield"
+                                        placeholder="{{'Setting-smtp-username' || translate}}">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <mat-form-field appearance="outline" class="main-one-input-field">
+                                    <mat-label>{{"Setting-smtp-port" | translate}}</mat-label>
+                                    <input matInput
+                                        onkeypress="return String.fromCharCode(event.charCode).match(/[^0-9]/g) === null"
+                                        formControlName="tenant_smtp_port" class="input-capitalized-textfield"
+                                        placeholder="{{'Setting-smtp-port' || translate}}">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <mat-form-field appearance="outline" class="main-one-input-field">
+                                    <mat-label>{{"Setting-smtp-server-timeout" | translate}}</mat-label>
+                                    <input matInput
+                                        onkeypress="return String.fromCharCode(event.charCode).match(/[^0-9]/g) === null"
+                                        formControlName="tenant_smtp_timeout" class="input-capitalized-textfield"
+                                        placeholder="{{'Setting-smtp-server-timeout' | translate}}">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <mat-form-field appearance="outline" class="main-one-input-field">
+                                    <mat-label>{{"Setting-smtp-password" | translate}}</mat-label>
+                                    <input type="password" matInput formControlName="tenant_smtp_password"
+                                        class="input-capitalized-textfield"
+                                        placeholder="{{'Setting-smtp-password' | translate}}">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <mat-form-field appearance="outline" class="main-one-input-field">
+                                    <mat-label>{{"Setting-smtp-active-transport-layer-security" | translate}}
+                                    </mat-label>
+                                    <mat-select formControlName="tenant_smtp_security" class="dark-cust-color" required>
+                                        <mat-option *ngFor="let lts of LTS_ACTIVE" [value]="lts.value">
+                                            {{lts.viewValue}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <mat-form-field appearance="outline" class="main-one-input-field">
+                                    <mat-label>{{"Setting-smtp-auto-email-reply-to-email" | translate}}</mat-label>
+                                    <input matInput formControlName="tenant_smtp_reply_to_mail"
+                                        class="input-capitalized-textfield"
+                                        placeholder="{{'Setting-smtp-auto-email-reply-to-email' | translate}}">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row cust-center-justify">
+                        <button style="margin-right: 10px;" mat-raised-button type="submit" (click)="verifyData()"
+                            color="primary"><img src="{{verifyIcon}}" alt="" class="pr-1" height="15px">Verify
+                        </button>
+                        <button mat-raised-button type="submit" (click)="saveData()" color="primary"><img
+                                src="{{saveIcon}}" alt="" class="pr-1" height="15px">{{'All-save' |
+                            translate }}
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

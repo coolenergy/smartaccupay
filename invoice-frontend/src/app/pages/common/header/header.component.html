@@ -1,0 +1,60 @@
+<header class="flux-header clearfix" [attr.nav-layout]="navLayout"
+  [attr.navbar-type]="toggleStatus ? defaultNavbar : toggleNavbar " [attr.effect-type]="navbarEffect"
+  [attr.header-theme]="headerColorTheme" [attr.collapsed-left-header]="collapsedLeftHeader"
+  [attr.device-type]="deviceType">
+  <div class="flux-header-wrapper clearfix">
+    <div class="flux-brand" (click)="moveToDashboard()" [attr.left-header-theme]="leftHeaderColorTheme">
+      <img class="flux-brand-logo" src="./assets/logo/invoice_logo.png" alt="logo">
+      <span class="flux-brand-text">ROVUK A/P</span>
+    </div>
+
+    <div class="flux-header-navbar">
+      <div class="flux-left-header clearfix">
+        <div class="sidemenuIcon" (click)="changeTheToggleStatus()"><img src="./assets/diversityicon/menu_icon.png"
+            alt="" height="15px"></div>
+      </div>
+
+      <div class="flux-right-header clearfix">
+        <ul>
+          <li *ngIf="usertype == 'invoice-portal'">
+            <div matTooltip="{{company_code}}" style="height: 40px;" (click)="moveToSettings()">
+              <img *ngIf="company_logo" src="{{ company_logo }}" alt="" class="bottom-image-cust" height="40" />
+            </div>
+          </li>
+          <li>
+            <app-notifications></app-notifications>
+          </li>
+          <!-- <li>
+            <app-invoice-progress></app-invoice-progress>
+          </li> -->
+          <li>
+            <button class="email-button" (click)="addressbookdialog()" mat-mini-fab>
+              <img src="{{AddressbookIcon}}" alt="" height="25px">
+            </button>
+          </li>
+          <!--  *ngIf="weatherShow" -->
+          <!-- <li><button class="email-button " mat-mini-fab (click)="showWeatherUI()">
+              <div class="">
+                <span [innerHtml]="weatherToday.iconFile" class="icon-cust-headr"></span> -->
+          <!-- <span class="cust-tmp-header">{{weatherToday.temp_max}}</span> -->
+          <!-- </div>
+            </button></li> -->
+
+          <li *ngIf="usertype == 'invoice-portal'">
+            <app-shortcuts-menu></app-shortcuts-menu>
+          </li>
+
+          <!--  Language option is commented in Rovuk A/P. Don't Delete this code
+          Since in future if require multi-language support then need to uncomment below code -->
+          <!-- <li>
+            <app-language></app-language>
+          </li> -->
+          <li>
+            <app-user (signOut)="signOut()"></app-user>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</header>

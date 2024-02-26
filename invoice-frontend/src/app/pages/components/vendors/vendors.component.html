@@ -1,0 +1,74 @@
+<div class="display-inline-cust">
+    <div class="main-search-bar">
+
+        <div class="row justify-content-between m-3 py-3">
+
+
+
+            <div class="d-flex chip ">
+
+                <div class=" cust-margin-div mr-1">
+                    <div class="row d-flex px-2">
+                        <h1 class="screen-title">
+                            {{ "Add-Vendor" | translate | titlecase }}
+                        </h1>
+                    </div>
+                </div>
+                <button mat-raised-button class="btn-success sign-button cust-margin-div mr-1"
+                    (click)="statusFilter('Active')">
+                    <div class="d-flex  px-2">
+                        <img class="m-auto" *ngIf="selectedStatus == 'Active'" src="{{approveIcon}}" alt=""
+                            height="15px">
+                        <div class="mx-2">{{ 'Team-EmployeeList-Status-Active' | translate }}</div>
+                        <div>{{count.active}}</div>
+                    </div>
+                </button>
+
+                <button mat-raised-button class="btn-danger sign-button cust-margin-div mr-1"
+                    (click)="statusFilter('Inactive')">
+                    <div class="d-flex  px-2">
+                        <img class="m-auto" *ngIf="selectedStatus == 'Inactive'" src="{{approveIcon}}" alt=""
+                            height="15px">
+                        <div class="mx-2">{{ 'project_setting_inactive' | translate }}</div>
+                        <div>{{count.inactive}}</div>
+                    </div>
+                </button>
+
+            </div>
+
+
+
+            <div clsas="float-end ml-5">
+                <button (click)="openHistoryDialog()"
+                    class="import-export-btn-datatable button_workersEditClass cust-margin-div mr-2 "
+                    matTooltip="{{ 'TOOLTIP_HISTORY' | translate }}">
+                    <img src="{{historyIcon}}" alt="" height="20px">
+                </button>
+                <button class="import-export-btn-datatable button_workersEditClass cust-margin-div"
+                    (click)="openChangeVendorReportDialog()" matTooltip="{{ 'TOOLTIP_REPORT' | translate }}"
+                    aria-label="Left Align">
+                    <img src="{{reportIcon}}" alt="" height="20px">
+                </button>
+                <button *ngIf="role_permission.vendor.Delete" mat-stroked-button style="margin-right: 2px;"
+                    class="sign-button" (click)="openArchived()" mat-raised-button>
+                    <img src="{{archivedIcon}}" alt="" class="pr-1" height="19px">
+                    {{'Archived_all' | translate }}
+                </button>
+                <button *ngIf="role_permission.vendor.Add" mat-raised-button color="primary"
+                    style="margin-right: 10px; " (click)="openVendorForm()" class="sign-button ml-1"><img
+                        src="{{add_my_self_icon}}" alt="" height="20px">
+                    {{'Add-Vendor' | translate }}
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+<div class="wrapper-cust-admin cust-width ">
+    <div class="table-responsive cust-padding cust-padding-tmp mt-5" *ngIf="showTable">
+        <table datatable [dtOptions]="dtOptions" class="row-border hover">
+        </table>
+    </div>
+</div>
+<ngx-gallery [options]="galleryOptions" [images]="galleryImages" #gallery></ngx-gallery>

@@ -1,0 +1,85 @@
+<div class="wrapper-cust-admin" fxLayout style="height: 95%">
+     <div class="d-flex justify-content-between">
+          <h1 class="screen-title">
+               {{ "Mailbox" | translate | titlecase }}
+          </h1>
+          <div class="col-2 dialog-head-right">
+               <!-- *ngIf="_id == null" -->
+               <button class="import-export-btn-datatable cust-margin-div" (click)="confirmexit()"
+                    matTooltip="{{ 'All-exit' | translate }}">
+                    <img src="{{exitIcon}}" alt="" class="far fa-paper-plane" height="20px">
+               </button>
+          </div>
+     </div>
+     <mat-card class="example-card">
+          <!-- <div class="head-text">
+               <h3 class="editing">{{'Mailbox' | translate }}</h3>
+          </div> -->
+          <div class="container">
+               <div class="col-xl-12">
+                    <form [formGroup]="mailbpxform">
+
+
+                         <div class="row">
+                              <div class="col">
+                                   <mat-form-field appearance="outline" class="main-one-input-field">
+                                        <mat-label>Email Address</mat-label>
+                                        <input required matInput formControlName="email"
+                                             class="input-capitalized-textfield" placeholder="Email Address">
+                                   </mat-form-field>
+                              </div>
+                         </div>
+                         <div class="row">
+                              <div class="col">
+                                   <mat-form-field appearance="outline" class="main-one-input-field">
+                                        <mat-label>Password</mat-label>
+                                        <input required matInput formControlName="password"
+                                             class="input-capitalized-textfield" placeholder="password">
+                                   </mat-form-field>
+                              </div>
+                         </div>
+                         <div class="row">
+                              <div class="col">
+                                   <mat-form-field appearance="outline" class="main-one-input-field">
+                                        <mat-label>IMAP</mat-label>
+                                        <input required matInput formControlName="imap"
+                                             class="input-capitalized-textfield" placeholder="IMAP">
+                                   </mat-form-field>
+                              </div>
+                         </div>
+                         <div class="row">
+                              <div class="col">
+                                   <mat-form-field appearance="outline" class="main-one-input-field">
+                                        <mat-label>Port</mat-label>
+                                        <input required type="number" matInput formControlName="port"
+                                             onkeypress="return String.fromCharCode(event.charCode).match(/[^0-9]/g) === null"
+                                             class="input-capitalized-textfield" placeholder="Port">
+                                   </mat-form-field>
+                              </div>
+                         </div>
+                         <div class="row">
+                              <div class="col">
+                                   <mat-form-field appearance="outline" class="main-one-input-field">
+                                        <mat-label>Frequency
+                                        </mat-label>
+                                        <mat-select formControlName="time" (ngModelChange)="onSelectTime($event)"
+                                             class="dark-cust-color" required>
+                                             <mat-option *ngFor="let f of frequency" [value]="f.time">
+                                                  {{f.value}}
+                                             </mat-option>
+                                        </mat-select>
+                                   </mat-form-field>
+                              </div>
+                         </div>
+
+
+                         <button mat-stroked-button class="sign-button cust-margin-div m-4" mat-raised-button
+                              (click)="sendData()" color="primary">
+                              <img src="{{saveIcon}}" alt="" height="20px">
+                              {{'All-save' | translate}}
+                         </button>
+                    </form>
+               </div>
+          </div>
+     </mat-card>
+</div>

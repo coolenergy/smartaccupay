@@ -1,0 +1,69 @@
+@import "~@danielmoncada/angular-datetime-picker/assets/style/picker.min.css";
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.example-h2 {
+  margin: 10px;
+}
+
+.example-section {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  height: 60px;
+}
+
+.example-margin {
+  margin: 0 10px;
+}
+
+.example-radio-group {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+}
+
+.example-radio-button {
+  margin: 5px;
+}
+
+.advance-validation .error-msg {
+  margin-top: -15px;
+}
+
+.mat-radio-button~.mat-radio-button {
+  margin-left: 16px;
+}
+
+.mat-radio-label {
+  margin-bottom: 0px;
+}
+
+.mat-datepicker-content-touch .mat-calendar {
+  width: 50vh !important;
+  height: 57vh !important;
+}
+
+.mat-datepicker-toggle-default-icon {
+  width: 1.4em !important;
+}
+
+.icon-form-field {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.mat-form-field {
+  .date-icon {
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,554 @@
+{
+    "COMMON": {
+        "TOOL_TIP": {
+            "REFRESH": "Refresh",
+            "HISTORY": "History",
+            "REPORT": "Report",
+            "ARCHIVE": "Archive",
+            "ADD": "Add",
+            "XLSX": "Xlsx",
+            "BACK": "Back",
+            "SEARCH": "Search",
+            "MULTI_ARCHIVE": "Multi Archive",
+            "LIST_TO_GRID": "List To Grid",
+            "GRID_TO_LIST": "Grid To List",
+            "CLOSE": "Close",
+            "CHANGE_LANGUAGE": "Change Language",
+            "IMPORT_TEMPLATE": "Download Template",
+            "IMPORT": "Import",
+            "MAIL": "Mail",
+            "MESSAGE": "Message",
+            "VIEW": "View",
+            "DOWNLOAD": "Download",
+            "NOTIFICATION": "Notification",
+            "SHOW": "Show",
+            "HIDE": "Hide",
+            "PRINT": "Print",
+            "INVOICEMSG": "Invoice Message",
+            "INVOICELINK": "Invoice Link",
+            "EDIT": "Edit",
+            "DASHBOARD": "Dashboard",
+            "DELETE": "Delete",
+            "REMOVE": "Remove",
+            "SAVE": "Save",
+            "CANCEL": "Cancel"
+        },
+        "ACTIONS": {
+            "ACTIONS": "Actions",
+            "EDIT": "Edit",
+            "ARCHIVE": "Archive",
+            "RESTORE": "Restore",
+            "SAVE": "Save",
+            "CANCEL": "Cancel",
+            "SAVE_EXIT": "Save And Exit",
+            "DONT_SAVE": "Don't Save",
+            "ATTACHMENT": "Attachment",
+            "YES": "Yes",
+            "NO": "No",
+            "BACK": "Back",
+            "NEXT": "Next",
+            "DELETE": "Delete",
+            "Access_denied_all": "Access denied",
+            "UPLOAD": "Upload"
+        },
+        "HISTORY": {
+            "KEY": "Key",
+            "VALUE": "Value"
+        },
+        "STATUS": {
+            "ACTIVE": "Active",
+            "INACTIVE": "Inactive"
+        },
+        "GENDER_ALL": {
+            "Male_All": "Male",
+            "Female_All": "Female"
+        },
+        "IMPORT": {
+            "STATUS": "Status",
+            "NAME": "Name"
+        },
+        "LISTING": {
+            "EMPTY": "No matching records found"
+        }
+    },
+    "VENDOR": {
+        "VIEW": {
+            "TITLE": "Vendors",
+            "ARCHIVED_TITLE": "Archived Vendors",
+            "ACTIVE_STATUS_MASSAGE": "No active vendor data is available",
+            "INACTIVE_STATUS_MASSAGE": "No inactive vendor data is available"
+        },
+        "TABLE": {
+            "VENDOR_IMAGE": "Image",
+            "VENDOR_NAME": "Vendor Name",
+            "VENDOR_ID": "Vendor ID",
+            "CUSTOMER_ID": "Customer ID",
+            "INVOICE": "Invoice",
+            "OPEN_INVOICE": "Open Invoice",
+            "AMOUNT_PAID": "Amount Paid This Year",
+            "AMOUNT_OPEN": "Amount Open",
+            "PHONE": "Phone",
+            "EMAIL": "Email",
+            "ADDRESS": "Address",
+            "STATUS": "Status",
+            "ATTACHMENT": "Attachment",
+            "ACTIONS": "Action"
+        },
+        "ADD_EDIT": {
+            "ADD_TITLE": "Add Vendor",
+            "EDIT_TITLE": "Edit Vendor",
+            "VENDOR_NAME": "Vendor name",
+            "PHONE": "Phone",
+            "EMAIL": "Email",
+            "GL_ACCOUNTS": "GL Accounts",
+            "VENDOR_ID": "Vendor ID",
+            "CUSTOMER_ID": "Customer ID",
+            "ADDRESS": "Address",
+            "ADDRESS2": "Address2",
+            "CITY": "City",
+            "STATE": "State",
+            "ZIP_CODE": "Zip Code",
+            "COUNTRY": "Country",
+            "TERMS": "Terms",
+            "STATUS": "Status",
+            "DESCRIPTION": "Description"
+        },
+        "HISTORY": {
+            "TITLE": "Vendor History"
+        },
+        "REPORT": {
+            "TITLE": "Vendor Report"
+        },
+        "CONFIRMATION_DIALOG": {
+            "SUBMIT": "Please complete the vendor form before submitting.",
+            "SAVING": "Are you sure you want to close this window without saving changes?",
+            "ARCHIVE": "Are you sure you want to archive this vendor?",
+            "RESTORE": "Are you sure you want to restore this vendor?"
+        }
+    },
+    "USERS": {
+        "TABS": {
+            "PERSONAL_INFORMATION": "Personal Information",
+            "CONTACT_INFORMATION": "Contact Information",
+            "EMPLOYEE_INFORMATION": "Employee Information",
+            "EMERGENCY_CONTACT": "Emergency Contact",
+            "DOCUMENT": "Document"
+        },
+        "VIEW": {
+            "ADD_USER": "Add User",
+            "EDIT_USER": "Edit User",
+            "TITLE": "Users",
+            "ARCHIVED_TITLE": "Archived Users",
+            "ACTIVE_STATUS_MASSAGE": "No active user data is available",
+            "INACTIVE_STATUS_MASSAGE": "No inactive user data is available"
+        },
+        "TABLE": {
+            "IMAGE": "Image",
+            "USER_NAME": "User Name",
+            "EMAIL": "Email",
+            "PHONE": "Phone",
+            "ROLE": "Role",
+            "JOB_TITLE": "Job Title",
+            "DEPARTMENT": "Department",
+            "STATUS": "Status",
+            "ACTIONS": "Actions"
+        },
+        "ADD_EDIT": {
+            "FIRST_NAME": "First Name",
+            "M_NAME": "Middle Name",
+            "L_NAME": "Last Name",
+            "EMAIL": "Email",
+            "TEMPORARY_PASSWORD": "Temporary Password",
+            "SSN": "SSN",
+            "EMP_NUMBER": "Employee Number",
+            "USER_ROLE": "User Role",
+            "GENDER": "Gender",
+            "DATE_OF_BIRTH": "Date Of Birth",
+            "STATUS": "Status",
+            "USER_PHONE": "Phone",
+            "S_EMAIL": "Secondary Email",
+            "STREET1": "Street1",
+            "STREET2": "Street2",
+            "USER_CITY": "City",
+            "USER_STATE": "State",
+            "USER_ZIPCODE": "Zipcode",
+            "USER_COUNTRY": "Country",
+            "EMPLOYEE_SALARY": "Employee Salary (Hourly Rate)",
+            "START_DATE": "Start Date",
+            "MANAGER": "Manager",
+            "SUPERVISOR": "Supervisor",
+            "LOCATION": "Location",
+            "DEPARTMENT": "Department",
+            "JOB_TITLE": "Job Title",
+            "JOB_TYPE": "Job Type",
+            "LANGUAGE_SPOKEN": "Language Spoken"
+        },
+        "HISTORY": {
+            "TITLE": "User History"
+        },
+        "REPORT": {
+            "TITLE": "User Report"
+        }
+    },
+    "SETTINGS": {
+        "COMPANY_INFO_FORM": {
+            "EDIT_TITLE": "Edit Company Information"
+        },
+        "VIEW": {
+            "CONTACT_INFORMATION": "Contact information",
+            "EMAIL_ADDRESS": "Email address",
+            "PHONE": "Phone",
+            "PHONE2": "Phone2",
+            "WEBSITE": "Website",
+            "COMPANY_INFORMATION": "Company information",
+            "TYPE_OF_COMPANY": "Type of Company",
+            "NIGP_CODE": "NIGP Code(CSI Divison associate with / Work Perfomed)",
+            "COMPANY_SIZE": "Company Size",
+            "COMPANY_ACTIVE_SINCE": "Company Active Since",
+            "COMPANY_NAME": "Company Name",
+            "COMPANY_CODE": "Company Code"
+        },
+        "SETTINGS_OTHER_OPTION": {
+            "MAIL_BOXES": "Mailboxes",
+            "EMPLOYEE": "Employee",
+            "ROLE": "Role",
+            "ALERTS": "Alerts",
+            "SMTP": "SMTP",
+            "INTEGRATION": "Integration",
+            "USAGE": "Usage",
+            "OTHER_SETTINGS": "Other Settings",
+            "SECURITY": "Security",
+            "COST_CODE": "Cost Code/GL Account",
+            "DOCUMENT_VIEW": "Document View",
+            "SECURITY_MODULE": {
+                "ALERT_SURE_WANT_CHANGE": "This is a global setting that will affect all users. Are you sure you want to make the change?",
+                "AMOUNT_MINUTES": "Amount of minutes before auto log off",
+                "ENABLE_OTP": "Enable OTP",
+                "TIMEROPTIONS": "min"
+            },
+            "ALERTS_MODULE": {
+                "PRESS_ENTER": "Please press enter after updating any value on any field",
+                "ASSIGNED_PERSON": "Send a reminder of pending items to an assigned person every",
+                "ASSIGNED_ANYBODY": "Send a reminder of invoice is not assigned to anybody every",
+                "ALERTS_EVERY": "Send alert every",
+                "INVOICE_DUE": "when invoice due date is less then",
+                "INVOICE_ARRIVE": "Send alert when new invoice arrive to",
+                "BASED_ON": "(based on role members)",
+                "DOCUMENT_MODIFIED": "Send alert when the document is modified",
+                "SEND_AN_ALERT": "send an alert to",
+                "SENT_BATCH": "when an invoice is sent to batch",
+                "SEND_DAILY": "Send daily productivity report to",
+                "INVOICE_GREATER": "If invoice greater than",
+                "THEN_USER": "then user",
+                "NEEDS_APPROVE": "needs to approve",
+                "NOTIFY": "Notify by",
+                "ALL_DOCUMENT": "This is a global setting that will affect all document. Are you sure you want to make the change?",
+                "ALL_PROJECT": "This is a global setting that will affect all users. Are you sure you want to make the change?"
+            },
+            "MAIL_BOX": {
+                "HEADER": "Mailboxes to Monitor",
+                "HEADER_ARCHIVE": "Archived Mailboxes to Monitor",
+                "EMAIL": "Email",
+                "IMAP": "IMAP",
+                "PORT": "Port",
+                "TIME": "Time",
+                "ACTIONS": "Actions",
+                "CONFIRMATION_DIALOG": {
+                    "ARCHIVE": "Are you sure you want to archive this mailbox?",
+                    "RESTORE": "Are you sure you want to restore this mailbox?"
+                }
+            },
+            "COST_CODE_MODULE": {
+                "DIVISON": "Divison",
+                "GL_ACCOUNTS": "GL Account Type/Cost Code Type",
+                "DISCRIPTION": "Description",
+                "HEADER_ARCHIVE": "Archive Cost Code/GL Account",
+                "CONFIRMATION_DIALOG": {
+                    "ARCHIVE": "Are you sure you want to archive this cost code/GL account?",
+                    "RESTORE": "Are you sure you want to restore this cost code/GL account?"
+                }
+            },
+            "OTHER_SETTINGS_MODULE": {
+                "OTHER_SETTINGS": "Other Settings",
+                "DISCOUNT": "Discount",
+                "TERMS": "Terms",
+                "TAX_RATE": "Tax Rate",
+                "DOCUMENT": "Documents",
+                "VENDOR_TYPE": "Vendor Type",
+                "CLASS_NAME": "Class Name",
+                "NUMBER": "Number",
+                "DESCRIPTION": "Description",
+                "JOB_NAME": "Job Name",
+                "JOB_CONTACT_EMAIL": "Job Contact Email",
+                "DUE_DAYS": "Due Days",
+                "ADD_DISCOUNT": "Add Discount",
+                "DISCOUNT_PERCENTAGE": "Discount%",
+                "FILE_DOWNLOAD_INSTRUCTION": "Instruction for import file",
+                "OK_TO_IMPORT": "Ok",
+                "DOWNLOAD_IMPORT_INSTRUCTION": "Please 'Do Not' delete or edit the first row of this template file to avoid errors when uploading the file again in to ROVUK platform",
+                "CONFIRMATION_DIALOG": {
+                    "TERMS": "Are you sure you want to delete terms?",
+                    "TAX_RATE": "Are you sure you want to delete tax rate?",
+                    "DOCUMENT": "Are you sure you want to delete Document?",
+                    "VENDOR_TYPE": "Are you sure you want to delete vendor type?",
+                    "JOB_NAME": "Are you sure you want to delete job name?",
+                    "CLASS_NAME": "Are you sure you want to delete class name?"
+                }
+            },
+            "EMPLOYEE_MODULE": {
+                "DOCUMENT_TYPE": "Document Type",
+                "DEPARTMENT": "Departments",
+                "JOBTITLE": "Job Title",
+                "JOBTYPE": "Job Type",
+                "RELATIONSHIP": "Relationship",
+                "LANGUAGE": "Language",
+                "DELETE": "Delete",
+                "EXPIRATION_DATE": "Expiration Date",
+                "CONFIRMATION_DIALOG": {
+                    "DOCUMENT": "Are you sure you want to delete document type?",
+                    "DEPARTMENT": "Are you sure you want to delete Department?",
+                    "JOBTYPE": "Are you sure you want to delete jobtype?",
+                    "JOBTITLE": "Are you sure you want to delete jobtitle?",
+                    "RELATIONSHIP": "Are you sure you want to delete relationship?",
+                    "LANGUAGE": "Are you sure you want to delete language?"
+                }
+            },
+            "USAGE_MODULE": {
+                "NUMBER": "Number of invoice per calendar month",
+                "STORAGE": "Storage size"
+            },
+            "ROLE_MODULE": {
+                "DASHBORD": "Dashboard",
+                "VIEW": "View",
+                "VENDORS": "Vendors",
+                "INVOICE": "Invoice",
+                "REPORT": "Report",
+                "Client_Job": "Client/Job Name",
+                "TEMPLATES": "Templates",
+                "USERS": "Users",
+                "SETTING": "Setting",
+                "All": "All",
+                "ADD_ROLE": "Add",
+                "DOCUMENTS": "Documents",
+                "PERMISSION": "Permission Action",
+                "PERMISSION_TOOLTIP": "Disable the role change action",
+                "TODAYS_ACTiVITY": "Today's Activity",
+                "LISTING_EDIT": "Edit",
+                "ARCHIVED": "Archived",
+                "EMPLOYEE_PERSONAL": "Personal Information",
+                "CONTACT_HEADING": "Contact Information",
+                "EMPLOYEE_INFORMATION": "Employee Information",
+                "EMERGENCY_CONTACT": "Emergency contact",
+                "EMPLOYEE_DOCUMENT": "Document"
+            }
+        },
+        "EDIT": {},
+        "DOCUMENT_VIEW": {
+            "TITLE": "Document View",
+            "DOCUMENT_VIEW_TEXT": "Display documents older then",
+            "ARCHIVE_ORPHAN_DOCUMENT_TEXT": "Archive after",
+            "DAYS_ALL": "days"
+        },
+        "SMTP": {
+            "SMTP_TITLE": "SMTP",
+            "SMTP_SERVER": "SMTP Server",
+            "SMTP_USERNAME": "SMTP Username",
+            "SMTP_PORT": "SMTP Port",
+            "SMTP_SERVER_TIMEOUT": "SMTP Server Timeout",
+            "SMTP_PASSWORD": "SMTP Password",
+            "SMTP_TLS": "Active Transport Layer Security(TLS)",
+            "SMTP_AUTO_EMAIL": "Auto email reply to-email"
+        }
+    },
+    "REPORT": {
+        "VIEW": {
+            "TITLE": "Reports",
+            "START_DATE": "Start Date",
+            "END_DATE": "End Date"
+        },
+        "TABLE": {
+            "INVOICE": "Invoice",
+            "PO": "PO",
+            "VENDOR_NAME": "Vendor Name",
+            "PACKING_SLIP": "Packing Slip",
+            "RECEIVING_SLIP": "Receiving Slip",
+            "STATUS": "Status"
+        }
+    },
+    "DOCUMENTS": {
+        "VIEW": {
+            "TITLE": "Documents"
+        },
+        "TABLE": {
+            "DOCUMENT_TYPE": "Document Type",
+            "PO_NO": "P.O. Number",
+            "INVOICE_NO": "Invoice Number",
+            "VENDOR_NAME": "Vendor Name",
+            "UPDATED_BY": "Updated By",
+            "UPDATED_AT": "Updated At",
+            "ARCHIVE_BY": "Archive By",
+            "ARCHIVE_AT": "Archive At"
+        }
+    },
+    "AUTHNITICATION": {
+        "VIEW": {
+            "TITLE": "Change Password"
+        }
+    },
+    "EMERGENCY_CONTACT": {
+        "TITLE": "Emergency Contact",
+        "ADD": "Add Emergency Contact",
+        "EDIT": "Edit Emergency Contact",
+        "FORM": {
+            "NAME": "Name",
+            "RELATION": "Relation",
+            "PHONE": "Phone",
+            "EMAIL": "Email",
+            "ADDRESS": "Address",
+            "STREET1": "Street1",
+            "STREET2": "Street2",
+            "CITY": "City",
+            "STATE": "State",
+            "ZIPCODE": "Zipcode",
+            "COUNTRY": "Country",
+            "LAST_VALIDATION_DATE": "Last Validation Date"
+        },
+        "CONFIRMATION_DIALOG": {
+            "SUBMIT": "Please complete the emergency form before submitting.",
+            "SAVING": "Are you sure you want to close this window without saving changes?",
+            "DELETE": "Are you sure you want to delete this emergency?"
+        }
+    },
+    "CLIENT": {
+        "VIEW": {
+            "TITLE": "Client/Job Names",
+            "ARCHIVED_TITLE": "Archived Client/Job Names"
+        },
+        "TABLE": {
+            "CLIENT_NAME": "Client/Job Name",
+            "CLIENT_NUMBER": "Client Number",
+            "JOB_CONTACT_EMAIL": "Job Contact Email",
+            "APPROVER": "Approver",
+            "COST_CODE": "Cost Code/GL Account",
+            "STATUS": "Status",
+            "ACTIONS": "Action"
+        },
+        "ADD_EDIT": {
+            "ADD_TITLE": "Add Client/Job Name",
+            "EDIT_TITLE": "Edit Client/Job Name",
+            "COST_GL": "Cost Code/GL Account",
+            "STATUS": "Status",
+            "NOTES": "Notes"
+        },
+        "HISTORY": {
+            "TITLE": "Client/Job Name History"
+        },
+        "CONFIRMATION_DIALOG": {
+            "SUBMIT": "Please complete the Client/Job Name form before submitting.",
+            "SAVING": "Are you sure you want to close this window without saving changes?",
+            "ARCHIVE": "Are you sure you want to archive this Client/Job Name?",
+            "RESTORE": "Are you sure you want to restore this Client/Job Name?",
+            "ALL_ACTIVE": "Are you sure you want to active all Client/Job Name?",
+            "ALL_INACTIVE": "Are you sure you want to Inactive all Client/Job Name?",
+            "ALL_ARCHIVE": "Are you sure you want to archive all Client/Job Name?"
+        }
+    },
+    "DOCUMENT": {
+        "TITLE": "Document",
+        "ADD": "Add Document",
+        "EDIT": "Edit Document",
+        "FORM": {
+            "DOCUMENT_TYPE": "Document Type",
+            "EXPIRATION_DATE": "Expiration Date",
+            "DOCUMENT": "Document"
+        },
+        "CONFIRMATION_DIALOG": {
+            "SUBMIT": "Please complete the document form before submitting.",
+            "SAVING": "Are you sure you want to close this window without saving changes?",
+            "DELETE": "Are you sure you want to delete this document?"
+        },
+        "CHANGE_TYPE": {
+            "CONFIRM_1": "Your current document type is #old. Are you sure you want to change the document type to #new?",
+            "CONFIRM_2": "As you have changed the #old document type to #new, your data is now replaced with new document data."
+        }
+    },
+    "INVOICE": {
+        "TITLE": "INVOICE",
+        "HISTORY": {
+            "TITLE": "Invoice History"
+        },
+        "UPLOAD": {
+            "WAIT_FOR_RESPONSE": "The document(s) uploaded successfully. SmartAccuPay processing your uploaded document and in sometime this documents are reflected to portal."
+        },
+        "INVOICE_DETAILS": {
+            "TITLE": "Invoice Detail",
+            "INFORMATION": {
+                "TITLE": "Information",
+                "FORM": {
+                    "DOCUMENT_TYPE": "Document Type",
+                    "VENDOR_NAME": "Vendor Name",
+                    "INVOICE#": "Invoice#",
+                    "INVOICE_DATE": "Invoice Date",
+                    "DUE_DATE": "Due Date",
+                    "TOTAL_AMOUNT": "Total Amount",
+                    "TAX_AMOUNT": "Tax Amount",
+                    "ASSIGN_TO": "Approver",
+                    "STATUS": "Status"
+                }
+            },
+            "ACCOUNTING_ACTIVITY": {
+                "TITLE": "Accounting Activity",
+                "TABLE": {
+                    "TOTAL_AMOUNT": "Total Amount",
+                    "COST_CODE": "Cost Code/GL Account",
+                    "ASSIGN_TO": "Approver",
+                    "GL_ACCOUNT": "GL Account",
+                    "NOTES": "Notes"
+                }
+            },
+            "MORE_INFORMATION": {
+                "TITLE": "More Information",
+                "FORM": {
+                    "VENDOR_ID": "Vendor ID",
+                    "CUSTOMER_ID": "Customer ID",
+                    "P.O.#": "P.O.#",
+                    "JOB#": "Client/Job Name",
+                    "ORDER_DATE": "Order Date",
+                    "SHIP_DATE": "Ship Date",
+                    "PACKING_SLIP": "Packing Slip",
+                    "RECEVING_SLIP": "Receiving Slip",
+                    "TERMS": "Terms",
+                    "TAX_ID": "Tax ID",
+                    "SUB_TOTAL": "Sub Total",
+                    "AMOUNT_DUE": "Amount Due",
+                    "COST_CODE": "Cost Code/GL Account",
+                    "CLASS_NAME": "Class Name",
+                    "NOTES": "Notes"
+                }
+            },
+            "NOTES": {
+                "TITLE": "Notes"
+            },
+            "SUPPORTING_DOCUMENT": {
+                "TITLE": "Supporting Documents"
+            },
+            "INFO": {
+                "TITLE": "Info",
+                "TABLE": {
+                    "TOTAL_AMOUNT": "Total Amount",
+                    "COST_CODE": "Cost Code/GL Account",
+                    "ASSIGN_TO": "Approver",
+                    "CLIENT_JOB_NAME": "Client/Job Name",
+                    "CLASS_NAME": "Class Name",
+                    "NOTES": "Notes"
+                }
+            }
+        }
+    },
+    "DASHBOARD": {
+        "CHART": {
+            "MONTHLY_TITLE": "Monthly History",
+            "MONTHLY_INVOICE": "Monthly Invoice"
+        }
+    }
+}

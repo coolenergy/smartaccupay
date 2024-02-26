@@ -1,0 +1,672 @@
+@import 'src/app/styles/colors';
+@import 'src/app/styles/font';
+@import 'src/app/styles/variables';
+
+// #################### Common Header Style ######################################
+.flux-header {
+  width: 100%;
+  padding: 0px;
+  position: relative;
+  height: 50px;
+}
+
+.sidemenuIcon {
+  padding-top: 5px;
+  padding-right: 10px;
+  cursor: pointer;
+  border-radius: 2px;
+  text-align: center;
+  padding: 4px 8px;
+  vertical-align: middle;
+  background-color: transparent;
+}
+
+.flux-header:after,
+.flux-header:before {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.flux-brand {
+  width: 230px;
+  padding: 0 10px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  height: 50px;
+  bottom: 0px;
+  line-height: 49px;
+  z-index: 1025;
+  padding-left: 15px;
+  border-bottom: 1px solid;
+
+  .flux-brand-logo {
+    height: 100;
+    width: 40px;
+    display: inline-block;
+    vertical-align: middle;
+    z-index: 1;
+    -webkit-transition: all 0.2s linear;
+    -moz-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+
+  }
+
+  .flux-brand-text {
+    font-size: 12px;
+    text-transform: capitalize;
+    font-weight: 400;
+    font-family: 'Audiowide', cursive;
+    padding-left: 5px;
+    position: absolute;
+    top: 2px;
+    opacity: 1;
+    visibility: visible;
+    -webkit-transition: all 0.2s linear;
+    -moz-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+    white-space: nowrap;
+  }
+}
+
+.flux-header-navbar {
+  margin-left: 230px;
+  display: block;
+  position: relative;
+  padding: 6px 10px;
+
+  .flux-left-header {
+    float: left;
+
+    .sidebarToggle {
+      padding-right: 10px;
+      cursor: pointer;
+      border-radius: 2px;
+      text-align: center;
+      padding: 4px 8px;
+      vertical-align: middle;
+      background-color: transparent;
+    }
+
+    .left-header-nav {
+      display: inline-block;
+
+      ul {
+        margin: 0px;
+        padding: 0px;
+        list-style: none;
+
+        li {
+          display: inline-block;
+          margin: 0px;
+          padding: 0 8px;
+          list-style: none;
+          position: relative;
+
+          a {
+            font-size: 13px;
+            font-weight: 400;
+            text-decoration: none;
+          }
+        }
+      }
+    }
+  }
+
+  .flux-right-header {
+    display: block;
+    float: right;
+    // padding: 8px 0px;
+
+    ul {
+      margin: 0px;
+      padding: 0px;
+      list-style: none;
+
+      li {
+        display: inline-block;
+        margin: 0px;
+        padding: 0 4px;
+        list-style: none;
+        position: relative;
+
+        a {
+          font-size: 12px;
+          font-weight: 400;
+          text-decoration: none;
+          padding: 8px 10px;
+          border-radius: 3px;
+
+          i {
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
+}
+
+// #################### expanded Header Style ######################################
+.flux-header[nav-layout="vertical"][navbar-type="expanded"] {
+  .flux-brand {
+    width: 230px;
+    left: 0px;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .flux-header-navbar {
+    margin-left: 230px;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+  }
+
+
+}
+
+
+.flux-header[nav-layout="vertical"][navbar-type="expanded"][effect-type="overlay"][collapsed-left-header="true"] {
+  .flux-header-navbar {
+    margin-left: 0px;
+  }
+}
+
+.flux-header[nav-layout="vertical"][navbar-type="expanded"][effect-type="shrink"][collapsed-left-header="true"] {
+  .flux-header-navbar {
+    margin-left: 230px;
+  }
+}
+
+.flux-header[nav-layout="vertical"][navbar-type="expanded"][effect-type="push"][collapsed-left-header="true"] {
+  .flux-header-navbar {
+    margin-left: 230px;
+    margin-right: -230px;
+
+  }
+}
+
+
+
+
+// #################### collapsed Header Style ######################################
+.flux-header[nav-layout="vertical"][navbar-type="collapsed"][collapsed-left-header="false"] {
+  .flux-brand {
+    width: 230px;
+  }
+
+  .flux-header-navbar {
+    margin-left: 230px;
+  }
+}
+
+.flux-header[nav-layout="vertical"][navbar-type="collapsed"][effect-type="overlay"][collapsed-left-header="true"] {
+  .flux-header-navbar {
+    margin-left: 0px;
+  }
+}
+
+.flux-header[nav-layout="vertical"][navbar-type="collapsed"][effect-type="shrink"][collapsed-left-header="true"] {
+  .flux-header-navbar {
+    margin-left: 50px;
+  }
+}
+
+.flux-header[nav-layout="vertical"][navbar-type="collapsed"][effect-type="push"][collapsed-left-header="true"] {
+  .flux-header-navbar {
+    margin-left: 50px;
+    margin-right: -50px;
+
+  }
+}
+
+.flux-header[nav-layout="vertical"][navbar-type="collapsed"][collapsed-left-header="true"] {
+
+  .flux-brand {
+    width: 50px;
+    padding-left: 10px;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+
+    i {
+      // background: #2a3444;
+      padding: 5px;
+      border-radius: 3px;
+    }
+  }
+
+  .flux-header-navbar {
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .flux-brand-text {
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: all 0.2s linear;
+    -moz-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+    white-space: nowrap;
+  }
+
+  .flux-brand-logo {
+    padding-right: 10px;
+  }
+}
+
+// #################### offcanvas Header Style ######################################
+
+.flux-header[nav-layout="vertical"][navbar-type="offcanvas"][effect-type="overlay"][collapsed-left-header="true"] {
+  .flux-header-navbar {
+    margin-left: 0px;
+  }
+}
+
+.flux-header[nav-layout="vertical"][navbar-type="offcanvas"][effect-type="shrink"][collapsed-left-header="true"] {
+  .flux-header-navbar {
+    margin-left: 0px;
+  }
+}
+
+.flux-header[nav-layout="vertical"][navbar-type="offcanvas"][effect-type="push"][collapsed-left-header="true"] {
+  .flux-header-navbar {
+    margin-left: 0px;
+
+  }
+}
+
+.flux-header[nav-layout="vertical"][navbar-type="offcanvas"][collapsed-left-header="true"] {
+  .flux-brand {
+    width: 50px;
+    left: -230px;
+  }
+
+  .flux-header-navbar {
+    margin-left: 0px;
+  }
+}
+
+.flux-header[nav-layout="vertical"][navbar-type="offcanvas"][collapsed-left-header="false"] {
+  .flux-brand {
+    width: 230px;
+    left: 0px;
+  }
+
+  .flux-header-navbar {
+    margin-left: 230px;
+  }
+}
+
+.flux-header[nav-layout="vertical"][navbar-type="offcanvas"] {
+  .flux-brand {
+    width: 230px;
+    left: -230px;
+    -webkit-transition: all 0.2s linear;
+    -moz-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+  }
+
+  .flux-header-navbar {
+    margin-left: 0px;
+    -webkit-transition: all 0.2s linear;
+    -moz-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+  }
+}
+
+
+
+// ##################### Double Header on Mobile Style start ###################################################
+
+.flux-header[nav-layout="vertical"][navbar-type="expanded"][effect-type="overlay"][collapsed-left-header="false"][device-type="mobile"] {
+  height: 100px;
+
+  .flux-brand {
+    width: 100%;
+    left: 0px;
+    position: relative;
+  }
+
+  .flux-header-navbar {
+    margin-left: 0px;
+  }
+}
+
+.flux-header[nav-layout="vertical"][navbar-type="expanded"][effect-type="shrink"][collapsed-left-header="false"][device-type="mobile"] {
+  height: 100px;
+
+  .flux-brand {
+    width: 100%;
+    left: 0px;
+    position: relative;
+  }
+
+  .flux-header-navbar {
+    margin-left: 230px;
+  }
+}
+
+.flux-header[nav-layout="vertical"][navbar-type="expanded"][effect-type="push"][collapsed-left-header="false"][device-type="mobile"] {
+  height: 100px;
+
+  .flux-brand {
+    width: 100%;
+    left: 0px;
+    position: relative;
+  }
+
+  .flux-header-navbar {
+    margin-left: 230px;
+    margin-right: -230px;
+
+  }
+}
+
+.flux-header[nav-layout="vertical"][navbar-type="collapsed"][effect-type="overlay"][collapsed-left-header="false"][device-type="mobile"] {
+  height: 100px;
+
+  .flux-brand {
+    width: 100%;
+    position: relative;
+  }
+
+  .flux-header-navbar {
+    margin-left: 0px;
+  }
+}
+
+.flux-header[nav-layout="vertical"][navbar-type="collapsed"][effect-type="shrink"][collapsed-left-header="false"][device-type="mobile"] {
+  height: 100px;
+
+  .flux-brand {
+    width: 100%;
+    position: relative;
+  }
+
+  .flux-header-navbar {
+    margin-left: 50px;
+  }
+}
+
+.flux-header[nav-layout="vertical"][navbar-type="collapsed"][effect-type="push"][collapsed-left-header="false"][device-type="mobile"] {
+  height: 100px;
+
+  .flux-brand {
+    width: 100%;
+    position: relative;
+  }
+
+  .flux-header-navbar {
+    margin-left: 50px;
+    margin-right: -50px;
+
+  }
+}
+
+.flux-header[nav-layout="vertical"][navbar-type="offcanvas"][effect-type="overlay"][collapsed-left-header="false"][device-type="mobile"] {
+  height: 100px;
+
+  .flux-brand {
+    width: 100%;
+    position: relative;
+  }
+
+  .flux-header-navbar {
+    margin-left: 0px;
+  }
+}
+
+.flux-header[nav-layout="vertical"][navbar-type="offcanvas"][effect-type="shrink"][collapsed-left-header="false"][device-type="mobile"] {
+  height: 100px;
+
+  .flux-brand {
+    width: 100%;
+    position: relative;
+  }
+
+  .flux-header-navbar {
+    margin-left: 0px;
+  }
+}
+
+.flux-header[nav-layout="vertical"][navbar-type="offcanvas"][effect-type="push"][collapsed-left-header="false"][device-type="mobile"] {
+  height: 100px;
+
+  .flux-brand {
+    width: 100%;
+    position: relative;
+  }
+
+  .flux-header-navbar {
+    margin-left: 0px;
+
+  }
+}
+
+// ##################### Double Header on Mobile Style Close ###################################################
+
+@mixin headerColorTheme($theme-name, $brand-i-bg, $header-bg, $brand-bg, $brand-color, $brand-border-color, $sidebarToggle-bg, $sidebarToggle-color,
+  $sidebarToggle-bg-onHover, $sidebarToggle-color-onHover, $text-color, $text-color-hover, $right-header-link-bg, $right-header-icons-color,
+  $rh-link-bg-onhover, $rh-link-color-onhover, $rh-icons-color-onhover) {
+
+  .flux-header[nav-layout="vertical"][navbar-type="collapsed"][collapsed-left-header="true"][header-theme=#{$theme-name}] {
+    .flux-brand {
+      i {
+        background: $brand-i-bg;
+      }
+    }
+  }
+
+  .flux-header[header-theme=#{$theme-name}] {
+    background: $header-bg;
+
+    .flux-brand {
+      background: $brand-bg;
+      color: $brand-color;
+      border-bottom-color: $brand-border-color;
+
+      .flux-brand-logo {
+        color: $brand-color;
+        ;
+      }
+
+      .flux-brand-text {
+        color: $brand-color;
+        ;
+      }
+    }
+
+    .flux-header-navbar .flux-left-header .sidebarToggle {
+      background: $sidebarToggle-bg;
+      color: $sidebarToggle-color;
+    }
+
+    .flux-header-navbar .flux-left-header .sidebarToggle:hover {
+      background: $sidebarToggle-bg-onHover;
+      color: $sidebarToggle-color-onHover;
+    }
+
+    .flux-header-navbar .flux-left-header .left-header-nav ul li a {
+      color: $text-color;
+    }
+
+    .flux-header-navbar .flux-left-header .left-header-nav ul li a:hover {
+      color: $text-color-hover;
+    }
+
+    .flux-header-navbar .flux-right-header ul li a {
+      background: $right-header-link-bg;
+      color: $text-color;
+
+      i {
+        color: $right-header-icons-color;
+      }
+    }
+
+    .flux-header-navbar .flux-right-header ul li a:hover {
+      background: $rh-link-bg-onhover;
+      color: $rh-link-color-onhover;
+
+      i {
+        color: $rh-icons-color-onhover;
+      }
+    }
+  }
+
+
+
+
+}
+
+
+@include headerColorTheme(theme1, #023E8A, #023E8A, #023E8A, #fff, #f5f5f5, #f2f2f2, #007bff,
+  #007bff, #f2f2f2, #9e9a9a, #007bff, #f2f2f2, #007bff, #007bff, #FFF, #FFF);
+
+@include headerColorTheme(theme2, #30343d, #30343d, #30343d, #b4bcc8, #485468, #1c232e, #b4bcc8,
+  #b4bcc8, #1c232e, #b4bcc8, #FFFFFF, #1c232e, #b4bcc8, #b4bcc8, #1c232e, #1c232e);
+
+@include headerColorTheme(theme3, #2f4475, #3f5485, #3f5485, #d8e3fc, #4a5f90, #2f4475, #d8e3fc,
+  #d8e3fc, #2f4475, #d8e3fc, #FFFFFF, #2f4475, #d8e3fc, #d8e3fc, #2f4475, #2f4475);
+
+@include headerColorTheme(theme4, #2b64a4, #3c75b5, #3c75b5, #b9d4f2, #4f82bc, #2b64a4, #FFF,
+  #b9d4f2, #2b64a4, #b9d4f2, #FFFFFF, #2b64a4, #b9d4f2, #d8e3fc, #2b64a4, #2b64a4);
+
+@include headerColorTheme(theme5, #4b3154, #583a63, #583a63, #ccbad2, #5d4865, #4b3154, #ccbad2,
+  #ccbad2, #4b3154, #ccbad2, #FFFFFF, #4b3154, #ccbad2, #ccbad2, #4b3154, #4b3154);
+
+@include headerColorTheme(theme6, #e1e1e1, #ededed, #ededed, #787878, #e4e5e5, #e1e1e1, #787878,
+  #787878, #e1e1e1, #787878, #000000, #e1e1e1, #787878, #787878, #FFFFFF, #FFFFFF);
+
+@include headerColorTheme(theme7, #0b9c8f, #0aa699, #0aa699, #FFFFFF, #1ab0a3, #0b9c8f, #FFFFFF,
+  #FFFFFF, #0b9c8f, #FFFFFF, #4b3154, #0b9c8f, #FFFFFF, #FFFFFF, #0b9c8f, #0b9c8f);
+
+
+
+
+
+@mixin leftHeaderTheme($theme-name, $brand-i-bg, $header-bg, $brand-bg, $brand-color, $brand-border-color) {
+
+  .flux-header[nav-layout="vertical"][navbar-type="collapsed"][collapsed-left-header="true"][header-theme=theme2][_ngcontent-xca-c2] .flux-brand[_ngcontent-xca-c2] i[_ngcontent-xca-c2] {
+    background: #1c232e;
+  }
+
+  .flux-header[nav-layout="vertical"][navbar-type="collapsed"][collapsed-left-header="true"] {
+    .flux-brand[left-header-theme=#{$theme-name}] {
+      i {
+        background: $brand-i-bg;
+      }
+    }
+  }
+
+  .flux-header[nav-layout="vertical"] .flux-brand[left-header-theme=#{$theme-name}] {
+    background: $brand-bg;
+    color: $brand-color;
+    border-bottom-color: $brand-border-color;
+
+    .flux-brand-logo {
+      color: $brand-color;
+    }
+
+    .flux-brand-text {
+      color: $brand-color;
+    }
+  }
+
+}
+
+@include leftHeaderTheme(theme1, #023E8A, #023E8A, #023E8A, #fff, #f5f5f5);
+@include leftHeaderTheme(theme2, #30343d, #30343d, #30343d, #b4bcc8, #485468);
+@include leftHeaderTheme(theme3, #2f4475, #3f5485, #3f5485, #d8e3fc, #4a5f90);
+@include leftHeaderTheme(theme4, #2b64a4, #3c75b5, #3c75b5, #b9d4f2, #4f82bc);
+@include leftHeaderTheme(theme5, #4b3154, #583a63, #583a63, #ccbad2, #5d4865);
+@include leftHeaderTheme(theme6, #e1e1e1, #ededed, #ededed, #787878, #e4e5e5);
+@include leftHeaderTheme(theme7, #0b9c8f, #0aa699, #0aa699, #FFFFFF, #1ab0a3);
+
+
+
+
+
+
+
+.flux-header[nav-layout="horizontal"][device-type="mobile"] {
+  .flux-brand {
+    width: 100%;
+  }
+
+  .sidebarToggle {
+    position: absolute;
+    z-index: 1025;
+    right: 7px;
+  }
+
+  .left-header-nav {
+    display: none;
+  }
+
+  .flux-right-header {
+    display: none;
+  }
+
+}
+
+
+.temp-cust-header {
+  display: inline-grid;
+  line-height: 20px !important;
+  color: white !important;
+}
+
+.email-button {
+  background-color: $header-background-color_cust;
+  box-shadow: none;
+  margin-left: 16px;
+
+  &__icon {
+    color: $white-35;
+  }
+
+  &:hover {
+    background-color: $header-button-background-color_cust-hover;
+  }
+
+  @media (max-width: $small) {
+    margin-top: 0;
+  }
+}
+
+
+.mat-menu-panel.myMenu {
+  min-width: 60px;
+  max-width: 60px;
+  overflow: auto;
+  border-radius: 2px;
+  outline: 0;
+  background: #fff;
+  text-align: center;
+}
+
+.cust-button {
+  text-align: end;
+  margin: 5px;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  outline: none;
+  z-index: 1025;
+}

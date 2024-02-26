@@ -1,0 +1,554 @@
+{
+    "COMMON": {
+        "TOOL_TIP": {
+            "REFRESH": "ACTUALIZAR",
+            "HISTORY": "HISTORIA",
+            "REPORT": "INFORME",
+            "ARCHIVE": "ARCHIVO",
+            "ADD": "AGREGAR",
+            "XLSX": "XLSX",
+            "BACK": "ATRÁS",
+            "SEARCH": "Buscar",
+            "MULTI_ARCHIVE": "ARCHIVO MULTI",
+            "LIST_TO_GRID": "LISTA A CUADRO",
+            "GRID_TO_LIST": "Cuadrícula a lista",
+            "CLOSE": "Cerca",
+            "CHANGE_LANGUAGE": "CAMBIAR IDIOMA",
+            "IMPORT_TEMPLATE": "Descargar plantilla de importación",
+            "IMPORT": "Importar",
+            "MAIL": "Correo",
+            "MESSAGE": "Mensaje",
+            "VIEW": "Vista",
+            "DOWNLOAD": "DESCARGAR",
+            "NOTIFICATION": "Notificación",
+            "SHOW": "Show",
+            "HIDE": "Hide",
+            "PRINT": "IMPRIMIR",
+            "INVOICEMSG": "Invoice Message",
+            "INVOICELINK": "Invoice Link",
+            "EDIT": "Edit",
+            "DASHBOARD": "Dashboard",
+            "DELETE": "Delete",
+            "REMOVE": "Remove",
+            "SAVE": "Save",
+            "CANCEL": "Cancel"
+        },
+        "ACTIONS": {
+            "ACTIONS": "Actions",
+            "EDIT": "Editar",
+            "ARCHIVE": "Archivo",
+            "RESTORE": "Restaurar",
+            "SAVE": "Ahorrar",
+            "CANCEL": "Cancelar",
+            "SAVE_EXIT": "Guardar y salir",
+            "DONT_SAVE": "No guardar",
+            "ATTACHMENT": "Archivo adjunto",
+            "YES": "Sí",
+            "NO": "No",
+            "BACK": "Atrás",
+            "NEXT": "Próxima",
+            "DELETE": "Eliminar",
+            "Access_denied_all": "Access denied",
+            "UPLOAD": "Upload"
+        },
+        "HISTORY": {
+            "KEY": "Llave",
+            "VALUE": "Valor"
+        },
+        "STATUS": {
+            "ACTIVE": "Activo",
+            "INACTIVE": "Inactivo"
+        },
+        "GENDER_ALL": {
+            "Male_All": "Masculino",
+            "Female_All": "Femenino"
+        },
+        "IMPORT": {
+            "STATUS": "Estado",
+            "NAME": "Nombre"
+        },
+        "LISTING": {
+            "EMPTY": "No matching records found"
+        }
+    },
+    "VENDOR": {
+        "VIEW": {
+            "TITLE": "Vendedor",
+            "ARCHIVED_TITLE": "Proveedor archivado",
+            "ACTIVE_STATUS_MASSAGE": "No hay datos de proveedores activos disponibles",
+            "INACTIVE_STATUS_MASSAGE": "No hay datos de proveedores inactivos disponibles"
+        },
+        "TABLE": {
+            "VENDOR_IMAGE": "Image",
+            "VENDOR_NAME": "Nombre del proveedor",
+            "VENDOR_ID": "ID de proveedor",
+            "CUSTOMER_ID": "ID de cliente",
+            "INVOICE": "Factura",
+            "OPEN_INVOICE": "Factura pendiente",
+            "AMOUNT_PAID": "Monto pagado este año",
+            "AMOUNT_OPEN": "Cantidad abierta",
+            "PHONE": "Teléfono",
+            "EMAIL": "Correo electrónico",
+            "ADDRESS": "Dirección",
+            "STATUS": "Estado",
+            "ATTACHMENT": "Archivo adjunto",
+            "ACTIONS": "Acción"
+        },
+        "ADD_EDIT": {
+            "ADD_TITLE": "Agregar vendedor",
+            "EDIT_TITLE": "Editar proveedor",
+            "VENDOR_NAME": "Nombre del proveedor",
+            "PHONE": "Teléfono",
+            "EMAIL": "Correo electrónico",
+            "GL_ACCOUNTS": "Cuentas GL",
+            "VENDOR_ID": "ID de proveedor",
+            "CUSTOMER_ID": "ID de cliente",
+            "ADDRESS": "Dirección",
+            "ADDRESS2": "Dirección2",
+            "CITY": "Ciudad",
+            "STATE": "Estado",
+            "ZIP_CODE": "Código postal",
+            "COUNTRY": "País",
+            "TERMS": "Letra chica",
+            "STATUS": "Estado",
+            "DESCRIPTION": "Descripción"
+        },
+        "HISTORY": {
+            "TITLE": "Historial del proveedor"
+        },
+        "REPORT": {
+            "TITLE": "Informe de proveedor"
+        },
+        "CONFIRMATION_DIALOG": {
+            "SUBMIT": "Complete el formulario de proveedor antes de enviarlo.",
+            "SAVING": "¿Está seguro de que desea cerrar esta ventana sin guardar los cambios?",
+            "ARCHIVE": "¿Está seguro de que desea archivar a este proveedor?",
+            "RESTORE": "¿Estás seguro de que quieres restaurar este proveedor?"
+        }
+    },
+    "USERS": {
+        "TABS": {
+            "PERSONAL_INFORMATION": "Informacion personal",
+            "CONTACT_INFORMATION": "Información del contacto",
+            "EMPLOYEE_INFORMATION": "información del empleado",
+            "EMERGENCY_CONTACT": "Emergency Contact",
+            "DOCUMENT": "Document"
+        },
+        "VIEW": {
+            "ADD_USER": "Agregar usuario",
+            "EDIT_USER": "Edit User",
+            "TITLE": "Usuario",
+            "ARCHIVED_TITLE": "Usuario archivado",
+            "ACTIVE_STATUS_MASSAGE": "No active user data is available",
+            "INACTIVE_STATUS_MASSAGE": "No inactive user data is available"
+        },
+        "TABLE": {
+            "IMAGE": "Imagen",
+            "USER_NAME": "Nombre de usuario",
+            "EMAIL": "Correo electrónico",
+            "PHONE": "Teléfono",
+            "ROLE": "Rol",
+            "JOB_TITLE": "Título del trabajo",
+            "DEPARTMENT": "Departamento",
+            "STATUS": "Estado",
+            "ACTIONS": "Acciones"
+        },
+        "ADD_EDIT": {
+            "FIRST_NAME": "Nombre",
+            "M_NAME": "Segundo nombre",
+            "L_NAME": "Apellido",
+            "EMAIL": "Correo electrónico",
+            "TEMPORARY_PASSWORD": "Contraseña temporal",
+            "SSN": "SSN",
+            "EMP_NUMBER": "Número de empleado",
+            "USER_ROLE": "Rol del usuario",
+            "GENDER": "Género",
+            "DATE_OF_BIRTH": "Fecha de nacimiento",
+            "STATUS": "Estado",
+            "USER_PHONE": "Teléfono",
+            "S_EMAIL": "Email secundario",
+            "STREET1": "Calle2",
+            "STREET2": "Calle2",
+            "USER_CITY": "Ciudad",
+            "USER_STATE": "Estado",
+            "USER_ZIPCODE": "Código postal",
+            "USER_COUNTRY": "País",
+            "EMPLOYEE_SALARY": "Salario del empleado (Tarifa por hora)",
+            "START_DATE": "Fecha de inicio",
+            "MANAGER": "Gerente",
+            "SUPERVISOR": "Supervisora",
+            "LOCATION": "Ubicación",
+            "DEPARTMENT": "Departamento",
+            "JOB_TITLE": "Título profesional",
+            "JOB_TYPE": "El tipo de trabajo",
+            "LANGUAGE_SPOKEN": "Lenguaje hablado"
+        },
+        "HISTORY": {
+            "TITLE": "Historial de usuario"
+        },
+        "REPORT": {
+            "TITLE": "Informe de usuario"
+        }
+    },
+    "SETTINGS": {
+        "COMPANY_INFO_FORM": {
+            "EDIT_TITLE": "Editar información de la empresa"
+        },
+        "VIEW": {
+            "CONTACT_INFORMATION": "Información de contacto",
+            "EMAIL_ADDRESS": "Dirección de correo electrónico",
+            "PHONE": "Teléfono",
+            "PHONE2": "Teléfono2",
+            "WEBSITE": "Sitio web",
+            "COMPANY_INFORMATION": "Información de la empresa",
+            "TYPE_OF_COMPANY": "Tipo de empresa",
+            "NIGP_CODE": "Código NIGP (socio de la División CSI / trabajo realizado)",
+            "COMPANY_SIZE": "Tamaño de la empresa",
+            "COMPANY_ACTIVE_SINCE": "Empresa activa desde",
+            "COMPANY_NAME": "nombre de empresa",
+            "COMPANY_CODE": "Codigo de compañia"
+        },
+        "SETTINGS_OTHER_OPTION": {
+            "MAIL_BOXES": "Buzones",
+            "EMPLOYEE": "Empleado",
+            "ROLE": "Rol",
+            "ALERTS": "Alertas",
+            "SMTP": "SMTP",
+            "INTEGRATION": "Integración",
+            "USAGE": "Uso",
+            "OTHER_SETTINGS": "Otras configuraciones",
+            "SECURITY": "Seguridad",
+            "COST_CODE": "Código de costo/Cuenta de mayor",
+            "DOCUMENT_VIEW": "Vista de documento",
+            "SECURITY_MODULE": {
+                "ALERT_SURE_WANT_CHANGE": "Esta es una configuración global que afectará a todos los proyectos. ¿Está seguro de que desea realizar el cambio?",
+                "AMOUNT_MINUTES": "Cantidad de minutos antes del cierre de sesión automático",
+                "ENABLE_OTP": "Habilitar OTP",
+                "TIMEROPTIONS": "min"
+            },
+            "ALERTS_MODULE": {
+                "PRESS_ENTER": "Pulse Intro después de actualizar cualquier valor en cualquier campo",
+                "ASSIGNED_PERSON": "Enviar un recordatorio de los elementos pendientes a una persona asignada cada",
+                "ASSIGNED_ANYBODY": "Enviar un recordatorio de factura no está asignado a nadie cada",
+                "ALERTS_EVERY": "Enviar alerta cada",
+                "INVOICE_DUE": "Cuando la fecha de vencimiento de la factura es inferior a",
+                "INVOICE_ARRIVE": "Enviar una alerta cuando llegue una nueva factura a",
+                "BASED_ON": "(basado en los miembros del rol)",
+                "DOCUMENT_MODIFIED": "Enviar alerta cuando se modifica el documento",
+                "SEND_AN_ALERT": "Enviar una alerta a",
+                "SENT_BATCH": "Cuando se envía una factura a Batch",
+                "SEND_DAILY": "Enviar informe diario de productividad a",
+                "INVOICE_GREATER": "Si la factura es mayor que",
+                "THEN_USER": "luego usuario",
+                "NEEDS_APPROVE": "necesita aprobar",
+                "NOTIFY": "Notificar por",
+                "ALL_DOCUMENT": "Esta es una configuración global que afectará a todos los documentos. ¿Está seguro de que desea hacer el cambio?",
+                "ALL_PROJECT": "Esta es una configuración global que afectará a todos los proyectos. ¿Está seguro de que desea realizar el cambio?"
+            },
+            "MAIL_BOX": {
+                "HEADER": "Buzones a monitorear",
+                "HEADER_ARCHIVE": "Archivar buzones para supervisar",
+                "EMAIL": "Correo electrónico",
+                "IMAP": "IMAP",
+                "PORT": "Puerto",
+                "TIME": "Tiempo",
+                "ACTIONS": "Acciones",
+                "CONFIRMATION_DIALOG": {
+                    "ARCHIVE": "¿Estás seguro de que quieres archivar este buzón?",
+                    "RESTORE": "¿Estás seguro de que quieres restaurar este buzón?"
+                }
+            },
+            "COST_CODE_MODULE": {
+                "DIVISON": "División",
+                "GL_ACCOUNTS": "Tipo de cuenta del LM/tipo de código de costo",
+                "DISCRIPTION": "Descripción",
+                "HEADER_ARCHIVE": "Código de costo de archivo",
+                "CONFIRMATION_DIALOG": {
+                    "ARCHIVE": "¿Está seguro de que desea archivar este código de costo/cuenta GL?",
+                    "RESTORE": "¿Está seguro de que desea restaurar este código de costo/cuenta GL?"
+                }
+            },
+            "OTHER_SETTINGS_MODULE": {
+                "OTHER_SETTINGS": "Otros ajustes",
+                "DISCOUNT": "Descuento",
+                "TERMS": "Términos",
+                "TAX_RATE": "Tasa de impuesto",
+                "DOCUMENT": "Documentos",
+                "VENDOR_TYPE": "Tipo de proveedor",
+                "CLASS_NAME": "Nombre de la clase",
+                "NUMBER": "Número",
+                "DESCRIPTION": "Descripción",
+                "JOB_NAME": "Nombre del trabajo",
+                "JOB_CONTACT_EMAIL": "Correo electrónico de contacto laboral",
+                "DUE_DAYS": "Días de vencimiento",
+                "ADD_DISCOUNT": "Agregar descuento",
+                "DISCOUNT_PERCENTAGE": "Descuento%",
+                "FILE_DOWNLOAD_INSTRUCTION": "Instrucciones para el archivo de importación",
+                "OK_TO_IMPORT": "ok para importar",
+                "DOWNLOAD_IMPORT_INSTRUCTION": "Por favor no elimine ni modifique la primera linea de este archivo modelo para evitar cualquier error al momento de subirlo en la plataforma de ROVUK",
+                "CONFIRMATION_DIALOG": {
+                    "TERMS": "¿Está seguro de que desea eliminar términos?",
+                    "TAX_RATE": "¿Está seguro de que desea eliminar la tasa impositiva?",
+                    "DOCUMENT": "¿Está seguro de que desea eliminar el documento?",
+                    "VENDOR_TYPE": "¿Está seguro de que desea eliminar el tipo de proveedor?",
+                    "JOB_NAME": "¿Estás seguro de que quieres eliminar el nombre del trabajo?",
+                    "CLASS_NAME": "¿Estás seguro de que quieres eliminar el nombre de la clase?"
+                }
+            },
+            "EMPLOYEE_MODULE": {
+                "DOCUMENT_TYPE": "Tipo de Documento",
+                "DEPARTMENT": "Departamentos",
+                "JOBTITLE": "Título profesional",
+                "JOBTYPE": "El tipo de trabajo",
+                "RELATIONSHIP": "Relación",
+                "LANGUAGE": "Idioma",
+                "DELETE": "Borrar",
+                "EXPIRATION_DATE": "Fecha de caducidad",
+                "CONFIRMATION_DIALOG": {
+                    "DOCUMENT": "¿Está seguro de que desea eliminar el tipo de documento?",
+                    "DEPARTMENT": "¿Está seguro de que desea eliminar el departamento?",
+                    "JOBTYPE": "¿Estás seguro de que quieres eliminar tipo de trabajo?",
+                    "JOBTITLE": "¿Estás seguro de que quieres eliminar el título del trabajo?",
+                    "RELATIONSHIP": "¿Estás seguro de que quieres eliminar la relación?",
+                    "LANGUAGE": "¿Está seguro de que desea eliminar el idioma?"
+                }
+            },
+            "USAGE_MODULE": {
+                "NUMBER": "Número de factura por mes calendario",
+                "STORAGE": "Tamaño de almacenamiento"
+            },
+            "ROLE_MODULE": {
+                "DASHBORD": "Panel",
+                "VIEW": "Vista",
+                "VENDORS": "Proveedores",
+                "INVOICE": "Factura",
+                "REPORT": "Informe",
+                "TEMPLATES": "Plantillas",
+                "Client_Job": "Client/Job Name",
+                "USERS": "Usuarios",
+                "SETTING": "Configuración",
+                "All": "Todo",
+                "ADD_ROLE": "Agregar",
+                "DOCUMENTS": "Documentos",
+                "PERMISSION": "Acción de permiso",
+                "PERMISSION_TOOLTIP": "Deshabilitar la acción de cambio de rol",
+                "TODAYS_ACTiVITY": "Actividad de Hoy",
+                "LISTING_EDIT": "Editar",
+                "ARCHIVED": "Archivado",
+                "EMPLOYEE_PERSONAL": "Informacion personal",
+                "CONTACT_HEADING": "Información del contacto",
+                "EMPLOYEE_INFORMATION": "información del empleado",
+                "EMERGENCY_CONTACT": "Emergency contact",
+                "EMPLOYEE_DOCUMENT": "Documento"
+            }
+        },
+        "EDIT": {},
+        "DOCUMENT_VIEW": {
+            "TITLE": "Document View",
+            "DOCUMENT_VIEW_TEXT": "Display documents older then",
+            "ARCHIVE_ORPHAN_DOCUMENT_TEXT": "Archive after",
+            "DAYS_ALL": "days"
+        },
+        "SMTP": {
+            "SMTP_TITLE": "SMTP",
+            "SMTP_SERVER": "Servidor SMTP",
+            "SMTP_USERNAME": "Nombre de usuario SMTP",
+            "SMTP_PORT": "Puerto SMTP",
+            "SMTP_SERVER_TIMEOUT": "Tiempo de espera del servidor SMTP",
+            "SMTP_PASSWORD": "Contraseña SMTP",
+            "SMTP_TLS": "Seguridad de la capa de transporte activa (TLS)",
+            "SMTP_AUTO_EMAIL": "Respuesta automática por correo electrónico al correo electrónico"
+        }
+    },
+    "REPORT": {
+        "VIEW": {
+            "TITLE": "Informe",
+            "START_DATE": "Fecha de inicio",
+            "END_DATE": "Fecha final"
+        },
+        "TABLE": {
+            "INVOICE": "Factura",
+            "PO": "DESPUÉS",
+            "VENDOR_NAME": "Nombre del proveedor",
+            "PACKING_SLIP": "Albarán",
+            "RECEIVING_SLIP": "Recibo",
+            "STATUS": "Estado"
+        }
+    },
+    "DOCUMENTS": {
+        "VIEW": {
+            "TITLE": "Documentos"
+        },
+        "TABLE": {
+            "DOCUMENT_TYPE": "Tipo de documento",
+            "PO_NO": "CORREOS. Número",
+            "INVOICE_NO": "Número de factura",
+            "VENDOR_NAME": "Nombre del proveedor",
+            "UPDATED_BY": "Actualizado por",
+            "UPDATED_AT": "Actualizado en",
+            "ARCHIVE_BY": "Archivo por",
+            "ARCHIVE_AT": "Archivo en"
+        }
+    },
+    "AUTHNITICATION": {
+        "VIEW": {
+            "TITLE": "Change Password"
+        }
+    },
+    "EMERGENCY_CONTACT": {
+        "TITLE": "Emergency Contact",
+        "ADD": "Add Emergency Contact",
+        "EDIT": "Edit Emergency Contact",
+        "FORM": {
+            "NAME": "Name",
+            "RELATION": "Relation",
+            "PHONE": "Phone",
+            "EMAIL": "Email",
+            "ADDRESS": "Address",
+            "STREET1": "Street1",
+            "STREET2": "Street2",
+            "CITY": "City",
+            "STATE": "State",
+            "ZIPCODE": "Zipcode",
+            "COUNTRY": "Country",
+            "LAST_VALIDATION_DATE": "Last Validation Date"
+        },
+        "CONFIRMATION_DIALOG": {
+            "SUBMIT": "Please complete the emergency form before submitting.",
+            "SAVING": "Are you sure you want to close this window without saving changes?",
+            "DELETE": "Are you sure you want to delete this emergency?"
+        }
+    },
+    "CLIENT": {
+        "VIEW": {
+            "TITLE": "Cliente/Nombre del trabajo",
+            "ARCHIVED_TITLE": "Nombre de trabajo/cliente archivado"
+        },
+        "TABLE": {
+            "CLIENT_NAME": "Cliente/Nombre del trabajo",
+            "CLIENT_NUMBER": "Numero de cliente",
+            "JOB_CONTACT_EMAIL": "Correo electrónico de contacto laboral",
+            "APPROVER": "Aprobador",
+            "COST_CODE": "Código de costo",
+            "STATUS": "Estado",
+            "ACTIONS": "Acción"
+        },
+        "ADD_EDIT": {
+            "ADD_TITLE": "Agregar nombre de cliente/trabajo",
+            "EDIT_TITLE": "Editar nombre de cliente/trabajo",
+            "COST_GL": "Código de costo/Cuenta de mayor",
+            "STATUS": "Estado",
+            "NOTES": "notas"
+        },
+        "HISTORY": {
+            "TITLE": "Historial de nombre de cliente/trabajo"
+        },
+        "CONFIRMATION_DIALOG": {
+            "SUBMIT": "Por favor, complete el formulario de nombre de cliente / trabajo antes de enviar.",
+            "SAVING": "¿Está seguro de que desea cerrar esta ventana sin guardar los cambios?",
+            "ARCHIVE": "¿Está seguro de que desea archivar este nombre de cliente/trabajo?",
+            "RESTORE": "¿Está seguro de que desea restaurar este nombre de cliente/trabajo?",
+            "ALL_ACTIVE": "¿Está seguro de que desea activar todo el cliente/trabajo?",
+            "ALL_INACTIVE": "¿Está seguro de que desea Inactivar todo el cliente/trabajo?",
+            "ALL_ARCHIVE": "¿Está seguro de que desea archivar todos los clientes/trabajo?"
+        }
+    },
+    "DOCUMENT": {
+        "TITLE": "Document",
+        "ADD": "Add Document",
+        "EDIT": "Edit Document",
+        "FORM": {
+            "DOCUMENT_TYPE": "Document Type",
+            "EXPIRATION_DATE": "Expiration Date",
+            "DOCUMENT": "Document"
+        },
+        "CONFIRMATION_DIALOG": {
+            "SUBMIT": "Please complete the document form before submitting.",
+            "SAVING": "Are you sure you want to close this window without saving changes?",
+            "DELETE": "Are you sure you want to delete this document?"
+        },
+        "CHANGE_TYPE": {
+            "CONFIRM_1": "Your current document type is #old. Are you sure you want to change the document type to #new?",
+            "CONFIRM_2": "As you have changed the #old document type to #new, your data is now replaced with new document data."
+        }
+    },
+    "INVOICE": {
+        "TITLE": "INVOICE",
+        "HISTORY": {
+            "TITLE": "Invoice History"
+        },
+        "UPLOAD": {
+            "WAIT_FOR_RESPONSE": "The document(s) uploaded successfully. SmartAccuPay processing your uploaded document and in sometime this documents are reflected to portal."
+        },
+        "INVOICE_DETAILS": {
+            "TITLE": "Invoice Detail",
+            "INFORMATION": {
+                "TITLE": "Information",
+                "FORM": {
+                    "DOCUMENT_TYPE": "Document Type",
+                    "VENDOR_NAME": "Vendor Name",
+                    "INVOICE#": "Invoice#",
+                    "INVOICE_DATE": "Invoice Date",
+                    "DUE_DATE": "Due Date",
+                    "TOTAL_AMOUNT": "Total Amount",
+                    "TAX_AMOUNT": "Tax Amount",
+                    "ASSIGN_TO": "Approver",
+                    "STATUS": "Status"
+                }
+            },
+            "ACCOUNTING_ACTIVITY": {
+                "TITLE": "Accounting Activity",
+                "TABLE": {
+                    "TOTAL_AMOUNT": "Total Amount",
+                    "COST_CODE": "Cost Code",
+                    "ASSIGN_TO": "Approver",
+                    "GL_ACCOUNT": "GL Account",
+                    "NOTES": "Notes"
+                }
+            },
+            "MORE_INFORMATION": {
+                "TITLE": "More Information",
+                "FORM": {
+                    "VENDOR_ID": "Vendor ID",
+                    "CUSTOMER_ID": "Customer ID",
+                    "P.O.#": "P.O.#",
+                    "JOB#": "Job#",
+                    "ORDER_DATE": "Order Date",
+                    "SHIP_DATE": "Ship Date",
+                    "PACKING_SLIP": "Packing Slip",
+                    "RECEVING_SLIP": "Receiving Slip",
+                    "TERMS": "terms",
+                    "TAX_ID": "Tax ID",
+                    "SUB_TOTAL": "Sub Total",
+                    "AMOUNT_DUE": "Amount Due",
+                    "COST_CODE": "Cost Code",
+                    "CLASS_NAME": "Class Name",
+                    "NOTES": "Notes"
+                }
+            },
+            "NOTES": {
+                "TITLE": "Notes"
+            },
+            "SUPPORTING_DOCUMENT": {
+                "TITLE": "Supporting Documents"
+            },
+            "INFO": {
+                "TITLE": "Info",
+                "TABLE": {
+                    "TOTAL_AMOUNT": "Total Amount",
+                    "COST_CODE": "Cost Code/GL Account",
+                    "ASSIGN_TO": "Approver",
+                    "CLIENT_JOB_NAME": "Client/Job Name",
+                    "CLASS_NAME": "Class Name",
+                    "NOTES": "Notes"
+                }
+            }
+        }
+    },
+    "DASHBOARD": {
+        "CHART": {
+            "MONTHLY_TITLE": "Monthly History",
+            "MONTHLY_INVOICE": "Monthly Invoice"
+        }
+    }
+}

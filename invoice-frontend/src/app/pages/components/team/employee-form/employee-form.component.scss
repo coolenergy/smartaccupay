@@ -1,0 +1,316 @@
+@import 'src/app/styles/variables';
+
+.main-cust-emp-from {
+    display: flex;
+    width: 100%;
+
+    @media (max-width: $normal) {}
+
+    @media (max-width: $small) {
+        flex-wrap: wrap;
+    }
+
+    @media (max-width: $medium) {
+        flex-wrap: wrap;
+    }
+}
+
+.main-cust-emp-profile {
+    width: 30%;
+    margin: auto 0;
+
+    @media (max-width: $normal) {
+        flex-wrap: wrap;
+    }
+
+    @media (max-width: $small) {
+        width: 100%;
+
+    }
+}
+
+.main-cust-emp-inputpersonal {
+    width: 70%;
+
+    @media (max-width: $small) {
+        width: 100%;
+
+    }
+}
+
+.main-first-row {
+    display: flex;
+    width: 100%;
+
+    @media (max-width: $small) {
+        width: 100%;
+    }
+}
+
+.main-first-col1 {
+    width: 33.33%;
+}
+
+.main-first-col2 {
+    width: 33.33%;
+}
+
+.main-first-col3 {
+    width: 33.33%;
+}
+
+.main-second-row {
+    display: flex;
+    width: 100%;
+
+    @media (max-width: $normal) {}
+
+    @media (max-width: $small) {
+
+        width: 100%;
+
+    }
+}
+
+.main-second-col1 {
+    width: 50%;
+}
+
+.main-second-col2 {
+    width: 50%;
+}
+
+.main-cust-emp-cont-info {
+    display: flex;
+    width: 100%;
+
+    @media (max-width: $normal) {
+        flex-wrap: wrap;
+    }
+}
+
+.main-cust-emp-cont {
+    width: 50%;
+}
+
+.main-cust-emp-info {
+    width: 50%;
+}
+
+.inner-main-cust {
+    display: flex;
+    width: 100%;
+
+    @media (max-width: $normal) {}
+}
+
+.inner-cust {
+    width: 50%;
+}
+
+.main-four-cust {
+    display: flex;
+    width: 100%;
+
+    @media (max-width: $normal) {
+        flex-wrap: wrap;
+    }
+}
+
+.main-four-inner {
+    width: 23.5%;
+}
+
+.margin-top-cust {
+    margin-top: 1%;
+}
+
+.main-cust-doc {
+    display: flex;
+    width: 100%;
+
+    @media (max-width: $normal) {
+        flex-wrap: wrap;
+    }
+}
+
+.inner-cust-doc {
+    width: 33.33%;
+}
+
+.doc-upload-cust {
+    margin: .25em 0;
+    padding: 1em;
+    border: 1px solid #e8e8e8;
+    border-radius: 5px;
+}
+
+.image-wrap {
+    padding: 10px;
+    border: solid 1px #e0e0e0;
+    display: inline-block;
+}
+
+.img-space {
+    border: dashed 1px #d3d3d3;
+    border-radius: 8px;
+    background-color: #f2f2f2;
+    height: auto;
+    width: 100%;
+    min-height: 175px;
+
+    @media (max-width: $medium) {
+        min-height: 100px;
+    }
+
+    @media (max-width: $small) {
+        min-height: 150px;
+    }
+}
+
+.img-space img {
+    display: block;
+    width: 50%;
+    height: 100%;
+    margin: auto;
+    cursor: pointer;
+}
+
+.fileInputProfileWrap {
+    width: 100%;
+    height: auto;
+}
+
+.fileInputProfile {
+    position: absolute;
+    z-index: 99;
+    opacity: 0;
+}
+
+.fileInputProfile[disabled]+.img-space {
+    pointer-events: none;
+    cursor: not-allowed !important;
+}
+
+.main-one-input-field {
+    width: 100%;
+}
+
+.small-one-input-field {
+    width: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.padding-left-cust {
+    padding-left: 2% !important;
+
+    @media (max-width: $small) {
+        padding-left: 0 !important;
+    }
+
+    @media (max-width: $medium) {
+        padding-left: 0 !important;
+    }
+
+    @media (max-width: $large) {
+        flex-wrap: wrap;
+        padding-left: 0 !important;
+    }
+
+    @media (max-width: $extra-large) {
+        padding-left: 5px !important;
+    }
+}
+
+.circular--landscape img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border: #023e8a solid 1px;
+}
+
+.circular--landscape {
+    display: inline-block;
+    position: relative;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 50%;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+
+    @media (max-width: $medium) {
+        min-height: 100px;
+    }
+
+    @media (max-width: $small) {
+        min-height: 150px;
+    }
+}
+
+.card-text-centre {
+    font-size: 1.1em !important;
+    padding-bottom: 1em;
+    padding-top: 5px;
+    text-align: center;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+.user-menu__button-custom-small {
+    top: 1px;
+    outline: none;
+    z-index: 1025;
+    margin: 2px;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    border: 0px;
+    background: #023E8A;
+    color: white;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: scale-down;
+    }
+
+    &:hover {
+        background: #023E8A;
+    }
+}
+
+.head-text {
+    width: 100%;
+    height: 30px;
+    color: white;
+    //   margin-bottom: 1.3rem;
+    background-color: #023e8af7;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.mat-card {
+    padding: 0 !important;
+}
+
+.editing {
+    margin: 0;
+    position: absolute;
+    padding-left: 10px;
+}
+
+.mat-stepper-label-position-bottom .mat-horizontal-stepper-header-container {
+    padding-top: 3% !important;
+}
+
+.schedule-input {
+    width: 100%;
+}

@@ -1,0 +1,21 @@
+<div class="row mt-3">
+    <div class="col-md-12">
+        <div align="end" style="text-align: right;">
+            <button mat-raised-button (click)="download()" class="cust-button-form"><img src="{{downloadIcon}}" alt=""
+                    class="" height="20px" style=" padding-right: 4px;">{{'PO-View-Download' |
+                translate}}</button>
+            <button mat-raised-button (click)="print()" class="cust-button-form"><img src="{{printIcon}}" alt=""
+                    class="" height="15px" style=" padding-right: 4px;">{{'PO-View-Print' |
+                translate}}</button>
+            <button mat-raised-button (click)="back()" class="cust-button-form" style="margin-right: 10px;"><img
+                    src="{{backIcon}}" alt="" class="" height="15px" style=" padding-right: 4px;">{{'All-back' |
+                translate}}</button>
+        </div>
+    </div>
+</div>
+<div class="wrapper-cust-admin">
+    <pdf-viewer id="pdf" [src]="pdf_url" [rotation]="0" [original-size]="false" [show-all]="true" [fit-to-page]="false"
+        [zoom]="1" [zoom-scale]="'page-width'" [stick-to-page]="false" [render-text]="true"
+        [external-link-target]="'blank'" [autoresize]="true" [show-borders]="false" [external-link-target]="'blank'"
+        style="display: block;"></pdf-viewer>
+</div>

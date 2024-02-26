@@ -1,0 +1,109 @@
+@import 'src/app/styles/variables';
+
+.one-div-cust-user {
+    width: 100%;
+    margin-right: 5px;
+    padding: auto;
+    border-radius: 6px;
+    margin-bottom: 1%;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @media (max-width: $normal) {
+        width: 50%;
+    }
+
+    @media (max-width: $small) {
+        width: 100%;
+    }
+}
+
+.header-text-cust {
+    width: 300px;
+    background-color: #fff;
+    text-align: center !important;
+    min-height: 40px;
+    border-radius: 6px;
+    padding: 1em 1em;
+    font-size: 1.2em !important;
+    font-weight: 500 !important;
+}
+
+.statastic-card-title {
+    margin-top: auto;
+    margin-bottom: auto;
+    font-size: 15px;
+}
+
+
+.statastic-card {
+    display: flex;
+    justify-content: space-between;
+    max-height: 70px;
+
+    margin-left: 10px;
+    margin-right: 40px;
+}
+
+.number-new {
+    background-color: hsl(19, 94%, 55%);
+    border-radius: 5px;
+    color: #fff;
+    height: 40px;
+    width: 40px;
+    // flex: 0 0 15%;
+    // max-width: 15%;
+    text-align: center;
+    margin: 0;
+    font-size: 15px;
+}
+
+.pending-background {
+    background-color: hsl(19, 94%, 55%);
+}
+
+.approve-background {
+    background-color: #0fb900;
+}
+
+.reject-background {
+    background-color: #D16D6D;
+}
+
+.late-background {
+    background-color: #D6A400;
+}
+
+.d-flex {
+    float: right;
+    margin-right: 47px;
+}
+
+.cust-padding {
+    padding-bottom: 50px;
+}
+
+.inner-search-bar {
+    width: 90%;
+}
+
+.table-responsive {
+    display: block;
+    width: 100%;
+    overflow-x: unset !important;
+    -webkit-overflow-scrolling: touch;
+}
+
+.b-hight {
+    height: 35px;
+    margin-top: 15px;
+}
+
+::ng-deep .s2-confirm {
+    width: 130px !important;
+}
+
+::ng-deep .btn-gray {
+    background-color: grey !important;
+    color: white !important;
+}

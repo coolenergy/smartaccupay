@@ -1,0 +1,40 @@
+<div class="row">
+    <div class="col-2">
+        <img class="crl mr-2" height="50px" width="50px" src="./assets/logo/invoice_logo.png" />
+    </div>
+    <div class="col-9 dialog-head-center">
+        <h2 class="cust-report-label-header-text">{{'History_Vendor' | translate}}</h2>
+    </div>
+    <div class="col-1 dialog-head-right">
+        <button class="import-export-btn-datatable cust-margin-div" matTooltip="{{ 'All-exit' | translate }}"
+            mat-dialog-close>
+            <img src="{{exitIcon}}" alt="" class="far fa-paper-plane" height="20px" />
+        </button>
+    </div>
+</div>
+<div class="search-results" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50"
+    (scrolled)="onScroll()" [scrollWindow]="false" [ngStyle]="setHeightStyles()">
+    <div class="hbox mt-2" *ngFor="let item of taskHistory">
+        <div class="row pb-2">
+            <div class="col-1 mt-1"><img class="userimg"
+                    src="{{item.history_created_by.userpicture || '../assets/images/user_placeholder.png'}}" />
+            </div>
+            <div class="col-11 mt-1">
+                <b> {{item.history_created_by.userfullname}} </b> {{item.action}} <b>
+                    {{item.vendor.vendor_name}}
+                </b>
+                at
+                <b>{{tmp_date(item.history_created_at)}}</b> from <b>{{item.taken_device}}.</b>
+
+                <table class="table" *ngIf="item.action == 'Insert' || item.action == 'Update'">
+                    <tr *ngFor="let data of item.data">
+                        <th>{{data.key}}</th>
+                        <td>{{data.value}}
+                        </td>
+                    </tr>
+                </table>
+                <!-- <hr class="solid "> -->
+            </div>
+        </div>
+    </div>
+</div>

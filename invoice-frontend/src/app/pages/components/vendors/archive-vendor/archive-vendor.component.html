@@ -1,0 +1,25 @@
+<div class="wrapper-cust-admin" fxLayout style="height: 95%">
+    <div class="d-flex justify-content-between">
+        <h1 class="screen-title">
+            {{ "Archived_Vendor" | translate | titlecase }}
+        </h1>
+
+        <div class="col-2 dialog-head-right">
+
+            <button mat-raised-button (click)="back()" class="cust-button-form">
+                <img src="{{backIcon}}" alt="" height="20px">{{'All-back' |translate}}
+            </button>
+        </div>
+    </div>
+
+    <!-- <div class="head-text mt-1 ">
+        <h3 class="editing">{{'Archived_Vendor' | translate }}</h3>
+    </div> -->
+    <div class="wrapper-cust-admin cust-width">
+        <div *ngIf="showTable">
+            <table datatable [dtOptions]="dtOptions" id="dtOptions_vendor" class="row-border hover">
+            </table>
+        </div>
+    </div>
+</div>
+<ngx-gallery [options]="galleryOptions" [images]="galleryImages" #gallery></ngx-gallery>

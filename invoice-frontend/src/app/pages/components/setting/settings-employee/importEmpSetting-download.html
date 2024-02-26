@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="col-10 dialog-head-left">
+        <h1 mat-dialog-title>{{"File_download_instruction" | translate }}</h1>
+    </div>
+    <!-- <div class="col-8 dialog-head-center">
+        
+    </div> -->
+    <div class="col-2 dialog-head-right">
+        <button class="import-export-btn-datatable cust-margin-div" matTooltip="{{ 'All-exit' | translate }}"
+            mat-dialog-close>
+            <img src="{{exitIcon}}" alt="" class="far fa-paper-plane" height="20px">
+        </button>
+    </div>
+</div>
+<!-- <h1 mat-dialog-title>{{"File_download_instruction" | translate }}</h1> -->
+
+<div mat-dialog-content>
+    <h3>{{"download_import_instruction" | translate }}</h3>
+</div>
+
+
+<div class="modal-footer cust-report-header-footer-div">
+    <button mat-raised-button color="primary" (click)="downloadImportTemplate()">{{'all-ok' | translate }}</button>
+</div>
