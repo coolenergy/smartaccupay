@@ -7,7 +7,7 @@ import openai
 import json
 import csv
 # Authenticate with your OpenAI API Key
-openai.api_key = "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"
+openai.api_key = "XXXXXX"
 
 # Return Bytes From Wasabi S3
 def get_object(access_key, secret_key, region, endpoint, bucket, file):
